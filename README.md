@@ -4,6 +4,8 @@
 
 # meteor-ionic
 
+[![Join the chat at https://gitter.im/JoeyAndres/meteor-ionic](https://badges.gitter.im/JoeyAndres/meteor-ionic.svg)](https://gitter.im/JoeyAndres/meteor-ionic?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ### Build [Ionic](http://ionicframework.com/) apps in [Meteor](https://www.meteor.com/)!
 
 ## Overview
