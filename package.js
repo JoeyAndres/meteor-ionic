@@ -1,8 +1,8 @@
 Package.describe({
-  name: "jandres:ionic",
+  name: "cyclops24:ionic",
   summary: "Ionic components for Meteor. No Angular!",
   version: "0.1.50-alpha1",
-  git: "https://github.com/JoeyAndres/meteor-ionic.git"
+  git: "https://github.com/cyclops24/meteor-ionic.git"
 });
 
 
