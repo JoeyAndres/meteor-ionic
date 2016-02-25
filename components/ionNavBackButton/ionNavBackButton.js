@@ -1,18 +1,18 @@
 IonScrollPositions = {};
 
-Router.onStop(function () {
-  IonScrollPositions[this.route.path(this.params)] = $('.overflow-scroll').scrollTop();
-});
+// TODO: Add Routing-Agnostic scroll-to-top - method
+
+//RouterLayer.onStop(function () {
+//  IonScrollPositions[this.route.path(this.params)] = $('.overflow-scroll').scrollTop();
+//});
 
 Template.ionNavBackButton.events({
   'click': function (event, template) {
     $('[data-nav-container]').attr('nav-view-direction', 'back');
     $('[data-navbar-container]').attr('nav-bar-direction', 'back');
 
-    //get most up-to-date url, if it exists
-    backUrl = template.getBackUrl();
-    if (backUrl) {
-      Router.go(backUrl);
+    if (template.backUrl) {
+      RouterLayer.go(template.backUrl);
     } else {
       window.history.back();
     }
@@ -35,7 +35,7 @@ Template.ionNavBackButton.onRendered(function () {
     }
 
     if (self.data.path) {
-      backRoute = Router.routes[self.data.path];
+      backRoute = RouterLayer.routes[self.data.path];
       if (!backRoute) {
         console.warn("back to nonexistent route: ", self.data.path);
         return;
