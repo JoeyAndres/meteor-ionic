@@ -17,6 +17,15 @@
 
 /* global window, document, define, jQuery, setInterval, clearInterval */
 
+/**
+ * NOTE: Quick-Fix for meteor-ionic / Meteor 1.3 beta 11 compatibility,
+ *
+ * see https://github.com/kenwheeler/slick/pull/585#issuecomment-124861019 :
+ *
+ * (and also the bottom of the file :) )
+ */
+
+/*
 (function(factory) {
     'use strict';
     if (typeof define === 'function' && define.amd) {
@@ -28,6 +37,9 @@
     }
 
 }(function($) {
+*/
+
+;(function ( $, window, document, undefined ) {
     'use strict';
     var Slick = window.Slick || {};
 
@@ -2144,5 +2156,7 @@
     $(function(){
         $('[data-slick]').slick();
     });
+})( jQuery, window, document );
 
-}));
+// end of quick fix
+// }));
