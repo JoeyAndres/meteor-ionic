@@ -130,7 +130,7 @@ Template.ionItem.helpers({
         }
 
       } else {
-        return RouterLayer.getPath(path);
+        return RouterLayer.pathFor(path)
       }
     }
   }
