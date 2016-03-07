@@ -1,8 +1,12 @@
 <template name="ionScroll">
-    <div class="{{nativeScrollingClass}}
-                {{class}}
-                scroller-wrapper"
-         style="{{style}} width: 100%; height: 100%;">
-        {{> UI.contentBlock}}
-    </div>
+    <ion-scroll class="{{class}}
+                scroll-view ionic-scroll
+                scroll-{{direction}}
+                {{#if paging}} scroll-paging {{/if}}
+                {{#if nativeScrolling}} overflow-scroll {{/if}}"
+         style="{{style}}">
+        <div class="scroll">
+            {{> UI.contentBlock}}
+        </div>
+    </ion-scroll>
 </template>

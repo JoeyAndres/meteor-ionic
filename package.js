@@ -1,182 +1,206 @@
 Package.describe({
   name: "jandres:ionic",
   summary: "Ionic components for Meteor. No Angular!",
-  version: "0.1.50-alpha1",
+  version: "0.1.56",
   git: "https://github.com/JoeyAndres/meteor-ionic.git"
 });
 
 
-
 Cordova.depends({
-  'ionic-plugin-keyboard': '1.0.8'
+    'ionic-plugin-keyboard': '1.0.8'
 });
 
-Package.onUse(function(api) {
-  api.versionsFrom("1.0");
+Package.onUse(function (api) {
+    api.versionsFrom("1.0");
 
-  api.use([
-    "jandres:template-extension@4.0.4",
-    "ecmascript@0.1.6",
-    "templating",
-    "underscore",
-    "reactive-var",
-    "fastclick",
-    "nicolaslopezj:router-layer@0.0.11",
-    "tracker",
-    "session",
-    "jquery",
-    "jandres:iscroll-zoom@5.1.9",
-    "jandres:snapjs@2.0.8",
-    "fourseven:scss@3.3.3",
+    api.use([
+        "jandres:template-extension@4.0.4",
+        "ecmascript@0.1.6",
+        "templating",
+        "underscore",
+        "reactive-var",
+        "fastclick",
+        "nicolaslopezj:router-layer@0.0.11",
+        "tracker",
+        "session",
+        "jquery",
+        "jandres:snapjs@2.0.9",
+        "fourseven:scss@3.4.1",
 
-    "jandres:meteoric-sass@1.2.4"
-  ], "client");
+        "jandres:meteoric-sass@1.2.5"
+    ], "client");
 
-  api.addFiles([
-    "vendor/slick.js",
-    "vendor/slick.css",
-    "vendor/slip.js"
-  ], "client");
+    api.addFiles([
+        "vendor/slick.js",
+        "vendor/slick.css",
+        "vendor/slip.js"
+    ], "client");
 
-  api.addFiles([
-    "styles/_transitions.scss",
-    "styles/main.scss"
-  ], "client");
+    api.addFiles([
+        "styles/_transitions.scss",
+        "styles/main.scss"
+    ], "client");
 
-  api.addFiles([
-    "lib/utility.js",
-    "lib/polyfill.js",
-    "lib/platform.js",
+    // @see uild.config.js in ionic@1.2.4
+    api.addFiles([
+        "lib/meteoric.js",
 
-    "components/ionActionSheet/ionActionSheet.html",
-    "components/ionActionSheet/ionActionSheet.js",
+        // Utils
+        'lib/utils/delegateService.js',
+        'lib/utils/dom.js',
+        'lib/utils/events.js',
+        'lib/utils/gestures.js',
+        'lib/utils/platform.js',
+        'lib/utils/poly.js',
+        'lib/utils/tap.js',
+        'lib/utils/activator.js',
+        'lib/utils/utils.js',
+        'lib/utils/keyboard.js',
+        'lib/utils/viewport.js',
 
-    "components/ionBackdrop/ionBackdrop.html",
-    "components/ionBackdrop/ionBackdrop.js",
+        "lib/utility.js",
 
-    "components/ionBody/ionBody.html",
-    "components/ionBody/ionBody.js",
+        // Views
+        'lib/views/view.js',
+        'lib/views/scrollView.js',
+        'lib/views/scrollViewNative.js',
+        'lib/views/listView.js',
+        'lib/views/modalView.js',
+        'lib/views/sideMenuView.js',
+        'lib/views/sliderView.js',
+        'lib/views/slidesView.js',
+        'lib/views/toggleView.js',
 
-    "components/ionContent/ionContent.html",
-    "components/ionContent/ionContent.js",
+        // Controller.
+        'lib/controller/spinnerController.js',
+        'lib/controller/scrollController.js',
+        'lib/controller/infiniteScrollController.js'
+    ], "client");
 
-    "components/ionDeleteButton/ionDeleteButton.html",
-    "components/ionDeleteButton/ionDeleteButton.js",
+    api.addFiles([
+        "components/ionActionSheet/ionActionSheet.html",
+        "components/ionActionSheet/ionActionSheet.js",
 
-    "components/ionFooterBar/ionFooterBar.html",
-    "components/ionFooterBar/ionFooterBar.js",
+        "components/ionBackdrop/ionBackdrop.html",
+        "components/ionBackdrop/ionBackdrop.js",
 
-    "components/ionHeaderBar/ionHeaderBar.html",
-    "components/ionHeaderBar/ionHeaderBar.js",
+        "components/ionBody/ionBody.html",
+        "components/ionBody/ionBody.js",
 
-    "components/ionIcon/ionIcon.html",
-    "components/ionIcon/ionIcon.js",
+        "components/ionContent/ionContent.html",
+        "components/ionContent/ionContent.js",
 
-    "components/ionInfiniteScroll/ionInfiniteScroll.html",
-    "components/ionInfiniteScroll/ionInfiniteScroll.js",
+        "components/ionDeleteButton/ionDeleteButton.html",
+        "components/ionDeleteButton/ionDeleteButton.js",
 
-    "components/ionItem/ionItem.html",
-    "components/ionItem/ionItem.js",
+        "components/ionFooterBar/ionFooterBar.html",
+        "components/ionFooterBar/ionFooterBar.js",
 
-    "components/ionItemOptions/ionItemOptions.html",
-    "components/ionItemOptions/ionItemOptions.js",
+        "components/ionHeaderBar/ionHeaderBar.html",
+        "components/ionHeaderBar/ionHeaderBar.js",
 
-    "components/ionItemContent/ionItemContent.html",
-    "components/ionItemContent/ionItemContent.js",
+        "components/ionInfiniteScroll/ionInfiniteScroll.html",
+        "components/ionInfiniteScroll/ionInfiniteScroll.js",
 
-    "components/ionKeyboard/ionKeyboard.js",
-    "components/ionKeyboard/ionInputFocus.js",
+        "components/ionItem/ionItem.html",
+        "components/ionItem/ionItem.js",
 
-    "components/ionList/ionList.html",
-    "components/ionList/ionList.js",
+        "components/ionItemOptions/ionItemOptions.html",
+        "components/ionItemOptions/ionItemOptions.js",
 
-    "components/ionListButton/ionListButton.html",
-    "components/ionListButton/ionListButton.js",
+        "components/ionItemContent/ionItemContent.html",
+        "components/ionItemContent/ionItemContent.js",
 
-    "components/ionLoading/ionLoading.html",
-    "components/ionLoading/ionLoading.js",
+        "components/ionKeyboard/ionKeyboard.js",
+        "components/ionKeyboard/ionInputFocus.js",
 
-    "components/ionModal/ionModal.html",
-    "components/ionModal/ionModal.js",
+        "components/ionList/ionList.html",
+        "components/ionList/ionList.js",
 
-    "components/ionNavBar/ionNavBar.html",
-    "components/ionNavBar/ionNavBar.js",
+        "components/ionListButton/ionListButton.html",
+        "components/ionListButton/ionListButton.js",
 
-    "components/ionOptionButton/ionOptionButton.html",
-    "components/ionOptionButton/ionOptionButton.js",
+        "components/ionLoading/ionLoading.html",
+        "components/ionLoading/ionLoading.js",
 
-    "components/ionNavBackButton/ionNavBackButton.html",
-    "components/ionNavBackButton/ionNavBackButton.js",
+        "components/ionModal/ionModal.html",
+        "components/ionModal/ionModal.js",
 
-    "components/ionNavView/ionNavView.html",
-    "components/ionNavView/ionNavView.js",
+        "components/ionNavBar/ionNavBar.html",
+        "components/ionNavBar/ionNavBar.js",
 
-    "components/ionPane/ionPane.html",
-    "components/ionPane/ionPane.js",
+        "components/ionOptionButton/ionOptionButton.html",
+        "components/ionOptionButton/ionOptionButton.js",
 
-    "components/ionPopover/ionPopover.html",
-    "components/ionPopover/ionPopover.js",
+        "components/ionNavBackButton/ionNavBackButton.html",
+        "components/ionNavBackButton/ionNavBackButton.js",
 
-    "components/ionPopup/ionPopup.html",
-    "components/ionPopup/ionPopup.js",
+        "components/ionNavView/ionNavView.html",
+        "components/ionNavView/ionNavView.js",
 
-    "components/ionRadio/ionRadio.html",
-    "components/ionRadio/ionRadio.js",
+        "components/ionPane/ionPane.html",
+        "components/ionPane/ionPane.js",
 
-    "components/ionReorderButton/ionReorderButton.html",
-    "components/ionReorderButton/ionReorderButton.js",
+        "components/ionPopover/ionPopover.html",
+        "components/ionPopover/ionPopover.js",
 
-    "components/ionScroll/ionScroll.html",
-    "components/ionScroll/ionScroll.js",
+        "components/ionPopup/ionPopup.html",
+        "components/ionPopup/ionPopup.js",
 
-    "components/ionSideMenu/ionSideMenu.html",
-    "components/ionSideMenu/ionSideMenu.js",
+        "components/ionRadio/ionRadio.html",
+        "components/ionRadio/ionRadio.js",
 
-    "components/ionSideMenuContainer/ionSideMenuContainer.html",
-    "components/ionSideMenuContainer/ionSideMenuContainer.js",
+        "components/ionReorderButton/ionReorderButton.html",
+        "components/ionReorderButton/ionReorderButton.js",
 
-    "components/ionSideMenuContent/ionSideMenuContent.html",
-    "components/ionSideMenuContent/ionSideMenuContent.js",
+        "components/ionScroll/ionScroll.html",
+        "components/ionScroll/ionScroll.js",
 
-    "components/ionSideMenus/ionSideMenus.html",
-    "components/ionSideMenus/ionSideMenus.js",
+        "components/ionSideMenu/ionSideMenu.html",
+        "components/ionSideMenu/ionSideMenu.js",
 
-    "components/ionSlideBox/ionSlideBox.html",
-    "components/ionSlideBox/ionSlideBox.js",
+        "components/ionSideMenuContainer/ionSideMenuContainer.html",
+        "components/ionSideMenuContainer/ionSideMenuContainer.js",
 
-    "components/ionSpinner/ionSpinner.html",
-    "components/ionSpinner/ionSpinner.js",
+        "components/ionSideMenuContent/ionSideMenuContent.html",
+        "components/ionSideMenuContent/ionSideMenuContent.js",
 
-    "components/ionSlide/ionSlide.html",
-    "components/ionSlide/ionSlide.js",
+        "components/ionSideMenus/ionSideMenus.html",
+        "components/ionSideMenus/ionSideMenus.js",
 
-    "components/ionSubfooterBar/ionSubfooterBar.html",
-    "components/ionSubfooterBar/ionSubfooterBar.js",
+        "components/ionSlideBox/ionSlideBox.html",
+        "components/ionSlideBox/ionSlideBox.js",
 
-    "components/ionSubheaderBar/ionSubheaderBar.html",
-    "components/ionSubheaderBar/ionSubheaderBar.js",
+        "components/ionSpinner/ionSpinner.html",
+        "components/ionSpinner/ionSpinner.js",
 
-    "components/ionTabs/ionTabs.html",
-    "components/ionTabs/ionTabs.js",
+        "components/ionSlide/ionSlide.html",
+        "components/ionSlide/ionSlide.js",
 
-    "components/ionTab/ionTab.html",
-    "components/ionTab/ionTab.js",
+        "components/ionSubfooterBar/ionSubfooterBar.html",
+        "components/ionSubfooterBar/ionSubfooterBar.js",
 
-    "components/ionView/ionView.html",
-    "components/ionView/ionView.js"
+        "components/ionSubheaderBar/ionSubheaderBar.html",
+        "components/ionSubheaderBar/ionSubheaderBar.js",
 
-  ], "client");
+        "components/ionTabs/ionTabs.html",
+        "components/ionTabs/ionTabs.js",
 
-  api.export("Platform");
+        "components/ionTab/ionTab.html",
+        "components/ionTab/ionTab.js",
 
-  api.export("IonActionSheet");
-  api.export("IonBackdrop");
-  api.export("IonHeaderBar");
-  api.export("IonKeyboard");
-  api.export("IonLoading");
-  api.export("IonModal");
-  api.export("IonNavigation");
-  api.export("IonPopover");
-  api.export("IonPopup");
-  api.export("IonSideMenu");
+        "components/ionView/ionView.html",
+        "components/ionView/ionView.js"
+    ], "client");
+
+    api.export("IonActionSheet");
+    api.export("IonBackdrop");
+    api.export("IonHeaderBar");
+    api.export("IonKeyboard");
+    api.export("IonLoading");
+    api.export("IonModal");
+    api.export("IonNavigation");
+    api.export("IonPopover");
+    api.export("IonPopup");
+    api.export("IonSideMenu");
 });
