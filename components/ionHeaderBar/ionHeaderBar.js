@@ -64,5 +64,11 @@ Template.ionHeaderBar.helpers({
         }
 
         return classes.join(' ');
+    },
+    isFlowRouter: function() {
+        return ('flow-router' === RouterLayer.router)
+    },
+    isIronRouter: function() {
+        return ('iron-router' === RouterLayer.router)
     }
 });

@@ -1,7 +1,12 @@
 <template name="ionHeaderBar">
   <div class="bar bar-header {{classes}}">
-    <div class="buttons">{{> yield "headerButtonLeft"}}</div>
-      {{> UI.contentBlock}}
-    <div class="buttons">{{> yield "headerButtonRight"}}</div>
+    {{#if isIronRouter}}
+        <div class="buttons">{{> yield "headerButtonLeft"}}</div>
+          {{> yield "headerTitle"}}
+        <div class="buttons">{{> yield "headerButtonRight"}}</div>
+    {{/if}}
+    {{#if isFlowRouter}}
+        {{> Template.dynamic template=navBarTemplateName data=navBarData}}
+    {{/if}}
   </div>
 </template>

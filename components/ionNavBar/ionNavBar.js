@@ -17,6 +17,11 @@ Template.ionNavBar.onCreated(function() {
         this.transition = 'ios';
     }
 
+    // Allow overriding the transition
+    if (this.data.transition) {
+        this.transition = this.data.transition;
+    }
+
     this.ionNavBarTemplate = new ReactiveVar('_ionNavBar');
 
     $(window).on('statechange', e => this.ionNavBarTemplate.set(''));
