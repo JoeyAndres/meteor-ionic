@@ -1,7 +1,7 @@
 @import '{jandres:meteoric-sass}/scss/_mixins.scss';
 @import '{jandres:meteoric-sass}/scss/_variables.scss';
 
-[nav-view-transition] {
+[nav-view-transition]:not([nav-view-transition=none]) {
   /**
    * Transition states:
    * 1. stage: Set the initial position of the not yet existent view.
