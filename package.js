@@ -21,7 +21,7 @@ Package.onUse(function (api) {
         "reactive-var",
         "reactive-dict",
         "fastclick",
-        "iron:router@1.0.0",
+        "nicolaslopezj:router-layer@0.0.11",
         "tracker",
         "session",
         "jquery",
