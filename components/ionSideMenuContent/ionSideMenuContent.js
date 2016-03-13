@@ -8,23 +8,21 @@ Template.ionSideMenuContent.onCreated(function() {
         this.dragContent.set(!_.isUndefined(td.dragContent) ? td.dragContent : true);
         this.edgeDragThreshold.set(!td.edgeDragThreshold);
     });
+});
 
-    this.onScopeCreated = function() {
+Template.ionSideMenuContent.onRendered(function() {
+    this.$preLink = () => {
         this.autorun(() => {
             this.$scope.dragContent = this.dragContent.get();
             this.$scope.edgeDragThreshold = this.edgeDragThreshold.get();
         });
-    };
-});
 
-Template.ionSideMenuContent.onRendered(function() {
-    let element = this.$('ion-side-menu-content').get(0);
-    let $element = _.extend(this.$('ion-side-menu-content'), element);
-    let $scope = this.$scope;
-    let $window = $(window);
-    let sideMenuCtrl = $scope.sideMenuCtrl;
+        let element = this.$('ion-side-menu-content').get(0);
+        let $element = _.extend(this.$('ion-side-menu-content'), element);
+        let $scope = this.$scope;
+        let $window = $(window);
+        let sideMenuCtrl = $scope.sideMenuCtrl;
 
-    $(sideMenuCtrl).on('$initialize', () => {
         var startCoord = null;
         var primaryScrollAxis = null;
 
@@ -208,7 +206,7 @@ Template.ionSideMenuContent.onRendered(function() {
         var releaseGesture = meteoric.service.ionicGesture.on('release', onDragRelease, $element, gestureOpts);
 
         // Cleanup
-        $($scope).on('$destroy', function () {
+        $scope.on('$destroy', function () {
             if (content) {
                 content.element = null;
                 content = null;
@@ -220,7 +218,7 @@ Template.ionSideMenuContent.onRendered(function() {
             meteoric.service.ionicGesture.off(releaseGesture, 'release', onDragRelease);
             meteoric.service.ionicGesture.off(contentTapGesture, 'tap', onContentTap);
         });
-    });
+    };
 });
 
 Template.ionSideMenuContent.helpers({

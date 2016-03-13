@@ -61,74 +61,77 @@ Template.ionContent.onCreated(function() {
 });
 
 Template.ionContent.onRendered(function() {
-    let $element = this.$("ion-content");
-    let $scope = this.$scope;
-    $.data($element.get(0), 'scope', this.$scope);
+    this.$preLink = () => {
+        let $element = this.$("ion-content");
+        let $scope = this.$scope;
+        $.data($element.get(0), 'scope', this.$scope);
 
-    if (this.scroll.get() === "false") {
-        //do nothing
-    } else {
-        var scrollViewOptions = {};
-
-        // determined in compile phase above
-        let nativeScrolling = this.overflowScroll.get();
-        if (nativeScrolling) {
-            // use native scrolling
-            $element.addClass('overflow-scroll');
-
-            scrollViewOptions = {
-                el: $element[0],
-                nativeScrolling: true
-            };
-
-            this.scrollCtrl.initialize(this.$scope, scrollViewOptions);
+        if (this.scroll.get() === "false") {
+            //do nothing
         } else {
-            // Use JS scrolling
-            scrollViewOptions = {
-                el: $element[0],
-                locking: this.locking.get(),
-                bouncing: this.hasBouncing.get(),
-                scrollbarX: this.scrollbarX.get(),
-                scrollbarY: this.scrollbarY.get(),
-                scrollingX: this.direction.get().indexOf('x') !== -1,
-                scrollingY: this.direction.get().indexOf('y') !== -1,
-                scrollEventInterval: this.scrollEventInterval.get(),
-                scrollingComplete: onScrollComplete
-            };
+            var scrollViewOptions = {};
 
-            this.scrollCtrl.initialize(this.$scope, scrollViewOptions);
+            // determined in compile phase above
+            let nativeScrolling = this.overflowScroll.get();
+            if (nativeScrolling) {
+                // use native scrolling
+                $element.addClass('overflow-scroll');
+
+                scrollViewOptions = {
+                    el: $element[0],
+                    nativeScrolling: true
+                };
+
+                this.scrollCtrl.initialize(this.$scope, scrollViewOptions);
+            } else {
+                // Use JS scrolling
+                scrollViewOptions = {
+                    el: $element[0],
+                    locking: this.locking.get(),
+                    bouncing: this.hasBouncing.get(),
+                    scrollbarX: this.scrollbarX.get(),
+                    scrollbarY: this.scrollbarY.get(),
+                    scrollingX: this.direction.get().indexOf('x') !== -1,
+                    scrollingY: this.direction.get().indexOf('y') !== -1,
+                    scrollEventInterval: this.scrollEventInterval.get(),
+                    scrollingComplete: onScrollComplete
+                };
+
+                this.scrollCtrl.initialize(this.$scope, scrollViewOptions);
+
+                this.autorun(() => {
+                    if (!this.scrollCtrl) return;
+                    this.scrollCtrl.scrollView.options.locking = this.locking.get();
+                    this.scrollCtrl.scrollView.options.scrollbarX = this.scrollbarX.get();
+                    this.scrollCtrl.scrollView.options.scrollbarY = this.scrollbarY.get();
+                    this.scrollCtrl.scrollView.options.scrollingX = this.direction.get().indexOf('x') !== -1;
+                    this.scrollCtrl.scrollView.options.scrollingY = this.direction.get().indexOf('y') !== -1;
+                    this.scrollCtrl.scrollView.options.scrollEventInterval = this.scrollEventInterval.get();
+                    this.scrollCtrl.scrollView.options.bouncing = this.hasBouncing.get();
+                });
+            }
+
+            this.$scope.onScroll = _.isFunction(this.onScroll) ?
+                meteoric.Utils.throttle(this.onScroll, this.scrollEventInterval.get()) :
+                e => {
+                };
 
             this.autorun(() => {
-                if (!this.scrollCtrl) return;
-                this.scrollCtrl.scrollView.options.locking = this.locking.get();
-                this.scrollCtrl.scrollView.options.scrollbarX = this.scrollbarX.get();
-                this.scrollCtrl.scrollView.options.scrollbarY = this.scrollbarY.get();
-                this.scrollCtrl.scrollView.options.scrollingX = this.direction.get().indexOf('x') !== -1;
-                this.scrollCtrl.scrollView.options.scrollingY = this.direction.get().indexOf('y') !== -1;
-                this.scrollCtrl.scrollView.options.scrollEventInterval = this.scrollEventInterval.get();
-                this.scrollCtrl.scrollView.options.bouncing = this.hasBouncing.get();
+                this.scrollCtrl.scrollTo(parseInt(this.startX.get(), 10), parseInt(this.startY.get(), 10), true);
             });
         }
 
-        this.$scope.onScroll = _.isFunction(this.onScroll) ?
-            meteoric.Utils.throttle(this.onScroll, this.scrollEventInterval.get()) :
-            e => {};
+        let self = this;
 
-        this.autorun(() => {
-            this.scrollCtrl.scrollTo(parseInt(this.startX.get(), 10), parseInt(this.startY.get(), 10), true);
-        });
-    }
+        function onScrollComplete() {
+            let _onScrollComplete = _.isFunction(self.onScrollComplete.get()) ? self.onScrollComplete.get() : () => {
+            };
+            _onScrollComplete({
+                scrollTop: self.scrollCtrl.scrollView.__scrollTop,
+                scrollLeft: self.scrollCtrl.scrollView.__scrollLeft
+            });
+        }
 
-    let self = this;
-    function onScrollComplete() {
-        let _onScrollComplete = _.isFunction(self.onScrollComplete.get()) ? self.onScrollComplete.get() : () => {};
-        _onScrollComplete({
-            scrollTop: self.scrollCtrl.scrollView.__scrollTop,
-            scrollLeft: self.scrollCtrl.scrollView.__scrollLeft
-        });
-    }
-
-    this.$preLink = () => {
         this.autorun(() => {
             this.$hasTabs.set($scope.$hasTabs.get());
             this.$hasTabsTop.set($scope.$hasTabsTop.get());

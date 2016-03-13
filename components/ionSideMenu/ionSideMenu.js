@@ -13,12 +13,12 @@ Template.ionSideMenu.onCreated(function() {
 });
 
 Template.ionSideMenu.onRendered(function() {
-  let $element = this.$("ion-side-menu");
-  let $scope = this.$scope;
-  let sideMenuCtrl = $scope.sideMenuCtrl;
-  $scope.side = this.side;
+  this.$preLink = () => {
+    let $element = this.$("ion-side-menu");
+    let $scope = this.$scope;
+    let sideMenuCtrl = $scope.sideMenuCtrl;
+    $scope.side = this.side;
 
-  $(sideMenuCtrl).on('$initialize', () => {
     var sideMenu = sideMenuCtrl[$scope.side] = new ionic.views.SideMenu({
       width: this.width.get(),
       el: $element[0],
@@ -36,7 +36,7 @@ Template.ionSideMenu.onRendered(function() {
     this.autorun(() => {
       sideMenu.setIsEnabled(!!this.isEnabled.get());
     });
-  });
+  };
 });
 
 Template.ionSideMenu.onDestroyed(function() {

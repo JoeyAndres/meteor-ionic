@@ -35,7 +35,7 @@ Package.onUse(function (api) {
         "styles/main.scss"
     ], "client");
 
-    // @see uild.config.js in ionic@1.2.4
+    // @see build.config.js in ionic@1.2.4
     api.addFiles([
         "lib/meteoric.js",
         "lib/delegate.js",
@@ -43,6 +43,8 @@ Package.onUse(function (api) {
         "lib/poly.js",
         "lib/angular.js",
         "lib/misc.js",
+        "lib/router.js",
+        "lib/location.js",
 
         // Utils
         'lib/utils/delegateService.js',
@@ -84,6 +86,7 @@ Package.onUse(function (api) {
         'lib/service/gesture.js',
         'lib/service/ionicConfig.js',
         'lib/service/platform.js',
+        'lib/service/history.js',
         'lib/service/scrollDelegate.js',
         'lib/service/sideMenuDelegate.js',
         'lib/service/tabsDelegate.js'

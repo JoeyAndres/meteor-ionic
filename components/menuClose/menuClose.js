@@ -1,6 +1,5 @@
 let menuClose = function($elements, $scope) {
     if (!$elements || !$elements.length) return;
-
     $elements.each(function() {
         let $element = $(this);
         $element.bind('click', function () {

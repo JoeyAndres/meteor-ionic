@@ -1,6 +1,6 @@
 ionTabDefaults = {
     title: '',
-    href: '',
+    href: null,
     icon: '',
     iconOn: '',
     iconOff: '',
@@ -43,33 +43,31 @@ Template.ionTab.onCreated(function() {
     });
 
     this.tabCtrl = new meteoric.controller.ionicTab();
-    $(this).on('$scopeCreated', () => {
-        this.$scope.tabCtrl = this.tabCtrl;
-    });
 });
 
 Template.ionTab.onRendered(function() {
-    let $scope = this.$scope;
-    let $element = this.$('div');
-    let $ionicConfig = meteoric.service.ionicConfig;
-    let element = $element;
-    let tabCtrl = this.tabCtrl;
-
-    tabCtrl.initialize($scope, undefined, { }, undefined, undefined);
-
-    // Start of compile function.
-
-    //We create the tabNavTemplate in the compile phase so that the
-    //attributes we pass down won't be interpolated yet - we want
-    //to pass down the 'raw' versions of the attributes
-    var tabNavTemplate = '<ion-tab-nav></ion-tab-nav>';
-
-    var navViewName, isNavView;
-
-    let childElementCount = 1;  // todo: asdf
-
     this.$preLink = () => {
-        var childScope;
+        let $scope = this.$scope;
+        $scope.tabCtrl = this.tabCtrl;
+        let $element = this.$('div');
+        let $ionicConfig = meteoric.service.ionicConfig;
+        let $ionicHistory = meteoric.service.ionicHistory;
+        let element = $element;
+        let tabCtrl = this.tabCtrl;
+        let $attrs = {};
+
+        this.autorun(() => {
+            $attrs = {
+                href: this.href.get()
+            }
+        });
+
+        tabCtrl.initialize($scope, $ionicHistory, $attrs, undefined, undefined);
+
+        // Start of compile function.
+
+        var navViewName, isNavView;
+
         var childElement;
         var tabsCtrl = $scope.tabsCtrl;
         var isTabContentAttached = false;
@@ -84,9 +82,6 @@ Template.ionTab.onRendered(function() {
                 // is being destroyed, causing unnecessary view loads and transitions
                 tabsCtrl.remove($scope);
             }
-            tabNavElement.isolateScope().$destroy();
-            tabNavElement.remove();
-            tabNavElement = tabContentEle = childElement = null;
         });
 
         //Remove title attribute so browser-tooltip does not apear
@@ -103,14 +98,10 @@ Template.ionTab.onRendered(function() {
             }
         }
 
-        var tabNavElement = $(tabNavTemplate);
-        tabNavElement.data('$ionTabsController', tabsCtrl);
-        tabNavElement.data('$ionTabController', tabCtrl);
-        tabsCtrl.$tabsElement.append(tabNavElement);
-
         function tabSelected (isSelected) {
             if (isSelected) {
                 $scope.$tabSelected = true;
+                isTabContentAttached = true;
                 $element.toggleClass('hide', false);
             } else {
                 $scope.$tabSelected = false;
@@ -122,13 +113,6 @@ Template.ionTab.onRendered(function() {
             let isSelected = $scope.tabsCtrl.selectedTab() === $scope;
             tabSelected(isSelected);
         });
-
-        function destroyTab() {
-            childScope && childScope.$destroy();
-            isTabContentAttached && childElement && childElement.remove();
-            tabContentEle.innerHTML = '';
-            isTabContentAttached = childScope = childElement = null;
-        }
 
         //$scope.$watch('$tabSelected', tabSelected);
 

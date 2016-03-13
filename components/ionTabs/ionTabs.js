@@ -2,32 +2,32 @@ Template.ionTabs.onCreated(function () {
     this.data = this.data || {};
 
     this.tabsCtrl = new meteoric.controller.ionicTabs();
-    this.onScopeCreated = function() {
-        this.$scope.tabsCtrl = this.tabsCtrl;
-        this.$scope.$hasTabs = new ReactiveVar(false);
-        this.$scope.$hasTabsTop = new ReactiveVar(false);
-    };
 });
 
 Template.ionTabs.onRendered(function () {
-    let $scope = this.$scope;
-    let $ionicConfig = meteoric.service.ionicConfig;
-    let $ionicTabsDelegate = meteoric.service.ionicTabsDelegate;
-    let tabsCtrl = this.tabsCtrl;
-    let tElement = this.$('ion-tabs');
-    let innerElement = this.$('.tab-nav.tabs');
-    let $element = tElement;
-
-    tabsCtrl.$scope = $scope;
-    tabsCtrl.$element = $element;
-    tabsCtrl.$tabsElement = meteoric.Utils.to$element($element[0].querySelector('.tabs'));
-
-    tabsCtrl.initialize($scope, $element);
-
-    tElement
-        .addClass('tabs-' + $ionicConfig.tabs.position() + ' tabs-' + $ionicConfig.tabs.style());
-
     this.$preLink = () => {
+        this.$scope.tabsCtrl = this.tabsCtrl;
+        this.$scope.$hasTabs = new ReactiveVar(false);
+        this.$scope.$hasTabsTop = new ReactiveVar(false);
+
+        let $scope = this.$scope;
+        let $ionicConfig = meteoric.service.ionicConfig;
+        let $ionicTabsDelegate = meteoric.service.ionicTabsDelegate;
+        let $ionicHistory = meteoric.service.ionicHistory;
+        let tabsCtrl = this.tabsCtrl;
+        let tElement = this.$('ion-tabs');
+        let innerElement = this.$('.tab-nav.tabs');
+        let $element = tElement;
+
+        tabsCtrl.$scope = $scope;
+        tabsCtrl.$element = $element;
+        tabsCtrl.$tabsElement = meteoric.Utils.to$element($element[0].querySelector('.tabs'));
+
+        tabsCtrl.initialize($scope, $element, $ionicHistory);
+
+        tElement
+            .addClass('tabs-' + $ionicConfig.tabs.position() + ' tabs-' + $ionicConfig.tabs.style());
+
         $ionicTabsDelegate.addAggregate(tabsCtrl);
 
         this.autorun(() => {
@@ -66,14 +66,21 @@ Template.ionTabs.onRendered(function () {
             delete $scope.$hasTabs;
             delete $scope.$hasTabsTop;
         });
-    };
 
-    this.$postLink = () => {
         if (!tabsCtrl.selectedTab()) {
             // all the tabs have been added
             // but one hasn't been selected yet
             tabsCtrl.select(0);
         }
+    };
+
+    this.$postLink = () => {
+        /* Can't select tab here.
+         if (!tabsCtrl.selectedTab()) {
+         // all the tabs have been added
+         // but one hasn't been selected yet
+         tabsCtrl.select(0);
+         }*/
     };
 });
 

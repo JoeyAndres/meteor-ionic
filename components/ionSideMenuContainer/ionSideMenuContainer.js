@@ -18,19 +18,20 @@ Template.ionSideMenuContainer.onCreated(function () {
     }
 
     this.sideMenuCtrl = new meteoric.controller.ionicSideMenus();
-    this.onScopeCreated = function() {
-        this.$scope.sideMenuCtrl = this.sideMenuCtrl;
-    };
 });
 
 Template.ionSideMenuContainer.onRendered(function() {
-    let $scope = this.$scope;
-    this.sideMenuCtrl.initialize($scope);
+    this.$preLink = () => {
+        let $scope = this.$scope;
+        $scope.sideMenuCtrl = this.sideMenuCtrl;
+        this.sideMenuCtrl.initialize($scope);
 
-    let $element = this.$('div');
-    $.data($element.get(0), '$ionSideMenusController', this.sideMenuCtrl);
+        let $element = this.$('div');
+        $.data($element.get(0), '$ionSideMenusController', this.sideMenuCtrl);
+    }
 });
 
+// todo: delete this.
 Template.ionSideMenuContainer.events({
     /**
      * menu-close

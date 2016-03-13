@@ -29,8 +29,10 @@ Template.ionTabNav.onCreated(function() {
         this.tabCtrl = td.tabCtrl;
         this.$tabScope = td.$tabScope;
     });
+});
 
-    $(this).on('$scopeCreated', () => {
+Template.ionTabNav.onRendered(function() {
+    this.$preLink = () => {
         this.$scope = this.$tabScope;  // Replace scope with tab so they are the same.
         this.$scope.tabCtrl = this.tabCtrl;
 
@@ -44,11 +46,7 @@ Template.ionTabNav.onCreated(function() {
             disabled: this.disabled,
             badgeStyle: this.badgeStyle
         });
-    });
-});
 
-Template.ionTabNav.onRendered(function() {
-    this.$preLink = () => {
         let $scope = this.$scope,
             $element = $(this.$('.tab-item').get(0)),
             $attrs = this;
