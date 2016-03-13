@@ -14,7 +14,7 @@ Package.onUse(function (api) {
     api.versionsFrom("1.0");
 
     api.use([
-        "jandres:template-extension@4.0.5",
+        "jandres:template-extension@4.0.4",
         "ecmascript@0.1.6",
         "templating",
         "underscore",
@@ -41,6 +41,8 @@ Package.onUse(function (api) {
         "lib/delegate.js",
         "lib/blaze.js",
         "lib/poly.js",
+        "lib/angular.js",
+        "lib/misc.js",
 
         // Utils
         'lib/utils/delegateService.js',
@@ -74,13 +76,17 @@ Package.onUse(function (api) {
         'lib/controller/spinnerController.js',
         'lib/controller/scrollController.js',
         'lib/controller/sideMenuController.js',
+        'lib/controller/tabController.js',
+        'lib/controller/tabsController.js',
 
         // Service
         'lib/service/body.js',
         'lib/service/gesture.js',
+        'lib/service/ionicConfig.js',
         'lib/service/platform.js',
         'lib/service/scrollDelegate.js',
-        'lib/service/sideMenuDelegate.js'
+        'lib/service/sideMenuDelegate.js',
+        'lib/service/tabsDelegate.js'
     ], "client");
 
     api.addFiles([
@@ -186,11 +192,14 @@ Package.onUse(function (api) {
         "components/ionSubheaderBar/ionSubheaderBar.html",
         "components/ionSubheaderBar/ionSubheaderBar.js",
 
-        "components/ionTabs/ionTabs.html",
-        "components/ionTabs/ionTabs.js",
-
         "components/ionTab/ionTab.html",
         "components/ionTab/ionTab.js",
+
+        "components/ionTabNav/ionTabNav.html",
+        "components/ionTabNav/ionTabNav.js",
+
+        "components/ionTabs/ionTabs.html",
+        "components/ionTabs/ionTabs.js",
 
         "components/ionView/ionView.html",
         "components/ionView/ionView.js",

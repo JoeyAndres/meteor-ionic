@@ -5,8 +5,8 @@ Template.ionList.onCreated(function() {
 
     this.listCtrl = null;
     this.onScopeCreated = function() {
-        this.listCtrl = new meteoric.controller.ionicList(this.scope);
-        this.scope.listCtrl = this.listCtrl;
+        this.listCtrl = new meteoric.controller.ionicList(this.$scope);
+        this.$scope.listCtrl = this.listCtrl;
     };
 
     this.autorun(() => {
@@ -21,7 +21,7 @@ Template.ionList.onCreated(function() {
 
 Template.ionList.onRendered(function() {
     let $element = this.$("ion-list");
-    let $scope = this.scope;
+    let $scope = this.$scope;
     var listCtrl = this.listCtrl;
     var scrollCtrl = $scope.scrollCtrl;
 
@@ -45,7 +45,7 @@ Template.ionList.onRendered(function() {
             }
         });
 
-        $($scope).on('$destroy', function() {
+        $scope.on('$destroy', function() {
             if (listView) {
                 listView.deregister && listView.deregister();
                 listView = null;

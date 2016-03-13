@@ -3,7 +3,12 @@
                         ionic-scroll
                         {{#unless scroll}} scroll-content-false {{/unless}}
                         {{#if hasHeader}}has-header{{/if}}
-                        {{#if hasFooter}}has-footer{{/if}}">
+                        {{#if hasFooter}}has-footer{{/if}}
+                        {{#if hasSubheader}}has-subheader{{/if}}
+                        {{#if hasSubfooter}}has-subfooter{{/if}}
+                        {{#if hasTabs}} has-tabs {{/if}}
+                        {{#if hasTabsTop}} has-tabs-top {{/if}}
+                        {{class}}">
         {{#if scroll}}
         <div class="scroll">
             {{> Template.contentBlock}}

@@ -33,7 +33,7 @@ Template.ionView.onRendered(function () {
         $('[data-nav-container]').attr('nav-view-direction', 'forward');
     };
 
-    $view.attr('nav-view', 'stage');
+    /*$view.attr('nav-view', 'stage');
     Meteor.setTimeout(() => {
         this.entering = true;
         $view.attr('nav-view', 'entering');
@@ -41,7 +41,7 @@ Template.ionView.onRendered(function () {
     }, 0);
 
     // Worst case scenario, transitionend did not occur. Just place view in.
-    this.activate_view_timeout_id = Meteor.setTimeout(activate_view, meteoric.maximum_transition_duration);
+    this.activate_view_timeout_id = Meteor.setTimeout(activate_view, meteoric.maximum_transition_duration);*/
 });
 
 Template.ionView.onDestroyed(function () {
@@ -70,9 +70,9 @@ Template.ionView.onDestroyed(function () {
     };
 
     Meteor.setTimeout(() => {
-        this.leaving = true;
+        /*this.leaving = true;
         $view.attr('nav-view', 'leaving');
-        $view.one(meteoric.Utils.transitionend_events.join(' '), deactivate_view);
+        $view.one(meteoric.Utils.transitionend_events.join(' '), deactivate_view);*/
     }, 0);
 
     // Worst case scenario, transitionend did not occur. Just remove the view.

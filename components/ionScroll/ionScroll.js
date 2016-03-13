@@ -43,7 +43,7 @@ Template.ionScroll.onCreated(function() {
 
     this.scrollCtrl = new meteoric.controller.ionicScroll();
     this.onScopeCreated = function() {
-        this.scope.scrollCtlr = this.scrollCtrl;
+        this.$scope.scrollCtlr = this.scrollCtrl;
     };
 
     this.autorun(() => {

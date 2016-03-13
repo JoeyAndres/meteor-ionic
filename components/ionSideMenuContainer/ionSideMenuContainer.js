@@ -19,12 +19,12 @@ Template.ionSideMenuContainer.onCreated(function () {
 
     this.sideMenuCtrl = new meteoric.controller.ionicSideMenus();
     this.onScopeCreated = function() {
-        this.scope.sideMenuCtrl = this.sideMenuCtrl;
+        this.$scope.sideMenuCtrl = this.sideMenuCtrl;
     };
 });
 
 Template.ionSideMenuContainer.onRendered(function() {
-    let $scope = this.scope;
+    let $scope = this.$scope;
     this.sideMenuCtrl.initialize($scope);
 
     let $element = this.$('div');

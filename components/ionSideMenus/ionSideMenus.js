@@ -17,11 +17,11 @@ Template.ionSideMenus.onRendered(function() {
 });
 
 Template.ionSideMenus.onRendered(function() {
-  let $scope = this.scope;
+  let $scope = this.$scope;
   let $ionicBody = meteoric.service.ionicBody();
   let ctrl = $scope.sideMenuCtrl;
 
-  $(ctrl).on('initialized', () => {
+  $(ctrl).on('$initialize', () => {
     // Reactive, unlike the original.
     this.autorun(() => {
       ctrl.enableMenuWithBackViews(this.enableMenuWithBackViews.get());

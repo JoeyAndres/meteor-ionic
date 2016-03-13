@@ -1,0 +1,11 @@
+<template name="ionTabNav">
+    <a class="{{#if isTabActive}} tab-item-active {{/if}}
+              {{#if badge}} has-badge {{/if}}
+              {{#if isHidden}} tab-hidden {{/if}}
+              tab-item">
+        {{#if badge}}<span>{{badge}}</span>{{/if}}
+        {{#if getIconOff_and_isTabActive}}<i class="icon {{getIconOff}}"></i>{{/if}}
+        {{#if getIconOn_and_isTabActive}}<i class="icon {{getIconOn}}"></i>{{/if}}
+        <span class="tab-title">{{title}}</span>
+    </a>
+</template>

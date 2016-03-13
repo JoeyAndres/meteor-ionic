@@ -11,7 +11,7 @@ Template.ionInfiniteScroll.onCreated(function() {
     this.infiniteScrollCtrl = new meteoric.controller.ionInfiniteScroll();
 
     this.onScopeCreated = function() {
-        this.scope.infiniteScrollCtrl = this.infiniteScrollCtrl;
+        this.$scope.infiniteScrollCtrl = this.infiniteScrollCtrl;
     };
 
     this.autorun(() => {
@@ -25,7 +25,7 @@ Template.ionInfiniteScroll.onCreated(function() {
 
 Template.ionInfiniteScroll.onRendered(function() {
     let $element = this.$('ion-infinite-scroll');
-    let $scope = this.scope;
+    let $scope = this.$scope;
 
     // This gets over the fact that blaze's onRender is equivalent to
     // postLink (or just link) in angular. The controller was placed

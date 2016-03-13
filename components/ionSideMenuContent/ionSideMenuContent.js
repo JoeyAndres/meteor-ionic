@@ -11,20 +11,20 @@ Template.ionSideMenuContent.onCreated(function() {
 
     this.onScopeCreated = function() {
         this.autorun(() => {
-            this.scope.dragContent = this.dragContent.get();
-            this.scope.edgeDragThreshold = this.edgeDragThreshold.get();
+            this.$scope.dragContent = this.dragContent.get();
+            this.$scope.edgeDragThreshold = this.edgeDragThreshold.get();
         });
     };
 });
 
 Template.ionSideMenuContent.onRendered(function() {
-    let element, $element;
-    element = $element = this.$('ion-side-menu-content');
-    let $scope = this.scope;
+    let element = this.$('ion-side-menu-content').get(0);
+    let $element = _.extend(this.$('ion-side-menu-content'), element);
+    let $scope = this.$scope;
     let $window = $(window);
     let sideMenuCtrl = $scope.sideMenuCtrl;
 
-    $(sideMenuCtrl).on('initialized', () => {
+    $(sideMenuCtrl).on('$initialize', () => {
         var startCoord = null;
         var primaryScrollAxis = null;
 
@@ -130,7 +130,7 @@ Template.ionSideMenuContent.onRendered(function() {
 
                 // freeze our scroll container if we have one
                 var scrollScope = $.data(content.get(0), 'scope');
-                scrollScope.scrollCtrl && scrollScope.scrollCtrl.freezeScrollShut(!canScroll);
+                scrollScope && scrollScope.scrollCtrl && scrollScope.scrollCtrl.freezeScrollShut(!canScroll);
             },
             getTranslateX: function () {
                 return $scope.sideMenuContentTranslateX || 0;

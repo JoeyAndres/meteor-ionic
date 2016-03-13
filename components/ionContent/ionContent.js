@@ -31,8 +31,15 @@ Template.ionContent.onCreated(function() {
 
     this.scrollCtrl = new meteoric.controller.ionicScroll();
     this.onScopeCreated = function() {
-        this.scope.scrollCtrl = this.scrollCtrl;
+        this.$scope.scrollCtrl = this.scrollCtrl;
     };
+
+    this.$hasHeader = new ReactiveVar(false);
+    this.$hasSubheader = new ReactiveVar(false);
+    this.$hasFooter = new ReactiveVar(false);
+    this.$hasSubfooter = new ReactiveVar(false);
+    this.$hasTabs = new ReactiveVar(false);
+    this.$hasTabsTop = new ReactiveVar(false);
 
     this.autorun(() => {
         let td = Template.currentData();
@@ -55,7 +62,8 @@ Template.ionContent.onCreated(function() {
 
 Template.ionContent.onRendered(function() {
     let $element = this.$("ion-content");
-    $.data($element.get(0), 'scope', this.scope);
+    let $scope = this.$scope;
+    $.data($element.get(0), 'scope', this.$scope);
 
     if (this.scroll.get() === "false") {
         //do nothing
@@ -73,7 +81,7 @@ Template.ionContent.onRendered(function() {
                 nativeScrolling: true
             };
 
-            this.scrollCtrl.initialize(this.scope, scrollViewOptions);
+            this.scrollCtrl.initialize(this.$scope, scrollViewOptions);
         } else {
             // Use JS scrolling
             scrollViewOptions = {
@@ -88,7 +96,7 @@ Template.ionContent.onRendered(function() {
                 scrollingComplete: onScrollComplete
             };
 
-            this.scrollCtrl.initialize(this.scope, scrollViewOptions);
+            this.scrollCtrl.initialize(this.$scope, scrollViewOptions);
 
             this.autorun(() => {
                 if (!this.scrollCtrl) return;
@@ -102,7 +110,7 @@ Template.ionContent.onRendered(function() {
             });
         }
 
-        this.scope.onScroll = _.isFunction(this.onScroll) ?
+        this.$scope.onScroll = _.isFunction(this.onScroll) ?
             meteoric.Utils.throttle(this.onScroll, this.scrollEventInterval.get()) :
             e => {};
 
@@ -119,6 +127,13 @@ Template.ionContent.onRendered(function() {
             scrollLeft: self.scrollCtrl.scrollView.__scrollLeft
         });
     }
+
+    this.$preLink = () => {
+        this.autorun(() => {
+            this.$hasTabs.set($scope.$hasTabs.get());
+            this.$hasTabsTop.set($scope.$hasTabsTop.get());
+        });
+    };
 });
 
 Template.ionContent.helpers({
@@ -126,40 +141,23 @@ Template.ionContent.helpers({
 
     hasFooter: function() { return meteoric.hasFooter.get(); },
 
-    classes: function () {
-        var classes = ['content'];
-
-        if (this.class) {
-            classes.push(this.class);
-        }
-
-        if (this.scroll !== false) {
-            //classes.push('overflow-scroll');
-            classes.push('scroll');
-        }
-
-        if (Session.get('hasSubheader')) {
-            classes.push('has-subheader');
-        }
-
-        if (Session.get('hasTabs')) {
-            classes.push('has-tabs');
-        }
-
-        if (Session.get('hasTabsTop')) {
-            classes.push('has-tabs-top');
-        }
-
-        if (Session.get('hasFooter')) {
-            classes.push('has-footer');
-        }
-
-        if (Session.get('hasSubfooter')) {
-            classes.push('has-subfooter');
-        }
-
-        return classes.join(' ');
+    hasSubheader: function () {
+        return !!Session.get('hasSubheader');
     },
 
-    scroll: function() { return Template.instance().scroll.get(); }
+    hasSubfooter: function () {
+        return !!Session.get('hasSubfooter');
+    },
+
+    scroll: function() { return Template.instance().scroll.get(); },
+
+    hasTabs: function() {
+        let t = Template.instance();
+        return t.$hasTabs.get();
+    },
+
+    hasTabsTop: function() {
+        let t = Template.instance();
+        return t.$hasTabsTop.get();
+    }
 });

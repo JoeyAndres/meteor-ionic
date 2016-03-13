@@ -60,21 +60,21 @@ Template.ionSlides.onCreated(function () {
     this.showPager = new ReactiveVar(true);
 
     this.onScopeCreated = function() {
-        this.scope.options = {};
-        this.scope.ionSlidesCtrl = this.ionSlidesCtrl;
+        this.$scope.options = {};
+        this.$scope.ionSlidesCtrl = this.ionSlidesCtrl;
 
         this.autorun(() => {
             let td = Template.currentData();
             if (!td) return;
 
             this.showPager.set(!_.isUndefined(td.showPager) ? td.showPager : true);
-            if (td.options) { _.extend(this.scope.options, td.options); }
+            if (td.options) { _.extend(this.$scope.options, td.options); }
         });
     };
 });
 
 Template.ionSlides.onRendered(function () {
-    let $scope = _.extend($(this.scope), this.scope);
+    let $scope = this.$scope;
     let $element = this.$('ion-slides');
     this.ionSlidesCtrl.initialize($scope, $element);
 });
@@ -86,7 +86,7 @@ Template.ionSlides.helpers({
 });
 
 Template.ionSlidePage.onRendered(function() {
-    let ionSlidesCtrl = this.scope.ionSlidesCtrl;
+    let ionSlidesCtrl = this.$scope.ionSlidesCtrl;
     $(ionSlidesCtrl).on('$initialized', () => {
         ionSlidesCtrl.rapidUpdate();
     });

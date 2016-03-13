@@ -1,7 +1,7 @@
 let exposeAsideWhen = function($elements, $scope, $attr) {
     // require: '^ionSideMenus'
     let $window = $(window);
-    let sideMenuCtrl = $scope[0].sideMenuCtrl;
+    let sideMenuCtrl = $scope.sideMenuCtrl;
 
     if (!sideMenuCtrl) return;
 
