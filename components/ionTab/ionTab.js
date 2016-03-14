@@ -59,7 +59,12 @@ Template.ionTab.onRendered(function() {
         this.autorun(() => {
             $attrs = {
                 href: this.href.get()
-            }
+            };
+
+            _.extend(this.$scope, {
+                title: this.title.get(),
+                href: this.href.get()
+            });
         });
 
         tabCtrl.initialize($scope, $ionicHistory, $attrs, undefined, undefined);
@@ -90,6 +95,11 @@ Template.ionTab.onRendered(function() {
         if (navViewName) {
             tabCtrl.navViewName = $scope.navViewName = navViewName;
         }
+
+        this.autorun(() => {
+            Iron.Location.get();
+            $scope.trigger('$stateChangeSuccess');
+        });
         $scope.on('$stateChangeSuccess', selectIfMatchesState);
         selectIfMatchesState();
         function selectIfMatchesState() {
