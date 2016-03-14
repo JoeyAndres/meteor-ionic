@@ -25,7 +25,7 @@ let exposeAsideWhen = function($elements, $scope, $attr) {
     }
 
     var debouncedCheck = ionic.debounce(function () {
-        $scope.$apply(checkAsideExpose);
+        checkAsideExpose.apply($scope);
     }, 300, false);
 
     Meteor.setTimeout(checkAsideExpose);
