@@ -20,7 +20,7 @@ Package.onUse(function (api) {
         "underscore",
         "reactive-var",
         "reactive-dict",
-        "fastclick",
+        //"fastclick",
         "iron:router@1.0.0",
         "tracker",
         "session",
@@ -31,7 +31,6 @@ Package.onUse(function (api) {
     ], "client");
 
     api.addFiles([
-        "styles/_transitions.scss",
         "styles/main.scss"
     ], "client");
 
@@ -75,6 +74,7 @@ Package.onUse(function (api) {
         // Controller.
         'lib/controller/infiniteScrollController.js',
         'lib/controller/listController.js',
+        'lib/controller/navViewController.js',
         'lib/controller/spinnerController.js',
         'lib/controller/scrollController.js',
         'lib/controller/sideMenuController.js',
@@ -86,10 +86,16 @@ Package.onUse(function (api) {
         'lib/service/gesture.js',
         'lib/service/ionicConfig.js',
         'lib/service/platform.js',
+        'lib/service/viewSwitcher.js',
         'lib/service/history.js',
+        'lib/service/navBarDelegate.js',
+        'lib/service/navViewDelegate.js',
         'lib/service/scrollDelegate.js',
         'lib/service/sideMenuDelegate.js',
-        'lib/service/tabsDelegate.js'
+        'lib/service/tabsDelegate.js',
+
+        // misc
+        'lib/defaultMeteoricConfig.js'
     ], "client");
 
     api.addFiles([
