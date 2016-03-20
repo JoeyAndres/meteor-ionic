@@ -7,7 +7,7 @@ Template.ionView.onCreated(function() {
 });
 
 Template.ionView.onRendered(function () {
-    this.$scope.trigger('$childViewAvailable');
+    this.$scope.trigger('$stateChangeSuccess');
 });
 
 Template.ionView.helpers({

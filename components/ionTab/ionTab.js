@@ -25,6 +25,8 @@ Template.ionTab.onCreated(function() {
     this.hidden = new ReactiveVar(ionTabDefaults.hidden);
     this.disabled = new ReactiveVar(ionTabDefaults.disabled);
 
+    this._isTabSelected = new ReactiveVar(false);
+
     this.autorun(() => {
         let td = Template.currentData();
         if (!td) return;
@@ -89,17 +91,10 @@ Template.ionTab.onRendered(function() {
             }
         });
 
-        //Remove title attribute so browser-tooltip does not apear
-        $element[0].removeAttribute('title');
-
         if (navViewName) {
             tabCtrl.navViewName = $scope.navViewName = navViewName;
         }
 
-        this.autorun(() => {
-            Iron.Location.get();
-            $scope.trigger('$stateChangeSuccess');
-        });
         $scope.on('$stateChangeSuccess', selectIfMatchesState);
         selectIfMatchesState();
         function selectIfMatchesState() {
@@ -108,7 +103,9 @@ Template.ionTab.onRendered(function() {
             }
         }
 
-        function tabSelected (isSelected) {
+        let tabSelected = isSelected => {
+            this._isTabSelected.set(isSelected);
+
             if (isSelected) {
                 $scope.$tabSelected = true;
                 isTabContentAttached = true;
@@ -122,32 +119,18 @@ Template.ionTab.onRendered(function() {
         this.autorun(() => {
             let isSelected = $scope.tabsCtrl.selectedTab() === $scope;
             tabSelected(isSelected);
+            selectIfMatchesState();
         });
-
-        //$scope.$watch('$tabSelected', tabSelected);
 
         $scope.on('$ionicView.afterEnter', function() {
             $ionicViewSwitcher.viewEleIsActive(childElement, $scope.$tabSelected);
-        });
-
-        $scope.on('$ionicView.clearCache', function() {
-            if (!$scope.$tabSelected) {
-                destroyTab();
-            }
         });
     };
 });
 
 Template.ionTab.helpers({
-    classes: function () {
-        var classes = ['tab-item'];
-        if (this.class) {
-            classes.push(this.class);
-        }
-        if (this.badgeNumber) {
-            classes.push('has-badge');
-        }
-        return classes.join(' ');
+    isTabActive() {
+        return Template.instance()._isTabSelected.get();
     },
 
     url: function () {
@@ -158,45 +141,5 @@ Template.ionTab.helpers({
         if (this.path && Router.routes[this.path]) {
             return Router.routes[this.path].path(Template.currentData());
         }
-    },
-
-    isActive: function () {
-        var ionTabCurrent = Session.get('ionTab.current');
-
-        if (this.path && this.path === ionTabCurrent) {
-            return 'active';
-        }
-
-        // The initial case where there is no localStorage value and
-        // no session variable has been set, this attempts to set the correct tab
-        // to active based on the router
-        var route = Router.routes[this.path];
-        if(route && route.path(Template.currentData()) === ionTabCurrent){
-            return 'active';
-        }
-    },
-
-    activeIcon: function () {
-        if (this.iconOn) {
-            return this.iconOn;
-        } else {
-            return this.icon;
-        }
-    },
-
-    defaultIcon: function () {
-        if (this.iconOff) {
-            return this.iconOff;
-        } else {
-            return this.icon;
-        }
-    },
-
-    badgeNumber: function () {
-        return this.badgeNumber;
-    },
-
-    badgeColor: function () {
-        return this.badgeColor||'assertive';
     }
 });

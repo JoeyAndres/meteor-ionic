@@ -1,7 +1,3 @@
-IonNavigation = {
-    skipTransitions: false
-};
-
 Template.ionNavView.created = function () {
     this.data = this.data || {};
 
@@ -20,15 +16,17 @@ Template.ionNavView.onRendered(function () {
             $attrs = {};
 
         let navViewCtrl = new meteoric.controller.ionicNavView($scope, $element, $attrs);
+        $element.data('$ionNavViewController', navViewCtrl);
 
-        // a nav view element is a container for numerous views
+            // a nav view element is a container for numerous views
         tElement.addClass('view-container');
         ionic.DomUtil.cachedAttr(tElement, 'nav-view-transition', $ionicConfig.views.transition());
 
         var viewData = navViewCtrl.init();
 
         // listen for $stateChangeSuccess
-        $scope.on('$stateChangeSuccess', function() {
+        //$scope.on('$stateChangeSuccess', function() {
+        $scope.on('$stateChangeSuccess', function() {  // todo: see when or where this is triggered in original angular-ui
             updateView(false);
         });
         $scope.on('$viewContentLoading', function() {
@@ -37,9 +35,6 @@ Template.ionNavView.onRendered(function () {
 
         // Since ionNavView assumes there is an ion-view below, might aswell use this one.
         // todo: try to utilize the iron router.
-        $scope.$childViewAvailable = () => {
-            $scope.trigger('$stateChangeSuccess');
-        };
 
         // initial load, ready go
         updateView(true);

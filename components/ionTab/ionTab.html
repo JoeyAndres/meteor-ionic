@@ -1,10 +1,7 @@
 <template name="ionTab">
-    <div class="tab-content hide">
-        {{> UI.contentBlock}}
+    <div class="tab-content hide {{class}}" style="{{style}}">
+        {{#if isTabActive}}
+          {{> UI.contentBlock}}
+        {{/if}}
     </div>
-    <!--
-    <ion-tab class="{{class}}" style="{{style}}">
-
-    </ion-tab>
-    -->
 </template>
