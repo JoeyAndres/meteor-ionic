@@ -97,6 +97,7 @@ Template.ionTab.onRendered(function() {
 
         $scope.$on('$stateChangeSuccess', $stateChangeSuccess);
         function $stateChangeSuccess(e) {
+            e.stopPropagation();
             selectIfMatchesState();
         }
 

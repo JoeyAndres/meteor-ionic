@@ -5,6 +5,8 @@ Template.ionTabs.onCreated(function () {
 });
 
 Template.ionTabs.onRendered(function () {
+    this.$scope.$emit('$stateChangeSuccess');
+
     this.$preLink = () => {
         this.$scope.tabsCtrl = this.tabsCtrl;
         this.$scope.$hasTabs = new ReactiveVar(false);
