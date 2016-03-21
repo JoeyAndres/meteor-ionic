@@ -46,7 +46,7 @@ Template.ionList.onRendered(function() {
                 }
             });
 
-            $scope.on('$destroy', function () {
+            $scope.$on('$destroy', function () {
                 if (listView) {
                     listView.deregister && listView.deregister();
                     listView = null;

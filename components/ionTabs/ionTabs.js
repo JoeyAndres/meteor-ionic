@@ -40,7 +40,7 @@ Template.ionTabs.onRendered(function () {
             var isHidden = value.indexOf('tabs-item-hide') !== -1;
             $scope.$hasTabs.set(!isTabsTop && !isHidden);
             $scope.$hasTabsTop.set(isTabsTop && !isHidden);
-            $scope.trigger('$ionicTabs.top', $scope.$hasTabsTop.get());
+            $scope.$emit('$ionicTabs.top', $scope.$hasTabsTop.get());
         });
 
         function emitLifecycleEvent(ev, data) {
@@ -51,11 +51,11 @@ Template.ionTabs.onRendered(function () {
             }
         }
 
-        $scope.on('$ionicNavView.beforeLeave', emitLifecycleEvent);
-        $scope.on('$ionicNavView.afterLeave', emitLifecycleEvent);
-        $scope.on('$ionicNavView.leave', emitLifecycleEvent);
+        $scope.$on('$ionicNavView.beforeLeave', emitLifecycleEvent);
+        $scope.$on('$ionicNavView.afterLeave', emitLifecycleEvent);
+        $scope.$on('$ionicNavView.leave', emitLifecycleEvent);
 
-        $scope.on('$destroy', function () {
+        $scope.$on('$destroy', function () {
             // variable to inform child tabs that they're all being blown away
             // used so that while destorying an individual tab, each one
             // doesn't select the next tab as the active one, which causes unnecessary

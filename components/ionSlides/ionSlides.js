@@ -46,7 +46,7 @@ let ionSlidesController = function() {
             _this.__slider = slider;
             $scope.slider = _this.__slider;
 
-            $scope.on('$destroy', function () {
+            $scope.$on('$destroy', function () {
                 slider.destroy();
             });
         });

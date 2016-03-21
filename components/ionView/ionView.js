@@ -7,7 +7,7 @@ Template.ionView.onCreated(function() {
 });
 
 Template.ionView.onRendered(function () {
-    this.$scope.trigger('$stateChangeSuccess');
+    this.$scope.$emit('$stateChangeSuccess');  // todo: Find a way for iron:router to generate this.
 });
 
 Template.ionView.helpers({

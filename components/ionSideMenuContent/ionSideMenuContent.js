@@ -206,7 +206,7 @@ Template.ionSideMenuContent.onRendered(function() {
         var releaseGesture = meteoric.service.ionicGesture.on('release', onDragRelease, $element, gestureOpts);
 
         // Cleanup
-        $scope.on('$destroy', function () {
+        $scope.$on('$destroy', function () {
             if (content) {
                 content.element = null;
                 content = null;

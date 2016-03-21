@@ -27,19 +27,19 @@ Template.ionSideMenus.onRendered(function() {
             ctrl.enableMenuWithBackViews(this.enableMenuWithBackViews.get());
         });
 
-        $scope.on('$ionicExposeAside', function (evt, isAsideExposed) {
+        $scope.$on('$ionicExposeAside', function (evt, isAsideExposed) {
             if (!$scope.$exposeAside) $scope.$exposeAside = {};
             $scope.$exposeAside.active = isAsideExposed;
             $ionicBody.enableClass(isAsideExposed, 'aside-open');
         });
 
-        $scope.on('$ionicView.beforeEnter', function (ev, d) {
+        $scope.$on('$ionicView.beforeEnter', function (ev, d) {
             if (d.historyId) {
                 $scope.$activeHistoryId = d.historyId;
             }
         });
 
-        $scope.on('$destroy', function () {
+        $scope.$on('$destroy', function () {
             $ionicBody.removeClass('menu-open', 'aside-open');
         });
     };

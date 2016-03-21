@@ -25,7 +25,7 @@ Template.ionTab.onCreated(function() {
     this.hidden = new ReactiveVar(ionTabDefaults.hidden);
     this.disabled = new ReactiveVar(ionTabDefaults.disabled);
 
-    this._isTabSelected = new ReactiveVar(false);
+    this._isTabActive = new ReactiveVar(false);
 
     this.autorun(() => {
         let td = Template.currentData();
@@ -81,7 +81,7 @@ Template.ionTab.onRendered(function() {
         $scope.$tabSelected = false;
 
         tabsCtrl.add($scope);
-        $scope.on('$destroy', function() {
+        $scope.$on('$destroy', function() {
             if (!$scope.$tabsDestroy) {
                 // if the containing ionTabs directive is being destroyed
                 // then don't bother going through the controllers remove
@@ -95,16 +95,20 @@ Template.ionTab.onRendered(function() {
             tabCtrl.navViewName = $scope.navViewName = navViewName;
         }
 
-        $scope.on('$stateChangeSuccess', selectIfMatchesState);
+        $scope.$on('$stateChangeSuccess', $stateChangeSuccess);
+        function $stateChangeSuccess(e) {
+            selectIfMatchesState();
+        }
+
         selectIfMatchesState();
-        function selectIfMatchesState() {
+        function selectIfMatchesState(e) {
             if (tabCtrl.tabMatchesState()) {
                 tabsCtrl.select($scope, false);
             }
         }
 
         let tabSelected = isSelected => {
-            this._isTabSelected.set(isSelected);
+            this._isTabActive.set(isSelected);
 
             if (isSelected) {
                 $scope.$tabSelected = true;
@@ -122,7 +126,7 @@ Template.ionTab.onRendered(function() {
             selectIfMatchesState();
         });
 
-        $scope.on('$ionicView.afterEnter', function() {
+        $scope.$on('$ionicView.afterEnter', function() {
             $ionicViewSwitcher.viewEleIsActive(childElement, $scope.$tabSelected);
         });
     };
@@ -130,7 +134,7 @@ Template.ionTab.onRendered(function() {
 
 Template.ionTab.helpers({
     isTabActive() {
-        return Template.instance()._isTabSelected.get();
+        return Template.instance()._isTabActive.get();
     },
 
     url: function () {

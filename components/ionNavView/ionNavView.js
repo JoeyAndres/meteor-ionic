@@ -25,11 +25,11 @@ Template.ionNavView.onRendered(function () {
         var viewData = navViewCtrl.init();
 
         // listen for $stateChangeSuccess
-        //$scope.on('$stateChangeSuccess', function() {
-        $scope.on('$stateChangeSuccess', function() {  // todo: see when or where this is triggered in original angular-ui
+        $scope.$on('$stateChangeSuccess', function() {
+            console.log('nav-view');
             updateView(false);
         });
-        $scope.on('$viewContentLoading', function() {
+        $scope.$on('$viewContentLoading', function() {
             updateView(false);
         });
 
