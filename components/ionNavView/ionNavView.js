@@ -26,7 +26,6 @@ Template.ionNavView.onRendered(function () {
 
         // listen for $stateChangeSuccess
         $scope.$on('$stateChangeSuccess', function() {
-            console.log('nav-view');
             updateView(false);
         });
         $scope.$on('$viewContentLoading', function() {
