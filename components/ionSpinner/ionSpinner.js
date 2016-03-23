@@ -10,9 +10,11 @@ Template.ionSpinner.onCreated(function() {
 Template.ionSpinner.onRendered(function() {
   let $element = this.$(this.firstNode);
 
-  this.icon.set((new meteoric.controller.ionicSpinner($element, {
-    icon: this.icon.get()
-  })).init());
+  $(this).on('$postLink', () => {
+    this.icon.set((new meteoric.controller.ionicSpinner($element, {
+      icon: this.icon.get()
+    })).init());
+  });
 });
 
 Template.ionSpinner.helpers({
