@@ -16,6 +16,7 @@ Package.onUse(function(api) {
 
   api.use([
     "jandres:template-extension@4.0.4",
+    "jandres:template-scope@0.1.0-alpha4",
     "ecmascript@0.1.6",
     "templating",
     "underscore",
@@ -51,8 +52,6 @@ Package.onUse(function(api) {
     "lib/utility.js",
     "lib/polyfill.js",
     "lib/platform.js",
-    "lib/scope.js",
-    "lib/scope-polyfill.js",
 
     "components/ionActionSheet/ionActionSheet.html",
     "components/ionActionSheet/ionActionSheet.js",
