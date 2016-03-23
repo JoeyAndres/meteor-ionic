@@ -1,7 +1,7 @@
 Package.describe({
   name: "jandres:ionic",
   summary: "Ionic components for Meteor. No Angular!",
-  version: "1.24.0-alpha.2",
+  version: "1.24.0-alpha.4",
   git: "https://github.com/JoeyAndres/meteor-ionic.git"
 });
 
@@ -52,6 +52,25 @@ Package.onUse(function(api) {
     "lib/utility.js",
     "lib/polyfill.js",
     "lib/platform.js",
+
+    // Utils
+    'lib/utils/delegateService.js',
+    'lib/utils/dom.js',
+    'lib/utils/events.js',
+    'lib/utils/gestures.js',
+    'lib/utils/platform.js',
+    'lib/utils/poly.js',
+    //'lib/utils/tap.js',  // Uncomment this later, request ionic.scroll.isScrolling
+    'lib/utils/activator.js',
+    'lib/utils/utils.js',
+    'lib/utils/keyboard.js',
+    'lib/utils/viewport.js',
+
+    // Controller.
+    'lib/controller/spinnerController.js',
+
+    // Service.
+    'lib/service/ionicConfig.js',
 
     "components/ionActionSheet/ionActionSheet.html",
     "components/ionActionSheet/ionActionSheet.js",
