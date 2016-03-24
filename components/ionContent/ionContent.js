@@ -52,6 +52,7 @@ Template.ionContent.onCreated(function() {
 
 Template.ionContent.onRendered(function() {
     let $element = jqLite(this.firstNode);
+    let innerElement = jqLite(this.$('div.scroll')[0]);
     let $scope = this.$scope;
     let parentScope = $scope.$parent;
 
@@ -70,6 +71,17 @@ Template.ionContent.onRendered(function() {
                 ($hasSubfooter ? ' has-subfooter' : '') +
                 ($hasTabs ? ' has-tabs' : '') +
                 ($hasTabsTop ? ' has-tabs-top' : ''));
+        });
+
+        // Only this ionContent should use these variables from parent scopes
+        $scope.$hasHeader = new ReactiveVar(false);
+        $scope.$hasSubheader = new ReactiveVar(false);
+        $scope.$hasFooter = new ReactiveVar(false);
+        $scope.$hasTabs = new ReactiveVar(false);
+        $scope.$hasTabsTop = new ReactiveVar(false);
+
+        this.autorun(() => {
+            (innerElement || $element).toggleClass('padding', !!this.padding.get());
         });
 
         if (this.scroll.get() === "false") {

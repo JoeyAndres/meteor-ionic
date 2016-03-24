@@ -1,7 +1,7 @@
 Package.describe({
   name: "jandres:ionic",
   summary: "Ionic components for Meteor. No Angular!",
-  version: "1.24.0-alpha.5",
+  version: "1.24.0-alpha.6",
   git: "https://github.com/JoeyAndres/meteor-ionic.git"
 });
 
@@ -75,6 +75,7 @@ Package.onUse(function(api) {
     'lib/views/toggleView.js',
 
     // Controller.
+    'lib/controller/headerBarController.js',
     'lib/controller/spinnerController.js',
     'lib/controller/scrollController.js',
 
@@ -96,6 +97,8 @@ Package.onUse(function(api) {
 
     "components/ionDeleteButton/ionDeleteButton.html",
     "components/ionDeleteButton/ionDeleteButton.js",
+
+    "components/ionHeaderFooterBar/ionHeaderFooterBar.js",
 
     "components/ionFooterBar/ionFooterBar.html",
     "components/ionFooterBar/ionFooterBar.js",
