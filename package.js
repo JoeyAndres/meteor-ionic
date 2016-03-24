@@ -39,7 +39,6 @@ Package.onUse(function(api) {
   ], "client");
 
   api.addFiles([
-    "styles/_transitions.scss",
     "styles/main.scss"
   ], "client");
 
