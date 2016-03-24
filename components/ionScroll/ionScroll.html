@@ -1,9 +1,12 @@
 <template name="ionScroll">
-    <div class="{{class}}
-                {{#if nativeScrolling}} overflow-scroll {{else}} meteoric-scroller-container {{/if}}"
-         style="{{style}}">
-        <div class="meteoric-scroller-x">
-            <div class="meteoric-scroller-y">{{> UI.contentBlock}}</div>
+    <ion-scroll class="{{class}}
+                scroll-view ionic-scroll
+                scroll-{{direction}}
+                {{#if paging}} scroll-paging {{/if}}
+                {{#if nativeScrolling}} overflow-scroll {{/if}}"
+                style="{{style}}">
+        <div class="scroll">
+            {{> UI.contentBlock}}
         </div>
-    </div>
+    </ion-scroll>
 </template>

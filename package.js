@@ -35,11 +35,7 @@ Package.onUse(function(api) {
   api.addFiles([
     "vendor/slick.js",
     "vendor/slick.css",
-    "vendor/slip.js",
-
-    "vendor/Animate.js",
-    "vendor/EasyScroller.js",
-    "vendor/Scroller.js"
+    "vendor/slip.js"
   ], "client");
 
   api.addFiles([
@@ -49,6 +45,7 @@ Package.onUse(function(api) {
 
   api.addFiles([
     "lib/meteoric.js",
+    "lib/delegate.js",
     "lib/utility.js",
     "lib/polyfill.js",
     "lib/platform.js",
@@ -60,17 +57,30 @@ Package.onUse(function(api) {
     'lib/utils/gestures.js',
     'lib/utils/platform.js',
     'lib/utils/poly.js',
-    //'lib/utils/tap.js',  // Uncomment this later, request ionic.scroll.isScrolling
+    'lib/utils/tap.js',
     'lib/utils/activator.js',
     'lib/utils/utils.js',
     'lib/utils/keyboard.js',
     'lib/utils/viewport.js',
 
+    // Views
+    'lib/views/view.js',
+    'lib/views/scrollView.js',
+    'lib/views/scrollViewNative.js',
+    'lib/views/listView.js',
+    'lib/views/modalView.js',
+    'lib/views/sideMenuView.js',
+    'lib/views/sliderView.js',
+    'lib/views/slidesView.js',
+    'lib/views/toggleView.js',
+
     // Controller.
     'lib/controller/spinnerController.js',
+    'lib/controller/scrollController.js',
 
     // Service.
     'lib/service/ionicConfig.js',
+    'lib/service/scrollDelegate.js',
 
     "components/ionActionSheet/ionActionSheet.html",
     "components/ionActionSheet/ionActionSheet.js",
