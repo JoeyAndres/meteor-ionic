@@ -80,8 +80,17 @@ Package.onUse(function(api) {
     'lib/controller/scrollController.js',
 
     // Service.
+    'lib/service/body.js',
+    'lib/service/gesture.js',
     'lib/service/ionicConfig.js',
+    'lib/service/platform.js',
+    'lib/service/viewSwitcher.js',
+    'lib/service/history.js',
+    'lib/service/navBarDelegate.js',
+    'lib/service/navViewDelegate.js',
     'lib/service/scrollDelegate.js',
+    'lib/service/sideMenuDelegate.js',
+    'lib/service/tabsDelegate.js',
 
     "components/ionActionSheet/ionActionSheet.html",
     "components/ionActionSheet/ionActionSheet.js",
