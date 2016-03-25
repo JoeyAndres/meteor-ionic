@@ -74,12 +74,14 @@ Package.onUse(function(api) {
     'lib/views/toggleView.js',
 
     // Controller.
+    'lib/controller/navViewController.js',
     'lib/controller/headerBarController.js',
     'lib/controller/spinnerController.js',
     'lib/controller/scrollController.js',
 
     // Service.
     'lib/service/body.js',
+    'lib/service/clickBlock.js',
     'lib/service/gesture.js',
     'lib/service/ionicConfig.js',
     'lib/service/platform.js',
@@ -90,6 +92,8 @@ Package.onUse(function(api) {
     'lib/service/scrollDelegate.js',
     'lib/service/sideMenuDelegate.js',
     'lib/service/tabsDelegate.js',
+
+    'lib/meteoric-config.js',
 
     "components/ionActionSheet/ionActionSheet.html",
     "components/ionActionSheet/ionActionSheet.js",
