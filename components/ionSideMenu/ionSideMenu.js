@@ -1,3 +1,7 @@
+Template.ionSideMenu.onCreated(function() {
+  this.new_scope = true;
+});
+
 Template.ionSideMenu.helpers({
   classes: function () {
     var classes = ['snap-drawer'];

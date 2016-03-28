@@ -1,19 +1,50 @@
-Template.ionView.onCreated(function() {
-    this.entering = false;
-    this.leaving = false;
+ionViewDefault = {
+    viewTitle: undefined,
+    canSwipeBack: true,
+    hideBackButton: false,
+    hideNavBar: false
+};
 
-    this.activate_view_timeout_id = null;
-    this.deactivate_view_timeout_id = null;
+Template.ionView.onCreated(function() {
+    this.new_scope = true;
+
+    this.title = new ReactiveVar(ionViewDefault.viewTitle);
+    this.viewTitle = new ReactiveVar(ionViewDefault.viewTitle);
+    this.canSwipeBack = new ReactiveVar(ionViewDefault.canSwipeBack);
+    this.hideBackButton = new ReactiveVar(ionViewDefault.hideBackButton);
+    this.hideNavBar = new ReactiveVar(ionViewDefault.hideNavBar);
+
+    this.autorun(() => {
+        let td = Template.currentData();
+        if (!td) return;
+
+        this.title.set(isDefined(td.title) ? td.title : ionViewDefault.viewTitle);
+        this.viewTitle.set(isDefined(td.viewTitle) ? td.viewTitle : ionViewDefault.viewTitle);
+        this.canSwipeBack.set(isDefined(td.canSwipeBack) ? td.canSwipeBack : ionViewDefault.canSwipeBack);
+        this.hideBackButton.set(isDefined(td.hideBackButton) ? td.hideBackButton : ionViewDefault.hideBackButton);
+        this.hideNavBar.set(isDefined(td.hideNavBar) ? td.hideNavBar : ionViewDefault.hideNavBar);
+    });
 });
 
 Template.ionView.onRendered(function () {
-    this.$scope.$emit('$stateChangeSuccess');  // todo: Find a way for iron:router to generate this.
-});
+    let $scope = this.$scope;
+    let $element = jqLite(this.firstNode);
+    let $attrs = {
+        title: this.title,
+        viewTitle: this.viewTitle,
+        canSwipeBack: this.canSwipeBack,
+        hideBackButton: this.hideBackButton,
+        hideNavBar: this.hideNavBar
+    };
 
-Template.ionView.helpers({
-    title: function () {
-        if ( Template.instance().data && Template.instance().data.title ) {
-            return Template.instance().data.title;
-        }
-    }
+    let viewCtrl;
+    $(this).on('$preLink', () => {
+        viewCtrl = new $ionicView($scope, $element, $attrs);
+    });
+    $(this).on('$postLink', () => {
+        viewCtrl.init();
+
+        // todo: Find a way for iron:router to generate this.
+        $scope.$emit('$stateChangeSuccess');
+    });
 });

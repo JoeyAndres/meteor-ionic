@@ -1,7 +1,3 @@
-IonNavigation = {
-  skipTransitions: false
-};
-
 Template.ionNavView.onCreated(function () {
   this.data = this.data || {};
 
@@ -20,10 +16,13 @@ Template.ionNavView.onRendered(function () {
   // a nav view element is a container for numerous views
   tElement.addClass('view-container');
   ionic.DomUtil.cachedAttr(tElement, 'nav-view-transition', $ionicConfig.views.transition());
-  
-  $(this).on('$postLink', () => {
-    let navViewCtrl = new $ionicNavView($scope, $element, $attrs);
 
+  let navViewCtrl = new $ionicNavView($scope, $element, $attrs);
+  $(this).on('$preLink', () => {
+    $element.$data('$ionNavViewController', navViewCtrl);
+  });
+
+  $(this).on('$postLink', () => {
     var viewData = navViewCtrl.init();
 
     // listen for $stateChangeSuccess
@@ -59,7 +58,7 @@ Template.ionNavView.onRendered(function () {
     }
   });
 
-  var container = this.find('ion-nav-view');
+  var container = this.firstNode;
   container._uihooks = {
     // Override onDestroyed so that's children won't remove themselves immediately.
     removeElement: function(node) { }  // viewSwitcher will remove it hopefully.

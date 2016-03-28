@@ -22,6 +22,8 @@ let ionScrollDefault = {
 };
 
 Template.ionScroll.onCreated(function() {
+    this.new_scope = true;
+
     this.overflowScroll = new ReactiveVar(ionScrollDefault.overflowScroll);
     this.direction = new ReactiveVar(ionScrollDefault.direction);
     this.locking = new ReactiveVar(ionScrollDefault.locking);

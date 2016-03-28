@@ -3,10 +3,6 @@ Template.ionTab.events({
     if (template.data.path) {
       Session.set('ionTab.current', template.data.path);
     }
-
-    // If the tab's content is being rendered inside of a ionNavView
-    // we don't want to slide it in when switching tabs
-    IonNavigation.skipTransitions = true;
   }
 });
 

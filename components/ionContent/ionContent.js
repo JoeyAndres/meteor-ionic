@@ -15,6 +15,8 @@ let ionContentDefault = {
 };
 
 Template.ionContent.onCreated(function() {
+    this.new_scope = true;
+
     this.direction = new ReactiveVar(ionContentDefault.direction);
     this.locking = new ReactiveVar(ionContentDefault.locking);
     this.padding = new ReactiveVar(ionContentDefault.padding);  // todo: make this platform dependent.
@@ -58,12 +60,12 @@ Template.ionContent.onRendered(function() {
 
     $(this).on("$preLink", () => {
         this.autorun(() => {
-            let $hasHeader = parentScope.$hasHeader ? parentScope.$hasHeader.get() : null,
-                $hasSubheader = parentScope.$hasSubheader ? parentScope.$hasSubheader.get() : null,
-                $hasFooter = parentScope.$hasFooter ? parentScope.$hasFooter.get() : null,
-                $hasSubfooter = parentScope.$hasSubfooter ? parentScope.$hasSubfooter.get() : null,
-                $hasTabs = parentScope.$hasTabs ? parentScope.$hasTabs.get() : null,
-                $hasTabsTop = parentScope.$hasTabsTop ? parentScope.$hasTabsTop.get() : null;
+            let $hasHeader = meteoric.lib.reactiveGetOrSetDefaultScope(parentScope, '$hasHeader', false),
+                $hasSubheader = meteoric.lib.reactiveGetOrSetDefaultScope(parentScope, '$hasSubheader', false),
+                $hasFooter = meteoric.lib.reactiveGetOrSetDefaultScope(parentScope, '$hasFooter', false),
+                $hasSubfooter = meteoric.lib.reactiveGetOrSetDefaultScope(parentScope, '$hasSubfooter', false),
+                $hasTabs = meteoric.lib.reactiveGetOrSetDefaultScope(parentScope, '$hasTabs', false),
+                $hasTabsTop = meteoric.lib.reactiveGetOrSetDefaultScope(parentScope, '$hasTabsTop', false);
 
             this.classes.set(($hasHeader ? ' has-header' : '') +
                 ($hasSubheader ? ' has-subheader' : '') +

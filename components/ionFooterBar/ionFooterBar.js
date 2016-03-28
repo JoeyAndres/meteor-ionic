@@ -7,7 +7,7 @@ Template.ionFooterBar.onCreated(function() {
     let td = Template.currentData();
     if (!td) return;
 
-    this.class.set(td.class);
+    this.class.set(td.class ? td.class : '');
   });
 });
 
