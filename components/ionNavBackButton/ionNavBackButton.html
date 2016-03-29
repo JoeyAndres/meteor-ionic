@@ -1,10 +1,5 @@
 <template name="ionNavBackButton">
-  <button class="{{classes}}">
-    <i class="icon ion-{{icon}}"></i>
-    {{#unless isAndroid}}
-      <span class="back-text">
-        {{text}}
-      </span>
-    {{/unless}}
-  </button>
+  <ion-nav-back-button class="{{class}}">
+    {{> UI.contentBlock}}
+  </ion-nav-back-button>
 </template>

@@ -21,6 +21,9 @@ Template.ionNavBar.onRendered(function() {
     let ctrl;
     $(this).on('$preLink', () => {
         ctrl = new $ionicNavBar($scope, $element, $attrs);
+
+        // meteoric: Other templates with same scope need access to this.
+        $scope.$ionicNavBar = ctrl;
     });
 
     $(this).on('$postLink', () => {

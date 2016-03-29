@@ -1,75 +1,77 @@
-IonScrollPositions = {};
-
-Router.onStop(function () {
-  IonScrollPositions[this.route.path(this.params)] = $('.overflow-scroll').scrollTop();
-});
-
-Template.ionNavBackButton.events({
-  'click': function (event, template) {
-    $('[data-nav-container]').attr('nav-view-direction', 'back');
-    $('[data-navbar-container]').attr('nav-bar-direction', 'back');
-
-    //get most up-to-date url, if it exists
-    backUrl = template.getBackUrl();
-    if (backUrl) {
-      Router.go(backUrl);
-    } else {
-      window.history.back();
-    }
-  }
-});
-
 Template.ionNavBackButton.onCreated(function () {
   this.data = this.data || {};
 });
 
 Template.ionNavBackButton.onRendered(function () {
-  var self = this;
-  this.getBackUrl = function () {
-    var backUrl = null;
+  let tElement = jqLite(this.firstNode);
+  let $attr = {
 
-    self.data = self.data || {};
-
-    if (self.data.href) {
-      backUrl = self.data.href;
-    }
-
-    if (self.data.path) {
-      backRoute = Router.routes[self.data.path];
-      if (!backRoute) {
-        console.warn("back to nonexistent route: ", self.data.path);
-        return;
-      }
-      backUrl = backRoute.path(Template.parentData(1));
-    }
-    return backUrl;
   };
-});
-
-Template.ionNavBackButton.helpers({
-  classes: function () {
-    var classes = ['buttons button button-clear back-button pull-left'];
-
-    if (this.class) {
-      classes.push(this.class);
-    }
-
-    return classes.join(' ');
-  },
-
-  icon: function () {
-    if (this.icon) {
-      return this.icon;
-    }
-
-    if (Platform.isAndroid()) {
-      return 'android-arrow-back';
-    }
-
-    return 'ios-arrow-back';
-  },
-
-  text: function () {
-      return this.text;
+  let tAttrs = { $attr };
+  
+  // clone the back button, but as a <div>
+  var buttonEle = $document[0].createElement('button');
+  for (var n in tAttrs.$attr) {
+    buttonEle.setAttribute(tAttrs.$attr[n], tAttrs[n]);
   }
+
+  buttonEle.className = 'button back-button hide buttons ' + (tElement.attr('class') || '');
+  buttonEle.innerHTML = tElement.html() || '';
+
+  var childNode;
+  var hasIcon = hasIconClass(tElement[0]);
+  var hasInnerText;
+  var hasButtonText;
+  var hasPreviousTitle;
+
+  for (var x = 0; x < tElement[0].childNodes.length; x++) {
+    childNode = tElement[0].childNodes[x];
+    if (childNode.nodeType === 1) {
+      if (hasIconClass(childNode)) {
+        hasIcon = true;
+      } else if (childNode.classList.contains('default-title')) {
+        hasButtonText = true;
+      } else if (childNode.classList.contains('previous-title')) {
+        hasPreviousTitle = true;
+      }
+    } else if (!hasInnerText && childNode.nodeType === 3) {
+      hasInnerText = !!childNode.nodeValue.trim();
+    }
+  }
+
+  function hasIconClass(ele) {
+    return /ion-|icon/.test(ele.className);
+  }
+
+  var defaultIcon = $ionicConfig.backButton.icon();
+  if (!hasIcon && defaultIcon && defaultIcon !== 'none') {
+    buttonEle.innerHTML = '<i class="icon ' + defaultIcon + '"></i> ' + buttonEle.innerHTML;
+    buttonEle.className += ' button-clear';
+  }
+
+  if (!hasInnerText) {
+    var buttonTextEle = $document[0].createElement('span');
+    buttonTextEle.className = 'back-text';
+
+    if (!hasButtonText && $ionicConfig.backButton.text()) {
+      buttonTextEle.innerHTML += '<span class="default-title">' + $ionicConfig.backButton.text() + '</span>';
+    }
+    if (!hasPreviousTitle && $ionicConfig.backButton.previousTitleText()) {
+      buttonTextEle.innerHTML += '<span class="previous-title"></span>';
+    }
+    buttonEle.appendChild(buttonTextEle);
+
+  }
+
+  tElement.attr('class', 'hide');
+  tElement.empty();
+
+  let $scope = this.$scope;
+  $(this).on('$preLink', () => {
+    let navBarCtrl = $scope.$ionicNavBar;
+
+    // only register the plain HTML, the navBarCtrl takes care of scope/compile/link
+    navBarCtrl.navElement('backButton', buttonEle.outerHTML);
+    buttonEle = null;
+  });
 });
