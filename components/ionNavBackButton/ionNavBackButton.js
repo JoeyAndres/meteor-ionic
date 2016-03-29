@@ -1,19 +1,30 @@
 Template.ionNavBackButton.onCreated(function () {
   this.data = this.data || {};
+  this.onClick = _.isFunction(this.data.onClick) ?
+      this.data.onClick :
+      function () { $rootScope.$ionicGoBack(); };
 });
 
 Template.ionNavBackButton.onRendered(function () {
   let tElement = jqLite(this.firstNode);
   let $attr = {
-
   };
-  let tAttrs = { $attr };
+  let tAttrs = {
+    onClick: this.onClick,
+    $attr
+  };
   
   // clone the back button, but as a <div>
   var buttonEle = $document[0].createElement('button');
   for (var n in tAttrs.$attr) {
     buttonEle.setAttribute(tAttrs.$attr[n], tAttrs[n]);
   }
+
+  // Setup click listener in ion-nav-bar.
+  $('ion-nav-bar').on(
+      'click',
+      '.back-button',
+      _.isFunction(tAttrs.onClick) ? tAttrs.onClick : noop);
 
   buttonEle.className = 'button back-button hide buttons ' + (tElement.attr('class') || '');
   buttonEle.innerHTML = tElement.html() || '';
@@ -70,7 +81,7 @@ Template.ionNavBackButton.onRendered(function () {
   $(this).on('$preLink', () => {
     let navBarCtrl = $scope.$ionicNavBar;
 
-    // only register the plain HTML, the navBarCtrl takes care of scope/compile/link
+    // only register the plain HTML, the navBarCtrl takes care of scope
     navBarCtrl.navElement('backButton', buttonEle.outerHTML);
     buttonEle = null;
   });
