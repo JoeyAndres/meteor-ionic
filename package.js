@@ -1,7 +1,7 @@
 Package.describe({
   name: "jandres:ionic",
   summary: "Ionic components for Meteor. No Angular!",
-  version: "1.24.0-alpha.9",
+  version: "1.24.0-alpha.10",
   git: "https://github.com/JoeyAndres/meteor-ionic.git"
 });
 
@@ -21,7 +21,7 @@ Package.onUse(function(api) {
     "templating",
     "underscore",
     "reactive-var",
-    //"fastclick",
+    //"fastclick",  // todo: make a separate commit for this.
     "iron:router@1.0.0",
     "tracker",
     "session",
@@ -155,6 +155,9 @@ Package.onUse(function(api) {
 
     "components/ionNavBackButton/ionNavBackButton.html",
     "components/ionNavBackButton/ionNavBackButton.js",
+
+    "components/ionNavButtons/ionNavButtons.html",
+    "components/ionNavButtons/ionNavButtons.js",
 
     "components/ionNavView/ionNavView.html",
     "components/ionNavView/ionNavView.js",

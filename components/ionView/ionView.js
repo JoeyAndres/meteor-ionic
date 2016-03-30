@@ -40,6 +40,7 @@ Template.ionView.onRendered(function () {
     let viewCtrl;
     $(this).on('$preLink', () => {
         viewCtrl = new $ionicView($scope, $element, $attrs);
+        $element.data('$ionViewController', viewCtrl);
     });
     $(this).on('$postLink', () => {
         viewCtrl.init();
