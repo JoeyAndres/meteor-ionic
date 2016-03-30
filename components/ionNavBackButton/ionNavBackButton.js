@@ -86,3 +86,10 @@ Template.ionNavBackButton.onRendered(function () {
     buttonEle = null;
   });
 });
+
+Template.ionNavBackButton.onDestroyed(function() {
+  $('ion-nav-bar').off(
+      'click',
+      '.back-button',
+      _.isFunction(this.onClick) ? this.onClick : noop);
+});
