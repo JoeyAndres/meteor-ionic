@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "jquery": {
+      "version": "2.2.2",
+      "resolved": "https://registry.npmjs.org/jquery/-/jquery-2.2.2.tgz",
+      "from": "https://registry.npmjs.org/jquery/-/jquery-2.2.2.tgz"
+    }
+  }
+}

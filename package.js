@@ -5,19 +5,24 @@ Package.describe({
   git: "https://github.com/JoeyAndres/meteor-ionic.git"
 });
 
-
-
 Cordova.depends({
   'ionic-plugin-keyboard': '1.0.8'
 });
 
+Npm.depends({
+  jquery: '2.2.2'
+});
+
 Package.onUse(function(api) {
-  api.versionsFrom("1.0");
+  api.versionsFrom("1.3");
+
+  api.use([
+      'ecmascript'
+  ]);
 
   api.use([
     "jandres:template-extension@4.0.4",
     "jandres:template-scope@0.1.0-alpha11",
-    "ecmascript@0.1.6",
     "templating",
     "underscore",
     "reactive-var",
@@ -25,7 +30,6 @@ Package.onUse(function(api) {
     "iron:router@1.0.0",
     "tracker",
     "session",
-    "jquery",
     "jandres:snapjs@2.0.9",
     "fourseven:scss@3.3.3",
 
@@ -232,4 +236,9 @@ Package.onUse(function(api) {
   api.export("IonPopover");
   api.export("IonPopup");
   api.export("IonSideMenu");
+  
+  api.export([
+      // ionic Delegates.
+      '$ionicScrollDelegate'
+  ]);
 });
