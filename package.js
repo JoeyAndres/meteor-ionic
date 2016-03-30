@@ -23,6 +23,7 @@ Package.onUse(function(api) {
   api.use([
     "jandres:template-extension@4.0.4",
     "jandres:template-scope@0.1.0-alpha11",
+    "jandres:template-attribute-directive@0.1.0-alpha1",
     "templating",
     "underscore",
     "reactive-var",
@@ -165,6 +166,8 @@ Package.onUse(function(api) {
 
     "components/ionNavTitle/ionNavTitle.html",
     "components/ionNavTitle/ionNavTitle.js",
+
+    "components/ionNavTransition/ionNavTransition.js",
 
     "components/ionNavView/ionNavView.html",
     "components/ionNavView/ionNavView.js",
