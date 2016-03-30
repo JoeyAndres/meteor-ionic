@@ -159,6 +159,9 @@ Package.onUse(function(api) {
     "components/ionNavButtons/ionNavButtons.html",
     "components/ionNavButtons/ionNavButtons.js",
 
+    "components/ionNavTitle/ionNavTitle.html",
+    "components/ionNavTitle/ionNavTitle.js",
+
     "components/ionNavView/ionNavView.html",
     "components/ionNavView/ionNavView.js",
 
