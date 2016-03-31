@@ -1,6 +1,6 @@
-import { TemplateAttributeType } from 'meteor/jandres:template-attribute-directive';
+import { TemplateAttributeDirectiveType } from 'meteor/jandres:template-attribute-directive';
 
-let ionNavTransition = new TemplateAttributeType('ionNavTransition', {
+let ionNavTransition = new TemplateAttributeDirectiveType('ionNavTransition', {
     $postLink($scope, $element, $attr) {
         $element.bind('click', function() {
             // Note: ionnavtransition instead of ionNavTransition due
