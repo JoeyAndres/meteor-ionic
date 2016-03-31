@@ -38,10 +38,6 @@ Package.onUse(function(api) {
   ], "client");
 
   api.addFiles([
-    "vendor/slip.js"
-  ], "client");
-
-  api.addFiles([
     "styles/main.scss"
   ], "client");
 
@@ -80,6 +76,7 @@ Package.onUse(function(api) {
     'lib/controller/navBarController.js',
     'lib/controller/navViewController.js',
     'lib/controller/headerBarController.js',
+    'lib/controller/listController.js',
     'lib/controller/spinnerController.js',
     'lib/controller/scrollController.js',
     'lib/controller/viewController.js',
@@ -129,20 +126,11 @@ Package.onUse(function(api) {
     "components/ionItem/ionItem.html",
     "components/ionItem/ionItem.js",
 
-    "components/ionItemOptions/ionItemOptions.html",
-    "components/ionItemOptions/ionItemOptions.js",
-
-    "components/ionItemContent/ionItemContent.html",
-    "components/ionItemContent/ionItemContent.js",
-
     "components/ionKeyboard/ionKeyboard.js",
     "components/ionKeyboard/ionInputFocus.js",
 
     "components/ionList/ionList.html",
     "components/ionList/ionList.js",
-
-    "components/ionListButton/ionListButton.html",
-    "components/ionListButton/ionListButton.js",
 
     "components/ionLoading/ionLoading.html",
     "components/ionLoading/ionLoading.js",

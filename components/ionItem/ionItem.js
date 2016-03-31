@@ -1,137 +1,132 @@
-Template.ionItem.onCreated(function() {
-  this.snapper = null;
-  this.itemComplex = new ReactiveVar(false);
-
-  let parent = this.parent((template) => template.view.name === "Template.ionList", true);
-  if (!parent) { throw "Template.ionItem must be a descendant of Template.ionList."; }
-
-  _.extend(this, {
-    // Props.
-    showDelete: parent.showDelete,
-    showReorder: parent.showReorder,
-    canSwipe: parent.canSwipe,
-
-    // Methods.
-    closeIonItemSiblings: () => {
-      let ionItemSiblings = this.getSiblings().filter(sibling => sibling.view.name === "Template.ionItem");
-      _.each(ionItemSiblings, sibling => !!sibling.snapper && sibling.snapper.close());
-    },
-    dragSetTransitionNone: () => this.$('.item-content').css({ transition: "none" }),
-    dragEndSetTransitionToInitial: () => this.$('.item-content').css({ transition: "initial"}),
-    initDragTransitionHandler: () => {
-      this.snapper.on('drag', this.dragSetTransitionNone);
-      this.snapper.on('end', this.dragEndSetTransitionToInitial);
-    },
-    destroyDragTransitionHandler: () => {
-      this.snapper.off('drag', this.dragSetTransitionNone);
-      this.snapper.off('end', this.dragEndSetTransitionToInitial);
-    },
-    isitemComplex: () => {
-      let complex = !!_.find(this.children(1),
-          elem =>
-          elem.view.name === 'Template.ionItemOptions' ||
-          elem.view.name === 'Template.ionDeleteButton' ||
-          elem.view.name === 'Template.ionReorderButton');
-      return complex;
+function url() {
+    if (this.data.href) {
+        return this.data.href;
     }
-  });
+
+    if ( this.data.path || this.data.url || this.data.route ) {
+
+        var path = _.find([this.data.path,this.data.url,this.data.route],function(path){return path !=undefined});
+
+        if ( this.data.query || this.data.hash || this.data ){
+
+            var hash = {};
+            hash.route = path;
+            hash.query = this.data.query;
+            hash.hash = this.data.hash;
+            hash.data = this.data;
+            var options = new Spacebars.kw(hash);
+
+            // Devs may pass 'route=x' instead of 'path=' or 'url='
+            // Should doing that throw an error? Not sure but we decided to
+            // parse it as if the dev passed it as 'path='
+            if (this.url){
+                return Blaze._globalHelpers.urlFor(options)
+            } else if( this.data.path || this.data.route ) {
+                return Blaze._globalHelpers.pathFor(options)
+            }
+
+        } else {
+            return Router.routes[path].path(Template.parentData(1));
+        }
+    }
+};
+
+Template.ionItem.onCreated(function() {
+    this.new_scope = true;
+
+    this.onReorder = new ReactiveVar(noop);
+    this.onClick = new ReactiveVar(noop);
+
+    this.href = new ReactiveVar(undefined);
+    this.path = new ReactiveVar(undefined);
+    this.url = new ReactiveVar(undefined);
+    this.route = new ReactiveVar(undefined);
+
+    this.autorun(() => {
+        let td = Template.currentData();
+        if (!td) return;
+
+        this.href.set(td.href);
+        this.path.set(td.path);
+        this.url.set(td.url);
+        this.route.set(td.route);
+
+        this.onReorder.set(isDefined(td.onReorder) ? td.onReorder : noop);
+        this.onClick.set(isDefined(td.onClick) ? td.onClick : noop);
+    });
 });
 
 Template.ionItem.onRendered(function() {
-  this.autorun(() => {
-    if (this.canSwipe.get() && !this.showDelete.get() && !this.showReorder.get()) {
-      let ionOptions = this.getChildren()
-          .filter(child => child.view && child.view.name === 'Template.ionItemOptions');
-      let ionOptionsWidth = ionOptions.reduce((width, child) => width + child.width(), 0);
-      if (!this.snapper) {
-        this.snapper = new Snap({
-          element: this.$('.item-content').get(0),
-          disable: 'left',
-          minPosition: -ionOptionsWidth
-        });
-      }
+    let $scope = this.$scope,
+        $element = jqLite(this.firstNode),
+        $attrs = {
+            href: this.href.get(),
+            path: this.path.get(),
+            url: this.url.get(),
+            route: this.route.get()
+        };
 
-      this.snapper.settings({
-        element: this.$('.item-content').get(0),  // In case the child template ionItemContent got changed.
-        minPosition: -ionOptionsWidth
-      });
-      this.snapper.enable();
+    this.autorun(() => {
+        $scope.$onReorder = this.onReorder.get();
+    });
 
-      this.snapper.on('start', () => {
-        this.closeIonItemSiblings();
-      });
+    let itemCtrl = { $scope, $element };
+    $scope.$itemCtrl = itemCtrl;
 
-      this.initDragTransitionHandler();
+    // meteoric: moved from $postLink
+    $scope.$href = () => {
+        return url.call(this);
+    };
+
+    var isAnchor = isDefined($attrs.href) ||
+        isDefined($attrs.path) ||
+        isDefined($attrs.url) ||
+        isDefined($attrs.route);
+    var isComplexItem = isAnchor ||
+        //Lame way of testing, but we have to know at compile what to do with the element
+        /ion-(delete|option|reorder)-button/i.test($element.html());
+
+    if (isComplexItem) {
+        var innerElement = jqLite(isAnchor ? '<a></a>' : '<div></div>');
+        innerElement.addClass('item-content');
+
+        if (isAnchor) {
+            innerElement.attr('href', $scope.$href());
+            if (isDefined($attrs.target)) {
+                //innerElement.attr('target', '{{$target()}}');  // todo:
+            }
+        }
+
+        innerElement.append($element.contents());
+
+        $element.addClass('item item-complex')
+            .append(innerElement);
     } else {
-      if (this.snapper) {
-        this.destroyDragTransitionHandler();
-        this.snapper.disable();
-        this.snapper.close();
-      }
+        $element.addClass('item');
     }
-  });
 
-  this.autorun(() => {
-    this.itemComplex.set(this.isitemComplex());
-  });
+    $(this).on('$postLink', () => {
+        $scope.$target = function() {
+            return $attrs.target;
+        };
+
+        var content = $element[0].querySelector('.item-content');
+        if (content) {
+            $scope.$on('$collectionRepeatLeave', function() {
+                if (content && content.$$ionicOptionsOpen) {
+                    content.style[ionic.CSS.TRANSFORM] = '';
+                    content.style[ionic.CSS.TRANSITION] = 'none';
+                    // todo:
+                    /*$$rAF(function() {
+                     content.style[ionic.CSS.TRANSITION] = '';
+                     });*/
+                    content.$$ionicOptionsOpen = false;
+                }
+            });
+        }
+    });
 });
 
 Template.ionItem.onDestroyed(function() {
-  if (!!this.snapper) {
-    this.destroyDragTransitionHandler();
-    this.snapper.disable();
-    this.snapper.close();
-  }
-});
 
-Template.ionItem.helpers({
-  idAttribute: function () {
-    if (this.id) {
-      return this.id;
-    }
-  },
-  itemComplex: function() {
-    return Template.instance().itemComplex.get();
-  },
-
-  isAnchor: function () {
-    return _.some([this.href,this.path,this.url,this.route],function(path){return path != undefined});
-  },
-
-  target: function () {
-    return this.target;
-  },
-
-  url: function () {
-    if (this.href) {
-      return this.href;
-    }
-
-    if ( this.path || this.url || this.route ) {
-
-      var path = _.find([this.path,this.url,this.route],function(path){return path !=undefined});
-
-      if ( this.query || this.hash || this.data ){
-
-        var hash = {};
-        hash.route = path;
-        hash.query = this.query;
-        hash.hash = this.hash;
-        hash.data = this.data;
-        var options = new Spacebars.kw(hash);
-
-        // Devs may pass 'route=x' instead of 'path=' or 'url='
-        // Should doing that throw an error? Not sure but we decided to
-        // parse it as if the dev passed it as 'path='
-        if (this.url){
-          return Blaze._globalHelpers.urlFor(options)
-        } else if( this.path || this.route ) {
-          return Blaze._globalHelpers.pathFor(options)
-        }
-
-      } else {
-        return Router.routes[path].path(Template.parentData(1));
-      }
-    }
-  }
 });
