@@ -103,7 +103,7 @@ A [Product Hunt](http://producthunt.com) clone built in Meteor Ionic. (In Progre
   * [ ] expose-aside-when (not sure this is needed)
   * [x] menu-toggle
   * [x] menu-close
-* [x] Slide Box
+* [x] Slides
 * [x] Tabs (requires [iron:router](https://github.com/EventedMind/iron-router) integration)
   * [x] ion-tabs
   * [x] ion-tab

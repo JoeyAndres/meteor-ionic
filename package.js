@@ -38,8 +38,6 @@ Package.onUse(function(api) {
   ], "client");
 
   api.addFiles([
-    "vendor/slick.js",
-    "vendor/slick.css",
     "vendor/slip.js"
   ], "client");
 
@@ -204,14 +202,11 @@ Package.onUse(function(api) {
     "components/ionSideMenus/ionSideMenus.html",
     "components/ionSideMenus/ionSideMenus.js",
 
-    "components/ionSlideBox/ionSlideBox.html",
-    "components/ionSlideBox/ionSlideBox.js",
-
     "components/ionSpinner/ionSpinner.html",
     "components/ionSpinner/ionSpinner.js",
 
-    "components/ionSlide/ionSlide.html",
-    "components/ionSlide/ionSlide.js",
+    "components/ionSlides/ionSlides.html",
+    "components/ionSlides/ionSlides.js",
 
     "components/ionSubfooterBar/ionSubfooterBar.html",
     "components/ionSubfooterBar/ionSubfooterBar.js",
