@@ -86,10 +86,10 @@ A [Product Hunt](http://producthunt.com) clone built in Meteor Ionic. (In Progre
   * [x] ion-view
   * [x] ion-nav-bar
   * [x] ion-nav-back-button
-  * [ ] ion-nav-buttons (not needed?)
+  * [x] ion-nav-buttons (not needed?)
   * [x] ion-nav-title
-  * [ ] nav-transition (not needed?)
-  * [ ] nav-direction (not needed?)
+  * [x] nav-transition (not needed?)
+  * [x] nav-direction (not needed?)
 * [x] Platform
 * [x] Popover
 * [x] Popup
