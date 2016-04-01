@@ -25,7 +25,7 @@ Template.ionList.onRendered(function() {
 
     $(this).on('$postLink', () => {
         var listCtrl = $scope.$listController;
-        var scrollCtrl = $scope.$scrollController;
+        var scrollCtrl = $scope.scrollCtrl;
 
         // Wait for child elements to render...
         $timeout(init.bind(this));

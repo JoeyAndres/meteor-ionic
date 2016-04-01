@@ -22,7 +22,7 @@ Package.onUse(function(api) {
 
   api.use([
     "jandres:template-extension@4.0.4",
-    "jandres:template-scope@0.1.0-alpha11",
+    "jandres:template-scope@0.1.0-alpha12",
     "jandres:template-attribute-directive@0.1.0-alpha1",
     "templating",
     "underscore",
@@ -77,6 +77,7 @@ Package.onUse(function(api) {
     'lib/controller/navViewController.js',
     'lib/controller/headerBarController.js',
     'lib/controller/listController.js',
+    'lib/controller/sideMenuController.js',
     'lib/controller/spinnerController.js',
     'lib/controller/scrollController.js',
     'lib/controller/viewController.js',
@@ -180,9 +181,6 @@ Package.onUse(function(api) {
 
     "components/ionSideMenu/ionSideMenu.html",
     "components/ionSideMenu/ionSideMenu.js",
-
-    "components/ionSideMenuContainer/ionSideMenuContainer.html",
-    "components/ionSideMenuContainer/ionSideMenuContainer.js",
 
     "components/ionSideMenuContent/ionSideMenuContent.html",
     "components/ionSideMenuContent/ionSideMenuContent.js",

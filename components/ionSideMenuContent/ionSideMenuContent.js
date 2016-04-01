@@ -1,10 +1,226 @@
 Template.ionSideMenuContent.onCreated(function() {
-  this.new_scope = true;
+    this.new_scope = true;
+
+    this.dragContent = new ReactiveVar(true);
+    this.edgeDragThreshold = new ReactiveVar(false);
+
+    this.autorun(() => {
+        let td = Template.currentData();
+        if (!td) return;
+        this.dragContent.set(!_.isUndefined(td.dragContent) ? td.dragContent : true);
+        this.edgeDragThreshold.set(!td.edgeDragThreshold);
+    });
 });
 
-Template.ionSideMenuContent.helpers({
-  classes: function () {
-    var classes = ['menu-content', 'snap-content', 'pane'];
-    return classes.join(' ');
-  }
+Template.ionSideMenuContent.onRendered(function() {
+    let $element = jqLite(this.firstNode),
+        element = $element,
+        $scope = this.$scope,
+        attr = {
+            dragContent: this.dragContent,
+            edgeDragThreshold: this.edgeDragThreshold
+        };
+    element.addClass('menu-content pane');
+
+    $(this).on('$preLink', () => {
+        let sideMenuCtrl = $scope.$parent.$sideMenuCtrl;
+
+        var startCoord = null;
+        var primaryScrollAxis = null;
+
+        if (isDefined(attr.dragContent.get())) {
+            this.autorun(() => {
+                let value = attr.dragContent.get();
+                sideMenuCtrl.canDragContent(value);
+            });
+        } else {
+            sideMenuCtrl.canDragContent(true);
+        }
+
+        if (isDefined(attr.edgeDragThreshold.get())) {
+            this.autorun(() => {
+                let value = attr.edgeDragThreshold.get();
+                sideMenuCtrl.edgeDragThreshold(value);
+            });
+        }
+
+        // Listen for taps on the content to close the menu
+        function onContentTap(gestureEvt) {
+            if (sideMenuCtrl.getOpenAmount() !== 0) {
+                sideMenuCtrl.close();
+                gestureEvt.gesture.srcEvent.preventDefault();
+                startCoord = null;
+                primaryScrollAxis = null;
+            } else if (!startCoord) {
+                startCoord = ionic.tap.pointerCoord(gestureEvt.gesture.srcEvent);
+            }
+        }
+
+        function onDragX(e) {
+            if (!sideMenuCtrl.isDraggableTarget(e)) return;
+
+            if (getPrimaryScrollAxis(e) == 'x') {
+                sideMenuCtrl._handleDrag(e);
+                e.gesture.srcEvent.preventDefault();
+            }
+        }
+
+        function onDragY(e) {
+            if (getPrimaryScrollAxis(e) == 'x') {
+                e.gesture.srcEvent.preventDefault();
+            }
+        }
+
+        function onDragRelease(e) {
+            sideMenuCtrl._endDrag(e);
+            startCoord = null;
+            primaryScrollAxis = null;
+        }
+
+        function getPrimaryScrollAxis(gestureEvt) {
+            // gets whether the user is primarily scrolling on the X or Y
+            // If a majority of the drag has been on the Y since the start of
+            // the drag, but the X has moved a little bit, it's still a Y drag
+
+            if (primaryScrollAxis) {
+                // we already figured out which way they're scrolling
+                return primaryScrollAxis;
+            }
+
+            if (gestureEvt && gestureEvt.gesture) {
+
+                if (!startCoord) {
+                    // get the starting point
+                    startCoord = ionic.tap.pointerCoord(gestureEvt.gesture.srcEvent);
+
+                } else {
+                    // we already have a starting point, figure out which direction they're going
+                    var endCoord = ionic.tap.pointerCoord(gestureEvt.gesture.srcEvent);
+
+                    var xDistance = Math.abs(endCoord.x - startCoord.x);
+                    var yDistance = Math.abs(endCoord.y - startCoord.y);
+
+                    var scrollAxis = (xDistance < yDistance ? 'y' : 'x');
+
+                    if (Math.max(xDistance, yDistance) > 30) {
+                        // ok, we pretty much know which way they're going
+                        // let's lock it in
+                        primaryScrollAxis = scrollAxis;
+                    }
+
+                    return scrollAxis;
+                }
+            }
+            return 'y';
+        }
+
+        var content = {
+            element: element[0],
+            onDrag: function() {},
+            endDrag: function() {},
+            setCanScroll: function(canScroll) {
+                var c = $element[0].querySelector('.scroll');
+
+                if (!c) {
+                    return;
+                }
+
+                var content = jqLite(c.parentElement);
+                if (!content) {
+                    return;
+                }
+
+                // freeze our scroll container if we have one
+                var scrollScope = content.scope();
+                scrollScope.scrollCtrl && scrollScope.scrollCtrl.freezeScrollShut(!canScroll);
+            },
+            getTranslateX: function() {
+                return $scope.sideMenuContentTranslateX || 0;
+            },
+            setTranslateX: ionic.animationFrameThrottle(function(amount) {
+                var xTransform = content.offsetX + amount;
+                $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(' + xTransform + 'px,0,0)';
+                $timeout(function() {
+                    $scope.sideMenuContentTranslateX = amount;
+                });
+            }),
+            setMarginLeft: ionic.animationFrameThrottle(function(amount) {
+                if (amount) {
+                    amount = parseInt(amount, 10);
+                    $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(' + amount + 'px,0,0)';
+                    $element[0].style.width = ($window.innerWidth - amount) + 'px';
+                    content.offsetX = amount;
+                } else {
+                    $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(0,0,0)';
+                    $element[0].style.width = '';
+                    content.offsetX = 0;
+                }
+            }),
+            setMarginRight: ionic.animationFrameThrottle(function(amount) {
+                if (amount) {
+                    amount = parseInt(amount, 10);
+                    $element[0].style.width = ($window.innerWidth - amount) + 'px';
+                    content.offsetX = amount;
+                } else {
+                    $element[0].style.width = '';
+                    content.offsetX = 0;
+                }
+                // reset incase left gets grabby
+                $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(0,0,0)';
+            }),
+            setMarginLeftAndRight: ionic.animationFrameThrottle(function(amountLeft, amountRight) {
+                amountLeft = amountLeft && parseInt(amountLeft, 10) || 0;
+                amountRight = amountRight && parseInt(amountRight, 10) || 0;
+
+                var amount = amountLeft + amountRight;
+
+                if (amount > 0) {
+                    $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(' + amountLeft + 'px,0,0)';
+                    $element[0].style.width = ($window.innerWidth - amount) + 'px';
+                    content.offsetX = amountLeft;
+                } else {
+                    $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(0,0,0)';
+                    $element[0].style.width = '';
+                    content.offsetX = 0;
+                }
+                // reset incase left gets grabby
+                //$element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(0,0,0)';
+            }),
+            enableAnimation: function() {
+                $scope.animationEnabled = true;
+                $element[0].classList.add('menu-animated');
+            },
+            disableAnimation: function() {
+                $scope.animationEnabled = false;
+                $element[0].classList.remove('menu-animated');
+            },
+            offsetX: 0
+        };
+
+        sideMenuCtrl.setContent(content);
+
+        // add gesture handlers
+        var gestureOpts = { stop_browser_behavior: false };
+        gestureOpts.prevent_default_directions = ['left', 'right'];
+        var contentTapGesture = $ionicGesture.on('tap', onContentTap, $element, gestureOpts);
+        var dragRightGesture = $ionicGesture.on('dragright', onDragX, $element, gestureOpts);
+        var dragLeftGesture = $ionicGesture.on('dragleft', onDragX, $element, gestureOpts);
+        var dragUpGesture = $ionicGesture.on('dragup', onDragY, $element, gestureOpts);
+        var dragDownGesture = $ionicGesture.on('dragdown', onDragY, $element, gestureOpts);
+        var releaseGesture = $ionicGesture.on('release', onDragRelease, $element, gestureOpts);
+
+        // Cleanup
+        $scope.$on('$destroy', function() {
+            if (content) {
+                content.element = null;
+                content = null;
+            }
+            $ionicGesture.off(dragLeftGesture, 'dragleft', onDragX);
+            $ionicGesture.off(dragRightGesture, 'dragright', onDragX);
+            $ionicGesture.off(dragUpGesture, 'dragup', onDragY);
+            $ionicGesture.off(dragDownGesture, 'dragdown', onDragY);
+            $ionicGesture.off(releaseGesture, 'release', onDragRelease);
+            $ionicGesture.off(contentTapGesture, 'tap', onContentTap);
+        });
+    });
 });

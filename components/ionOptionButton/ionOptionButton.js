@@ -22,8 +22,8 @@ Template.ionOptionButton.onRendered(function () {
         $element = jqLite(this.firstNode),
         $attr = {
             onClick: function() {
-                //stopPropagation.apply(this, arguments);
-                //self.onClick.get().apply(this, arguments);
+                stopPropagation.apply(this, arguments);
+                self.onClick.get().apply(this, arguments);
             }
         };
     $element.toggleClass('button', true);

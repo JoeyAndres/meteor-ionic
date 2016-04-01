@@ -128,7 +128,7 @@ Template.ionContent.onRendered(function() {
             }
 
             this.scrollCtrl = new meteoric.controller.ionicScroll($scope, scrollViewOptions);
-            this.$scope.$scrollController = this.scrollCtrl;
+            this.$scope.scrollCtrl = this.scrollCtrl;
 
             this.$scope.$onScroll = _.isFunction(this.onScroll) ?
                 meteoric.Utils.throttle(this.onScroll, this.scrollEventInterval.get()) : noop;
