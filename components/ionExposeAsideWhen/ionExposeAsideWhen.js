@@ -6,14 +6,14 @@ let ionExposeAsideWhen = new TemplateAttributeDirectiveType('ionExposeAsideWhen'
 
         // Setup a match media query listener that triggers a ui change only when a change
         // in media matching status occurs
-        var mq = $attr.ionexposeasidewhen == 'large' ? '(min-width:768px)' : $attr.ionexposeasidewhen;
+        var mq = $attr.ionExposeAsideWhen == 'large' ? '(min-width:768px)' : $attr.ionExposeAsideWhen;
         var mql = $window[0].matchMedia(mq);
         mql.addListener(function() {
             onResize();
         });
 
         function checkAsideExpose() {
-            var mq = $attr.ionexposeasidewhen == 'large' ? '(min-width:768px)' : $attr.ionexposeasidewhen;
+            var mq = $attr.ionExposeAsideWhen == 'large' ? '(min-width:768px)' : $attr.ionExposeAsideWhen;
             sideMenuCtrl.exposeAside($window[0].matchMedia(mq).matches);
             sideMenuCtrl.activeAsideResizing(false);
         }

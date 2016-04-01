@@ -5,7 +5,7 @@ let ionNavDirection = new TemplateAttributeDirectiveType('ionNavDirection', {
         $element.bind('click', function() {
             // Note: ionnavdirection instead of ionNavDirection due
             //       to Node.attributes lowercasing.
-            $ionicViewSwitcher.nextDirection($attr.ionnavdirection);
+            $ionicViewSwitcher.nextDirection($attr.ionNavDirection);
         });
     }
 });

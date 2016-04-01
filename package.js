@@ -23,7 +23,7 @@ Package.onUse(function(api) {
   api.use([
     "jandres:template-extension@4.0.4",
     "jandres:template-scope@0.1.0-alpha12",
-    "jandres:template-attribute-directive@0.1.0-alpha1",
+    "jandres:template-attribute-directive@0.1.0-alpha2",
     "templating",
     "underscore",
     "reactive-var",

@@ -5,7 +5,7 @@ let ionNavTransition = new TemplateAttributeDirectiveType('ionNavTransition', {
         $element.bind('click', function() {
             // Note: ionnavtransition instead of ionNavTransition due
             //       to Node.attributes lowercasing.
-            $ionicViewSwitcher.nextTransition($attr.ionnavtransition);
+            $ionicViewSwitcher.nextTransition($attr.ionNavTransition);
         });
     }
 });
