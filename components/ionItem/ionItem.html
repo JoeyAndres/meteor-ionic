@@ -1,5 +1,17 @@
 <template name="ionItem">
     <ion-item class="{{class}}">
-        {{> UI.contentBlock}}
+        {{#if itemComplex}}
+          {{#if isAnchor}}
+            <a class="item-content" href="{{href}}">
+              {{> UI.contentBlock}}
+            </a>
+          {{else}}
+            <div class="item-content">
+              {{> UI.contentBlock}}
+            </div>
+          {{/if}}
+        {{else}}
+          {{> UI.contentBlock}}
+        {{/if}}
     </ion-item>
 </template>

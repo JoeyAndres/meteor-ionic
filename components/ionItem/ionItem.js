@@ -33,6 +33,9 @@ function url() {
 
 Template.ionItem.onCreated(function() {
     this.new_scope = true;
+    
+    this.itemComplex = new ReactiveVar(false);
+    this.isAnchor = new ReactiveVar(false);
 
     this.onReorder = new ReactiveVar(noop);
     this.onClick = new ReactiveVar(noop);
@@ -82,25 +85,14 @@ Template.ionItem.onRendered(function() {
         isDefined($attrs.path) ||
         isDefined($attrs.url) ||
         isDefined($attrs.route);
+    this.isAnchor.set(isAnchor);
     var isComplexItem = isAnchor ||
         //Lame way of testing, but we have to know at compile what to do with the element
         /ion-(delete|option|reorder)-button/i.test($element.html());
+    this.itemComplex.set(isComplexItem);
 
     if (isComplexItem) {
-        var innerElement = jqLite(isAnchor ? '<a></a>' : '<div></div>');
-        innerElement.addClass('item-content');
-
-        if (isAnchor) {
-            innerElement.attr('href', $scope.$href());
-            if (isDefined($attrs.target)) {
-                //innerElement.attr('target', '{{$target()}}');  // todo:
-            }
-        }
-
-        innerElement.append($element.contents());
-
         $element.addClass('item item-complex')
-            .append(innerElement);
     } else {
         $element.addClass('item');
     }
@@ -116,10 +108,9 @@ Template.ionItem.onRendered(function() {
                 if (content && content.$$ionicOptionsOpen) {
                     content.style[ionic.CSS.TRANSFORM] = '';
                     content.style[ionic.CSS.TRANSITION] = 'none';
-                    // todo:
-                    /*$$rAF(function() {
-                     content.style[ionic.CSS.TRANSITION] = '';
-                     });*/
+                    ionic.requestAnimationFrame(function() {
+                        content.style[ionic.CSS.TRANSITION] = '';
+                    });
                     content.$$ionicOptionsOpen = false;
                 }
             });
@@ -127,6 +118,16 @@ Template.ionItem.onRendered(function() {
     });
 });
 
-Template.ionItem.onDestroyed(function() {
+Template.ionItem.helpers({
+    itemComplex() {
+        return Template.instance().itemComplex.get();
+    },
+    
+    isAnchor() {
+        return Template.instance().isAnchor.get();
+    },
 
+    href() {
+        return url.call(Template.instance());
+    }
 });
