@@ -23,7 +23,7 @@ Package.onUse(function(api) {
   api.use([
     "jandres:template-extension@4.0.4",
     "jandres:template-scope@0.1.0-alpha12",
-    "jandres:template-attribute-directive@0.1.0-alpha2",
+    "jandres:template-attribute-directive@0.2.0-alpha0",
     "templating",
     "underscore",
     "reactive-var",
@@ -31,7 +31,6 @@ Package.onUse(function(api) {
     "iron:router@1.0.0",
     "tracker",
     "session",
-    "jandres:snapjs@2.0.9",
     "fourseven:scss@3.3.3",
 
     "jandres:meteoric-sass@1.2.4"
@@ -155,6 +154,8 @@ Package.onUse(function(api) {
     "components/ionNavTitle/ionNavTitle.js",
 
     "components/ionExposeAsideWhen/ionExposeAsideWhen.js",
+    "components/ionMenuClose/ionMenuClose.js",
+    "components/ionMenuToggle/ionMenuToggle.js",
     "components/ionNavDirection/ionNavDirection.js",
     "components/ionNavTransition/ionNavTransition.js",
 
