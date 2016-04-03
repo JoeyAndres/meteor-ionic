@@ -100,13 +100,13 @@ A [Product Hunt](http://producthunt.com) clone built in Meteor Ionic. (In Progre
   * [x] ion-side-menus
   * [x] ion-side-menu-content
   * [x] ion-side-menu
-  * [ ] expose-aside-when (not sure this is needed)
+  * [x] expose-aside-when (not sure this is needed)
   * [x] menu-toggle
   * [x] menu-close
 * [x] Slides
-* [x] Tabs (requires [iron:router](https://github.com/EventedMind/iron-router) integration)
-  * [x] ion-tabs
-  * [x] ion-tab
+* [ ] Tabs (requires [iron:router](https://github.com/EventedMind/iron-router) integration)
+  * [ ] ion-tabs
+  * [ ] ion-tab
   
 ### Code Style Change: 
 These are code styles that I want to impose on this forked repo.

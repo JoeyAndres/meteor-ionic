@@ -1,71 +1,59 @@
+import {Template} from 'meteor/templating';
+
 Template.ionInfiniteScroll.onCreated(function() {
-    this.onInfinite = null;
-    this.distance = "1%";
-    this.enable = new ReactiveVar(true);
-    this.immediateCheck = true;
+    this.new_scope = true;
 
-    this.isLoading = new ReactiveVar(false);
-
-    this.finishInfiniteScroll = null;
+    this.$attrs = {};
+    this.$attrs.onInfinite = noop;
+    this.$attrs.distance = "1%";
+    this.$attrs.immediateCheck = true;
 
     this.autorun(() => {
-        if (!Template.currentData()) return;  // Don't do a thing if data context don't exist.
-        this.onInfinite = Template.currentData().onInfinite;
-        this.distance = !_.isUndefined(Template.currentData().distance) ? parseFloat(Template.currentData().distance) : "1%";
-        this.enable.set(!_.isUndefined(Template.currentData().enable) ? Template.currentData().enable : true);
-        this.immediateCheck = !!Template.currentData().immediateCheck;
+        let td = Template.currentData();
+        if (!td) return;  // Don't do a thing if data context don't exist.
+        this.$attrs.onInfinite = isDefined(td.onInfinite) ? td.onInfinite : noop;
+        this.$attrs.distance = td.distance;
+        this.$attrs.immediateCheck = !!td.immediateCheck;
     });
 });
 
 Template.ionInfiniteScroll.onRendered(function() {
+    // meteoric:
     let parentTemplate = this.parent(1, true);
+    let ionScrollTemplate = parentTemplate.children().filter(t => t.view.name = 'Template.ionScroll')[0];
+    let ionScrollTemplate$scope = ionScrollTemplate.$scope;
 
-    let calculateMaxValue = function(maximum) {
-        let distance = (this.distance || '2.5%').trim();
-        let isPercent = distance.indexOf('%') !== -1;
-        return isPercent ? maximum * (1 - parseFloat(distance) / 100) : maximum - parseFloat(distance);
-    };
+    let $scope = this.$scope,
+        $attrs = this.$attrs,
+        $element = jqLite(this.firstNode);
+    
+    $(this).on('$postLink', () => {
+        var infiniteScrollCtrl = new $ionInfiniteScroll($scope, $attrs, $element);
+        var scrollCtrl = infiniteScrollCtrl.scrollCtrl = ionScrollTemplate$scope.scrollCtrl;
+        var jsScrolling = infiniteScrollCtrl.jsScrolling = !scrollCtrl.isNative();
 
-    this.autorun(() => {
-        let scroller = parentTemplate.scroller.get();
-        if (!!scroller) {
-            let scrollHeight = () => parentTemplate.$('.meteoric-scroller-container').get(0).scrollHeight;
-            let maxScrollHeight = () => calculateMaxValue(scrollHeight());
-            let clientHeight = () => parentTemplate.$('.meteoric-scroller-container').get(0).clientHeight;
-            let scrollTop = () => scroller.scroller.__scrollTop;
+        // if this view is not beneath a scrollCtrl, it can't be injected, proceed w/ native scrolling
+        if (jsScrolling) {
+            infiniteScrollCtrl.scrollView = scrollCtrl.scrollView;
+            $scope.scrollingType = 'js-scrolling';
+            //bind to JS scroll events
+            scrollCtrl.$element.on('scroll', infiniteScrollCtrl.checkBounds);
+        } else {
+            // grabbing the scrollable element, to determine dimensions, and current scroll pos
+            var scrollEl = ionic.DomUtil.getParentOrSelfWithClass($element[0].parentNode, 'overflow-scroll');
+            infiniteScrollCtrl.scrollEl = scrollEl;
+            // if there's no scroll controller, and no overflow scroll div, infinite scroll wont work
+            if (!scrollEl) {
+                throw 'Infinite scroll must be used inside a scrollable div';
+            }
+            //bind to native scroll events
+            infiniteScrollCtrl.scrollEl.addEventListener('scroll', infiniteScrollCtrl.checkBounds);
+        }
 
-            // @see https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight
-            let reachedBottom = () => scrollTop() > maxScrollHeight() - clientHeight();
-            let onInfinite = () => {
-                this.isLoading.set(true);
-                _.isFunction(this.onInfinite) ? this.onInfinite() : () => {
-                };
-            };
-            let checkInfiniteBounds = () => {
-                if (this.isLoading.get()) return;
-                if (reachedBottom()) {
-                    onInfinite();
-                }
-            };
-            let checkBounds = METEORIC.UTILITY.throttle(checkInfiniteBounds, 300);
-            this.finishInfiniteScroll = () => {
-                Meteor.setTimeout(checkBounds, 30);
-                this.isLoading.set(false);
-            };
-
-            let onScrollHandler = () => {
-                if (!this.enable.get()) return;  // Don't do a thing when disabled.
-                checkBounds();  // Ensure that this is throttled.
-            };
-
-            // ft-scroll scrolling.
-            scroller.scroller.options.scrolling = onScrollHandler;
-
-            // todo: Native scrolling.
-            // $overflowScrollContainer.scroll(e => onScrollHandler());
-
-            if (this.immediateCheck) { Meteor.setTimeout(checkBounds); }
-            $(window).on('scroll.infiniteScrollComplete', this.finishInfiniteScroll);
+        // Optionally check bounds on start after scrollView is fully rendered
+        var doImmediateCheck = isDefined($attrs.immediateCheck) ? $attrs.immediateCheck : true;
+        if (doImmediateCheck) {
+            $timeout(function() { infiniteScrollCtrl.checkBounds(); });
         }
     });
 });
@@ -74,9 +62,4 @@ Template.ionInfiniteScroll.onDestroyed(function() {
     this.enable.set(false);
 
     this.finishInfiniteScroll && $(window).off('scroll.infiniteScrollComplete', this.finishInfiniteScroll);
-});
-
-Template.ionInfiniteScroll.helpers({
-    enable: function() { return Template.instance().enable.get(); },
-    active: function() { return Template.instance().isLoading.get(); }
 });

@@ -1,7 +1,7 @@
 Package.describe({
   name: "jandres:ionic",
   summary: "Ionic components for Meteor. No Angular!",
-  version: "1.24.0-alpha.13",
+  version: "1.24.0-alpha.14",
   git: "https://github.com/JoeyAndres/meteor-ionic.git"
 });
 
@@ -22,8 +22,8 @@ Package.onUse(function(api) {
 
   api.use([
     "jandres:template-extension@4.0.7-alpha3",
-    "jandres:template-scope@0.1.0-alpha12",
-    "jandres:template-attribute-directive@0.1.0-alpha2",
+    "jandres:template-scope@0.1.0-alpha15",
+    "jandres:template-attribute-directive@0.1.0-alpha4",
     "templating",
     "underscore",
     "reactive-var",
@@ -72,9 +72,10 @@ Package.onUse(function(api) {
     'lib/views/toggleView.js',
 
     // Controller.
+    'lib/controller/headerBarController.js',
+    'lib/controller/infiniteScrollController.js',
     'lib/controller/navBarController.js',
     'lib/controller/navViewController.js',
-    'lib/controller/headerBarController.js',
     'lib/controller/listController.js',
     'lib/controller/sideMenuController.js',
     'lib/controller/spinnerController.js',
