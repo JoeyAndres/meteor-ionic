@@ -1,7 +1,7 @@
 Package.describe({
   name: "jandres:ionic",
   summary: "Ionic components for Meteor. No Angular!",
-  version: "1.24.0-alpha.12",
+  version: "1.24.0-alpha.13",
   git: "https://github.com/JoeyAndres/meteor-ionic.git"
 });
 
@@ -225,7 +225,8 @@ Package.onUse(function(api) {
   api.export("IonSideMenu");
   
   api.export([
-      // ionic Delegates.
-      '$ionicScrollDelegate'
+    // ionic Delegates.
+    '$ionicScrollDelegate',
+    '$ionicSideMenuDelegate'
   ]);
 });
