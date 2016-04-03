@@ -15,21 +15,17 @@ Template.ionOptionButton.onCreated(function() {
 
         this.onClick.set(isDefined(td.onClick) ? td.onClick : noop);
     });
-});
-
-Template.ionOptionButton.onRendered(function () {
-    let self = this,
-        $element = jqLite(this.firstNode),
-        $attr = {
-            onClick: function() {
-                stopPropagation.apply(this, arguments);
-                self.onClick.get().apply(this, arguments);
-            }
-        };
-    $element.toggleClass('button', true);
-    $attr.class = $element.attr('class');
 
     $(this).on('$postLink', () => {
+        let self = this,
+            $element = jqLite(this.firstNode),
+            $attr = {
+                onClick: function() {
+                    stopPropagation.apply(this, arguments);
+                    self.onClick.get().apply(this, arguments);
+                }
+            };
+        
         let $scope = this.$scope,
             itemCtrl = $scope.$itemCtrl;
 
@@ -44,4 +40,17 @@ Template.ionOptionButton.onRendered(function () {
         //Don't bubble click up to main .item
         $element.on('click', $attr.onClick);
     });
+});
+
+Template.ionOptionButton.onRendered(function () {
+    let self = this,
+        $element = jqLite(this.firstNode),
+        $attr = {
+            onClick: function() {
+                stopPropagation.apply(this, arguments);
+                self.onClick.get().apply(this, arguments);
+            }
+        };
+    $element.toggleClass('button', true);
+    $attr.class = $element.attr('class');
 });

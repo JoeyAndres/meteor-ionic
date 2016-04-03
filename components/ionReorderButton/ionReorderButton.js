@@ -13,19 +13,16 @@ Template.ionReorderButton.onCreated(function() {
         this.onReorder.set(isDefined(td.onReorder) ? td.onReorder : noop);
         this.onClick.set(isDefined(td.onClick) ? td.onClick : noop);
     });
-});
-
-Template.ionReorderButton.onRendered(function() {
-    let self = this,
-        $element = jqLite(this.firstNode),
-        $scope = this.$scope,
-        $attr = {
-            onReorder: function() { self.onReorder.get().apply(this, arguments) },
-            onClick: function() { self.onClick.get().apply(this, arguments) }
-        };
-    $element[0].setAttribute('data-prevent-scroll', true);
 
     $(this).on('$postLink', () => {
+        let self = this,
+            $element = jqLite(this.firstNode),
+            $scope = this.$scope,
+            $attr = {
+                onReorder: function() { self.onReorder.get().apply(this, arguments) },
+                onClick: function() { self.onClick.get().apply(this, arguments) }
+            };
+        
         var itemCtrl = $scope.$itemCtrl;
         var listCtrl = $scope.$listController;
         var onReorderFn = $attr.onReorder;
@@ -56,4 +53,15 @@ Template.ionReorderButton.onRendered(function() {
             container.addClass('visible active');
         }
     });
+});
+
+Template.ionReorderButton.onRendered(function() {
+    let self = this,
+        $element = jqLite(this.firstNode),
+        $scope = this.$scope,
+        $attr = {
+            onReorder: function() { self.onReorder.get().apply(this, arguments) },
+            onClick: function() { self.onClick.get().apply(this, arguments) }
+        };
+    $element[0].setAttribute('data-prevent-scroll', true);
 });

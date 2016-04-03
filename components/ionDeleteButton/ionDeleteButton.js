@@ -15,22 +15,20 @@ Template.ionDeleteButton.onCreated(function() {
 
         this.onClick.set(isDefined(td.onClick) ? td.onClick : noop);
     });
-});
-
-Template.ionDeleteButton.onRendered(function() {
-    let self = this,
-        $scope = this.$scope,
-        $element = jqLite(this.firstNode),
-        $attr = {
-            onClick: function() {
-                stopPropagation.apply(this, arguments);
-                self.onClick.get().apply(this, arguments);
-            }
-        };
 
     //Add the classes we need during the compile phase, so that they stay
     //even if something else like ngIf removes the element and re-addss it
     $(this).on('$postLink', () => {
+        let self = this,
+            $scope = this.$scope,
+            $element = jqLite(this.firstNode),
+            $attr = {
+                onClick: function() {
+                    stopPropagation.apply(this, arguments);
+                    self.onClick.get().apply(this, arguments);
+                }
+            };
+
         var itemCtrl = $scope.$itemCtrl;
         var listCtrl = $scope.$listController;
         var container = jqLite(ITEM_TPL_DELETE_BUTTON);

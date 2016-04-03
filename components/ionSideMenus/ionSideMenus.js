@@ -11,12 +11,14 @@ Template.ionSideMenus.onCreated(function() {
 
 Template.ionSideMenus.onRendered(function() {
     let $scope = this.$scope,
-        $element = jqLite(this.firstElement),
+        $element = jqLite(this.firstNode),
         $attrs = {
             enableMenuWithBackViews: this.enableMenuWithBackViews.get()
         };
     let ctrl = new $ionicSideMenus($scope, $attrs);
     $scope.$sideMenuCtrl = ctrl;
+    $element.data('$ionSideMenusController', ctrl);
+    
     $(this).on('$preLink', () => {
         ctrl.enableMenuWithBackViews($attrs.enableMenuWithBackViews);
 
