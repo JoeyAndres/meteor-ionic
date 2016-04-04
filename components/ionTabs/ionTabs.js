@@ -1,44 +1,102 @@
-Template.ionTabs.created = function () {
-  this.data = this.data || {};
-};
+Template.ionTabs.onCreated(function () {
+    this.new_scope = true;
+    this.data = this.data || {};
+});
 
-Template.ionTabs.rendered = function () {
-  if ((this.data.class && this.data.class.indexOf('tabs-top') > -1) || this.data.style === 'android' || ( !this.data.style && Platform.isAndroid())) {
-    Session.set('hasTabsTop', true);
-  } else {
-    Session.set('hasTabs', true);
-  }
+Template.ionTabs.onRendered(function () {
+    let $scope = this.$scope;
 
-  this.$('.tabs').children().each(function() {
-    var href = $(this).attr('href');
-    var current = Router.current().location.get().path;
-    if(href === current){
-      Session.set('ionTab.current', href);
-    }
-  });
-};
+    $scope.$emit('$stateChangeSuccess');
 
-Template.ionTabs.destroyed = function () {
-  Session.set('hasTabs', false);
-  Session.set('hasTabsTop', false);
-};
+    $(this).on('$preLink', () => {
+        let $element = jqLite(this.firstNode);
+        let tabsCtrl = new $ionicTabs($scope, $element);
+
+        $scope.tabsCtrl = tabsCtrl;
+        $scope.$hasTabs = new ReactiveVar(false);
+        $scope.$hasTabsTop = new ReactiveVar(false);
+
+        let tElement = $element;
+        let innerElement = this.$('.tab-nav.tabs');
+
+        tabsCtrl.$scope = $scope;
+        tabsCtrl.$element = $element;
+        tabsCtrl.$tabsElement = jqLite($element[0].querySelector('.tabs'));
+
+        tElement
+            .addClass('tabs-' + $ionicConfig.tabs.position() + ' tabs-' + $ionicConfig.tabs.style());
+
+        $ionicTabsDelegate.addInstance(tabsCtrl);
+
+        this.autorun(() => {
+            let td = Template.currentData();
+            if (!td) return;
+
+            let value = $element[0].className;
+
+            var isTabsTop = value.indexOf('tabs-top') !== -1;
+            var isHidden = value.indexOf('tabs-item-hide') !== -1;
+            $scope.$hasTabs.set(!isTabsTop && !isHidden);
+            $scope.$hasTabsTop.set(isTabsTop && !isHidden);
+            $scope.$emit('$ionicTabs.top', $scope.$hasTabsTop.get());
+        });
+
+        function emitLifecycleEvent(ev, data) {
+            ev.stopPropagation();
+            var previousSelectedTab = tabsCtrl.previousSelectedTab();
+            if (previousSelectedTab) {
+                previousSelectedTab.$broadcast(ev.name.replace('NavView', 'Tabs'), data);
+            }
+        }
+
+        $scope.$on('$ionicNavView.beforeLeave', emitLifecycleEvent);
+        $scope.$on('$ionicNavView.afterLeave', emitLifecycleEvent);
+        $scope.$on('$ionicNavView.leave', emitLifecycleEvent);
+
+        $scope.$on('$destroy', function () {
+            // variable to inform child tabs that they're all being blown away
+            // used so that while destorying an individual tab, each one
+            // doesn't select the next tab as the active one, which causes unnecessary
+            // loading of tab views when each will eventually all go away anyway
+            $scope.$tabsDestroy = true;
+            $ionicTabsDelegate.removeInstance(tabsCtrl);
+            tabsCtrl.$tabsElement = tabsCtrl.$element = tabsCtrl.$scope = innerElement = null;
+            delete $scope.$hasTabs;
+            delete $scope.$hasTabsTop;
+        });
+
+
+    });
+
+    this.$postLink = () => {
+        if (!$scope.tabsCtrl.selectedTab()) {
+            // all the tabs have been added
+            // but one hasn't been selected yet
+            $scope.tabCtrl.select(0);
+        }
+    };
+});
 
 Template.ionTabs.helpers({
-  classes: function () {
-    var classes = [];
+    tabs() {
+        let t = Template.instance();
+        let children = t.getChildren();
+        children = children.filter(t => t.view.name === 'Template.ionTab');
 
-    if (this.class) {
-      classes.push(this.class);
+        return children.map(child => {
+            let $childAttrs = child.$attrs;
+            return {
+                title: $childAttrs.title.get(),
+                icon: $childAttrs.icon.get(),
+                iconOn: $childAttrs.iconOn.get(),
+                iconOff: $childAttrs.iconOff.get(),
+                badge: $childAttrs.badge.get(),
+                hidden: $childAttrs.hidden.get(),
+                disabled: $childAttrs.disabled.get(),
+                badgeStyle: $childAttrs.badgeStyle.get(),
+
+                tabCtrl: child.tabCtrl
+            };
+        });
     }
-
-    if (this.style === 'android' || ( !this.style && Platform.isAndroid()) ) {
-      classes.push('tabs-top tabs-striped tabs-icon-left');
-    }
-
-    if (this.style === 'ios' || ( !this.style && Platform.isIOS()) ) {
-      classes.push('tabs-icon-top');
-    }
-
-    return classes.join(' ');
-  }
 });

@@ -1,7 +1,21 @@
 <template name="ionTabs">
-  <div class="{{classes}}">
-    <div class="tabs">
-      {{> UI.contentBlock}}
-    </div>
-  </div>
+    <ion-tabs class="{{class}}">
+        <div class="tab-nav tabs">
+            {{#each tabs}}
+                {{#ionTabNav
+                    title=title
+                    icon=icon
+                    iconOn=iconOn
+                    iconOff=iconOff
+                    badge=badge
+                    hidden=hidden
+                    disabled=disabled
+                    badgeStyle=badgeStyle
+                    tabCtrl=tabCtrl
+                    $tabScope=$tabScope
+                }}{{/ionTabNav}}
+            {{/each}}
+        </div>
+        {{> UI.contentBlock}}
+    </ion-tabs>
 </template>

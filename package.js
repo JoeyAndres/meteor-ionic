@@ -81,6 +81,8 @@ Package.onUse(function(api) {
     'lib/controller/spinnerController.js',
     'lib/controller/scrollController.js',
     'lib/controller/viewController.js',
+    'lib/controller/tabController.js',
+    'lib/controller/tabsController.js',
 
     // Service.
     'lib/service/body.js',
@@ -205,6 +207,9 @@ Package.onUse(function(api) {
     "components/ionTabs/ionTabs.html",
     "components/ionTabs/ionTabs.js",
 
+    "components/ionTabNav/ionTabNav.html",
+    "components/ionTabNav/ionTabNav.js",
+
     "components/ionTab/ionTab.html",
     "components/ionTab/ionTab.js",
 
@@ -228,6 +233,7 @@ Package.onUse(function(api) {
   api.export([
     // ionic Delegates.
     '$ionicScrollDelegate',
-    '$ionicSideMenuDelegate'
+    '$ionicSideMenuDelegate',
+    '$ionicTabsDelegate'
   ]);
 });

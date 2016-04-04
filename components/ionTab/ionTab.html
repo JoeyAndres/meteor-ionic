@@ -1,19 +1,7 @@
 <template name="ionTab">
-  <a class="{{classes}} {{isActive}}" href="{{url}}" data-ion-tab>
-    {{#if defaultIcon}}
-      {{#if isActive}}
-    <i class="icon ion-activeIcon"></i>
-      {{else}}
-        <i class="icon ion-defaultIcon"></i>
-      {{/if}}
-    {{/if}}
-
-    {{title}}
-
-    {{#if badgeNumber}}
-      <div class="badge badge-{{badgeColor}}">
-        {{badgeNumber}}
-      </div>
-    {{/if}}
-  </a>
+    <div class="tab-content hide {{class}}" style="{{style}}">
+        {{#if isTabActive}}
+          {{> UI.contentBlock}}
+        {{/if}}
+    </div>
 </template>
