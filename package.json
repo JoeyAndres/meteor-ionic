@@ -9,6 +9,10 @@
     "dgeni": "^0.4.2",
     "dgeni-packages": "^0.12.0",
     "gulp": "^3.9.1",
+    "gulp-sass": "^2.2.0",
+    "materialize-css": "^0.97.6",
+    "node-sass": "^3.4.2",
+    "run-sequence": "^1.1.5",
     "vinyl-paths": "^2.1.0"
   },
   "scripts": {

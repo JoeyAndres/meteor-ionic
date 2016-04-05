@@ -1,8 +1,4 @@
 /**
- * @module meteoric
- */
-
-/**
  * @ngdoc directive
  * @name exposeAsideWhen
  * @module meteoric

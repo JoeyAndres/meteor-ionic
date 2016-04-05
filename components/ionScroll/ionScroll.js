@@ -1,9 +1,10 @@
 /**
+ * @ngdoc directive
+ * @name ionScroll
  * @module meteoric
- */
-
-/**
- * @function ionScroll
+ * @delegate ionic.service:$ionicScrollDelegate
+ * @codepen mwFuh
+ * @restrict E
  *
  * @description
  * Creates a scrollable container for all content inside.

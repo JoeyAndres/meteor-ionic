@@ -33,6 +33,9 @@ module.exports = function(config) {
                 }
             ];
 
+            // Add a folder to search for our own templates to use when rendering docs
+            templateFinder.templateFolders.unshift(path.resolve(__dirname, 'templates'));
+
             // Specify where the writeFilesProcessor will write our generated doc files
             writeFilesProcessor.outputFolder  = config.dest;
         });
