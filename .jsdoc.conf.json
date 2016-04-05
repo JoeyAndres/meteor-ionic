@@ -1,0 +1,26 @@
+{
+    "plugins": ["plugins/markdown"],
+    "markdown": {
+        "tags": ["example"]
+    },
+    "tags": {
+        "allowUnknownTags": false
+    },
+    "source": {
+        "include": [
+            "components/"
+        ],
+        "includePattern": ".+\\.js(doc)?$",
+        "excludePattern": "(^|\\/|\\\\)_"
+    },
+    "opts": {
+        "encoding": "utf8",
+        "destination": "docs/",
+        "recurse": true,
+        "verbose": true
+    },
+    "templates": {
+        "cleverLinks": false,
+        "monospaceLinks": false
+    }
+}
