@@ -5,6 +5,7 @@
   "main": "package.js",
   "dependencies": {},
   "devDependencies": {
+    "gulp": "^3.9.1",
     "jsdoc": "^3.4.0"
   },
   "scripts": {
