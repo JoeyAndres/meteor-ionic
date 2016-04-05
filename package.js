@@ -157,6 +157,7 @@ Package.onUse(function(api) {
     "components/ionNavTitle/ionNavTitle.js",
 
     "components/ionExposeAsideWhen/ionExposeAsideWhen.js",
+    "components/ionGesture/ionGesture.js",
     "components/ionMenuClose/ionMenuClose.js",
     "components/ionMenuToggle/ionMenuToggle.js",
     "components/ionNavDirection/ionNavDirection.js",
@@ -231,6 +232,9 @@ Package.onUse(function(api) {
   api.export("IonSideMenu");
   
   api.export([
+    // Services.
+    '$ionicGesture',
+
     // ionic Delegates.
     '$ionicScrollDelegate',
     '$ionicSideMenuDelegate',

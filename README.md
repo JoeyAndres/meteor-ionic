@@ -62,7 +62,7 @@ A [Product Hunt](http://producthunt.com) clone built in Meteor Ionic. (In Progre
   * [x] ion-content
   * [x] ion-refresher (not necessary with Meteor)
   * [x] ion-pane
-* [ ] Events (use a 3rd party library?)
+* [x] Events
 * [x] Form Inputs (using [`meteoric:autoform-ionic`](https://github.com/meteoric/autoform-ionic))
   * [x] ion-checkbox
   * [x] ion-radio
