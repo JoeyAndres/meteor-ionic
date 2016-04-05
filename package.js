@@ -103,9 +103,6 @@ Package.onUse(function(api) {
     "components/ionBackdrop/ionBackdrop.html",
     "components/ionBackdrop/ionBackdrop.js",
 
-    "components/ionBody/ionBody.html",
-    "components/ionBody/ionBody.js",
-
     "components/ionContent/ionContent.html",
     "components/ionContent/ionContent.js",
 
