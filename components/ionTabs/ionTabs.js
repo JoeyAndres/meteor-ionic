@@ -6,8 +6,6 @@ Template.ionTabs.onCreated(function () {
 Template.ionTabs.onRendered(function () {
     let $scope = this.$scope;
 
-    $scope.$emit('$stateChangeSuccess');
-
     $(this).on('$preLink', () => {
         let $element = jqLite(this.firstNode);
         let tabsCtrl = new $ionicTabs($scope, $element);
