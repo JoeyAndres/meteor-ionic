@@ -9,10 +9,6 @@ Cordova.depends({
   'ionic-plugin-keyboard': '1.0.8'
 });
 
-Npm.depends({
-  jquery: '2.2.2'
-});
-
 Package.onUse(function(api) {
   api.versionsFrom("1.3");
 
@@ -32,8 +28,9 @@ Package.onUse(function(api) {
     "tracker",
     "session",
     "fourseven:scss@3.3.3",
+    'jquery',
 
-    "jandres:meteoric-sass@1.2.4"
+    "jandres:meteoric-sass@1.2.5"
   ], "client");
 
   api.addFiles([

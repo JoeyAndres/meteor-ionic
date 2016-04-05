@@ -57,9 +57,3 @@ Template.ionInfiniteScroll.onRendered(function() {
         }
     });
 });
-
-Template.ionInfiniteScroll.onDestroyed(function() {
-    this.enable.set(false);
-
-    this.finishInfiniteScroll && $(window).off('scroll.infiniteScrollComplete', this.finishInfiniteScroll);
-});
