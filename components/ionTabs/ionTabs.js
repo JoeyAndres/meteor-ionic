@@ -17,7 +17,7 @@ Template.ionTabs.onRendered(function () {
         $scope.$hasTabsTop = new ReactiveVar(false);
 
         let tElement = $element;
-        let innerElement = this.$('.tab-nav.tabs');
+        let innerElement = jqLite(this.$('.tab-nav.tabs')[0]);
 
         tabsCtrl.$scope = $scope;
         tabsCtrl.$element = $element;
@@ -68,13 +68,13 @@ Template.ionTabs.onRendered(function () {
 
     });
 
-    this.$postLink = () => {
+    $(this).on('$postLink', () => {
         if (!$scope.tabsCtrl.selectedTab()) {
             // all the tabs have been added
             // but one hasn't been selected yet
             $scope.tabCtrl.select(0);
         }
-    };
+    });
 });
 
 Template.ionTabs.helpers({

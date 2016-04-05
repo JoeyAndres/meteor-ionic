@@ -55,7 +55,7 @@ Template.ionTab.onRendered(function() {
         $element = jqLite(this.firstNode),
         $attrs = this.$attrs;
 
-    _.extend(this.$scope, {
+    _.extend($scope, {
         title: this.$attrs.title.get(),
         href: this.$attrs.href.get()
     });
