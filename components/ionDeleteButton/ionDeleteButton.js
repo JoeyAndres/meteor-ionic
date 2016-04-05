@@ -1,3 +1,33 @@
+/**
+ * @ngdoc directive
+ * @name ionDeleteButton
+ * @parent ionic.directive:ionItem
+ * @module meteoric
+ * @restrict E
+ * @description
+ * Creates a delete button inside a list item, that is visible when the
+ * {@link ionic.directive:ionList ionList parent's} `show-delete` evaluates to true or
+ * `$ionicListDelegate.showDelete(true)` is called.
+ *
+ * Takes any ionicon as a class.
+ *
+ * See {@link ionic.directive:ionList} for a complete example & explanation.
+ *
+ * @usage
+ *
+ * ```html
+ * <ion-list show-delete="shouldShowDelete">
+ *   <ion-item>
+ *     <ion-delete-button class="ion-minus-circled"></ion-delete-button>
+ *     Hello, list item!
+ *   </ion-item>
+ * </ion-list>
+ * <ion-toggle ng-model="shouldShowDelete">
+ *   Show Delete?
+ * </ion-toggle>
+ * ```
+ */
+
 var ITEM_TPL_DELETE_BUTTON =
     '<div class="item-left-edit item-delete enable-pointer-events">' +
     '</div>';

@@ -1,3 +1,23 @@
+/**
+ * @function ionSideMenu
+ *
+ * @description
+ * A container for a side menu, sibling to an {@link ionic.directive:ionSideMenuContent} directive.
+ *
+ * ```html
+ * <ion-side-menu
+ *   side="left"
+ *   width="myWidthValue + 20"
+ *   is-enabled="shouldLeftSideMenuBeEnabled()">
+ * </ion-side-menu>
+ * ```
+ * For a complete side menu example, see the
+ * {@link ionic.directive:ionSideMenus} documentation.
+ *
+ * @param {string} side Which side the side menu is currently on.  Allowed values: 'left' or 'right'.
+ * @param {boolean=} is-enabled Whether this side menu is enabled.
+ * @param {number=} width How many pixels wide the side menu should be.  Defaults to 275.
+ */
 Template.ionSideMenu.onCreated(function() {
     this.new_scope = true;
 

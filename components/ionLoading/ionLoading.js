@@ -1,3 +1,46 @@
+/**
+ * @ngdoc service
+ * @name $ionicLoading
+ * @module meteoric
+ * @description
+ * An overlay that can be used to indicate activity while blocking user
+ * interaction.
+ *
+ * @usage
+ * ```js
+ * angular.module('LoadingApp', ['ionic'])
+ * .controller('LoadingCtrl', function($scope, $ionicLoading) {
+ *   $scope.show = function() {
+ *     $ionicLoading.show({
+ *       template: 'Loading...'
+ *     });
+ *   };
+ *   $scope.hide = function(){
+ *     $ionicLoading.hide();
+ *   };
+ * });
+ * ```
+ */
+/**
+ * @ngdoc object
+ * @name $ionicLoadingConfig
+ * @module meteoric
+ * @description
+ * Set the default options to be passed to the {@link ionic.service:$ionicLoading} service.
+ *
+ * @usage
+ * ```js
+ * var app = angular.module('myApp', ['ionic'])
+ * app.constant('$ionicLoadingConfig', {
+ *   template: 'Default Loading Template...'
+ * });
+ * app.controller('AppCtrl', function($scope, $ionicLoading) {
+ *   $scope.showLoading = function() {
+ *     $ionicLoading.show(); //options default to values in $ionicLoadingConfig
+ *   };
+ * });
+ * ```
+ */
 IonLoading = {
   show: function (userOptions) {
     var userOptions = userOptions || {};

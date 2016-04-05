@@ -1,3 +1,31 @@
+/**
+ * @ngdoc directive
+ * @name ionOptionButton
+ * @parent ionic.directive:ionItem
+ * @module meteoric
+ * @restrict E
+ * @description
+ * Creates an option button inside a list item, that is visible when the item is swiped
+ * to the left by the user.  Swiped open option buttons can be hidden with
+ * {@link ionic.service:$ionicListDelegate#closeOptionButtons $ionicListDelegate.closeOptionButtons}.
+ *
+ * Can be assigned any button class.
+ *
+ * See {@link ionic.directive:ionList} for a complete example & explanation.
+ *
+ * @usage
+ *
+ * ```html
+ * <ion-list>
+ *   <ion-item>
+ *     I love kittens!
+ *     <ion-option-button class="button-positive">Share</ion-option-button>
+ *     <ion-option-button class="button-assertive">Edit</ion-option-button>
+ *   </ion-item>
+ * </ion-list>
+ * ```
+ */
+
 var ITEM_TPL_OPTION_BUTTONS =
     '<div class="item-options invisible">' +
     '</div>';

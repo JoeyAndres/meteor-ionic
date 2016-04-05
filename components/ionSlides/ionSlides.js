@@ -1,3 +1,38 @@
+
+/**
+ * @ngdoc directive
+ * @name ionSlides
+ * @module meteoric
+ * @delegate ionic.service:$ionicSlideBoxDelegate
+ * @restrict E
+ * @description
+ * The Slides component is a powerful multi-page container where each page can be swiped or dragged between.
+ *
+ * Note: this is a new version of the Ionic Slide Box based on the [Swiper](http://www.idangero.us/swiper/#.Vmc1J-ODFBc) widget from
+ * [idangerous](http://www.idangero.us/).
+ *
+ * ![SlideBox](http://ionicframework.com.s3.amazonaws.com/docs/controllers/slideBox.gif)
+ *
+ * @usage
+ * ```html
+ * <ion-slides on-slide-changed="slideHasChanged($index)">
+ *   <ion-slide-page>
+ *     <div class="box blue"><h1>BLUE</h1></div>
+ *   </ion-slide-page>
+ *   <ion-slide-page>
+ *     <div class="box yellow"><h1>YELLOW</h1></div>
+ *   </ion-slide-page>
+ *   <ion-slide-page>
+ *     <div class="box pink"><h1>PINK</h1></div>
+ *   </ion-slide-page>
+ * </ion-slides>
+ * ```
+ *
+ * @param {string=} delegate-handle The handle used to identify this slideBox
+ * with {@link ionic.service:$ionicSlideBoxDelegate}.
+ * @param {object=} options to pass to the widget. See the full ist here: [http://www.idangero.us/swiper/api/](http://www.idangero.us/swiper/api/)
+ */
+
 $ionSlidesController = function($scope, $element, meteor) {
     var _this = this;
 

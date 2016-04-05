@@ -1,3 +1,7 @@
+/**
+ * @module meteoric
+ */
+
 Template.ionSideMenus.onCreated(function() {
     this.enableMenuWithBackViews = new ReactiveVar(false);
 

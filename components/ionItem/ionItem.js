@@ -1,3 +1,28 @@
+/**
+ * @ngdoc directive
+ * @name ionItem
+ * @parent ionic.directive:ionList
+ * @module meteoric
+ * @restrict E
+ * Creates a list-item that can easily be swiped,
+ * deleted, reordered, edited, and more.
+ *
+ * See {@link ionic.directive:ionList} for a complete example & explanation.
+ *
+ * Can be assigned any item class name. See the
+ * [list CSS documentation](/docs/components/#list).
+ *
+ *
+ * ```html
+ * <ion-list>
+ *   <ion-item>Hello!</ion-item>
+ *   <ion-item href="#/detail">
+ *     Link to detail page
+ *   </ion-item>
+ * </ion-list>
+ * ```
+ */
+
 function url() {
     if (this.data.href) {
         return this.data.href;

@@ -1,3 +1,51 @@
+/**
+ * @ngdoc directive
+ * @name ionTabs
+ * @module meteoric
+ * @delegate ionic.service:$ionicTabsDelegate
+ * @restrict E
+ * @codepen odqCz
+ *
+ * @description
+ * Powers a multi-tabbed interface with a Tab Bar and a set of "pages" that can be tabbed
+ * through.
+ *
+ * Assign any [tabs class](/docs/components#tabs) to the element to define
+ * its look and feel.
+ *
+ * For iOS, tabs will appear at the bottom of the screen. For Android, tabs will be at the top
+ * of the screen, below the nav-bar. This follows each OS's design specification, but can be
+ * configured with the {@link ionic.provider:$ionicConfigProvider}.
+ *
+ * See the {@link ionic.directive:ionTab} directive's documentation for more details on
+ * individual tabs.
+ *
+ * Note: do not place ion-tabs inside of an ion-content element; it has been known to cause a
+ * certain CSS bug.
+ *
+ * @usage
+ * ```html
+ * <ion-tabs class="tabs-positive tabs-icon-top">
+ *
+ *   <ion-tab title="Home" icon-on="ion-ios-filing" icon-off="ion-ios-filing-outline">
+ *     <!-- Tab 1 content -->
+ *   </ion-tab>
+ *
+ *   <ion-tab title="About" icon-on="ion-ios-clock" icon-off="ion-ios-clock-outline">
+ *     <!-- Tab 2 content -->
+ *   </ion-tab>
+ *
+ *   <ion-tab title="Settings" icon-on="ion-ios-gear" icon-off="ion-ios-gear-outline">
+ *     <!-- Tab 3 content -->
+ *   </ion-tab>
+ *
+ * </ion-tabs>
+ * ```
+ *
+ * @param {string=} delegate-handle The handle used to identify these tabs
+ * with {@link ionic.service:$ionicTabsDelegate}.
+ */
+
 Template.ionTabs.onCreated(function () {
     this.new_scope = true;
     this.data = this.data || {};

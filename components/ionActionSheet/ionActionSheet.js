@@ -1,4 +1,68 @@
-IonActionSheet = {
+/**
+ * @ngdoc service
+ * @name $ionicActionSheet
+ * @module meteoric
+ * @description
+ * The Action Sheet is a slide-up pane that lets the user choose from a set of options.
+ * Dangerous options are highlighted in red and made obvious.
+ *
+ * There are easy ways to cancel out of the action sheet, such as tapping the backdrop or even
+ * hitting escape on the keyboard for desktop testing.
+ *
+ * ![Action Sheet](http://ionicframework.com.s3.amazonaws.com/docs/controllers/actionSheet.gif)
+ *
+ * To trigger an Action Sheet in your code, use the $ionicActionSheet service in your angular controllers:
+ *
+ * @usage
+ * 
+ * ```handlebars
+ * <template name="actionSheet">
+ *   {{#ionView title="Action Sheet"}}
+ *     {{#ionContent}}
+ *       <div class="padding">
+ *         <button class="button button-large button-stable" data-action="showActionSheet">
+ *           Show Action Sheet
+ *         </button>
+ *       </div>
+ *     {{/ionContent}}
+ *   {{/ionView}}
+ * </template>
+ * ```
+ *
+ * ```js
+ * Template.actionSheet.events({
+ * 'click [data-action=showActionSheet]': function (event, template) {
+ *   IonActionSheet.show({
+ *     titleText: 'ActionSheet Example',
+ *     buttons: [
+ *       { text: 'Share <i class="icon ion-share"></i>' },
+ *       { text: 'Move <i class="icon ion-arrow-move"></i>' },
+ *     ],
+ *     destructiveText: 'Delete',
+ *     cancelText: 'Cancel',
+ *     cancel: function() {
+ *       console.log('Cancelled!');
+ *     },
+ *     buttonClicked: function(index) {
+ *       if (index === 0) {
+ *         console.log('Shared!');
+ *       }
+ *       if (index === 1) {
+ *         console.log('Moved!');
+ *       }
+ *       return true;
+ *     },
+ *     destructiveButtonClicked: function() {
+ *       console.log('Destructive Action!');
+ *       return true;
+ *     }
+ *   });
+ * }
+ *});
+ * ```
+ *
+ */
+export let IonActionSheet = {
   transitionEndEvent: 'transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd',
 
   show: function (options) {

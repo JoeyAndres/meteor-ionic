@@ -1,3 +1,7 @@
+/**
+ * @module meteoric
+ */
+
 Template.ionTabNav.onCreated(function() {
     this.new_scope = true;
 

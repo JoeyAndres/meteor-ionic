@@ -1,3 +1,4 @@
+
 IonPopup = {
   show: function (options) {
     this.template = Template.ionPopup;

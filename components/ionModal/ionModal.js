@@ -1,3 +1,7 @@
+/**
+ * @module meteoric
+ */
+
 IonModal = {
   transitionEndEvent: 'transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd',
   animationEndEvent: 'animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd',

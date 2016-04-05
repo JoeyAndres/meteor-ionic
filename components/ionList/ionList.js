@@ -1,3 +1,85 @@
+/**
+ * @ngdoc directive
+ * @name ionList
+ * @module meteoric
+ * @delegate ionic.service:$ionicListDelegate
+ * @restrict E
+ * @description
+ * The List is a widely used interface element in almost any mobile app, and can include
+ * content ranging from basic text all the way to buttons, toggles, icons, and thumbnails.
+ *
+ * Both the list, which contains items, and the list items themselves can be any HTML
+ * element. The containing element requires the `list` class and each list item requires
+ * the `item` class.
+ *
+ * However, using the ionList and ionItem directives make it easy to support various
+ * interaction modes such as swipe to edit, drag to reorder, and removing items.
+ *
+ * Related: {@link ionic.directive:ionItem}, {@link ionic.directive:ionOptionButton}
+ * {@link ionic.directive:ionReorderButton}, {@link ionic.directive:ionDeleteButton}, [`list CSS documentation`](/docs/components/#list).
+ *
+ * @usage
+ *
+ * Basic Usage:
+ *
+ * ```html
+ * <ion-list>
+ *   <ion-item ng-repeat="item in items">
+ *     {% raw %}Hello, {{item}}!{% endraw %}
+ *   </ion-item>
+ * </ion-list>
+ * ```
+ *
+ * Advanced Usage: Thumbnails, Delete buttons, Reordering, Swiping
+ *
+ * ```html
+ * <ion-list ng-controller="MyCtrl"
+ *           show-delete="shouldShowDelete"
+ *           show-reorder="shouldShowReorder"
+ *           can-swipe="listCanSwipe">
+ *   <ion-item ng-repeat="item in items"
+ *             class="item-thumbnail-left">
+ *
+ *     {% raw %}<img ng-src="{{item.img}}">
+ *     <h2>{{item.title}}</h2>
+ *     <p>{{item.description}}</p>{% endraw %}
+ *     <ion-option-button class="button-positive"
+ *                        ng-click="share(item)">
+ *       Share
+ *     </ion-option-button>
+ *     <ion-option-button class="button-info"
+ *                        ng-click="edit(item)">
+ *       Edit
+ *     </ion-option-button>
+ *     <ion-delete-button class="ion-minus-circled"
+ *                        ng-click="items.splice($index, 1)">
+ *     </ion-delete-button>
+ *     <ion-reorder-button class="ion-navicon"
+ *                         on-reorder="reorderItem(item, $fromIndex, $toIndex)">
+ *     </ion-reorder-button>
+ *
+ *   </ion-item>
+ * </ion-list>
+ * ```
+ *
+ *```javascript
+ * app.controller('MyCtrl', function($scope) {
+*  $scope.shouldShowDelete = false;
+*  $scope.shouldShowReorder = false;
+*  $scope.listCanSwipe = true
+* });
+ *```
+ *
+ * @param {string=} delegate-handle The handle used to identify this list with
+ * {@link ionic.service:$ionicListDelegate}.
+ * @param type {string=} The type of list to use (list-inset or card)
+ * @param show-delete {boolean=} Whether the delete buttons for the items in the list are
+ * currently shown or hidden.
+ * @param show-reorder {boolean=} Whether the reorder buttons for the items in the list are
+ * currently shown or hidden.
+ * @param can-swipe {boolean=} Whether the items in the list are allowed to be swiped to reveal
+ * option buttons. Default: true.
+ */
 Template.ionList.onCreated(function() {
     this.showDelete = new ReactiveVar(false);
     this.showReorder = new ReactiveVar(false);

@@ -1,3 +1,7 @@
+/**
+ * @module meteoric
+ */
+
 Template.ionSubfooterBar.rendered = function () {
   Session.set('hasSubfooter', true);
 };
