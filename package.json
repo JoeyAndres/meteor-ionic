@@ -1,0 +1,23 @@
+{
+  "name": "meteoric",
+  "version": "1.2.4",
+  "description": "Meteoric external development tools.",
+  "main": "package.js",
+  "dependencies": {},
+  "devDependencies": {
+    "jsdoc": "^3.4.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoeyAndres/meteor-ionic.git"
+  },
+  "author": "Joey Andres",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoeyAndres/meteor-ionic/issues"
+  },
+  "homepage": "https://github.com/JoeyAndres/meteor-ionic#readme"
+}
