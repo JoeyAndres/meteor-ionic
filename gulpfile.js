@@ -1,12 +1,14 @@
 var path = require('path'),
     gulp = require('gulp'),
-    sass = require('gulp-sass'),
     del = require('del'),
     es = require('event-stream'),
     _ = require('underscore'),
     template = require('gulp-template');
 var runSequence = require('run-sequence');
 var Dgeni = require('dgeni');
+var exec = require('child_process').exec;
+var insert = require('gulp-insert-lines');
+var rename = require("gulp-rename");
 
 var paths = {
     js: ['./src/components/**/*.js'],
@@ -15,18 +17,13 @@ var paths = {
 };
 
 gulp.task('dgeni-clean', function() {
-    return del('./doc-build');
-});
-
-gulp.task('migrate-materialize-dist', function() {
-    return gulp.src('node_modules/materialize-css/dist/**/*')
-        .pipe(gulp.dest(path.resolve(__dirname, './doc-build/public/materialize')));
+    return del('./doc-build/client');
 });
 
 gulp.task('dgeni', ['dgeni-clean'], function(done) {
     var dgeni = new Dgeni([require('./docs/dgeni-meteoric')({
         src: paths.js,
-        dest: './doc-build'
+        dest: './doc-build/client'
     })]);
     return new Promise(function(resolve) {
         dgeni.generate().then(function() { resolve(); });
@@ -35,12 +32,11 @@ gulp.task('dgeni', ['dgeni-clean'], function(done) {
 
 gulp.task('doc-styles', function() {
     return gulp.src('docs/styles/main.scss')
-        .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest('./doc-build/public/css'));
+        .pipe(gulp.dest('doc-build/client/styles'));
 });
 
 gulp.task('doc-side-nav', function() {
-    var docPath = './doc-build/partials/api';
+    var docPath = './doc-build/client/partials/api';
     var modules = [];
 
     return gulp.src([
@@ -54,9 +50,10 @@ gulp.task('doc-side-nav', function() {
     })).on('end', function() {
         modules = modules.map(function(m) {
             // get rid of .html,
+            var segmented = m.split('.html')[0].split('/');
             m = {
-                path: '/meteor-ionic/doc-build/partials/api/' + m,
-                segmented: m.split('.html')[0].split('/')
+                path: 'DocPage' + segmented[segmented.length - 1],
+                segmented: segmented
             };
             return m;
         });
@@ -77,16 +74,76 @@ gulp.task('doc-side-nav', function() {
 
         return gulp.src('docs/templates/sidenav.template.html')
             .pipe(template({main_modules: main_modules}))
-            .pipe(gulp.dest('docs/templates/temp'));
+            .pipe(gulp.dest('doc-build/client/templates'));
+    });
+});
+
+gulp.task('create-meteor-doc-project', function(cb) {
+    exec('meteor create meteoric-doc', function(err, stdout, stderr) {
+        console.log(stdout);
+        console.log(stderr);
+
+        console.log('Renaming meteoric-doc to doc-build ...');
+        exec('rm -rf doc-build', function(err, stdout, stderr) {
+            console.log(stdout);
+            console.log(stderr);
+
+            exec('mv meteoric-doc doc-build', function (err, stdout, stderr) {
+                console.log(stdout);
+                console.log(stderr);
+                console.log('done.');
+                cb(err);
+            });
+        });
+    });
+});
+
+gulp.task('setup-meteor-doc-project-packages', function() {
+    gulp.src('docs/templates/packages.template')
+        .pipe(rename('packages'))
+        .pipe(gulp.dest('doc-build/.meteor'));
+});
+
+gulp.task('clean-up-meteor-doc-project', function(cb) {
+    exec('rm -rf doc-build/server', function(err, stdout, stderr) {
+        console.log(stdout);
+        console.log(stderr);
+        cb(err);
+    });
+});
+
+gulp.task('create-router-meteor-doc-project', function(cb) {
+    var docPath = './doc-build/client/partials/api';
+    var modules = [];
+
+    return gulp.src([
+        docPath + '/meteoric/{directive,object,service}/**/*.{md,html,markdown}'
+    ]).pipe(es.map(function(file, callback) {
+        // Grab relative path from ionic-site root
+        var relpath = file.path.replace(RegExp('^.*?' + docPath + '/'), '');
+        modules.push(relpath);
+
+        callback();
+    })).on('end', function() {
+        modules = modules.map(function(m) {
+            // get rid of .html,
+            var segmented = m.split('.html')[0].split('/');
+            return 'DocPage' + segmented[segmented.length - 1];
+        });
+
+        return gulp.src('docs/templates/router.template.js')
+            .pipe(template({modules: modules}))
+            .pipe(gulp.dest('doc-build/lib'));
     });
 });
 
 gulp.task('doc', function() {
     runSequence(
+        'create-meteor-doc-project',
+        'setup-meteor-doc-project-packages',
+        'clean-up-meteor-doc-project',
         'dgeni',
-        'doc-side-nav',
-        'dgeni',
-        'migrate-materialize-dist',
+        'create-router-meteor-doc-project',
         'doc-styles');
 });
 
