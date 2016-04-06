@@ -1,5 +1,5 @@
 <h1>{{ doc.codeName }} ({{ doc.outputPath }})</h1>
-<p>{{ doc.description }}</p>
+<p class="flow-text">{{ doc.description }}</p>
 
 <p>{{ doc.usage }}</p>
 
@@ -16,7 +16,7 @@
 
 {%- if doc.returns %}
 <h2>Returns</h2>
-<p>
+<p class="flow-text">
   { {{ doc.returns.typeList }} } - {{ doc.returns.description }}
 </p>
 {%- endif %}

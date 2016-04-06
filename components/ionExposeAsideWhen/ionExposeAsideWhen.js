@@ -23,6 +23,8 @@
  * as the value, such as `(min-width:600px)` or even multiple queries such as
  * `(min-width:750px) and (max-width:1200px)`.
  *
+ * @usage
+ *
  * ```html
  * <ion-side-menus>
  *   <!-- Center content -->

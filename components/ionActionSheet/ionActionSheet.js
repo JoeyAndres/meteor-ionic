@@ -11,9 +11,8 @@
  *
  * ![Action Sheet](http://ionicframework.com.s3.amazonaws.com/docs/controllers/actionSheet.gif)
  *
- * To trigger an Action Sheet in your code, use the $ionicActionSheet service in your angular controllers:
- *
  * @usage
+ * To trigger an Action Sheet in your code, use the $ionicActionSheet service in your angular controllers:
  * 
  * ```handlebars
  * <template name="actionSheet">

@@ -15,7 +15,8 @@ module.exports = function(config) {
         .config(function(log,
                          readFilesProcessor,
                          templateFinder,
-                         writeFilesProcessor) {
+                         writeFilesProcessor,
+                         moduleDocsProcessor) {
 
             // Set logging level
             log.level = 'info';
@@ -27,7 +28,7 @@ module.exports = function(config) {
             readFilesProcessor.sourceFiles = [
                 {
                     // Process all js files in `src` and its subfolders ...
-                    include: 'components/**/*.js'
+                    include: ['components/**/*.js']
                     // When calculating the relative path to these files use this as the base path.
                     // So `src/foo/bar.js` will have relative path of `foo/bar.js`
                 }
