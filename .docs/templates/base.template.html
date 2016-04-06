@@ -5,7 +5,6 @@
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="/meteor-ionic/doc-build/public/css/materialize.min.css"  media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="/meteor-ionic/doc-build/public/css/main.css"  media="screen,projection"/>
 
     <!--Let browser know website is optimized for mobile-->
@@ -27,7 +26,7 @@
                 <li><a href="collapsible.html"><i class="material-icons">refresh</i></a></li>
                 <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
             </ul>
-            <ul id="slide-out" class="side-nav fixed" id="side-nav-placeholder"></ul>
+            {% include "temp/sidenav.template.html" -%}
             <ul>
                 <a href="#" data-activates="slide-out" class="button-collapse">
                     <i class="material-icons">view_headline</i>

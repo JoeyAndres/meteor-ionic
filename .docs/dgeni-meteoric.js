@@ -15,11 +15,10 @@ module.exports = function(config) {
         .config(function(log,
                          readFilesProcessor,
                          templateFinder,
-                         writeFilesProcessor,
-                         moduleDocsProcessor) {
+                         writeFilesProcessor) {
 
             // Set logging level
-            log.level = 'info';
+            log.level = 'error';
 
             // Specify the base path used when resolving relative paths to source and output files
             readFilesProcessor.basePath = path.resolve(__dirname, '..');

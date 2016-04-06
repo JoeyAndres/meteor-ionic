@@ -1,3 +1,10 @@
+@import "../../node_modules/materialize-css/sass/components/_color.scss";
+@import "../../node_modules/materialize-css/sass/components/_variables.scss";
+
+$sidenav-item-height: 32px;
+
+@import "../../node_modules/materialize-css/sass/materialize.scss";
+
 header, main, footer {
   padding-left: 240px;
 }
@@ -14,4 +21,8 @@ header, main, footer {
   box-sizing: border-box;
 
   padding: 20px;
+}
+
+.collapsible-body {
+  display: block;
 }

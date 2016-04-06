@@ -2,11 +2,9 @@ var path = require('path'),
     gulp = require('gulp'),
     sass = require('gulp-sass'),
     del = require('del'),
-    vinylPaths = require('vinyl-paths'),
     es = require('event-stream'),
     _ = require('underscore'),
     template = require('gulp-template');
-
 var runSequence = require('run-sequence');
 var Dgeni = require('dgeni');
 
@@ -17,20 +15,21 @@ var paths = {
 };
 
 gulp.task('dgeni-clean', function() {
-    gulp.src('./doc-build/**/*')
-        .pipe(vinylPaths(del));
+    return del('./doc-build');
 });
 
-gulp.task('dgeni-migrate-materialize-dist', ['dgeni-clean'], function() {
-    gulp.src('./node_modules/materialize-css/dist/**/*')
-        .pipe(gulp.dest(path.resolve(__dirname, './doc-build/public')));
+gulp.task('migrate-materialize-dist', function() {
+    return gulp.src('node_modules/materialize-css/dist/**/*')
+        .pipe(gulp.dest(path.resolve(__dirname, './doc-build/public/materialize')));
 });
 
-gulp.task('dgeni', ['dgeni-migrate-materialize-dist'], function() {
+gulp.task('dgeni', ['dgeni-clean'], function(done) {
     var dgeni = new Dgeni([require('./.docs/dgeni-meteoric')({
         dest: './doc-build'
     })]);
-    return dgeni.generate();
+    return new Promise(function(resolve) {
+        dgeni.generate().then(function() { resolve(); });
+    });
 });
 
 gulp.task('doc-styles', function() {
@@ -39,20 +38,10 @@ gulp.task('doc-styles', function() {
         .pipe(gulp.dest('./doc-build/public/css'));
 });
 
-gulp.task('doc', ['dgeni', 'doc-styles'], function() {
+gulp.task('doc-side-nav', function() {
     var docPath = './doc-build/partials/api';
     var modules = [];
-    var through2 = require('through2');
 
-    function synchro (done) {
-        return through2.obj(function (data, enc, cb) {
-                cb();
-            },
-            function (cb) {
-                cb();
-                done();
-            });
-    }
     return gulp.src([
         docPath + '/meteoric/{directive,object,service}/**/*.{md,html,markdown}'
     ]).pipe(es.map(function(file, callback) {
@@ -65,7 +54,7 @@ gulp.task('doc', ['dgeni', 'doc-styles'], function() {
         modules = modules.map(function(m) {
             // get rid of .html,
             m = {
-                path: m,
+                path: '/meteor-ionic/doc-build/partials/api/' + m,
                 segmented: m.split('.html')[0].split('/')
             };
             return m;
@@ -74,19 +63,29 @@ gulp.task('doc', ['dgeni', 'doc-styles'], function() {
         var main_modules = _.union(modules.map(function(m) {
             return m.segmented[1];
         })).map(function(m) {
-            m = {
+            var childModules = modules.filter(function(m2) {
+                return m2.segmented[1] == m;
+            });
+            var new_m = {
                 name: m,
-                childModules: modules.filter(function(m2) {
-                    return m2.segmented[1] == m;
-                })
+                path:  childModules[0].path,
+                childModules: childModules
             };
-            return m;
+            return new_m;
         });
 
-        gulp.src('./.docs/templates/sidenav.template.html')
+        return gulp.src('./.docs/templates/sidenav.template.html')
             .pipe(template({main_modules: main_modules}))
             .pipe(gulp.dest('.docs/templates/temp'));
     });
+});
+
+gulp.task('doc', function() {
+    runSequence('dgeni',
+        'doc-side-nav',
+        'dgeni',
+        'migrate-materialize-dist',
+        'doc-styles');
 });
 
 // Watcher section.

@@ -1,18 +1,22 @@
-<ul id="slide-out" class="side-nav fixed">
+<ul id="slide-out" class="side-nav fixed table-of-contents section">
     <img src="/meteoric/meteoric-logo.png" width="240px" height="240px" id="meteoric-sidebar-logo"/>
 
-    <%
-    _.forEach(main_modules, function(main_module) {
-      %>
-        <li><a href="#!"><%=
-            main_module.name
-            %></a><ul>
-            <%
-            _.forEach(main_module.childModules, function(child_module) { %>
-              <li><a href="#!"><%= child_module.segmented[2]%></a></li>
-            <% }); %>
-        </ul></li>
-      <%
-    });
-    %>
+    <% _.forEach(main_modules, function(main_module) { %>
+    <li class="bold">
+        <a href="<%= main_module.path %>" class="collapsible-header">
+            <%= main_module.name %>
+        </a>
+        <div class="collapsible-body">
+            <ul>
+                <% _.forEach(main_module.childModules, function(child_module) { %>
+                <li class="section">
+                    <a href="<%= child_module.path %>">
+                        <%= child_module.segmented[2]%>
+                    </a>
+                </li>
+                <% }); %>
+            </ul>
+        </div>
+    </li>
+    <% }); %>
 </ul>
