@@ -9,9 +9,9 @@ var runSequence = require('run-sequence');
 var Dgeni = require('dgeni');
 
 var paths = {
-    js: ['./components/**/*.js'],
-    templates: ['./components/**/*.html'],
-    docStyles: ['docs/styles/**/*.scss']
+    js: ['./src/components/**/*.js'],
+    templates: ['./src/components/**/*.html'],
+    docStyles: ['./docs/styles/**/*.scss']
 };
 
 gulp.task('dgeni-clean', function() {
@@ -24,7 +24,8 @@ gulp.task('migrate-materialize-dist', function() {
 });
 
 gulp.task('dgeni', ['dgeni-clean'], function(done) {
-    var dgeni = new Dgeni([require('docs/dgeni-meteoric')({
+    var dgeni = new Dgeni([require('./docs/dgeni-meteoric')({
+        src: paths.js,
         dest: './doc-build'
     })]);
     return new Promise(function(resolve) {
