@@ -1,0 +1,27 @@
+<template name="layout">
+    <header>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo center">Meteoric</a>
+                <ul id="nav-mobile" class="left hide-on-med-and-down">
+                    <li><a href="{{pathFor route='DocPageIndex'}}">Docs</a></li>
+                    <li><a href="{{pathFor route='About'}}">About</a></li>
+                </ul>
+                <ul id="nav-mobile" class="left hide-on-large-only">
+                    <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+                </ul>
+
+                {{> DocSideNav}}
+
+                <script>
+                    $(document).ready(function(){
+                        $(".button-collapse").sideNav();
+                    });
+                </script>
+            </div>
+        </nav>
+    </header>
+    <main class="container">
+        {{> yield}}
+    </main>
+</template>

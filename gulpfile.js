@@ -16,8 +16,12 @@ var paths = {
     docStyles: ['./docs/styles/**/*.scss']
 };
 
-gulp.task('dgeni-clean', function() {
-    return del('./doc-build/client');
+gulp.task('dgeni-clean', function(cb) {
+    exec('rm -rf doc-build/client/partials', function(err, stdout, stderr) {
+        console.log(stdout);
+        console.log(stderr);
+        cb(err);
+    });
 });
 
 gulp.task('dgeni', ['dgeni-clean'], function(done) {
@@ -36,7 +40,7 @@ gulp.task('doc-styles', function() {
 });
 
 gulp.task('doc-side-nav', function() {
-    var docPath = './doc-build/client/partials/api';
+    var docPath = 'doc-build/client/partials/api';
     var modules = [];
 
     return gulp.src([
@@ -74,6 +78,7 @@ gulp.task('doc-side-nav', function() {
 
         return gulp.src('docs/templates/meteor/sidenav.template.html')
             .pipe(template({main_modules: main_modules}))
+            .pipe(rename('doc-side-nav.html'))
             .pipe(gulp.dest('doc-build/client/templates'));
     });
 });
@@ -104,8 +109,16 @@ gulp.task('setup-meteor-doc-project-packages', function() {
         .pipe(gulp.dest('doc-build/.meteor'));
 });
 
+gulp.task('setup-meteor-doc-project-templates', function() {
+    return gulp.src([
+        'docs/templates/meteor/index.html',
+        'docs/templates/meteor/layout.html',
+        'docs/templates/meteor/templates/**/*'
+    ]).pipe(gulp.dest('doc-build/client/templates'));
+});
+
 gulp.task('clean-up-meteor-doc-project', function(cb) {
-    exec('rm -rf doc-build/server', function(err, stdout, stderr) {
+    exec('rm -rf doc-build/server doc-build/client/main.*', function(err, stdout, stderr) {
         console.log(stdout);
         console.log(stderr);
         cb(err);
@@ -137,11 +150,22 @@ gulp.task('create-router-meteor-doc-project', function(cb) {
     });
 });
 
+gulp.task('copy-meteor-doc-public-files', function() {
+    return gulp.src('docs/templates/meteor/public/**/*.*', { base: './' })
+        .pipe(rename({
+            dirname: ""
+        }))
+        .pipe(gulp.dest('doc-build/public'));
+});
+
 gulp.task('doc', function() {
     runSequence(
         'create-meteor-doc-project',
-        'setup-meteor-doc-project-packages',
+        'copy-meteor-doc-public-files',
         'clean-up-meteor-doc-project',
+        'setup-meteor-doc-project-templates',
+        'doc-side-nav',
+        'setup-meteor-doc-project-packages',
         'dgeni',
         'create-router-meteor-doc-project',
         'doc-styles');
@@ -154,4 +178,4 @@ gulp.task('watchers', function () {
     gulp.watch(paths.docStyles, ['doc']);
 });
 
-gulp.task('default', ['watchers']);
+gulp.task('default', ['doc', 'watchers']);

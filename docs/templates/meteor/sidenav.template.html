@@ -1,22 +1,38 @@
-<ul id="slide-out" class="side-nav fixed table-of-contents section">
-    <img src="/meteoric/meteoric-logo.png" width="240px" height="240px" id="meteoric-sidebar-logo"/>
+<template name="DocSideNav">
+    <ul id="slide-out" class="side-nav fixed table-of-contents section collapsible collapsible-l1" data-collapsible="accordion">
+        <img src="/meteoric-logo.png" width="240px" height="240px" id="meteoric-sidebar-logo"/>
 
-    <% _.forEach(main_modules, function(main_module) { %>
-    <li class="bold">
-        <a href="<%= main_module.path %>" class="collapsible-header">
-            <%= main_module.name %>
-        </a>
-        <div class="collapsible-body">
-            <ul>
-                <% _.forEach(main_module.childModules, function(child_module) { %>
-                <li class="section">
-                    <a href="<%= child_module.path %>">
-                        <%= child_module.segmented[2]%>
+        <li class="bold"><a href="{{pathFor route='About'}}" class="collapsible-header">About</a></li>
+
+
+        <li class="bold">
+            <a href="{{pathFor route='DocPageIndex'}}" class="collapsible-header">Docs</a>
+            <ul class="collapsible-l2 collapsible-body collapsible" data-collapsible="accordion">
+            <% _.forEach(main_modules, function(main_module) { %>
+                <li class="bold">
+                    <a href="{{pathFor route='<%= main_module.path %>'}}" class="collapsible-header">
+                        <%= main_module.name %>
                     </a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <% _.forEach(main_module.childModules, function(child_module) { %>
+                            <li class="section">
+                                <a href="{{pathFor route='<%= child_module.path %>'}}" class="l2">
+                                    <%= child_module.segmented[2]%>
+                                </a>
+                            </li>
+                            <% }); %>
+                        </ul>
+                    </div>
                 </li>
-                <% }); %>
+            <% }); %>
             </ul>
-        </div>
-    </li>
-    <% }); %>
-</ul>
+        </li>
+    </ul>
+    <script>
+        $(document).ready(function(){
+            $('.collapsible-l1').collapsible();
+            $('.collapsible-l2').collapsible();
+        });
+    </script>
+</template>

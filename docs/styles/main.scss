@@ -1,9 +1,9 @@
-@import "../../node_modules/materialize-css/sass/components/_color.scss";
-@import "../../node_modules/materialize-css/sass/components/_variables.scss";
+@import "{poetic:materialize-scss}/sass/components/_color.scss";
+@import "{poetic:materialize-scss}/sass/components/_variables.scss";
 
 $sidenav-item-height: 32px;
 
-@import "../../node_modules/materialize-css/sass/materialize.scss";
+@import "{poetic:materialize-scss}/sass/materialize.scss";
 
 header, main, footer {
   padding-left: 240px;
@@ -23,6 +23,6 @@ header, main, footer {
   padding: 20px;
 }
 
-.collapsible-body {
-  display: block;
+.side-nav .collapsible-body li.active a.l2 {
+  color: #444444;
 }
