@@ -72,7 +72,7 @@ gulp.task('doc-side-nav', function() {
             return new_m;
         });
 
-        return gulp.src('docs/templates/sidenav.template.html')
+        return gulp.src('docs/templates/meteor/sidenav.template.html')
             .pipe(template({main_modules: main_modules}))
             .pipe(gulp.dest('doc-build/client/templates'));
     });
@@ -99,7 +99,7 @@ gulp.task('create-meteor-doc-project', function(cb) {
 });
 
 gulp.task('setup-meteor-doc-project-packages', function() {
-    gulp.src('docs/templates/packages.template')
+    gulp.src('docs/templates/meteor/packages.template')
         .pipe(rename('packages'))
         .pipe(gulp.dest('doc-build/.meteor'));
 });
@@ -131,7 +131,7 @@ gulp.task('create-router-meteor-doc-project', function(cb) {
             return 'DocPage' + segmented[segmented.length - 1];
         });
 
-        return gulp.src('docs/templates/router.template.js')
+        return gulp.src('docs/templates/meteor/router.template.js')
             .pipe(template({modules: modules}))
             .pipe(gulp.dest('doc-build/lib'));
     });
