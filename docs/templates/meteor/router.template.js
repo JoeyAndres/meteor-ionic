@@ -13,6 +13,13 @@ Router.map(function() {
         });
     <% }); %>
 
+    this.route('Home', {
+        path: '/',
+        action() {
+            this.redirect('<%= modules[0] %>');
+        }
+    });
+
     // Go to the first module.
     this.route('DocPageIndex', function() {
         this.redirect('<%= modules[0] %>');
