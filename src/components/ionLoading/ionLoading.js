@@ -7,6 +7,7 @@
  * interaction.
  *
  * @usage
+ *
  * ```js
  * angular.module('LoadingApp', ['ionic'])
  * .controller('LoadingCtrl', function($scope, $ionicLoading) {
@@ -21,6 +22,7 @@
  * });
  * ```
  */
+
 /**
  * @ngdoc object
  * @name $ionicLoadingConfig
@@ -41,6 +43,7 @@
  * });
  * ```
  */
+
 IonLoading = {
   show: function (userOptions) {
     var userOptions = userOptions || {};

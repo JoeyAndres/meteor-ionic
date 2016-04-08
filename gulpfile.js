@@ -12,7 +12,10 @@ var rename = require("gulp-rename");
 
 var paths = {
     js: ['./src/components/**/*.js'],
-    templates: ['./src/components/**/*.html'],
+    templates: [
+        './src/components/**/*.html',
+        './docs/**/*'
+    ],
     docStyles: ['./docs/styles/**/*.scss']
 };
 
@@ -184,9 +187,9 @@ gulp.task('doc', function(cb) {
 
 // Watcher section.
 gulp.task('watchers', function () {
-    gulp.watch(paths.js, ['doc']);
-    gulp.watch(paths.templates, ['doc']);
-    gulp.watch(paths.docStyles, ['doc']);
+    gulp.watch(paths.js, ['setup-meteor-doc-project']);
+    gulp.watch(paths.templates, ['setup-meteor-doc-project']);
+    gulp.watch(paths.docStyles, ['setup-meteor-doc-project']);
 });
 
-gulp.task('default', ['doc', 'watchers']);
+gulp.task('default', ['setup-meteor-doc-project', 'watchers']);

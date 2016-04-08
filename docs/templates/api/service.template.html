@@ -1,0 +1,73 @@
+{% extends "api/object.template.html" %}
+
+{% block related_components %}
+{% if doc.providerDoc -%}
+<li>
+    <a href="{$ doc.providerDoc.path $}">- {$ doc.providerDoc.name $}</a>
+</li>
+{%- endif %}
+{% endblock %}
+
+{% block additional %}
+
+{% block usage %}
+<h4 id="usage">Usage</h4>
+<div class="usage">
+    {% if doc.usage %}
+    {$ doc.usage | marked $}
+    {% else %}
+    <ul>
+        {% if doc.restrict.element %}
+        <li>as element:
+            {% if doc.name.indexOf('ng') == 0 -%}
+            (This directive can be used as custom element, but be aware of <a href="guide/ie">IE restrictions</a>).
+            {%- endif %}
+            {% code %}
+            <{$ doc.name | dashCase $}
+            {%- for param in doc.params %}
+            {$ directiveParam(param.alias or param.name, param.type, '="', '"') $}
+            {%- endfor %}>
+            ...
+        </{$ doc.name | dashCase $}>
+        {% endcode %}
+        </li>
+        {% endif -%}
+
+        {%- if doc.restrict.attribute -%}
+        <li>as attribute:
+            {% code %}
+            <{$ doc.element $}
+            {%- for param in doc.params %}
+            {$ directiveParam(param.name, param.type, '="', '"') $}
+            {%- endfor %}>
+            ...
+        </{$ doc.element $}>
+        {% endcode %}
+        </li>
+        {% endif -%}
+
+        {%- if doc.restrict.cssClass -%}
+        <li>as CSS class:
+            {% code %}
+            {% set sep = joiner(' ') %}
+            <{$ doc.element $} class="
+            {%- for param in doc.params -%}
+            {$ sep() $}{$ directiveParam(param.name, param.type, ': ', ';') $}
+            {%- endfor %}"> ... </{$ doc.element $}>
+        {% endcode %}
+        </li>
+        {% endif -%}
+    </ul>
+    {%- endif %}
+</div>
+{% endblock -%}
+
+{%- if doc.animations %}
+<h3 id="animations">Animations</h3>
+{$ doc.animations | marked $}
+{$ 'module:ngAnimate.$animate' | link('Click here', doc) $} to learn more about the steps involved in the animation.
+{%- endif -%}
+
+{% include "lib/params.template.html" %}
+{% include "lib/events.template.html" %}
+{% endblock %}

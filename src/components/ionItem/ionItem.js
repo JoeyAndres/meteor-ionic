@@ -4,6 +4,8 @@
  * @parent ionic.directive:ionList
  * @module meteoric
  * @restrict E
+ *
+ * @description
  * Creates a list-item that can easily be swiped,
  * deleted, reordered, edited, and more.
  *
@@ -12,6 +14,7 @@
  * Can be assigned any item class name. See the
  * [list CSS documentation](/docs/components/#list).
  *
+ * @usage
  *
  * ```html
  * <ion-list>
