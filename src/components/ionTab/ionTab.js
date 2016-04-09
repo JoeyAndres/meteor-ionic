@@ -3,7 +3,7 @@
  * @name ionTab
  * @module meteoric
  * @restrict E
- * @parent ionic.directive:ionTabs
+ * @parent meteoric.directive:ionTabs
  *
  * @description
  * Contains a tab's content.  The content only exists while the given tab is selected.
@@ -20,7 +20,7 @@
  *   on-deselect="onTabDeselected()">
  * </ion-tab>
  * ```
- * For a complete, working tab bar example, see the {@link ionic.directive:ionTabs} documentation.
+ * For a complete, working tab bar example, see the {@link meteoric.directive:ionTabs} documentation.
  *
  * @param {string} title The title of the tab.
  * @param {string=} href The link that this tab will navigate to when tapped.
@@ -31,7 +31,7 @@
  * @param {expression=} badge-style The style of badge to put on this tab (eg: badge-positive).
  * @param {expression=} on-select Called when this tab is selected.
  * @param {expression=} on-deselect Called when this tab is deselected.
- * @param {expression=} ng-click By default, the tab will be selected on click. If ngClick is set, it will not.  You can explicitly switch tabs using {@link ionic.service:$ionicTabsDelegate#select $ionicTabsDelegate.select()}.
+ * @param {expression=} ng-click By default, the tab will be selected on click. If ngClick is set, it will not.  You can explicitly switch tabs using {@link meteoric.service:$ionicTabsDelegate#select $ionicTabsDelegate.select()}.
  * @param {expression=} hidden Whether the tab is to be hidden or not.
  * @param {expression=} disabled Whether the tab is to be disabled or not.
  */

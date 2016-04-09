@@ -29,7 +29,7 @@
  * ```
  *
  * @param {string=} delegate-handle The handle used to identify this slideBox
- * with {@link ionic.service:$ionicSlideBoxDelegate}.
+ * with {@link meteoric.service:$ionicSlideBoxDelegate}.
  * @param {object=} options to pass to the widget. See the full ist here: [http://www.idangero.us/swiper/api/](http://www.idangero.us/swiper/api/)
  */
 

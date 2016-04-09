@@ -7,20 +7,20 @@
  *
  * @description
  * A container for view content and any navigational and header bar information. When a view
- * enters and exits its parent {@link ionic.directive:ionNavView}, the view also emits view
+ * enters and exits its parent {@link meteoric.directive:ionNavView}, the view also emits view
  * information, such as its title, whether the back button should be displayed or not, whether the
- * corresponding {@link ionic.directive:ionNavBar} should be displayed or not, which transition the view
+ * corresponding {@link meteoric.directive:ionNavBar} should be displayed or not, which transition the view
  * should use to animate, and which direction to animate.
  *
  * *Views are cached to improve performance.* When a view is navigated away from, its element is
  * left in the DOM, and its scope is disconnected from the `$watch` cycle. When navigating to a
  * view that is already cached, its scope is reconnected, and the existing element, which was
  * left in the DOM, becomes active again. This can be disabled, or the maximum number of cached
- * views changed in {@link ionic.provider:$ionicConfigProvider}, in the view's `$state` configuration, or
+ * views changed in {@link meteoric.provider:$ionicConfigProvider}, in the view's `$state` configuration, or
  * as an attribute on the view itself (see below).
  *
  * @usage
- * Below is an example where our page will load with a {@link ionic.directive:ionNavBar} containing
+ * Below is an example where our page will load with a {@link meteoric.directive:ionNavBar} containing
  * "My Page" as the title.
  *
  * ```html
@@ -90,20 +90,20 @@
  * Caching can be disabled and enabled in multiple ways. By default, Ionic will
  * cache a maximum of 10 views. You can optionally choose to disable caching at
  * either an individual view basis, or by global configuration. Please see the
- * _Caching_ section in {@link ionic.directive:ionNavView} for more info.
+ * _Caching_ section in {@link meteoric.directive:ionNavView} for more info.
  *
- * @param {string=} view-title A text-only title to display on the parent {@link ionic.directive:ionNavBar}.
- * For an HTML title, such as an image, see {@link ionic.directive:ionNavTitle} instead.
+ * @param {string=} view-title A text-only title to display on the parent {@link meteoric.directive:ionNavBar}.
+ * For an HTML title, such as an image, see {@link meteoric.directive:ionNavTitle} instead.
  * @param {boolean=} cache-view If this view should be allowed to be cached or not.
- * Please see the _Caching_ section in {@link ionic.directive:ionNavView} for
+ * Please see the _Caching_ section in {@link meteoric.directive:ionNavView} for
  * more info. Default `true`
  * @param {boolean=} can-swipe-back If this view should be allowed to use the swipe to go back gesture or not.
  * This does not enable the swipe to go back feature if it is not available for the platform it's running
  * from, or there isn't a previous view. Default `true`
  * @param {boolean=} hide-back-button Whether to hide the back button on the parent
- * {@link ionic.directive:ionNavBar} by default.
+ * {@link meteoric.directive:ionNavBar} by default.
  * @param {boolean=} hide-nav-bar Whether to hide the parent
- * {@link ionic.directive:ionNavBar} by default.
+ * {@link meteoric.directive:ionNavBar} by default.
  */
 
 ionViewDefault = {

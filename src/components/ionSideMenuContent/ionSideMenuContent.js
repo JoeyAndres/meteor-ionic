@@ -5,7 +5,7 @@
  *
  * @description
  * A container for the main visible content, sibling to one or more
- * {@link ionic.directive:ionSideMenu} directives.
+ * {@link meteoric.directive:ionSideMenu} directives.
  *
  * @usage
  * ```html
@@ -15,7 +15,7 @@
  * </ion-side-menu-content>
  * ```
  * For a complete side menu example, see the
- * {@link ionic.directive:ionSideMenus} documentation.
+ * {@link meteoric.directive:ionSideMenus} documentation.
  *
  * @param {boolean=} drag-content Whether the content can be dragged. Default true.
  * @param {boolean|number=} edge-drag-threshold Whether the content drag can only start if it is below a certain threshold distance from the edge of the screen.  Default false. Accepts three types of values:

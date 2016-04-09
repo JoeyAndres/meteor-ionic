@@ -1,11 +1,11 @@
 /**
  * @ngdoc directive
  * @name ionReorderButton
- * @parent ionic.directive:ionItem
+ * @parent meteoric.directive:ionItem
  * @module meteoric
  * @restrict E
  * Creates a reorder button inside a list item, that is visible when the
- * {@link ionic.directive:ionList ionList parent's} `show-reorder` evaluates to true or
+ * {@link meteoric.directive:ionList ionList parent's} `show-reorder` evaluates to true or
  * `$ionicListDelegate.showReorder(true)` is called.
  *
  * Can be dragged to reorder items in the list. Takes any ionicon class.
@@ -14,7 +14,7 @@
  *
  * When an item reorder is complete, the expression given in the `on-reorder` attribute is called. The `on-reorder` expression is given two locals that can be used: `$fromIndex` and `$toIndex`.  See below for an example.
  *
- * Look at {@link ionic.directive:ionList} for more examples.
+ * Look at {@link meteoric.directive:ionList} for more examples.
  *
  * @usage
  *

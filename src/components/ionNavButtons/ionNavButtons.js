@@ -6,8 +6,8 @@
  * @parent ionNavView
  *
  * @description
- * Use nav buttons to set the buttons on your {@link ionic.directive:ionNavBar}
- * from within an {@link ionic.directive:ionView}. This gives each
+ * Use nav buttons to set the buttons on your {@link meteoric.directive:ionNavBar}
+ * from within an {@link meteoric.directive:ionView}. This gives each
  * view template the ability to specify which buttons should show in the nav bar,
  * overriding any default buttons already placed in the nav bar.
  *
@@ -47,7 +47,7 @@
  * ```
  *
  * @param {string} side The side to place the buttons in the
- * {@link ionic.directive:ionNavBar}. Available sides: `primary`, `secondary`, `left`, and `right`.
+ * {@link meteoric.directive:ionNavBar}. Available sides: `primary`, `secondary`, `left`, and `right`.
  */
 
 Template.ionNavButtons.onCreated(function() {

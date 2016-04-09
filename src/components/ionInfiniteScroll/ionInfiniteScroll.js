@@ -2,7 +2,7 @@
  * @ngdoc directive
  * @name ionInfiniteScroll
  * @module meteoric
- * @parent ionic.directive:ionContent, ionic.directive:ionScroll
+ * @parent meteoric.directive:ionContent, ionic.directive:ionScroll
  * @restrict E
  *
  * @description
@@ -18,10 +18,10 @@
  * bottom.
  * @param {string=} distance The distance from the bottom that the scroll must
  * reach to trigger the on-infinite expression. Default: 1%.
- * @param {string=} spinner The {@link ionic.directive:ionSpinner} to show while loading. The SVG
- * {@link ionic.directive:ionSpinner} is now the default, replacing rotating font icons.
+ * @param {string=} spinner The {@link meteoric.directive:ionSpinner} to show while loading. The SVG
+ * {@link meteoric.directive:ionSpinner} is now the default, replacing rotating font icons.
  * @param {string=} icon The icon to show while loading. Default: 'ion-load-d'.  This is depreicated
- * in favor of the SVG {@link ionic.directive:ionSpinner}.
+ * in favor of the SVG {@link meteoric.directive:ionSpinner}.
  * @param {boolean=} immediate-check Whether to check the infinite scroll bounds immediately on load.
  *
  * @usage

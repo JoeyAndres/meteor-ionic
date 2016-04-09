@@ -29,7 +29,7 @@
  * In this example, we will create a navigation view that contains our different states for the app.
  *
  * To do this, in our markup we use ionNavView top level directive. To display a header bar we use
- * the {@link ionic.directive:ionNavBar} directive that updates as we navigate through the
+ * the {@link meteoric.directive:ionNavBar} directive that updates as we navigate through the
  * navigation stack.
  *
  * Next, we need to setup our states that will be rendered.
@@ -86,12 +86,12 @@
  * are being disconnected from the watch cycle. Because scopes are not being destroyed and
  * recreated, controllers are not loading again on a subsequent viewing. If the app/controller
  * needs to know when a view has entered or has left, then view events emitted from the
- * {@link ionic.directive:ionView} scope, such as `$ionicView.enter`, may be useful.
+ * {@link meteoric.directive:ionView} scope, such as `$ionicView.enter`, may be useful.
  *
  * By default, when navigating back in the history, the "forward" views are removed from the cache.
  * If you navigate forward to the same view again, it'll create a new DOM element and controller
  * instance. Basically, any forward views are reset each time. This can be configured using the
- * {@link ionic.provider:$ionicConfigProvider}:
+ * {@link meteoric.provider:$ionicConfigProvider}:
  *
  * ```js
  * $ionicConfigProvider.views.forwardCache(true);
@@ -99,7 +99,7 @@
  *
  * #### Disable cache globally
  *
- * The {@link ionic.provider:$ionicConfigProvider} can be used to set the maximum allowable views
+ * The {@link meteoric.provider:$ionicConfigProvider} can be used to set the maximum allowable views
  * which can be cached, but this can also be use to disable all caching by setting it to 0.
  *
  * ```js

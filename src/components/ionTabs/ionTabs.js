@@ -15,9 +15,9 @@
  *
  * For iOS, tabs will appear at the bottom of the screen. For Android, tabs will be at the top
  * of the screen, below the nav-bar. This follows each OS's design specification, but can be
- * configured with the {@link ionic.provider:$ionicConfigProvider}.
+ * configured with the {@link meteoric.provider:$ionicConfigProvider}.
  *
- * See the {@link ionic.directive:ionTab} directive's documentation for more details on
+ * See the {@link meteoric.directive:ionTab} directive's documentation for more details on
  * individual tabs.
  *
  * Note: do not place ion-tabs inside of an ion-content element; it has been known to cause a
@@ -43,7 +43,7 @@
  * ```
  *
  * @param {string=} delegate-handle The handle used to identify these tabs
- * with {@link ionic.service:$ionicTabsDelegate}.
+ * with {@link meteoric.service:$ionicTabsDelegate}.
  */
 
 Template.ionTabs.onCreated(function () {

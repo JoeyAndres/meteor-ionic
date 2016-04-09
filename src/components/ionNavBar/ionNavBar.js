@@ -7,13 +7,13 @@
  * @restrict E
  *
  * @description
- * If we have an {@link ionic.directive:ionNavView} directive, we can also create an
+ * If we have an {@link meteoric.directive:ionNavView} directive, we can also create an
  * `<ion-nav-bar>`, which will create a topbar that updates as the application state changes.
  *
- * We can add a back button by putting an {@link ionic.directive:ionNavBackButton} inside.
+ * We can add a back button by putting an {@link meteoric.directive:ionNavBackButton} inside.
  *
  * We can add buttons depending on the currently visible view using
- * {@link ionic.directive:ionNavButtons}.
+ * {@link meteoric.directive:ionNavButtons}.
  *
  * Note that the ion-nav-bar element will only work correctly if your content has an
  * ionView around it.
@@ -36,7 +36,7 @@
  * ```
  *
  * @param {string=} delegate-handle The handle used to identify this navBar
- * with {@link ionic.service:$ionicNavBarDelegate}.
+ * with {@link meteoric.service:$ionicNavBarDelegate}.
  * @param align-title {string=} Where to align the title of the navbar.
  * Available: 'left', 'right', 'center'. Defaults to 'center'.
  * @param {boolean=} no-tap-scroll By default, the navbar will scroll the content

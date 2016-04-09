@@ -28,7 +28,7 @@
  * @name $ionicLoadingConfig
  * @module meteoric
  * @description
- * Set the default options to be passed to the {@link ionic.service:$ionicLoading} service.
+ * Set the default options to be passed to the {@link meteoric.service:$ionicLoading} service.
  *
  * @usage
  * ```js

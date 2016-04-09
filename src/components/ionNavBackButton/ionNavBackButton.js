@@ -5,7 +5,7 @@
  * @restrict E
  * @parent ionNavBar
  * @description
- * Creates a back button inside an {@link ionic.directive:ionNavBar}.
+ * Creates a back button inside an {@link meteoric.directive:ionNavBar}.
  *
  * The back button will appear when the user is able to go back in the current navigation stack. By
  * default, the markup of the back button is automatically built using platform-appropriate defaults
@@ -36,7 +36,7 @@
  * </ion-nav-bar>
  * ```
  *
- * With custom inner markup and custom click action, using {@link ionic.service:$ionicHistory}:
+ * With custom inner markup and custom click action, using {@link meteoric.service:$ionicHistory}:
  *
  * ```html
  * <ion-nav-bar ng-controller="MyCtrl">

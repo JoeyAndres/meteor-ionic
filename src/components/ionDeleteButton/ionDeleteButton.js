@@ -1,17 +1,17 @@
 /**
  * @ngdoc directive
  * @name ionDeleteButton
- * @parent ionic.directive:ionItem
+ * @parent meteoric.directive:ionItem
  * @module meteoric
  * @restrict E
  * @description
  * Creates a delete button inside a list item, that is visible when the
- * {@link ionic.directive:ionList ionList parent's} `show-delete` evaluates to true or
+ * {@link meteoric.directive:ionList ionList parent's} `show-delete` evaluates to true or
  * `$ionicListDelegate.showDelete(true)` is called.
  *
  * Takes any ionicon as a class.
  *
- * See {@link ionic.directive:ionList} for a complete example & explanation.
+ * See {@link meteoric.directive:ionList} for a complete example & explanation.
  *
  * @usage
  *

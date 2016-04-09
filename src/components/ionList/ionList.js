@@ -15,8 +15,8 @@
  * However, using the ionList and ionItem directives make it easy to support various
  * interaction modes such as swipe to edit, drag to reorder, and removing items.
  *
- * Related: {@link ionic.directive:ionItem}, {@link ionic.directive:ionOptionButton}
- * {@link ionic.directive:ionReorderButton}, {@link ionic.directive:ionDeleteButton}, [`list CSS documentation`](/docs/components/#list).
+ * Related: {@link meteoric.directive:ionItem}, {@link meteoric.directive:ionOptionButton}
+ * {@link meteoric.directive:ionReorderButton}, {@link meteoric.directive:ionDeleteButton}, [`list CSS documentation`](/docs/components/#list).
  *
  * @usage
  *
@@ -71,7 +71,7 @@
  *```
  *
  * @param {string=} delegate-handle The handle used to identify this list with
- * {@link ionic.service:$ionicListDelegate}.
+ * {@link meteoric.service:$ionicListDelegate}.
  * @param type {string=} The type of list to use (list-inset or card)
  * @param show-delete {boolean=} Whether the delete buttons for the items in the list are
  * currently shown or hidden.

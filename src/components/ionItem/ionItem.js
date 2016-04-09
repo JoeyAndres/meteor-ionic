@@ -1,7 +1,7 @@
 /**
  * @ngdoc directive
  * @name ionItem
- * @parent ionic.directive:ionList
+ * @parent meteoric.directive:ionList
  * @module meteoric
  * @restrict E
  *
@@ -9,7 +9,7 @@
  * Creates a list-item that can easily be swiped,
  * deleted, reordered, edited, and more.
  *
- * See {@link ionic.directive:ionList} for a complete example & explanation.
+ * See {@link meteoric.directive:ionList} for a complete example & explanation.
  *
  * Can be assigned any item class name. See the
  * [list CSS documentation](/docs/components/#list).

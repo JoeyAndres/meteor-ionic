@@ -13,25 +13,25 @@
  * and so we've made it easy to toggle between the Ionic scroll implementation and
  * overflow scrolling.
  *
- * You can implement pull-to-refresh with the {@link ionic.directive:ionRefresher}
- * directive, and infinite scrolling with the {@link ionic.directive:ionInfiniteScroll}
+ * You can implement pull-to-refresh with the {@link meteoric.directive:ionRefresher}
+ * directive, and infinite scrolling with the {@link meteoric.directive:ionInfiniteScroll}
  * directive.
  *
- * If there is any dynamic content inside the ion-content, be sure to call `.resize()` with {@link ionic.service:$ionicScrollDelegate}
+ * If there is any dynamic content inside the ion-content, be sure to call `.resize()` with {@link meteoric.service:$ionicScrollDelegate}
  * after the content has been added.
  *
  * Be aware that this directive gets its own child scope. If you do not understand why this
  * is important, you can read [https://docs.angularjs.org/guide/scope](https://docs.angularjs.org/guide/scope).
  *
  * @param {string=} delegate-handle The handle used to identify this scrollView
- * with {@link ionic.service:$ionicScrollDelegate}.
+ * with {@link meteoric.service:$ionicScrollDelegate}.
  * @param {string=} direction Which way to scroll. 'x' or 'y' or 'xy'. Default 'y'.
  * @param {boolean=} locking Whether to lock scrolling in one direction at a time. Useful to set to false when zoomed in or scrolling in two directions. Default true.
  * @param {boolean=} padding Whether to add padding to the content.
  * Defaults to true on iOS, false on Android.
  * @param {boolean=} scroll Whether to allow scrolling of content.  Defaults to true.
  * @param {boolean=} overflow-scroll Whether to use overflow-scrolling instead of
- * Ionic scroll. See {@link ionic.provider:$ionicConfigProvider} to set this as the global default.
+ * Ionic scroll. See {@link meteoric.provider:$ionicConfigProvider} to set this as the global default.
  * @param {boolean=} scrollbar-x Whether to show the horizontal scrollbar. Default true.
  * @param {boolean=} scrollbar-y Whether to show the vertical scrollbar. Default true.
  * @param {string=} start-x Initial horizontal scroll position. Default 0.

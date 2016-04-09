@@ -12,7 +12,7 @@
  * to replicate the user experience seen in most side menu implementations, which is
  * to not show the back button at the root of the stack and show only the
  * menu button. We recommend that you also use the `enable-menu-with-back-views="false"`
- * {@link ionic.directive:ionSideMenus} attribute when using the menuClose directive.
+ * {@link meteoric.directive:ionSideMenus} attribute when using the menuClose directive.
  *
  * @usage
  * Below is an example of a link within a side menu. Tapping this link would

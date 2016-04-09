@@ -20,14 +20,14 @@
  * Note that it's important to set the height of the scroll box as well as the height of the inner
  * content to enable scrolling. This makes it possible to have full control over scrollable areas.
  *
- * If you'd just like to have a center content scrolling area, use {@link ionic.directive:ionContent} instead.
+ * If you'd just like to have a center content scrolling area, use {@link meteoric.directive:ionContent} instead.
  *
  * @param {string=} delegate-handle The handle used to identify this scrollView
- * with {@link ionic.service:$ionicScrollDelegate}.
+ * with {@link meteoric.service:$ionicScrollDelegate}.
  * @param {string=} direction Which way to scroll. 'x' or 'y' or 'xy'. Default 'y'.
  * @param {boolean=} locking Whether to lock scrolling in one direction at a time. Useful to set to false when zoomed in or scrolling in two directions. Default true.
  * @param {boolean=} paging Whether to scroll with paging.
- * @param {expression=} on-refresh Called on pull-to-refresh, triggered by an {@link ionic.directive:ionRefresher}.
+ * @param {expression=} on-refresh Called on pull-to-refresh, triggered by an {@link meteoric.directive:ionRefresher}.
  * @param {expression=} on-scroll Called whenever the user scrolls.
  * @param {boolean=} scrollbar-x Whether to show the horizontal scrollbar. Default true.
  * @param {boolean=} scrollbar-y Whether to show the vertical scrollbar. Default true.

@@ -7,11 +7,11 @@
  *
  * @description
  *
- * The nav title directive replaces an {@link ionic.directive:ionNavBar} title text with
- * custom HTML from within an {@link ionic.directive:ionView} template. This gives each
+ * The nav title directive replaces an {@link meteoric.directive:ionNavBar} title text with
+ * custom HTML from within an {@link meteoric.directive:ionView} template. This gives each
  * view the ability to specify its own custom title element, such as an image or any HTML,
  * rather than being text-only. Alternatively, text-only titles can be updated using the
- * `view-title` {@link ionic.directive:ionView} attribute.
+ * `view-title` {@link meteoric.directive:ionView} attribute.
  *
  * Note that `ion-nav-title` must be an immediate descendant of the `ion-view` or
  * `ion-nav-bar` element (basically don't wrap it in another div).

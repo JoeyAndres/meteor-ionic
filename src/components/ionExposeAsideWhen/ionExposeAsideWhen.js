@@ -3,7 +3,7 @@
  * @name exposeAsideWhen
  * @module meteoric
  * @restrict A
- * @parent ionic.directive:ionSideMenus
+ * @parent meteoric.directive:ionSideMenus
  * @description
  * It is common for a tablet application to hide a menu when in portrait mode, but to show the
  * same menu on the left side when the tablet is in landscape mode. The `exposeAsideWhen` attribute
@@ -11,7 +11,7 @@
  *
  * By default, side menus are hidden underneath its side menu content, and can be opened by either
  * swiping the content left or right, or toggling a button to show the side menu. However, by adding the
- * `exposeAsideWhen` attribute directive to an {@link ionic.directive:ionSideMenu} element directive,
+ * `exposeAsideWhen` attribute directive to an {@link meteoric.directive:ionSideMenu} element directive,
  * a side menu can be given instructions on "when" the menu should be exposed (always viewable). For
  * example, the `expose-aside-when="large"` attribute will keep the side menu hidden when the viewport's
  * width is less than `768px`, but when the viewport's width is `768px` or greater, the menu will then
@@ -37,7 +37,7 @@
  * </ion-side-menus>
  * ```
  * For a complete side menu example, see the
- * {@link ionic.directive:ionSideMenus} documentation.
+ * {@link meteoric.directive:ionSideMenus} documentation.
  */
 
 import { TemplateAttributeDirectiveType } from 'meteor/jandres:template-attribute-directive';

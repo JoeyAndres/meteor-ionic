@@ -8,7 +8,7 @@
  * The `ionSpinner` directive provides a variety of animated spinners.
  * Spinners enables you to give your users feedback that the app is
  * processing/thinking/waiting/chillin' out, or whatever you'd like it to indicate.
- * By default, the {@link ionic.directive:ionRefresher} feature uses this spinner, rather
+ * By default, the {@link meteoric.directive:ionRefresher} feature uses this spinner, rather
  * than rotating font icons (previously included in [ionicons](http://ionicons.com/)).
  * While font icons are great for simple or stationary graphics, they're not suited to
  * provide great animations, which is why Ionic uses SVG instead.

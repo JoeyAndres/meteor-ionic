@@ -2,7 +2,7 @@
  * @function ionSideMenu
  *
  * @description
- * A container for a side menu, sibling to an {@link ionic.directive:ionSideMenuContent} directive.
+ * A container for a side menu, sibling to an {@link meteoric.directive:ionSideMenuContent} directive.
  *
  * ```html
  * <ion-side-menu
@@ -12,7 +12,7 @@
  * </ion-side-menu>
  * ```
  * For a complete side menu example, see the
- * {@link ionic.directive:ionSideMenus} documentation.
+ * {@link meteoric.directive:ionSideMenus} documentation.
  *
  * @param {string} side Which side the side menu is currently on.  Allowed values: 'left' or 'right'.
  * @param {boolean=} is-enabled Whether this side menu is enabled.
