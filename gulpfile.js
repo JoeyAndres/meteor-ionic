@@ -126,7 +126,7 @@ gulp.task('setup-meteor-doc-project-templates', function(cb) {
 });
 
 gulp.task('clean-up-meteor-doc-project', function(cb) {
-    exec('rm -rf doc-build/server doc-build/client/main.*', function(err, stdout, stderr) {
+    exec('rm -rf doc-build/server doc-build/client doc-build/lib doc-build/.meteor/packages', function(err, stdout, stderr) {
         console.log(stdout);
         console.log(stderr);
         cb(err);

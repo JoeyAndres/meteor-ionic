@@ -35,8 +35,7 @@ module.exports = function(config) {
             output = output.replace(/{{{/g, '&#123;&#123;&#123;');
             output = output.replace(/}}/g, '&#125;&#125;');
             output = output.replace(/}}}/g, '&#125;&#125;&#125;');
-
-            console.log(output);
+            
             return output;
         };
 
