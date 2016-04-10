@@ -32,6 +32,7 @@
  * </ion-footer-bar>
  * ```
  */
+
 Template.ionFooterBar.onCreated(function() {
   this.alignTitle = this.data? this.data.alignTitle : null;
   this.class = new ReactiveVar('');

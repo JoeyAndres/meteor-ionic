@@ -1,13 +1,13 @@
 /**
  * @ngdoc service
  * @name $ionicListDelegate
- * @module ionic
+ * @module meteoric
  *
  * @description
- * Delegate for controlling the {@link ionic.directive:ionList} directive.
+ * Delegate for controlling the {@link meteoric.directive:ionList} directive.
  *
  * Methods called directly on the $ionicListDelegate service will control all lists.
- * Use the {@link ionic.service:$ionicListDelegate#$getByHandle $getByHandle}
+ * Use the {@link meteoric.service:$ionicListDelegate#$getByHandle $getByHandle}
  * method to control specific ionList instances.
  *
  * @usage

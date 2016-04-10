@@ -13,6 +13,7 @@ var rename = require("gulp-rename");
 var paths = {
     js: [
         './src/components/**/*.js',
+        './src/lib/controller/*.js',
         './src/lib/service/*.js'
     ],
     templates: [
