@@ -1,7 +1,7 @@
 /**
  * @ngdoc service
  * @name $ionicHistory
- * @module ionic
+ * @module meteoric
  * @description
  * $ionicHistory keeps track of views as the user navigates through an app. Similar to the way a
  * browser behaves, an Ionic app is able to keep track of the previous view, the current view, and
@@ -632,7 +632,7 @@ new (function() {
      * @ngdoc method
      * @name $ionicHistory#clearCache
 	 * @return promise
-     * @description Removes all cached views within every {@link ionic.directive:ionNavView}.
+     * @description Removes all cached views within every {@link meteoric.directive:ionNavView}.
      * This both removes the view element from the DOM, and destroy it's scope.
      */
     clearCache: function(stateIds) {
@@ -648,7 +648,7 @@ new (function() {
      * @name $ionicHistory#nextViewOptions
      * @description Sets options for the next view. This method can be useful to override
      * certain view/transition defaults right before a view transition happens. For example,
-     * the {@link ionic.directive:menuClose} directive uses this method internally to ensure
+     * the {@link meteoric.directive:menuClose} directive uses this method internally to ensure
      * an animated view transition does not happen when a side menu is open, and also sets
      * the next view as the root of its history stack. After the transition these options
      * are set back to null.

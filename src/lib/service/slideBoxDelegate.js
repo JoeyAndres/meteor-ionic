@@ -1,11 +1,11 @@
 /**
  * @ngdoc service
  * @name $ionicSlideBoxDelegate
- * @module ionic
+ * @module meteoric
  * @description
- * Delegate that controls the {@link ionic.directive:ionSlideBox} directive.
+ * Delegate that controls the {@link meteoric.directive:ionSlideBox} directive.
  *
- * Methods called directly on the $ionicSlideBoxDelegate service will control all slide boxes.  Use the {@link ionic.service:$ionicSlideBoxDelegate#$getByHandle $getByHandle}
+ * Methods called directly on the $ionicSlideBoxDelegate service will control all slide boxes.  Use the {@link meteoric.service:$ionicSlideBoxDelegate#$getByHandle $getByHandle}
  * method to control specific slide box instances.
  *
  * @usage
@@ -107,7 +107,7 @@ IonicModule
    * @name $ionicSlideBoxDelegate#$getByHandle
    * @param {string} handle
    * @returns `delegateInstance` A delegate instance that controls only the
-   * {@link ionic.directive:ionSlideBox} directives with `delegate-handle` matching
+   * {@link meteoric.directive:ionSlideBox} directives with `delegate-handle` matching
    * the given handle.
    *
    * Example: `$ionicSlideBoxDelegate.$getByHandle('my-handle').stop();`

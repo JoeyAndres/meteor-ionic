@@ -2,14 +2,14 @@
 /**
  * @ngdoc service
  * @name $ionicScrollDelegate
- * @module ionic
+ * @module meteoric
  * @description
  * Delegate for controlling scrollViews (created by
- * {@link ionic.directive:ionContent} and
- * {@link ionic.directive:ionScroll} directives).
+ * {@link meteoric.directive:ionContent} and
+ * {@link meteoric.directive:ionScroll} directives).
  *
  * Methods called directly on the $ionicScrollDelegate service will control all scroll
- * views.  Use the {@link ionic.service:$ionicScrollDelegate#$getByHandle $getByHandle}
+ * views.  Use the {@link meteoric.service:$ionicScrollDelegate#$getByHandle $getByHandle}
  * method to control specific scrollViews.
  *
  * @usage

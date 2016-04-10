@@ -3,7 +3,7 @@
  * @ngdoc directive
  * @name ionSlides
  * @module meteoric
- * @delegate ionic.service:$ionicSlideBoxDelegate
+ * @delegate meteoric.service:$ionicSlideBoxDelegate
  * @restrict E
  * @description
  * The Slides component is a powerful multi-page container where each page can be swiped or dragged between.

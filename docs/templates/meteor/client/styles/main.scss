@@ -6,7 +6,7 @@ $sidenav-item-height: 32px;
 @import "{poetic:materialize-scss}/sass/materialize.scss";
 
 header, main, footer {
-  padding-left: 240px;
+  padding-left: 300px;
 }
 
 @media only screen and (max-width : 992px) {
@@ -27,5 +27,6 @@ header, main, footer {
 .side-nav.fixed .collapsible-body li.active {
   a {
     color: #444444;
+    @extend .truncate;
   }
 }

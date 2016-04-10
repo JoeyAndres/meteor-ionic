@@ -1,7 +1,7 @@
 /**
  * @ngdoc service
  * @name $ionicBody
- * @module ionic
+ * @module meteoric
  * @description An angular utility service to easily and efficiently
  * add and remove CSS classes from the document's body element.
  */

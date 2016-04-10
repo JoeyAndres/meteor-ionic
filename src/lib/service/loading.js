@@ -12,7 +12,7 @@ var LOADING_SET_DEPRECATED = '$ionicLoading instance.setContent() has been depre
 /**
  * @ngdoc service
  * @name $ionicLoading
- * @module ionic
+ * @module meteoric
  * @description
  * An overlay that can be used to indicate activity while blocking user
  * interaction.
@@ -35,9 +35,9 @@ var LOADING_SET_DEPRECATED = '$ionicLoading instance.setContent() has been depre
 /**
  * @ngdoc object
  * @name $ionicLoadingConfig
- * @module ionic
+ * @module meteoric
  * @description
- * Set the default options to be passed to the {@link ionic.service:$ionicLoading} service.
+ * Set the default options to be passed to the {@link meteoric.service:$ionicLoading} service.
  *
  * @usage
  * ```js

@@ -3,7 +3,7 @@
  * @ngdoc directive
  * @name ionNavBar
  * @module meteoric
- * @delegate ionic.service:$ionicNavBarDelegate
+ * @delegate meteoric.service:$ionicNavBarDelegate
  * @restrict E
  *
  * @description

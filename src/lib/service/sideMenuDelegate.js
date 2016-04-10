@@ -1,13 +1,13 @@
 /**
  * @ngdoc service
  * @name $ionicSideMenuDelegate
- * @module ionic
+ * @module meteoric
  *
  * @description
- * Delegate for controlling the {@link ionic.directive:ionSideMenus} directive.
+ * Delegate for controlling the {@link meteoric.directive:ionSideMenus} directive.
  *
  * Methods called directly on the $ionicSideMenuDelegate service will control all side
- * menus.  Use the {@link ionic.service:$ionicSideMenuDelegate#$getByHandle $getByHandle}
+ * menus.  Use the {@link meteoric.service:$ionicSideMenuDelegate#$getByHandle $getByHandle}
  * method to control specific ionSideMenus instances.
  *
  * @usage
@@ -106,7 +106,7 @@ class ionicSideMenuDelegate extends meteoric.lib.Delegate {
        * @name $ionicSideMenuDelegate#$getByHandle
        * @param {string} handle
        * @returns `delegateInstance` A delegate instance that controls only the
-       * {@link ionic.directive:ionSideMenus} directives with `delegate-handle` matching
+       * {@link meteoric.directive:ionSideMenus} directives with `delegate-handle` matching
        * the given handle.
        *
        * Example: `$ionicSideMenuDelegate.$getByHandle('my-handle').toggleLeft();`

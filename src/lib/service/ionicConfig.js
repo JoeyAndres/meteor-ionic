@@ -1,7 +1,7 @@
 /**
- * @ngdoc provider
+ * @ngdoc service
  * @name $ionicConfigProvider
- * @module ionic
+ * @module meteoric
  * @description
  * Ionic automatically takes platform configurations into account to adjust things like what
  * transition style to use and whether tab icons should show on the top or bottom. For example,
@@ -638,21 +638,8 @@ let ionicConfig = function() {
 
 
   // private: Service definition for internal Ionic use
-  /**
-   * @ngdoc service
-   * @name $ionicConfig
-   * @module ionic
-   * @private
-   */
   provider.$get = function() {
     return provider;
   };
 };
-// Fix for URLs in Cordova apps on Windows Phone
-// http://blogs.msdn.com/b/msdn_answers/archive/2015/02/10/
-// running-cordova-apps-on-windows-and-windows-phone-8-1-using-ionic-angularjs-and-other-frameworks.aspx
-/*.config(['$compileProvider', function($compileProvider) {
- $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|sms|tel|geo|ftp|mailto|file|ghttps?|ms-appx-web|ms-appx|x-wmapp0):/);
- $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|content|blob|ms-appx|ms-appx-web|x-wmapp0):|data:image\//);
- }]);*/
 $ionicConfig = new ionicConfig();

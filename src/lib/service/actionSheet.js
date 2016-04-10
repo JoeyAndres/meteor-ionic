@@ -1,7 +1,7 @@
 /**
  * @ngdoc service
  * @name $ionicActionSheet
- * @module ionic
+ * @module meteoric
  * @description
  * The Action Sheet is a slide-up pane that lets the user choose from a set of options.
  * Dangerous options are highlighted in red and made obvious.

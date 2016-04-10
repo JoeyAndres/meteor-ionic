@@ -2,7 +2,7 @@
  * @ngdoc directive
  * @name ionTabs
  * @module meteoric
- * @delegate ionic.service:$ionicTabsDelegate
+ * @delegate meteoric.service:$ionicTabsDelegate
  * @restrict E
  * @codepen odqCz
  *
@@ -43,7 +43,7 @@
  * ```
  *
  * @param {string=} delegate-handle The handle used to identify these tabs
- * with {@link meteoric.service:$ionicTabsDelegate}.
+ * with {@link ionic.service:$ionicTabsDelegate}.
  */
 
 Template.ionTabs.onCreated(function () {

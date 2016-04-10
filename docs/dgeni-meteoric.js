@@ -101,9 +101,10 @@ module.exports = function(config) {
             readFilesProcessor.sourceFiles = [
                 {
                     // Process all js files in `src` and its subfolders ...
-                    include: config.src
+                    include: config.include,
                     // When calculating the relative path to these files use this as the base path.
                     // So `src/foo/bar.js` will have relative path of `foo/bar.js`
+                    exclude: config.exclude
                 }
             ];
 

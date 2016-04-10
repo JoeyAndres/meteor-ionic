@@ -5,7 +5,7 @@
 /**
  * @ngdoc service
  * @name $ionicTemplateCache
- * @module ionic
+ * @module meteoric
  * @description A service that preemptively caches template files to eliminate transition flicker and boost performance.
  * @usage
  * State templates are cached automatically, but you can optionally cache other templates.

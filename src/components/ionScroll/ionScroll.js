@@ -2,7 +2,7 @@
  * @ngdoc directive
  * @name ionScroll
  * @module meteoric
- * @delegate ionic.service:$ionicScrollDelegate
+ * @delegate meteoric.service:$ionicScrollDelegate
  * @codepen mwFuh
  * @restrict E
  *

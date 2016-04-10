@@ -17,7 +17,7 @@ var POPUP_TPL =
 /**
  * @ngdoc service
  * @name $ionicPopup
- * @module ionic
+ * @module meteoric
  * @restrict E
  * @codepen zkmhJ
  * @description

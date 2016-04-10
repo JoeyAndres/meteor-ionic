@@ -11,7 +11,10 @@ var insert = require('gulp-insert-lines');
 var rename = require("gulp-rename");
 
 var paths = {
-    js: ['./src/components/**/*.js'],
+    js: [
+        './src/components/**/*.js',
+        './src/lib/service/*.js'
+    ],
     templates: [
         './src/components/**/*.html',
         './docs/**/*'
@@ -29,7 +32,12 @@ gulp.task('dgeni-clean', function(cb) {
 
 gulp.task('dgeni', ['dgeni-clean'], function(done) {
     var dgeni = new Dgeni([require('./docs/dgeni-meteoric')({
-        src: paths.js,
+        include: paths.js,
+        exclude: [
+            './src/lib/service/modal.js',
+            './src/lib/service/popover.js',
+            './src/lib/service/popup.js'
+        ],
         dest: './doc-build/client'
     })]);
 

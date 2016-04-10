@@ -2,7 +2,7 @@
  * @ngdoc directive
  * @name ionInfiniteScroll
  * @module meteoric
- * @parent meteoric.directive:ionContent, ionic.directive:ionScroll
+ * @parent meteoric.directive:ionContent, meteoric.directive:ionScroll
  * @restrict E
  *
  * @description

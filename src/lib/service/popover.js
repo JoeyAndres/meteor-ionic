@@ -1,10 +1,10 @@
 /**
  * @ngdoc service
  * @name $ionicPopover
- * @module ionic
+ * @module meteoric
  * @description
  *
- * Related: {@link ionic.controller:ionicPopover ionicPopover controller}.
+ * Related: {@link meteoric.controller:ionicPopover ionicPopover controller}.
  *
  * The Popover is a view that floats above an app’s content. Popovers provide an
  * easy way to present or gather information from the user and are
@@ -137,9 +137,9 @@ function($ionicModal, $ionicPosition, $document, $window) {
   /**
    * @ngdoc controller
    * @name ionicPopover
-   * @module ionic
+   * @module meteoric
    * @description
-   * Instantiated by the {@link ionic.service:$ionicPopover} service.
+   * Instantiated by the {@link meteoric.service:$ionicPopover} service.
    *
    * Be sure to call [remove()](#remove) when you are done with each popover
    * to clean it up and avoid memory leaks.
@@ -200,7 +200,7 @@ function($ionicModal, $ionicPosition, $document, $window) {
      * @param {string} templateString The template string to use as the popovers's
      * content.
      * @param {object} options Options to be passed to the initialize method.
-     * @returns {object} An instance of an {@link ionic.controller:ionicPopover}
+     * @returns {object} An instance of an {@link meteoric.controller:ionicPopover}
      * controller (ionicPopover is built on top of $ionicPopover).
      */
     fromTemplate: function(templateString, options) {
@@ -212,7 +212,7 @@ function($ionicModal, $ionicPosition, $document, $window) {
      * @param {string} templateUrl The url to load the template from.
      * @param {object} options Options to be passed to the initialize method.
      * @returns {promise} A promise that will be resolved with an instance of
-     * an {@link ionic.controller:ionicPopover} controller (ionicPopover is built on top of $ionicPopover).
+     * an {@link meteoric.controller:ionicPopover} controller (ionicPopover is built on top of $ionicPopover).
      */
     fromTemplateUrl: function(url, options) {
       return $ionicModal.fromTemplateUrl(url, ionic.Utils.extend({}, POPOVER_OPTIONS, options));

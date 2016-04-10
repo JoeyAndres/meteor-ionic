@@ -1,13 +1,13 @@
 /**
  * @ngdoc service
  * @name $ionicTabsDelegate
- * @module ionic
+ * @module meteoric
  *
  * @description
- * Delegate for controlling the {@link ionic.directive:ionTabs} directive.
+ * Delegate for controlling the {@link meteoric.directive:ionTabs} directive.
  *
  * Methods called directly on the $ionicTabsDelegate service will control all ionTabs
- * directives. Use the {@link ionic.service:$ionicTabsDelegate#$getByHandle $getByHandle}
+ * directives. Use the {@link meteoric.service:$ionicTabsDelegate#$getByHandle $getByHandle}
  * method to control specific ionTabs instances.
  *
  * @usage
@@ -54,7 +54,7 @@ class ionicTabsDelegate extends meteoric.lib.Delegate {
        * @ngdoc method
        * @name $ionicTabsDelegate#showBar
        * @description
-       * Set/get whether the {@link ionic.directive:ionTabs} is shown
+       * Set/get whether the {@link meteoric.directive:ionTabs} is shown
        * @param {boolean} show Whether to show the bar.
        * @returns {boolean} Whether the bar is shown.
        */
@@ -64,7 +64,7 @@ class ionicTabsDelegate extends meteoric.lib.Delegate {
        * @name $ionicTabsDelegate#$getByHandle
        * @param {string} handle
        * @returns `delegateInstance` A delegate instance that controls only the
-       * {@link ionic.directive:ionTabs} directives with `delegate-handle` matching
+       * {@link meteoric.directive:ionTabs} directives with `delegate-handle` matching
        * the given handle.
        *
        * Example: `$ionicTabsDelegate.$getByHandle('my-handle').select(0);`

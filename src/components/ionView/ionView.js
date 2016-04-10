@@ -16,7 +16,7 @@
  * left in the DOM, and its scope is disconnected from the `$watch` cycle. When navigating to a
  * view that is already cached, its scope is reconnected, and the existing element, which was
  * left in the DOM, becomes active again. This can be disabled, or the maximum number of cached
- * views changed in {@link meteoric.provider:$ionicConfigProvider}, in the view's `$state` configuration, or
+ * views changed in {@link meteoric.provider:$meteoricConfigProvider}, in the view's `$state` configuration, or
  * as an attribute on the view itself (see below).
  *
  * @usage
@@ -45,7 +45,7 @@
  *
  * <table class="table">
  *  <tr>
- *   <td><code>$ionicView.loaded</code></td>
+ *   <td><code>$meteoricView.loaded</code></td>
  *   <td>The view has loaded. This event only happens once per
  * view being created and added to the DOM. If a view leaves but is cached,
  * then this event will not fire again on a subsequent viewing. The loaded event
@@ -53,33 +53,33 @@
  * recommended event to listen to when a view becomes active.</td>
  *  </tr>
  *  <tr>
- *   <td><code>$ionicView.enter</code></td>
+ *   <td><code>$meteoricView.enter</code></td>
  *   <td>The view has fully entered and is now the active view.
  * This event will fire, whether it was the first load or a cached view.</td>
  *  </tr>
  *  <tr>
- *   <td><code>$ionicView.leave</code></td>
+ *   <td><code>$meteoricView.leave</code></td>
  *   <td>The view has finished leaving and is no longer the
  * active view. This event will fire, whether it is cached or destroyed.</td>
  *  </tr>
  *  <tr>
- *   <td><code>$ionicView.beforeEnter</code></td>
+ *   <td><code>$meteoricView.beforeEnter</code></td>
  *   <td>The view is about to enter and become the active view.</td>
  *  </tr>
  *  <tr>
- *   <td><code>$ionicView.beforeLeave</code></td>
+ *   <td><code>$meteoricView.beforeLeave</code></td>
  *   <td>The view is about to leave and no longer be the active view.</td>
  *  </tr>
  *  <tr>
- *   <td><code>$ionicView.afterEnter</code></td>
+ *   <td><code>$meteoricView.afterEnter</code></td>
  *   <td>The view has fully entered and is now the active view.</td>
  *  </tr>
  *  <tr>
- *   <td><code>$ionicView.afterLeave</code></td>
+ *   <td><code>$meteoricView.afterLeave</code></td>
  *   <td>The view has finished leaving and is no longer the active view.</td>
  *  </tr>
  *  <tr>
- *   <td><code>$ionicView.unloaded</code></td>
+ *   <td><code>$meteoricView.unloaded</code></td>
  *   <td>The view's controller has been destroyed and its element has been
  * removed from the DOM.</td>
  *  </tr>

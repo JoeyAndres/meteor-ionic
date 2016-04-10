@@ -2,7 +2,7 @@
  * @ngdoc directive
  * @name ionList
  * @module meteoric
- * @delegate ionic.service:$ionicListDelegate
+ * @delegate meteoric.service:$ionicListDelegate
  * @restrict E
  * @description
  * The List is a widely used interface element in almost any mobile app, and can include

@@ -1,16 +1,16 @@
 /**
  * @ngdoc service
  * @name $ionicGesture
- * @module ionic
+ * @module meteoric
  * @description An angular service exposing ionic
- * {@link ionic.utility:ionic.EventController}'s gestures.
+ * {@link meteoric.utility:ionic.EventController}'s gestures.
  */
 $ionicGesture = (function() {
   return {
     /**
      * @ngdoc method
      * @name $ionicGesture#on
-     * @description Add an event listener for a gesture on an element. See {@link ionic.utility:ionic.EventController#onGesture}.
+     * @description Add an event listener for a gesture on an element. See {@link meteoric.utility:ionic.EventController#onGesture}.
      * @param {string} eventType The gesture event to listen for.
      * @param {function(e)} callback The function to call when the gesture
      * happens.
@@ -24,7 +24,7 @@ $ionicGesture = (function() {
     /**
      * @ngdoc method
      * @name $ionicGesture#off
-     * @description Remove an event listener for a gesture on an element. See {@link ionic.utility:ionic.EventController#offGesture}.
+     * @description Remove an event listener for a gesture on an element. See {@link meteoric.utility:ionic.EventController#offGesture}.
      * @param {ionic.Gesture} gesture The gesture that should be removed.
      * @param {string} eventType The gesture event to remove the listener for.
      * @param {function(e)} callback The listener to remove.

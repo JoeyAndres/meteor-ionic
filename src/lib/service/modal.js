@@ -1,10 +1,10 @@
 /**
  * @ngdoc service
  * @name $ionicModal
- * @module ionic
+ * @module meteoric
  * @description
  *
- * Related: {@link ionic.controller:ionicModal ionicModal controller}.
+ * Related: {@link meteoric.controller:ionicModal ionicModal controller}.
  *
  * The Modal is a content pane that can go over the user's main view
  * temporarily.  Usually used for making a choice or editing an item.
@@ -80,9 +80,9 @@ function($rootScope, $ionicBody, $compile, $timeout, $ionicPlatform, $ionicTempl
   /**
    * @ngdoc controller
    * @name ionicModal
-   * @module ionic
+   * @module meteoric
    * @description
-   * Instantiated by the {@link ionic.service:$ionicModal} service.
+   * Instantiated by the {@link meteoric.service:$ionicModal} service.
    *
    * Be sure to call [remove()](#remove) when you are done with each modal
    * to clean it up and avoid memory leaks.
@@ -326,8 +326,8 @@ function($rootScope, $ionicBody, $compile, $timeout, $ionicPlatform, $ionicTempl
      * @name $ionicModal#fromTemplate
      * @param {string} templateString The template string to use as the modal's
      * content.
-     * @param {object} options Options to be passed {@link ionic.controller:ionicModal#initialize ionicModal#initialize} method.
-     * @returns {object} An instance of an {@link ionic.controller:ionicModal}
+     * @param {object} options Options to be passed {@link meteoric.controller:ionicModal#initialize ionicModal#initialize} method.
+     * @returns {object} An instance of an {@link meteoric.controller:ionicModal}
      * controller.
      */
     fromTemplate: function(templateString, options) {
@@ -338,10 +338,10 @@ function($rootScope, $ionicBody, $compile, $timeout, $ionicPlatform, $ionicTempl
      * @ngdoc method
      * @name $ionicModal#fromTemplateUrl
      * @param {string} templateUrl The url to load the template from.
-     * @param {object} options Options to be passed {@link ionic.controller:ionicModal#initialize ionicModal#initialize} method.
+     * @param {object} options Options to be passed {@link meteoric.controller:ionicModal#initialize ionicModal#initialize} method.
      * options object.
      * @returns {promise} A promise that will be resolved with an instance of
-     * an {@link ionic.controller:ionicModal} controller.
+     * an {@link meteoric.controller:ionicModal} controller.
      */
     fromTemplateUrl: function(url, options, _) {
       var cb;

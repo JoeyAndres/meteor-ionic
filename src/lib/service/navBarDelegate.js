@@ -1,9 +1,9 @@
 /**
  * @ngdoc service
  * @name $ionicNavBarDelegate
- * @module ionic
+ * @module meteoric
  * @description
- * Delegate for controlling the {@link ionic.directive:ionNavBar} directive.
+ * Delegate for controlling the {@link meteoric.directive:ionNavBar} directive.
  *
  * @usage
  *
@@ -39,7 +39,7 @@ class ionicNavBarDelegate extends meteoric.lib.Delegate {
        * @ngdoc method
        * @name $ionicNavBarDelegate#showBackButton
        * @description
-       * Set/get whether the {@link ionic.directive:ionNavBackButton} is shown
+       * Set/get whether the {@link meteoric.directive:ionNavBackButton} is shown
        * (if it exists and there is a previous view that can be navigated to).
        * @param {boolean=} show Whether to show the back button.
        * @returns {boolean} Whether the back button is shown.
@@ -49,7 +49,7 @@ class ionicNavBarDelegate extends meteoric.lib.Delegate {
        * @ngdoc method
        * @name $ionicNavBarDelegate#showBar
        * @description
-       * Set/get whether the {@link ionic.directive:ionNavBar} is shown.
+       * Set/get whether the {@link meteoric.directive:ionNavBar} is shown.
        * @param {boolean} show Whether to show the bar.
        * @returns {boolean} Whether the bar is shown.
        */
@@ -58,7 +58,7 @@ class ionicNavBarDelegate extends meteoric.lib.Delegate {
        * @ngdoc method
        * @name $ionicNavBarDelegate#title
        * @description
-       * Set the title for the {@link ionic.directive:ionNavBar}.
+       * Set the title for the {@link meteoric.directive:ionNavBar}.
        * @param {string} title The new title to show.
        */
       'title',
