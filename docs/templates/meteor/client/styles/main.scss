@@ -23,6 +23,9 @@ header, main, footer {
   padding: 20px;
 }
 
-.side-nav .collapsible-body li.active a.l2 {
-  color: #444444;
+.side-nav .collapsible-body li.active,
+.side-nav.fixed .collapsible-body li.active {
+  a {
+    color: #444444;
+  }
 }
