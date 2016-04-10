@@ -4,25 +4,23 @@ Router.configure({
 
 Router.map(function() {
     <% _.forEach(modules, function(module) {
-        var templateName = module;
-        var routePath = /^(?:DocPage)(.+)$/g.exec(module.trim())[1];
         %>
-        this.route("<%= templateName %>", {
-            path: "/docs/<%= routePath %>",
-            template: "<%= templateName %>"
+        this.route("<%= module.routeName %>", {
+            path: "<%= module.routePath %>",
+            template: "<%= module.routeName %>"
         });
     <% }); %>
 
     this.route('Home', {
         path: '/',
         action() {
-            this.redirect('<%= modules[0] %>');
+            this.redirect('<%= modules[0].routeName %>');
         }
     });
 
     // Go to the first module.
     this.route('DocPageIndex', function() {
-        this.redirect('<%= modules[0] %>');
+        this.redirect('<%= modules[0].routeName %>');
     });
 
     this.route('About', {

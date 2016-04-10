@@ -2,29 +2,627 @@
     <ul id="slide-out" class="side-nav fixed table-of-contents section collapsible collapsible-l1" data-collapsible="accordion">
         <img src="/meteoric-logo.png" width="240px" height="240px" id="meteoric-sidebar-logo"/>
 
-        <li class="bold">
-            <a href="{{pathFor route='DocPageIndex'}}" class="collapsible-header">Docs</a>
-            <ul class="collapsible-l2 collapsible-body collapsible" data-collapsible="accordion">
-            <% _.forEach(main_modules, function(main_module) { %>
-                <li class="bold">
-                    <a href="{{pathFor route='<%= main_module.path %>'}}" class="collapsible-header">
-                        <%= main_module.name %>
+        <!-- Action Sheet -->
+        <li class="menu-section">
+            <a href="/api/service/$ionicActionSheet" class="api-section collapsible-header">
+                Action Sheet
+            </a>
+            <ul class="collapsible-body collapsible">
+                <li>
+                    <a href="/api/service/$ionicActionSheet">
+                        $ionicActionSheet
                     </a>
-                    <div class="collapsible-body">
-                        <ul>
-                            <% _.forEach(main_module.childModules, function(child_module) { %>
-                            <li class="section">
-                                <a href="{{pathFor route='<%= child_module.path %>'}}" class="l2">
-                                    <%= child_module.segmented[2] %>
-                                </a>
-                            </li>
-                            <% }); %>
-                        </ul>
-                    </div>
                 </li>
-            <% }); %>
             </ul>
         </li>
+
+
+        <!-- Backdrop -->
+        <li class="menu-section">
+            <a href="/api/service/$ionicBackdrop/" class="api-section collapsible-header">
+                Backdrop
+            </a>
+            <ul class="collapsible-body collapsible">
+                <li>
+                    <a href="/api/service/$ionicBackdrop/">
+                        $ionicBackdrop
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+
+        <!-- Content -->
+        <li class="menu-section">
+            <a href="/api/directive/ionContent/" class="api-section collapsible-header">
+                Content
+            </a>
+            <ul class="collapsible-body collapsible">
+                <li>
+                    <a href="/api/directive/ionContent/">
+                        ion-content
+                    </a>
+                </li>
+                <!--
+                <li>
+                    <a href="/api/directive/ionRefresher/">
+                        ion-refresher
+                    </a>
+                </li>
+                -->
+                <li>
+                    <a href="/api/directive/ionPane/">
+                        ion-pane
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+
+        <!-- Form Inputs -->
+        <li class="menu-section">
+            <a href="/api/directive/ionCheckbox/" class="api-section collapsible-header">
+                Form Inputs
+            </a>
+            <ul class="collapsible-body collapsible">
+                <li>
+                    <a href="/api/directive/ionCheckbox/">
+                        ion-checkbox
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/api/directive/ionRadio/">
+                        ion-radio
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/api/directive/ionToggle/">
+                        ion-toggle
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+
+
+        <!-- Gesture and Events -->
+        <li class="menu-section">
+            <a href="/api/directive/onHold/" class="api-section collapsible-header">
+                Gestures and Events
+            </a>
+            <ul class="collapsible-body collapsible">
+                <li>
+                    <a href="/api/directive/onHold/">
+                        on-hold
+                    </a>
+                </li>
+                <li>
+                    <a href="/api/directive/onTap/">
+                        on-tap
+                    </a>
+                </li>
+                <li>
+                    <a href="/api/directive/onDoubleTap/">
+                        on-double-tap
+                    </a>
+                </li>
+                <li>
+                    <a href="/api/directive/onTouch/">
+                        on-touch
+                    </a>
+                </li>
+                <li>
+                    <a href="/api/directive/onRelease/">
+                        on-release
+                    </a>
+                </li>
+                <li>
+                    <a href="/api/directive/onDrag/">
+                        on-drag
+                    </a>
+                </li>
+                <li>
+                    <a href="/api/directive/onDragUp/">
+                        on-drag-up
+                    </a>
+                </li>
+                <li>
+                    <a href="/api/directive/onDragRight/">
+                        on-drag-right
+                    </a>
+                </li>
+                <li>
+                    <a href="/api/directive/onDragDown/">
+                        on-drag-down
+                    </a>
+                </li>
+                <li>
+                    <a href="/api/directive/onDragLeft/">
+                        on-drag-left
+                    </a>
+                </li>
+                <li>
+                    <a href="/api/directive/onSwipe/">
+                        on-swipe
+                    </a>
+                </li>
+                <li>
+                    <a href="/api/directive/onSwipeUp/">
+                        on-swipe-up
+                    </a>
+                </li>
+                <li>
+                    <a href="/api/directive/onSwipeRight/">
+                        on-swipe-right
+                    </a>
+                </li>
+                <li>
+                    <a href="/api/directive/onSwipeDown/">
+                        on-swipe-down
+                    </a>
+                </li>
+                <li>
+                    <a href="/api/directive/onSwipeLeft/">
+                        on-swipe-left
+                    </a>
+                </li>
+                <li>
+                    <a href="/api/service/$ionicGesture/">
+                        $ionicGesture
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+
+        <!-- Headers/Footers -->
+        <li class="menu-section">
+            <a href="/api/directive/ionHeaderBar/" class="api-section collapsible-header">
+                Headers/Footers
+            </a>
+            <ul class="collapsible-body collapsible">
+                <li>
+                    <a href="/api/directive/ionHeaderBar/">
+                        ion-header-bar
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/api/directive/ionFooterBar/">
+                        ion-footer-bar
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+
+        <!-- Keyboard -->
+        <li class="menu-section">
+            <a href="/api/page/keyboard/" class="api-section collapsible-header">
+                Keyboard
+            </a>
+            <ul class="collapsible-body collapsible">
+                <li>
+                    <a href="/api/page/keyboard/">
+                        Keyboard
+                    </a>
+                </li>
+                <li>
+                    <a href="/api/directive/keyboardAttach/">
+                        keyboard-attach
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+
+        <!-- Lists -->
+        <li class="menu-section">
+            <a href="/api/directive/ionList/" class="api-section collapsible-header">
+                Lists
+            </a>
+            <ul class="collapsible-body collapsible">
+                <li>
+                    <a href="/api/directive/ionList/">
+                        ion-list
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/api/directive/ionItem/">
+                        ion-item
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/api/directive/ionDeleteButton/">
+                        ion-delete-button
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/api/directive/ionReorderButton/">
+                        ion-reorder-button
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/api/directive/ionOptionButton/">
+                        ion-option-button
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/api/directive/collectionRepeat/">
+                        collection-repeat
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/api/service/$ionicListDelegate/">
+                        $ionicListDelegate
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+
+        <!-- Loading -->
+        <li class="menu-section">
+            <a href="/api/service/$ionicLoading/" class="api-section collapsible-header">
+                Loading
+            </a>
+            <ul class="collapsible-body collapsible">
+                <li>
+                    <a href="/api/service/$ionicLoading/">
+                        $ionicLoading
+                    </a>
+                </li>
+            </ul>
+            <ul class="collapsible-body collapsible">
+                <li>
+                    <a href="/api/object/$ionicLoadingConfig/">
+                        $ionicLoadingConfig
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+
+        <!-- Modal -->
+        <li class="menu-section">
+            <a href="/api/service/$ionicModal/" class="api-section collapsible-header">
+                Modal
+            </a>
+            <ul class="collapsible-body collapsible">
+                <li>
+                    <a href="/api/service/$ionicModal/">
+                        $ionicModal
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/api/controller/ionicModal/">
+                        ionicModal
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+
+        <!-- Navigation -->
+        <li class="menu-section">
+            <a href="/api/directive/ionNavView/" class="api-section collapsible-header">
+                Navigation
+            </a>
+            <ul class="collapsible-body collapsible">
+                <li>
+                    <a href="/api/directive/ionNavView/">
+                        ion-nav-view
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/api/directive/ionView/">
+                        ion-view
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/api/directive/ionNavBar/">
+                        ion-nav-bar
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/api/directive/ionNavBackButton/">
+                        ion-nav-back-button
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/api/directive/ionNavButtons/">
+                        ion-nav-buttons
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/api/directive/ionNavTitle/">
+                        ion-nav-title
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/api/directive/navTransition/">
+                        nav-transition
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/api/directive/navDirection/">
+                        nav-direction
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/api/service/$ionicNavBarDelegate/">
+                        $ionicNavBarDelegate
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/api/service/$ionicHistory/">
+                        $ionicHistory
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+
+        <!-- Platform -->
+        <li class="menu-section">
+            <a href="/api/service/$ionicPlatform/" class="api-section collapsible-header">
+                Platform
+            </a>
+            <ul class="collapsible-body collapsible">
+                <li>
+                    <a href="/api/service/$ionicPlatform/">
+                        $ionicPlatform
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+
+        <!-- Popover -->
+        <li class="menu-section">
+            <a href="/api/service/$ionicPopover/" class="api-section collapsible-header">
+                Popover
+            </a>
+            <ul class="collapsible-body collapsible">
+                <li>
+                    <a href="/api/service/$ionicPopover/">
+                        $ionicPopover
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/api/controller/ionicPopover/">
+                        ionicPopover
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+
+        <!-- Popup -->
+        <li class="menu-section">
+            <a href="/api/service/$ionicPopup/" class="api-section collapsible-header">
+                Popup
+            </a>
+            <ul class="collapsible-body collapsible">
+                <li>
+                    <a href="/api/service/$ionicPopup/">
+                        $ionicPopup
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+
+        <!-- Scroll -->
+        <li class="menu-section">
+            <a href="/api/directive/ionScroll/" class="api-section collapsible-header">
+                Scroll
+            </a>
+            <ul class="collapsible-body collapsible">
+                <li>
+                    <a href="/api/directive/ionScroll/">
+                        ion-scroll
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/api/directive/ionInfiniteScroll/">
+                        ion-infinite-scroll
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/api/service/$ionicScrollDelegate/">
+                        $ionicScrollDelegate
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+
+        <!-- Side Menus -->
+        <li class="menu-section">
+            <a href="/api/directive/ionSideMenus/" class="api-section collapsible-header">
+                Side Menus
+            </a>
+            <ul class="collapsible-body collapsible">
+                <li>
+                    <a href="/api/directive/ionSideMenus/">
+                        ion-side-menus
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/api/directive/ionSideMenuContent/">
+                        ion-side-menu-content
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/api/directive/ionSideMenu/">
+                        ion-side-menu
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/api/directive/exposeAsideWhen/">
+                        expose-aside-when
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/api/directive/menuToggle/">
+                        menu-toggle
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/api/directive/menuClose/">
+                        menu-close
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/api/service/$ionicSideMenuDelegate/">
+                        $ionicSideMenuDelegate
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+
+        <!-- Slide Box -->
+        <li class="menu-section">
+            <a href="/api/directive/ionSlideBox/" class="api-section collapsible-header">
+                Slide Box
+            </a>
+            <ul class="collapsible-body collapsible">
+                <li>
+                    <a href="/api/directive/ionSlideBox/">
+                        ion-slide-box
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/api/directive/ionSlide/">
+                        ion-slide
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/api/service/$ionicSlideBoxDelegate/">
+                        $ionicSlideBoxDelegate
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+
+        <!-- Spinner -->
+        <li class="menu-section">
+            <a href="/api/directive/ionSpinner/" class="api-section collapsible-header">
+                Spinner
+            </a>
+            <ul class="collapsible-body collapsible">
+                <li>
+                    <a href="/api/directive/ionSpinner/">
+                        ion-spinner
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+
+        <!-- Tabs -->
+        <li class="menu-section">
+            <a href="/api/directive/ionTabs/" class="api-section collapsible-header">
+                Tabs
+            </a>
+            <ul class="collapsible-body collapsible">
+                <li>
+                    <a href="/api/directive/ionTabs/">
+                        ion-tabs
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/api/directive/ionTab/">
+                        ion-tab
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/api/service/$ionicTabsDelegate/">
+                        $ionicTabsDelegate
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+
+        <!-- Tap -->
+        <li class="menu-section">
+            <a href="/api/page/tap/" class="api-section collapsible-header">
+                Tap &amp; Click
+            </a>
+        </li>
+
+
+        <!-- Utility -->
+        <li class="menu-section">
+            <a href="#" class="api-section collapsible-header">
+                Utility
+            </a>
+            <ul class="collapsible-body collapsible">
+                <li>
+                    <a href="/api/provider/$ionicConfigProvider/">
+                        $ionicConfigProvider
+                    </a>
+                </li>
+                <li>
+                    <a href="/api/utility/ionic.Platform/">
+                        ionic.Platform
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/api/utility/ionic.DomUtil/">
+                        ionic.DomUtil
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/api/utility/ionic.EventController/">
+                        ionic.EventController
+                    </a>
+                </li>
+                <li>
+                    <a href="/api/service/$ionicPosition/">
+                        $ionicPosition
+                    </a>
+                </li>
+            </ul>
+        </li>
+
         <li class="bold"><a href="{{pathFor route='About'}}" class="collapsible-header">About</a></li>
     </ul>
     <script>

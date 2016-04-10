@@ -135,12 +135,12 @@ gulp.task('clean-up-meteor-doc-project', function(cb) {
 
 
 gulp.task('create-router-meteor-doc-project', function() {
-    var docPath = 'doc-build/client/partials/api';
+    var docPath = 'doc-build/client/partials/api/meteoric';
     var modules = [];
 
     return new Promise(function(resolve) {
         gulp.src([
-            docPath + '/meteoric/{directive,object,service}/**/*.{md,html,markdown}'
+            docPath + '/{directive,object,service}/**/*.{md,html,markdown}'
         ]).pipe(es.map(function(file, callback) {
             // Grab relative path from ionic-site root
             var relpath = file.path.replace(RegExp('^.*?' + docPath + '/'), '');
@@ -149,9 +149,18 @@ gulp.task('create-router-meteor-doc-project', function() {
             callback();
         })).on('end', function() {
             modules = modules.map(function(m) {
+                var routeName = m.split('.html')[0].split('/');
+                routeName = routeName[routeName.length - 1];
+
+                var routePath = 'api/' + m.split('.html')[0];
+
                 // get rid of .html,
-                var segmented = m.split('.html')[0].split('/');
-                return 'DocPage' + segmented[segmented.length - 1];
+                var new_m = {
+                    routePath: routePath,
+                    routeName: routeName
+                };
+
+                return new_m;
             });
 
             gulp.src('docs/templates/meteor/router.template.js')
