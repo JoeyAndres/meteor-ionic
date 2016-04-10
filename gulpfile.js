@@ -67,53 +67,6 @@ gulp.task('setup-meteor-doc-project-packages', function() {
         .pipe(gulp.dest('doc-build/.meteor'));
 });
 
-gulp.task('_doc-side-nav', function() {
-    var docPath = 'doc-build/client/partials/api';
-    var modules = [];
-
-    return new Promise(function(resolve) {
-        gulp.src([
-            docPath + '/meteoric/{directive,object,service}/**/*.{md,html,markdown}'
-        ]).pipe(es.map(function (file, callback) {
-            // Grab relative path from ionic-site root
-            var relpath = file.path.replace(RegExp('^.*?' + docPath + '/'), '');
-            modules.push(relpath);
-
-            callback();
-        })).on('end', function () {
-            modules = modules.map(function (m) {
-                // get rid of .html,
-                var segmented = m.split('.html')[0].split('/');
-                m = {
-                    path: 'DocPage' + segmented[segmented.length - 1],
-                    segmented: segmented
-                };
-                return m;
-            });
-
-            var main_modules = _.union(modules.map(function (m) {
-                return m.segmented[1];
-            })).map(function (m) {
-                var childModules = modules.filter(function (m2) {
-                    return m2.segmented[1] == m;
-                });
-                var new_m = {
-                    name: m,
-                    path: childModules[0].path,
-                    childModules: childModules
-                };
-                return new_m;
-            });
-
-            gulp.src('docs/templates/meteor/client/templates/sidenav.template.html')
-                .pipe(template({main_modules: main_modules}))
-                .pipe(rename('doc-side-nav.html'))
-                .pipe(gulp.dest('doc-build/client/templates'))
-                .on('end', function() { resolve(); });
-        });
-    });
-});
-
 gulp.task('_setup-meteor-doc-project-templates', function() {
     return gulp.src([
         'docs/templates/meteor/client/**/*',
@@ -122,7 +75,7 @@ gulp.task('_setup-meteor-doc-project-templates', function() {
 });
 
 gulp.task('setup-meteor-doc-project-templates', function(cb) {
-    return runSequence('_setup-meteor-doc-project-templates', 'dgeni', '_doc-side-nav', cb);
+    return runSequence('_setup-meteor-doc-project-templates', 'dgeni', cb);
 });
 
 gulp.task('clean-up-meteor-doc-project', function(cb) {
