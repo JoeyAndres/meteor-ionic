@@ -20,19 +20,19 @@
  * Available: true or false.  Defaults to false.
  *
  * @usage
- * ```html
- * <ion-header-bar align-title="left" class="bar-positive">
- *   <div class="buttons">
- *     <button class="button" ng-click="doSomething()">Left Button</button>
- *   </div>
- *   <h1 class="title">Title!</h1>
- *   <div class="buttons">
- *     <button class="button">Right Button</button>
- *   </div>
- * </ion-header-bar>
- * <ion-content>
- *   Some content!
- * </ion-content>
+ * ```handlebars
+   {{#ionHeaderBar align-title="left" class="bar-positive"}}
+       <div class="buttons">
+           <button class="button" ng-click="doSomething()">Left Button</button>
+       </div>
+       <h1 class="title">Title!</h1>
+       <div class="buttons">
+           <button class="button">Right Button</button>
+       </div>
+   {{/ionHeaderBar}}
+   {{#ionContent}}
+     Some content!
+   {{/ionContent}}
  * ```
  */
 Template.ionHeaderBar.onCreated(function() {

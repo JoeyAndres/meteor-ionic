@@ -37,7 +37,10 @@ gulp.task('dgeni', ['dgeni-clean'], function(done) {
         exclude: [
             './src/lib/service/modal.js',
             './src/lib/service/popover.js',
-            './src/lib/service/popup.js'
+            './src/lib/service/popup.js',
+            './src/lib/service/actionSheet.js',
+            './src/lib/service/backdrop.js',
+            './src/lib/service/loading.js'
         ],
         dest: './doc-build/client'
     })]);

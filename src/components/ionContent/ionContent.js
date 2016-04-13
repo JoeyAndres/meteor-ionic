@@ -22,9 +22,7 @@
  *
  * Be aware that this directive gets its own child scope. If you do not understand why this
  * is important, you can read [https://docs.angularjs.org/guide/scope](https://docs.angularjs.org/guide/scope).
- *
- * @param {string=} delegate-handle The handle used to identify this scrollView
- * with {@link meteoric.service:$ionicScrollDelegate}.
+ 
  * @param {string=} direction Which way to scroll. 'x' or 'y' or 'xy'. Default 'y'.
  * @param {boolean=} locking Whether to lock scrolling in one direction at a time. Useful to set to false when zoomed in or scrolling in two directions. Default true.
  * @param {boolean=} padding Whether to add padding to the content.
@@ -41,6 +39,27 @@
  * @param {boolean=} has-bouncing Whether to allow scrolling to bounce past the edges
  * of the content.  Defaults to true on iOS, false on Android.
  * @param {number=} scroll-event-interval Number of milliseconds between each firing of the 'on-scroll' expression. Default 10.
+ *
+ * @usage
+ *
+ * ```handlebars
+ * {{#ionContent}}
+     [direction=""]
+     [locking=""]
+     [padding=""]
+     [scroll=""]
+     [overflow-scroll=""]
+     [scrollbar-x=""]
+     [scrollbar-y=""]
+     [start-x=""]
+     [start-y=""]
+     [on-scroll=""]
+     [on-scroll-complete=""]
+     [has-bouncing=""]
+     [scroll-event-interval=""]>
+     <!-- contents here -->
+   {{/ionContent}}
+ * ```
  */
 
 let ionContentDefault = {

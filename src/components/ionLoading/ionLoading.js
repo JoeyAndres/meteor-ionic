@@ -5,21 +5,55 @@
  * @description
  * An overlay that can be used to indicate activity while blocking user
  * interaction.
- *
+
  * @usage
  *
- * ```js
- * angular.module('LoadingApp', ['ionic'])
- * .controller('LoadingCtrl', function($scope, $ionicLoading) {
- *   $scope.show = function() {
- *     $ionicLoading.show({
- *       template: 'Loading...'
- *     });
- *   };
- *   $scope.hide = function(){
- *     $ionicLoading.hide();
- *   };
- * });
+ * In your templates:
+ *
+ * ```html
+   {{#ionView title="Loading"}}
+     {{#ionContent}}
+       <div class="padding">
+         <button class="button button-large button-stable button-block" data-action="showLoading">
+           Show Loading (3s)
+         </button>
+
+         <button class="button button-large button-stable button-block" data-action="showLoadingWithBackdrop">
+           Show Loading With Backdrop (3s)
+         </button>
+
+         <button class="button button-large button-stable button-block" data-action="showLoadingCustomTemplate">
+           Show Loading With Template (3s)
+         </button>
+       </div>
+     {{/ionContent}}
+   {{/ionView}}
+ * ```
+ *
+ * In your javascript file:
+ *
+ * ```javascript
+ Template.loading.events({
+  'click [data-action=showLoading]': function (event, template) {
+    $ionicLoading.show({
+      duration: 3000
+    });
+  },
+
+  'click [data-action=showLoadingWithBackdrop]': function (event, template) {
+    $ionicLoading.show({
+      duration: 3000,
+      backdrop: true
+    });
+  },
+
+  'click [data-action=showLoadingCustomTemplate]': function (event, template) {
+    $ionicLoading.show({
+      customTemplate: '<h3>Loading…</h3><p>Please wait while we upload your image.</p>',
+      duration: 3000
+    });
+  }
+});
  * ```
  */
 
@@ -30,21 +64,10 @@
  * @description
  * Set the default options to be passed to the {@link meteoric.service:$ionicLoading} service.
  *
- * @usage
- * ```js
- * var app = angular.module('myApp', ['ionic'])
- * app.constant('$ionicLoadingConfig', {
- *   template: 'Default Loading Template...'
- * });
- * app.controller('AppCtrl', function($scope, $ionicLoading) {
- *   $scope.showLoading = function() {
- *     $ionicLoading.show(); //options default to values in $ionicLoadingConfig
- *   };
- * });
- * ```
+ * (Work in progress)
  */
 
-IonLoading = {
+$ionicLoading = {
   show: function (userOptions) {
     var userOptions = userOptions || {};
     var options = _.extend({
@@ -55,13 +78,13 @@ IonLoading = {
     }, userOptions);
 
     if (options.backdrop) {
-      IonBackdrop.retain();
+      $ionicBackdrop.retain();
       $('.backdrop').addClass('backdrop-loading');
     }
 
     Meteor.setTimeout(function () {
       this.template = Template['ionLoading'];
-      this.view = Blaze.renderWithData(this.template, {template: options.customTemplate}, $('.ionic-body').get(0));
+      this.view = Blaze.renderWithData(this.template, {template: options.customTemplate}, $('body').get(0));
 
       var $loadingEl = $(this.view.firstNode());
       $loadingEl.addClass('visible');
@@ -84,7 +107,7 @@ IonLoading = {
       $loadingEl.removeClass('active');
 
       Meteor.setTimeout(function () {
-        IonBackdrop.release();
+        $ionicBackdrop.release();
         $loadingEl.removeClass('visible');
         Blaze.remove(this.view);
         this.view = null;

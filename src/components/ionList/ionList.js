@@ -23,55 +23,82 @@
  * Basic Usage:
  *
  * ```html
- * <ion-list>
- *   <ion-item ng-repeat="item in items">
- *     {% raw %}Hello, {{item}}!{% endraw %}
- *   </ion-item>
- * </ion-list>
+ * <ionList>
+ *   {{#each items}}
+ *     {{#ionItem}}
+ *       <img src="https://randomuser.me/api/portraits/thumb/men/27.jpg">
+ *       <h2>John Smith {{this}}</h2>
+ *       <p>(555) 555-1212</p>
+ *     {{/ionItem}}
+ *   {{/each}}
+ * </ionList>
  * ```
  *
  * Advanced Usage: Thumbnails, Delete buttons, Reordering, Swiping
  *
- * ```html
- * <ion-list ng-controller="MyCtrl"
- *           show-delete="shouldShowDelete"
- *           show-reorder="shouldShowReorder"
- *           can-swipe="listCanSwipe">
- *   <ion-item ng-repeat="item in items"
- *             class="item-thumbnail-left">
- *
- *     {% raw %}<img ng-src="{{item.img}}">
- *     <h2>{{item.title}}</h2>
- *     <p>{{item.description}}</p>{% endraw %}
- *     <ion-option-button class="button-positive"
- *                        ng-click="share(item)">
- *       Share
- *     </ion-option-button>
- *     <ion-option-button class="button-info"
- *                        ng-click="edit(item)">
- *       Edit
- *     </ion-option-button>
- *     <ion-delete-button class="ion-minus-circled"
- *                        ng-click="items.splice($index, 1)">
- *     </ion-delete-button>
- *     <ion-reorder-button class="ion-navicon"
- *                         on-reorder="reorderItem(item, $fromIndex, $toIndex)">
- *     </ion-reorder-button>
- *
- *   </ion-item>
- * </ion-list>
+ * ```handlebars
+ {{#ionList onReorder=onReorder showDelete=deletable showReorder=sortable canSwipe=true}}
+     {{#each items}}
+         {{#ionItem class="item-avatar-left"}}
+             <img src="https://randomuser.me/api/portraits/thumb/men/27.jpg">
+             <h2>John Smith {{this}}</h2>
+             <p>(555) 555-1212</p>
+
+
+             {{#ionOptionButton class="button-info"}}
+                 Share
+             {{/ionOptionButton}}
+             {{#ionOptionButton class="button-assertive"}}
+                 Edit
+             {{/ionOptionButton}}
+
+             {{#ionDeleteButton class="ion-minus-circled"}}{{/ionDeleteButton}}
+             {{#ionReorderButton class="ion-navicon"}}{{/ionReorderButton}}
+         {{/ionItem}}
+     {{/each}}
+ {{/ionList}}
  * ```
  *
+ * In your javascript:
+ *
  *```javascript
- * app.controller('MyCtrl', function($scope) {
-*  $scope.shouldShowDelete = false;
-*  $scope.shouldShowReorder = false;
-*  $scope.listCanSwipe = true
-* });
+    Template.listsComplex.onCreated(function(){
+        this.items = new ReactiveVar([]);
+        this.sortable = new ReactiveVar(false);
+        this.deletable = new ReactiveVar(false);
+        _(20).times((n) => this.items.get().push(n + 1));  // 0 based counting is causing errors for some reason.
+    });
+
+     Template.listsComplex.onRendered(function(){
+        // Suppose we have these buttons in the navigation bar.
+        $("#button-delete").click(() => this.deletable.set(!this.deletable.get()));
+        $("#button-reorder").click(() => this.sortable.set(!this.sortable.get()));
+    });
+
+     Template.listsComplex.helpers({
+        items: function () {
+            return Template.instance().items.get();
+        },
+
+        onReorder: function() {
+            let template = Template.instance();
+            return (item, fromIndex, toIndex) => {
+                let newTimes = template.items.get();
+                newTimes.splice(toIndex, 0, newTimes.splice(fromIndex, 1)[0]);
+                template.items.set(newTimes);
+            }
+        },
+
+        sortable: function() {
+            return Template.instance().sortable.get();
+        },
+
+        deletable: function () {
+            return Template.instance().deletable.get();
+        }
+    });
  *```
  *
- * @param {string=} delegate-handle The handle used to identify this list with
- * {@link meteoric.service:$ionicListDelegate}.
  * @param type {string=} The type of list to use (list-inset or card)
  * @param show-delete {boolean=} Whether the delete buttons for the items in the list are
  * currently shown or hidden.

@@ -15,14 +15,14 @@
  *
  * @usage
  *
- * ```html
- * <ion-list>
- *   <ion-item>
+ * ```handlebars
+ * {{#ionList}}
+ *   {{#ionItem}}
  *     I love kittens!
- *     <ion-option-button class="button-positive">Share</ion-option-button>
- *     <ion-option-button class="button-assertive">Edit</ion-option-button>
- *   </ion-item>
- * </ion-list>
+ *     {{#ion-option-button class="button-positive"}}Share{{/ion-option-button}}
+ *     {{#ion-option-button class="button-assertive"}}Edit{{/ion-option-button}}
+ *   {{/ion-item}}
+ * {{/ionList}}
  * ```
  */
 

@@ -16,13 +16,13 @@
  *
  * @usage
  *
- * ```html
- * <ion-list>
- *   <ion-item>Hello!</ion-item>
- *   <ion-item href="#/detail">
+ * ```handlebars
+ * {{#ionList}}
+ *   {{#ionItem}}Hello!{{/ionItem}}
+ *   {{#ionItem href="#/detail"}}
  *     Link to detail page
- *   </ion-item>
- * </ion-list>
+ *   {{/ionItem}}
+ * {{/ionList}}
  * ```
  */
 

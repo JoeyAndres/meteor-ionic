@@ -193,12 +193,6 @@ Package.onUse(function(api) {
     "components/ionSlides/ionSlides.html",
     "components/ionSlides/ionSlides.js",
 
-    "components/ionSubfooterBar/ionSubfooterBar.html",
-    "components/ionSubfooterBar/ionSubfooterBar.js",
-
-    "components/ionSubheaderBar/ionSubheaderBar.html",
-    "components/ionSubheaderBar/ionSubheaderBar.js",
-
     "components/ionTabs/ionTabs.html",
     "components/ionTabs/ionTabs.js",
 
@@ -215,11 +209,8 @@ Package.onUse(function(api) {
 
   api.export("Platform");
 
-  api.export("IonActionSheet");
-  api.export("IonBackdrop");
   api.export("IonHeaderBar");
   api.export("IonKeyboard");
-  api.export("IonLoading");
   api.export("IonModal");
   api.export("IonPopover");
   api.export("IonPopup");
@@ -228,6 +219,9 @@ Package.onUse(function(api) {
   api.export([
     // Services.
     '$ionicGesture',
+    '$ionicActionSheet',
+    '$ionicBackdrop',
+    "$ionicLoading",
 
     // ionic Delegates.
     '$ionicScrollDelegate',

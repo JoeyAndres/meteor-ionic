@@ -15,7 +15,7 @@
  *
  * @usage
  *
- * ```html
+ * ```handlebars
  * <ion-list show-delete="shouldShowDelete">
  *   <ion-item>
  *     <ion-delete-button class="ion-minus-circled"></ion-delete-button>

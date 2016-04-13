@@ -18,10 +18,10 @@
  *
  * @usage
  * ```html
- * <ion-content>
+ * {{#ion-content}}
  *   Some content!
- * </ion-content>
- * <ion-footer-bar align-title="left" class="bar-assertive">
+ * {{/ion-content}}
+ * {{#ion-footer-bar align-title="left" class="bar-assertive"}}
  *   <div class="buttons">
  *     <button class="button">Left Button</button>
  *   </div>
@@ -29,7 +29,7 @@
  *   <div class="buttons" ng-click="doSomething()">
  *     <button class="button">Right Button</button>
  *   </div>
- * </ion-footer-bar>
+ * {{/ion-footer-bar}}
  * ```
  */
 

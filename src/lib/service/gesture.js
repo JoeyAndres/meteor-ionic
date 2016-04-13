@@ -4,6 +4,27 @@
  * @module meteoric
  * @description An angular service exposing ionic
  * {@link meteoric.utility:ionic.EventController}'s gestures.
+ *
+ * @usage
+ * Suppose your template:
+ * ```
+ * <button id='foo'>Foo</button>
+ * ```
+ *
+ * In your javascript:
+ * ```javascript
+ * function cb = function() {
+ *   console.log('foo');
+ * };
+ *
+ * var $button = $('#foo');
+ *
+ * // Attach event handler.
+ * $ionicGesture.on('onHold', cb, $button);
+ *
+ * // De-attach event handler.
+ * $ionicGesture.off('onHold', cb, $button);
+ * ```
  */
 $ionicGesture = (function() {
   return {

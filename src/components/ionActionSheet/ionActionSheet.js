@@ -1,5 +1,72 @@
+/**
+ * @ngdoc service
+ * @name $ionicActionSheet
+ * @module meteoric
+ * @description
+ * The Action Sheet is a slide-up pane that lets the user choose from a set of options.
+ * Dangerous options are highlighted in red and made obvious.
+ *
+ * There are easy ways to cancel out of the action sheet, such as tapping the backdrop or even
+ * hitting escape on the keyboard for desktop testing.
+ *
+ * ![Action Sheet](http://ionicframework.com.s3.amazonaws.com/docs/controllers/actionSheet.gif)
+ *
+ * @usage
+ * To trigger an Action Sheet in your code, use the $ionicActionSheet service in your angular controllers:
+ *
+ * Suppose you have a template containing a button, which when clicked, shows the action sheet.
+ *
+ * ```handlebars
+ * <template name="actionSheet">
+     {{#ionView title="Action Sheet"}}
+       {{#ionContent}}
+         <div class="padding">
+           <button class="button button-large button-stable" data-action="showActionSheet">
+             Show Action Sheet
+           </button>
+         </div>
+       {{/ionContent}}
+     {{/ionView}}
+   </template>
+ * ```
+ *
+ * In your javascript file, you handle the event.
+ *
+ * ```js
+ * Template.actionSheet.events({
+      'click [data-action=showActionSheet]': function (event, template) {
+        $ionicActionSheet.show({
+          titleText: 'ActionSheet Example',
+          buttons: [
+            { text: 'Share <i class="icon ion-share"></i>' },
+            { text: 'Move <i class="icon ion-arrow-move"></i>' },
+          ],
+          destructiveText: 'Delete',
+          cancelText: 'Cancel',
+          cancel: function() {
+            console.log('Cancelled!');
+          },
+          buttonClicked: function(index) {
+            if (index === 0) {
+              console.log('Shared!');
+            }
+            if (index === 1) {
+              console.log('Moved!');
+            }
+            return true;
+          },
+          destructiveButtonClicked: function() {
+            console.log('Destructive Action!');
+            return true;
+          }
+        });
+      }
+   });
+ * ```
+ *
+ */
 
-export let IonActionSheet = {
+$ionicActionSheet = {
   transitionEndEvent: 'transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd',
 
   show: function (options) {
@@ -27,7 +94,7 @@ export let IonActionSheet = {
       buttonClicked: options.buttonClicked
     };
 
-    this.view = Blaze.renderWithData(this.template, data, $('.ionic-body').get(0));
+    this.view = Blaze.renderWithData(this.template, data, $('body').get(0));
     $('body').addClass('action-sheet-open');
 
     var $backdrop = $(this.view.firstNode());
@@ -46,14 +113,14 @@ export let IonActionSheet = {
   buttonClicked: function (index) {
     var callback = this.callbacks.buttonClicked;
     if (callback(index) === true) {
-      IonActionSheet.close();
+      $ionicActionSheet.close();
     }
   },
 
   destructiveButtonClicked: function () {
     var callback = this.callbacks.destructiveButtonClicked;
     if (callback() === true) {
-      IonActionSheet.close();
+      $ionicActionSheet.close();
     }
   },
 
@@ -80,7 +147,7 @@ export let IonActionSheet = {
 Template.ionActionSheet.rendered = function () {
   $(window).on('keyup.ionActionSheet', function(event) {
     if (event.which == 27) {
-      IonActionSheet.cancel();
+      $ionicActionSheet.cancel();
     }
   });
 };
@@ -93,21 +160,21 @@ Template.ionActionSheet.events({
   // Handle clicking the backdrop
   'click': function (event, template) {
     if ($(event.target).hasClass('action-sheet-backdrop')) {
-      IonActionSheet.cancel();
+      $ionicActionSheet.cancel();
     }
   },
 
   'click [data-index]': function (event, template) {
     var index = $(event.target).data('index');
-    IonActionSheet.buttonClicked(index);
+    $ionicActionSheet.buttonClicked(index);
   },
 
   'click [data-destructive]': function (event, template) {
-    IonActionSheet.destructiveButtonClicked();
+    $ionicActionSheet.destructiveButtonClicked();
   },
 
   'click [data-cancel]': function (event, template) {
-    IonActionSheet.cancel();
+    $ionicActionSheet.cancel();
   }
 
 });

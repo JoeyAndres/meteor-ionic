@@ -18,26 +18,7 @@
  *
  * @usage
  *
- * ```html
- * <ion-list ng-controller="MyCtrl" show-reorder="true">
- *   <ion-item ng-repeat="item in items">
- *     Item {{item}}
- *     <ion-reorder-button class="ion-navicon"
- *                         on-reorder="moveItem(item, $fromIndex, $toIndex)">
- *     </ion-reorder-button>
- *   </ion-item>
- * </ion-list>
- * ```
- * ```js
- * function MyCtrl($scope) {
-*   $scope.items = [1, 2, 3, 4];
-*   $scope.moveItem = function(item, fromIndex, toIndex) {
-*     //Move the item in the array
-*     $scope.items.splice(fromIndex, 1);
-*     $scope.items.splice(toIndex, 0, item);
-*   };
-* }
- * ```
+ * See {@link meteoric.directive:ionList} for a complete example.
  *
  * @param {expression=} on-reorder Expression to call when an item is reordered.
  * Parameters given: $fromIndex, $toIndex.
