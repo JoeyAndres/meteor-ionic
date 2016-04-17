@@ -10,30 +10,6 @@
  * menus.  Use the {@link meteoric.service:$ionicSideMenuDelegate#$getByHandle $getByHandle}
  * method to control specific ionSideMenus instances.
  *
- * @usage
- *
- * ```html
- * <body ng-controller="MainCtrl">
- *   <ion-side-menus>
- *     <ion-side-menu-content>
- *       Content!
- *       <button ng-click="toggleLeftSideMenu()">
- *         Toggle Left Side Menu
- *       </button>
- *     </ion-side-menu-content>
- *     <ion-side-menu side="left">
- *       Left Menu!
- *     <ion-side-menu>
- *   </ion-side-menus>
- * </body>
- * ```
- * ```js
- * function MainCtrl($scope, $ionicSideMenuDelegate) {
- *   $scope.toggleLeftSideMenu = function() {
- *     $ionicSideMenuDelegate.toggleLeft();
- *   };
- * }
- * ```
  */
 class ionicSideMenuDelegate extends meteoric.lib.Delegate {
   constructor() {
@@ -101,16 +77,6 @@ class ionicSideMenuDelegate extends meteoric.lib.Delegate {
        * @returns {boolean} Whether the drag can start only from within the edge of screen threshold.
        */
       'edgeDragThreshold'
-      /**
-       * @ngdoc method
-       * @name $ionicSideMenuDelegate#$getByHandle
-       * @param {string} handle
-       * @returns `delegateInstance` A delegate instance that controls only the
-       * {@link meteoric.directive:ionSideMenus} directives with `delegate-handle` matching
-       * the given handle.
-       *
-       * Example: `$ionicSideMenuDelegate.$getByHandle('my-handle').toggleLeft();`
-       */
     ];
 
     super();

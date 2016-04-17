@@ -11,14 +11,15 @@
  * Each ionTab has its own view history.
  *
  * @usage
- * ```html
- * <ion-tab
- *   title="Tab!"
- *   icon="my-icon"
- *   href="#/tab/tab-link"
- *   on-select="onTabSelected()"
- *   on-deselect="onTabDeselected()">
- * </ion-tab>
+ * ```handlebars
+ {{#ionTab title="Home" iconOn="ion-ios-filing" iconOff="ion-ios-filing-outline" href="/tabs/home"}}
+     {{#ionView viewTitle="Facts"}}
+         {{#ionNavTitle}}Hello{{/ionNavTitle}}
+         {{#ionContent class="padding"}}
+             {{> tabContentWrapper}}
+         {{/ionContent}}
+     {{/ionView}}
+ {{/ionTab}}
  * ```
  * For a complete, working tab bar example, see the {@link meteoric.directive:ionTabs} documentation.
  *
@@ -31,7 +32,6 @@
  * @param {expression=} badge-style The style of badge to put on this tab (eg: badge-positive).
  * @param {expression=} on-select Called when this tab is selected.
  * @param {expression=} on-deselect Called when this tab is deselected.
- * @param {expression=} ng-click By default, the tab will be selected on click. If ngClick is set, it will not.  You can explicitly switch tabs using {@link meteoric.service:$ionicTabsDelegate#select $ionicTabsDelegate.select()}.
  * @param {expression=} hidden Whether the tab is to be hidden or not.
  * @param {expression=} disabled Whether the tab is to be disabled or not.
  */

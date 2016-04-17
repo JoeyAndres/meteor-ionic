@@ -1,15 +1,26 @@
 /**
- * @function ionSideMenu
+ * @ngdoc directive
+ * @name ionSideMenu
+ * @module meteoric
+ * @restrict E
+ * @parent meteoric.directive:ionSideMenus
  *
  * @description
  * A container for a side menu, sibling to an {@link meteoric.directive:ionSideMenuContent} directive.
  *
- * ```html
- * <ion-side-menu
- *   side="left"
- *   width="myWidthValue + 20"
- *   is-enabled="shouldLeftSideMenuBeEnabled()">
- * </ion-side-menu>
+ * ```handlebars
+ {{#ionSideMenu}}
+     <div class="bar bar-header bar-dark">
+         <h1 class="title">Left Menu</h1>
+     </div>
+     <div class="content has-header">
+         <div class="list">
+             <div class="item item-icon-right" ion-menu-close>
+                 Close Me <i class="icon ionic-ios-arrow-right"></i>
+             </div>
+         </div>
+     </div>
+ {{/ionSideMenu}}
  * ```
  * For a complete side menu example, see the
  * {@link meteoric.directive:ionSideMenus} documentation.

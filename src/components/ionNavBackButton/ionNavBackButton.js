@@ -17,42 +17,7 @@
  *
  * @usage
  *
- * Recommended markup for default settings:
- *
- * ```html
- * <ion-nav-bar>
- *   <ion-nav-back-button>
- *   </ion-nav-back-button>
- * </ion-nav-bar>
- * ```
- *
- * With custom inner markup, and automatically adds a default click action:
- *
- * ```html
- * <ion-nav-bar>
- *   <ion-nav-back-button class="button-clear">
- *     <i class="ion-arrow-left-c"></i> Back
- *   </ion-nav-back-button>
- * </ion-nav-bar>
- * ```
- *
- * With custom inner markup and custom click action, using {@link meteoric.service:$ionicHistory}:
- *
- * ```html
- * <ion-nav-bar ng-controller="MyCtrl">
- *   <ion-nav-back-button class="button-clear"
- *     ng-click="myGoBack()">
- *     <i class="ion-arrow-left-c"></i> Back
- *   </ion-nav-back-button>
- * </ion-nav-bar>
- * ```
- * ```js
- * function MyCtrl($scope, $ionicHistory) {
- *   $scope.myGoBack = function() {
- *     $ionicHistory.goBack();
- *   };
- * }
- * ```
+ * For an example, see: {@link meteoric.directive:ionNavBar}.
  */
 
 Template.ionNavBackButton.onCreated(function () {

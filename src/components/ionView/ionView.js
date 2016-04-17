@@ -12,91 +12,36 @@
  * corresponding {@link meteoric.directive:ionNavBar} should be displayed or not, which transition the view
  * should use to animate, and which direction to animate.
  *
- * *Views are cached to improve performance.* When a view is navigated away from, its element is
- * left in the DOM, and its scope is disconnected from the `$watch` cycle. When navigating to a
- * view that is already cached, its scope is reconnected, and the existing element, which was
- * left in the DOM, becomes active again. This can be disabled, or the maximum number of cached
- * views changed in {@link meteoric.provider:$meteoricConfigProvider}, in the view's `$state` configuration, or
- * as an attribute on the view itself (see below).
- *
  * @usage
  * Below is an example where our page will load with a {@link meteoric.directive:ionNavBar} containing
  * "My Page" as the title.
  *
- * ```html
- * <ion-nav-bar></ion-nav-bar>
- * <ion-nav-view>
- *   <ion-view view-title="My Page">
- *     <ion-content>
- *       Hello!
- *     </ion-content>
- *   </ion-view>
- * </ion-nav-view>
+ * ```handlebars
+     <template name="ExamplePage">
+         {{#ionView title="My Page"}}
+             {{#ionContent}}
+                 <div class="padding">
+                     <a href="{{pathFor 'index'}}" class="button button-stable" data-nav-direction="back"><i class="icon ionic-ios-arrow-back"></i> Back</a>
+                     <a href="{{pathFor 'navigation.one'}}" class="button button-stable"><i class="icon ionic-ios-arrow-forward"></i> Forward</a>
+                 </div>
+             {{/ionContent}}
+         {{/ionView}}
+     </template>
  * ```
  *
- * ## View LifeCycle and Events
+ * In your layout, see {@link meteoric.directive:ionNavView} for more info:
  *
- * Views can be cached, which means ***controllers normally only load once***, which may
- * affect your controller logic. To know when a view has entered or left, events
- * have been added that are emitted from the view's scope. These events also
- * contain data about the view, such as the title and whether the back button should
- * show. Also contained is transition data, such as the transition type and
- * direction that will be or was used.
- *
- * <table class="table">
- *  <tr>
- *   <td><code>$meteoricView.loaded</code></td>
- *   <td>The view has loaded. This event only happens once per
- * view being created and added to the DOM. If a view leaves but is cached,
- * then this event will not fire again on a subsequent viewing. The loaded event
- * is good place to put your setup code for the view; however, it is not the
- * recommended event to listen to when a view becomes active.</td>
- *  </tr>
- *  <tr>
- *   <td><code>$meteoricView.enter</code></td>
- *   <td>The view has fully entered and is now the active view.
- * This event will fire, whether it was the first load or a cached view.</td>
- *  </tr>
- *  <tr>
- *   <td><code>$meteoricView.leave</code></td>
- *   <td>The view has finished leaving and is no longer the
- * active view. This event will fire, whether it is cached or destroyed.</td>
- *  </tr>
- *  <tr>
- *   <td><code>$meteoricView.beforeEnter</code></td>
- *   <td>The view is about to enter and become the active view.</td>
- *  </tr>
- *  <tr>
- *   <td><code>$meteoricView.beforeLeave</code></td>
- *   <td>The view is about to leave and no longer be the active view.</td>
- *  </tr>
- *  <tr>
- *   <td><code>$meteoricView.afterEnter</code></td>
- *   <td>The view has fully entered and is now the active view.</td>
- *  </tr>
- *  <tr>
- *   <td><code>$meteoricView.afterLeave</code></td>
- *   <td>The view has finished leaving and is no longer the active view.</td>
- *  </tr>
- *  <tr>
- *   <td><code>$meteoricView.unloaded</code></td>
- *   <td>The view's controller has been destroyed and its element has been
- * removed from the DOM.</td>
- *  </tr>
- * </table>
- *
- * ## Caching
- *
- * Caching can be disabled and enabled in multiple ways. By default, Ionic will
- * cache a maximum of 10 views. You can optionally choose to disable caching at
- * either an individual view basis, or by global configuration. Please see the
- * _Caching_ section in {@link meteoric.directive:ionNavView} for more info.
+ * ```handlebars
+ {{#ionNavBar class="bar-assertive"}}
+     {{#ionNavBackButton}}{{/ionNavBackButton}}
+ {{/ionNavBar}}
+ {{#ionNavView}}
+     {{> yield}}
+ {{/ionNavView}}
+ * ```
  *
  * @param {string=} view-title A text-only title to display on the parent {@link meteoric.directive:ionNavBar}.
  * For an HTML title, such as an image, see {@link meteoric.directive:ionNavTitle} instead.
- * @param {boolean=} cache-view If this view should be allowed to be cached or not.
- * Please see the _Caching_ section in {@link meteoric.directive:ionNavView} for
- * more info. Default `true`
  * @param {boolean=} can-swipe-back If this view should be allowed to use the swipe to go back gesture or not.
  * This does not enable the swipe to go back feature if it is not available for the platform it's running
  * from, or there isn't a previous view. Default `true`

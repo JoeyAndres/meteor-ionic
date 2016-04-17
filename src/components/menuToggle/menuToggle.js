@@ -11,17 +11,19 @@
  * Below is an example of a link within a nav bar. Tapping this button
  * would open the given side menu, and tapping it again would close it.
  *
- * ```html
- * <ion-nav-bar>
- *   <ion-nav-buttons side="left">
- *    <!-- Toggle left side menu -->
- *    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
- *   </ion-nav-buttons>
- *   <ion-nav-buttons side="right">
- *    <!-- Toggle right side menu -->
- *    <button menu-toggle="right" class="button button-icon icon ion-navicon"></button>
- *   </ion-nav-buttons>
- * </ion-nav-bar>
+ * ```handlebars
+ {{#ionNavBar class="bar-assertive"}}
+     {{#ionNavButtons side="left"}}
+         <button class="button button-clear pull-left" menu-toggle="left">
+             <i class="icon ion-navicon"></i>
+         </button>
+     {{/ionNavButtons}}
+     {{#ionNavButtons side="right"}}
+         <button class="button button-clear pull-right" menu-toggle="right">
+             <i class="icon ion-navicon"></i>
+         </button>
+     {{/ionNavButtons}}
+ {{/ionNavBar}}
  * ```
  *
  * ### Button Hidden On Child Views
@@ -31,8 +33,8 @@
  * enable-menu-with-back-views attribute of the {@link meteoric.directive:ionSideMenus}
  * directive to true.
  *
- * ```html
- * <ion-side-menus enable-menu-with-back-views="true">
+ * ```handlebars
+ * {{#ionSideMenus enableMenuWithBackViews=true}}
  * ```
  */
 

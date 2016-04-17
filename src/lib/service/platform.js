@@ -4,7 +4,7 @@
  * @name $ionicPlatform
  * @module meteoric
  * @description
- * An angular abstraction of {@link meteoric.utility:ionic.Platform}.
+ * An angular abstraction of {@link meteoric.service:meteoric.Platform}.
  *
  * Used to detect the current platform, as well as do things like override the
  * Android back button in PhoneGap/Cordova.

@@ -16,63 +16,41 @@ POPOVER_BODY_PADDING = 6;
  * - Select a commonly used tool or configuration
  * - Present a list of actions to perform inside one of your views
  *
- * Put the content of the popover inside of an `<ion-popover-view>` element.
+ * Put the content of the popover inside of an `ionPopover` template.
  *
  * @usage
- * ```html
- * <p>
- *   <button ng-click="openPopover($event)">Open Popover</button>
- * </p>
  *
- * <script id="my-popover.html" type="text/ng-template">
- *   <ion-popover-view>
- *     <ion-header-bar>
- *       <h1 class="title">My Popover Title</h1>
- *     </ion-header-bar>
- *     <ion-content>
- *       Hello!
- *     </ion-content>
- *   </ion-popover-view>
- * </script>
+ * In your popover template, you place the contents of your popover dialogue:
+ *
+ * ```handlebars
+ <template name="_myPopover">
+   {{#ionPopover}}
+     <div class="content">
+       <div class="list">
+         <a class="item item-icon-right" href="http://www.meteor.com/" target="_blank">
+           Meteor
+           <i class="icon ionic-ios-arrow-right"></i>
+         </a>
+         <a class="item item-icon-right" href="http://ionicframework.com/" target="_blank">
+           Ionic
+           <i class="icon ionic-ios-arrow-right"></i>
+         </a>
+         <a class="item item-icon-right" href="http://meteoric.github.io/" target="_blank">
+           Meteoric
+           <i class="icon ionic-ios-arrow-right"></i>
+         </a>
+       </div>
+     </div>
+   {{/ionPopover}}
+ </template>
  * ```
- * ```js
- * angular.module('testApp', ['ionic'])
- * .controller('MyController', function($scope, $ionicPopover) {
  *
- *   // .fromTemplate() method
- *   var template = '<ion-popover-view><ion-header-bar> <h1 class="title">My Popover Title</h1> </ion-header-bar> <ion-content> Hello! </ion-content></ion-popover-view>';
+ * In your button, `data-ion-popover` set it to `_myPopover`, the name of your `ionPopover`.
  *
- *   $scope.popover = $ionicPopover.fromTemplate(template, {
- *     scope: $scope
- *   });
- *
- *   // .fromTemplateUrl() method
- *   $ionicPopover.fromTemplateUrl('my-popover.html', {
- *     scope: $scope
- *   }).then(function(popover) {
- *     $scope.popover = popover;
- *   });
- *
- *
- *   $scope.openPopover = function($event) {
- *     $scope.popover.show($event);
- *   };
- *   $scope.closePopover = function() {
- *     $scope.popover.hide();
- *   };
- *   //Cleanup the popover when we're done with it!
- *   $scope.$on('$destroy', function() {
- *     $scope.popover.remove();
- *   });
- *   // Execute action on hide popover
- *   $scope.$on('popover.hidden', function() {
- *     // Execute action
- *   });
- *   // Execute action on remove popover
- *   $scope.$on('popover.removed', function() {
- *     // Execute action
- *   });
- * });
+ * ```handlebars
+ <button class="button button-clear" data-ion-popover="_myPopover">
+   Show Popover
+ </button>
  * ```
  */
 

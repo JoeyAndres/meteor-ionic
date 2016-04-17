@@ -25,16 +25,15 @@
  *
  * @usage
  *
- * ```html
- * <ion-side-menus>
- *   <!-- Center content -->
- *   <ion-side-menu-content>
- *   </ion-side-menu-content>
- *
- *   <!-- Left menu -->
- *   <ion-side-menu expose-aside-when="large">
- *   </ion-side-menu>
- * </ion-side-menus>
+ * ```handlebars
+ {{#ionNavButtons side="left"}}
+     <button class="button button-clear pull-left" menu-toggle="left">
+         <i class="icon ion-navicon"></i>
+     </button>
+ {{/ionNavButtons}}
+ {{#ionContent}}
+   <!-- content go here -->
+ {{/ionContent}}
  * ```
  * For a complete side menu example, see the
  * {@link meteoric.directive:ionSideMenus} documentation.
@@ -42,7 +41,7 @@
 
 import { TemplateAttributeDirectiveType } from 'meteor/jandres:template-attribute-directive';
 
-let ionExposeAsideWhen = new TemplateAttributeDirectiveType('ionExposeAsideWhen', {
+let ionExposeAsideWhen = new TemplateAttributeDirectiveType('exposeAsideWhen', {
     $postLink($scope, $element, $attr) {
         let sideMenuCtrl = $scope.$sideMenuCtrl;
 

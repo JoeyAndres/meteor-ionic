@@ -15,9 +15,9 @@
   var requestAnimationFrame = ionic.requestAnimationFrame;
 
   /**
-   * @ngdoc utility
-   * @name ionic.Platform
-   * @module ionic
+   * @ngdoc service
+   * @name meteoric.Platform
+   * @module meteoric
    * @description
    * A set of utility methods that can be used to retrieve the device ready state and
    * various other information such as what kind of platform the app is currently installed on.
@@ -54,25 +54,25 @@
 
     /**
      * @ngdoc property
-     * @name ionic.Platform#isReady
+     * @name meteoric.Platform#isReady
      * @returns {boolean} Whether the device is ready.
      */
     isReady: false,
     /**
      * @ngdoc property
-     * @name ionic.Platform#isFullScreen
+     * @name meteoric.Platform#isFullScreen
      * @returns {boolean} Whether the device is fullscreen.
      */
     isFullScreen: false,
     /**
      * @ngdoc property
-     * @name ionic.Platform#platforms
+     * @name meteoric.Platform#platforms
      * @returns {Array(string)} An array of all platforms found.
      */
     platforms: null,
     /**
      * @ngdoc property
-     * @name ionic.Platform#grade
+     * @name meteoric.Platform#grade
      * @returns {string} What grade the current platform is.
      */
     grade: null,
@@ -80,7 +80,7 @@
 
     /**
      * @ngdoc method
-     * @name ionic.Platform#ready
+     * @name meteoric.Platform#ready
      * @description
      * Trigger a callback once the device is ready, or immediately
      * if the device is already ready. This method can be run from
@@ -119,7 +119,7 @@
 
     /**
      * @ngdoc method
-     * @name ionic.Platform#setGrade
+     * @name meteoric.Platform#setGrade
      * @description Set the grade of the device: 'a', 'b', or 'c'. 'a' is the best
      * (most css features enabled), 'c' is the worst.  By default, sets the grade
      * depending on the current device.
@@ -138,7 +138,7 @@
 
     /**
      * @ngdoc method
-     * @name ionic.Platform#device
+     * @name meteoric.Platform#device
      * @description Return the current device (given by cordova).
      * @returns {object} The device object.
      */
@@ -190,7 +190,7 @@
 
     /**
      * @ngdoc method
-     * @name ionic.Platform#isWebView
+     * @name meteoric.Platform#isWebView
      * @returns {boolean} Check if we are running within a WebView (such as Cordova).
      */
     isWebView: function() {
@@ -198,7 +198,7 @@
     },
     /**
      * @ngdoc method
-     * @name ionic.Platform#isIPad
+     * @name meteoric.Platform#isIPad
      * @returns {boolean} Whether we are running on iPad.
      */
     isIPad: function() {
@@ -209,7 +209,7 @@
     },
     /**
      * @ngdoc method
-     * @name ionic.Platform#isIOS
+     * @name meteoric.Platform#isIOS
      * @returns {boolean} Whether we are running on iOS.
      */
     isIOS: function() {
@@ -217,7 +217,7 @@
     },
     /**
      * @ngdoc method
-     * @name ionic.Platform#isAndroid
+     * @name meteoric.Platform#isAndroid
      * @returns {boolean} Whether we are running on Android.
      */
     isAndroid: function() {
@@ -225,7 +225,7 @@
     },
     /**
      * @ngdoc method
-     * @name ionic.Platform#isWindowsPhone
+     * @name meteoric.Platform#isWindowsPhone
      * @returns {boolean} Whether we are running on Windows Phone.
      */
     isWindowsPhone: function() {
@@ -233,7 +233,7 @@
     },
     /**
      * @ngdoc method
-     * @name ionic.Platform#isEdge
+     * @name meteoric.Platform#isEdge
      * @returns {boolean} Whether we are running on MS Edge/Windows 10 (inc. Phone)
      */
     isEdge: function() {
@@ -246,7 +246,7 @@
 
     /**
      * @ngdoc method
-     * @name ionic.Platform#platform
+     * @name meteoric.Platform#platform
      * @returns {string} The name of the current platform.
      */
     platform: function() {
@@ -278,7 +278,7 @@
 
     /**
      * @ngdoc method
-     * @name ionic.Platform#version
+     * @name meteoric.Platform#version
      * @returns {number} The version of the current device platform.
      */
     version: function() {
@@ -319,7 +319,7 @@
 
     /**
      * @ngdoc method
-     * @name ionic.Platform#is
+     * @name meteoric.Platform#is
      * @param {string} Platform name.
      * @returns {boolean} Whether the platform name provided is detected.
      */
@@ -343,7 +343,7 @@
 
     /**
      * @ngdoc method
-     * @name ionic.Platform#exitApp
+     * @name meteoric.Platform#exitApp
      * @description Exit the app.
      */
     exitApp: function() {
@@ -354,7 +354,7 @@
 
     /**
      * @ngdoc method
-     * @name ionic.Platform#showStatusBar
+     * @name meteoric.Platform#showStatusBar
      * @description Shows or hides the device status bar (in Cordova). Requires `cordova plugin add org.apache.cordova.statusbar`
      * @param {boolean} shouldShow Whether or not to show the status bar.
      */
@@ -379,7 +379,7 @@
 
     /**
      * @ngdoc method
-     * @name ionic.Platform#fullScreen
+     * @name meteoric.Platform#fullScreen
      * @description
      * Sets whether the app is fullscreen or not (in Cordova).
      * @param {boolean=} showFullScreen Whether or not to set the app to fullscreen. Defaults to true. Requires `cordova plugin add org.apache.cordova.statusbar`

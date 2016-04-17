@@ -17,19 +17,13 @@
  * `ion-nav-bar` element (basically don't wrap it in another div).
  *
  * @usage
- * ```html
- * <ion-nav-bar>
- * </ion-nav-bar>
- * <ion-nav-view>
- *   <ion-view>
- *     <ion-nav-title>
- *       <img src="logo.svg">
- *     </ion-nav-title>
- *     <ion-content>
- *       Some super content here!
- *     </ion-content>
- *   </ion-view>
- * </ion-nav-view>
+ * ```handlebars
+ {{#ionView viewTitle="Facts"}}
+     {{#ionNavTitle}}Hello{{/ionNavTitle}}
+     {{#ionContent class="padding"}}
+         {{> tabContentWrapper}}
+     {{/ionContent}}
+ {{/ionView}}
  * ```
  *
  */

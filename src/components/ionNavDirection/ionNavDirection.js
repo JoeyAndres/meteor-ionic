@@ -1,6 +1,6 @@
 /**
  * @ngdoc directive
- * @name navDirection
+ * @name ionNavDirection
  * @module meteoric
  * @restrict A
  *
@@ -11,7 +11,7 @@
  * @usage
  *
  * ```html
- * <a nav-direction="forward" href="#/home">Home</a>
+ * <a ion-nav-direction="forward" href="#/home">Home</a>
  * ```
  */
 
@@ -20,8 +20,6 @@ import { TemplateAttributeDirectiveType } from 'meteor/jandres:template-attribut
 let ionNavDirection = new TemplateAttributeDirectiveType('ionNavDirection', {
     $postLink($scope, $element, $attr) {
         $element.bind('click', function() {
-            // Note: ionnavdirection instead of ionNavDirection due
-            //       to Node.attributes lowercasing.
             $ionicViewSwitcher.nextDirection($attr.ionNavDirection);
         });
     }

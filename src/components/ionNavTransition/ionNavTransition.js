@@ -1,6 +1,6 @@
 /**
  * @ngdoc directive
- * @name navTransition
+ * @name ionNavTransition
  * @module meteoric
  * @restrict A
  *
@@ -11,7 +11,7 @@
  * @usage
  *
  * ```html
- * <a nav-transition="none" href="#/home">Home</a>
+ * <a ion-nav-transition="none" href="#/home">Home</a>
  * ```
  */
 
@@ -20,8 +20,6 @@ import { TemplateAttributeDirectiveType } from 'meteor/jandres:template-attribut
 let ionNavTransition = new TemplateAttributeDirectiveType('ionNavTransition', {
     $postLink($scope, $element, $attr) {
         $element.bind('click', function() {
-            // Note: ionnavtransition instead of ionNavTransition due
-            //       to Node.attributes lowercasing.
             $ionicViewSwitcher.nextTransition($attr.ionNavTransition);
         });
     }

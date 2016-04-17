@@ -71,7 +71,8 @@ module.exports = function(config) {
                          linkInlineTagDef,
                          inlineTagProcessor,
                          parseTagsProcessor,
-                         markedNunjucksFilter) {
+                         markedNunjucksFilter,
+                         templateEngine) {
             markedNunjucksFilter.process = function (str) {
                 var output = str && renderMarkdown(str);
 
@@ -92,7 +93,7 @@ module.exports = function(config) {
             }
 
             // Set logging level
-            log.level = 'warning';
+            log.level = 'error';
 
             // Specify the base path used when resolving relative paths to source and output files
             readFilesProcessor.basePath = path.resolve(__dirname, '..');
@@ -109,10 +110,20 @@ module.exports = function(config) {
             ];
 
             // Add a folder to search for our own templates to use when rendering docs
-            templateFinder.templateFolders.unshift(path.resolve(__dirname, 'templates'));
+            templateFinder.templateFolders.unshift(path.resolve(__dirname, 'templates/dgeni'));
 
             // Specify where the writeFilesProcessor will write our generated doc files
             writeFilesProcessor.outputFolder = config.dest;
+
+            templateEngine.filters.push(require('./filters/capital'));
+            templateEngine.config.tags = {
+                blockStart: '<@',
+                blockEnd: '@>',
+                variableStart: '<$',
+                variableEnd: '$>',
+                commentStart: '<#',
+                commentEnd: '#>'
+            };
         });
 
     return dgeniMeteoric;

@@ -22,8 +22,8 @@
  *
  * Basic Usage:
  *
- * ```html
- * <ionList>
+ * ```handlebars
+ * {{#ionList}}
  *   {{#each items}}
  *     {{#ionItem}}
  *       <img src="https://randomuser.me/api/portraits/thumb/men/27.jpg">
@@ -31,7 +31,7 @@
  *       <p>(555) 555-1212</p>
  *     {{/ionItem}}
  *   {{/each}}
- * </ionList>
+ * {{/ionList}}
  * ```
  *
  * Advanced Usage: Thumbnails, Delete buttons, Reordering, Swiping

@@ -28,7 +28,7 @@ module.exports = function linkInlineTagDef(getLinkInfo, createDocMessage, log) {
 
                 var uri_split = linkInfo.url.split('/');
                 var page = uri_split[uri_split.length - 1];
-                return '<a href=\'{{pathFor route="' + 'DocPage' + page + '" }}\'>' + linkInfo.title + '</a>';
+                return '<a href=\'{{pathFor route="' + page + '" }}\'>' + linkInfo.title + '</a>';
             });
         }
     };

@@ -15,21 +15,25 @@
  *
  * @usage
  * ```html
- * <ion-slides on-slide-changed="slideHasChanged($index)">
- *   <ion-slide-page>
- *     <div class="box blue"><h1>BLUE</h1></div>
- *   </ion-slide-page>
- *   <ion-slide-page>
- *     <div class="box yellow"><h1>YELLOW</h1></div>
- *   </ion-slide-page>
- *   <ion-slide-page>
- *     <div class="box pink"><h1>PINK</h1></div>
- *   </ion-slide-page>
- * </ion-slides>
+ {{#ionSlides style="height: 100%"}}
+     {{#ionSlidePage}}
+         <div style="background-color: blue; height: 100%;" class="box blue text-center">
+             <h1 style="color: white">BLUE</h1>
+         </div>
+     {{/ionSlidePage}}
+     {{#ionSlidePage}}
+         <div style="background-color: yellow; height: 100%;" class="box yellow text-center">
+             <h1 style="color: white">YELLOW</h1>
+         </div>
+     {{/ionSlidePage}}
+     {{#ionSlidePage}}
+         <div style="background-color: pink; height: 100%;" class="box pink text-center">
+             <h1 style="color: white">PINK</h1>
+         </div>
+     {{/ionSlidePage}}
+ {{/ionSlides}}
  * ```
  *
- * @param {string=} delegate-handle The handle used to identify this slideBox
- * with {@link meteoric.service:$ionicSlideBoxDelegate}.
  * @param {object=} options to pass to the widget. See the full ist here: [http://www.idangero.us/swiper/api/](http://www.idangero.us/swiper/api/)
  */
 

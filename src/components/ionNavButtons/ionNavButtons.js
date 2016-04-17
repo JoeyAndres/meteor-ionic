@@ -29,21 +29,23 @@
  * `ion-nav-bar` element (basically, don't wrap it in another div).
  *
  * @usage
- * ```html
- * <ion-nav-bar>
- * </ion-nav-bar>
- * <ion-nav-view>
- *   <ion-view>
- *     <ion-nav-buttons side="primary">
- *       <button class="button" ng-click="doSomething()">
- *         I'm a button on the primary of the navbar!
- *       </button>
- *     </ion-nav-buttons>
- *     <ion-content>
- *       Some super content here!
- *     </ion-content>
- *   </ion-view>
- * </ion-nav-view>
+ * ```handlebars
+ {{#ionView title="ionNavButtons Example"}}
+     {{#ionNavButtons side="left"}}
+         <button class="button button-clear pull-left" ion-menu-toggle="left">
+             <i class="icon ion-navicon"></i>
+         </button>
+     {{/ionNavButtons}}
+     {{#ionNavButtons side="right"}}
+         <button class="button button-clear pull-right" ion-menu-toggle="right">
+             <i class="icon ion-navicon"></i>
+         </button>
+     {{/ionNavButtons}}
+
+     {{#ionContent}}
+         <!-- Stuff and what not -->
+     {{/ionContent}}
+ {{/ionView}}
  * ```
  *
  * @param {string} side The side to place the buttons in the

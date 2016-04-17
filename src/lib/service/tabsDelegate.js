@@ -9,29 +9,6 @@
  * Methods called directly on the $ionicTabsDelegate service will control all ionTabs
  * directives. Use the {@link meteoric.service:$ionicTabsDelegate#$getByHandle $getByHandle}
  * method to control specific ionTabs instances.
- *
- * @usage
- *
- * ```html
- * <body ng-controller="MyCtrl">
- *   <ion-tabs>
- *
- *     <ion-tab title="Tab 1">
- *       Hello tab 1!
- *       <button ng-click="selectTabWithIndex(1)">Select tab 2!</button>
- *     </ion-tab>
- *     <ion-tab title="Tab 2">Hello tab 2!</ion-tab>
- *
- *   </ion-tabs>
- * </body>
- * ```
- * ```js
- * function MyCtrl($scope, $ionicTabsDelegate) {
- *   $scope.selectTabWithIndex = function(index) {
- *     $ionicTabsDelegate.select(index);
- *   }
- * }
- * ```
  */
 class ionicTabsDelegate extends meteoric.lib.Delegate {
   constructor() {
@@ -59,16 +36,6 @@ class ionicTabsDelegate extends meteoric.lib.Delegate {
        * @returns {boolean} Whether the bar is shown.
        */
       'showBar'
-      /**
-       * @ngdoc method
-       * @name $ionicTabsDelegate#$getByHandle
-       * @param {string} handle
-       * @returns `delegateInstance` A delegate instance that controls only the
-       * {@link meteoric.directive:ionTabs} directives with `delegate-handle` matching
-       * the given handle.
-       *
-       * Example: `$ionicTabsDelegate.$getByHandle('my-handle').select(0);`
-       */
     ];
 
     super();

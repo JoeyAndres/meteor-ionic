@@ -13,7 +13,7 @@ Package.onUse(function(api) {
   api.versionsFrom("1.3");
 
   api.use([
-      'ecmascript'
+    'ecmascript'
   ]);
 
   api.use([
@@ -150,7 +150,7 @@ Package.onUse(function(api) {
     "components/ionNavTitle/ionNavTitle.html",
     "components/ionNavTitle/ionNavTitle.js",
 
-    "components/ionExposeAsideWhen/ionExposeAsideWhen.js",
+    "components/exposeAsideWhen/exposeAsideWhen.js",
     "components/ionGesture/ionGesture.js",
     "components/ionMenuClose/ionMenuClose.js",
     "components/ionMenuToggle/ionMenuToggle.js",
@@ -215,17 +215,22 @@ Package.onUse(function(api) {
   api.export("IonPopover");
   api.export("IonPopup");
   api.export("IonSideMenu");
-  
+
   api.export([
     // Services.
     '$ionicGesture',
     '$ionicActionSheet',
     '$ionicBackdrop',
-    "$ionicLoading",
+    '$ionicLoading',
+    '$ionicPlatform',
+    '$ionicHistory',
 
     // ionic Delegates.
     '$ionicScrollDelegate',
     '$ionicSideMenuDelegate',
     '$ionicTabsDelegate'
+
+    // Misc.
+    // todo: export $ionicGoBack
   ]);
 });

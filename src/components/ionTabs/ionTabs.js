@@ -24,26 +24,21 @@
  * certain CSS bug.
  *
  * @usage
- * ```html
- * <ion-tabs class="tabs-positive tabs-icon-top">
- *
- *   <ion-tab title="Home" icon-on="ion-ios-filing" icon-off="ion-ios-filing-outline">
- *     <!-- Tab 1 content -->
- *   </ion-tab>
- *
- *   <ion-tab title="About" icon-on="ion-ios-clock" icon-off="ion-ios-clock-outline">
- *     <!-- Tab 2 content -->
- *   </ion-tab>
- *
- *   <ion-tab title="Settings" icon-on="ion-ios-gear" icon-off="ion-ios-gear-outline">
- *     <!-- Tab 3 content -->
- *   </ion-tab>
- *
- * </ion-tabs>
+ * ```handlebars
+ {{#ionTabs class="tabs-positive tabs-icon-top"}}
+     {{#ionTab title="Home" iconOn="ion-ios-filing" iconOff="ion-ios-filing-outline" href="/tabs/home"}}
+         <!-- contents go here -->
+     {{/ionTab}}
+
+     {{#ionTab title="About" iconOn="ion-ios-clock" iconOff="ion-ios-clock-outline" href="/tabs/about" }}
+         <!-- contents go here -->
+     {{/ionTab}}
+
+     {{#ionTab title="Settings" iconOn="ion-ios-gear" iconOff="ion-ios-gear-outline" href="/tabs/settings"}}
+         <!-- contents go here -->
+     {{/ionTab}}
+ {{/ionTabs}}
  * ```
- *
- * @param {string=} delegate-handle The handle used to identify these tabs
- * with {@link ionic.service:$ionicTabsDelegate}.
  */
 
 Template.ionTabs.onCreated(function () {

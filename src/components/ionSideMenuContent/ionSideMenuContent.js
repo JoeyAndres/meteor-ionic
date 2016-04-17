@@ -8,11 +8,10 @@
  * {@link meteoric.directive:ionSideMenu} directives.
  *
  * @usage
- * ```html
- * <ion-side-menu-content
- *   edge-drag-threshold="true"
- *   drag-content="true">
- * </ion-side-menu-content>
+ * ```handlebars
+ {{#ionSideMenuContent}}
+   <!-- content goes here -->
+ {{/ionSideMenuContent}}
  * ```
  * For a complete side menu example, see the
  * {@link meteoric.directive:ionSideMenus} documentation.

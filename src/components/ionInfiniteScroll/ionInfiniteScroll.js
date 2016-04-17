@@ -14,7 +14,7 @@
  * is done loading new data, it should broadcast the `scroll.infiniteScrollComplete`
  * event from your controller (see below example).
  *
- * @param {expression} on-infinite What to call when the scroller reaches the
+ * @param {function} on-infinite What to call when the scroller reaches the
  * bottom.
  * @param {string=} distance The distance from the bottom that the scroll must
  * reach to trigger the on-infinite expression. Default: 1%.
@@ -26,44 +26,36 @@
  *
  * @usage
  *
- * ```html
- * <ion-content ng-controller="MyController">
- *   <ion-list>
- *   ....
- *   ....
- *   </ion-list>
+ * In your template:
  *
- *   <ion-infinite-scroll
- *     on-infinite="loadMore()"
- *     distance="1%">
- *   </ion-infinite-scroll>
- * </ion-content>
+ * ```handlebars
+ {{#ionList}}
+     {{#each items}}
+         {{#ionItem class="item-avatar-left"}}
+             <img src="https://randomuser.me/api/portraits/thumb/men/27.jpg">
+             <h2>John Smith {{this}}</h2>
+             <p>(555) 555-1212</p>
+         {{/ionItem}}
+     {{/each}}
+ {{/ionList}}
+ {{> ionInfiniteScroll onInfinite=onInfinite distance="10%" spinner="android" immediateCheck=true enable=hasMore}}
  * ```
+ *
+ * In you javascript:
+ *
  * ```js
- * function MyController($scope, $http) {
- *   $scope.items = [];
- *   $scope.loadMore = function() {
- *     $http.get('/more-items').success(function(items) {
- *       useItems(items);
- *       $scope.$broadcast('scroll.infiniteScrollComplete');
- *     });
- *   };
- *
- *   $scope.$on('$stateChangeSuccess', function() {
- *     $scope.loadMore();
- *   });
- * }
- * ```
- *
- * An easy to way to stop infinite scroll once there is no more data to load
- * is to use angular's `ng-if` directive:
- *
- * ```html
- * <ion-infinite-scroll
- *   ng-if="moreDataCanBeLoaded()"
- *   icon="ion-loading-c"
- *   on-infinite="loadMoreData()">
- * </ion-infinite-scroll>
+ // ...
+ Template.demoListsionInfiniteScroll.helpers({
+    onInfinite: function() {
+        let templateInstance = Template.instance();
+        return () => {
+            // Stuff to do, e.g. add/load more items.
+
+            // Trigger the following event when done.
+            $(window).trigger('scroll.infiniteScrollComplete');
+        };
+    }
+ });
  * ```
  */
 

@@ -20,23 +20,17 @@
  *
  * @usage
  *
- * ```html
- * <body ng-app="starter">
- *   <!-- The nav bar that will be updated as we navigate -->
- *   <ion-nav-bar class="bar-positive">
- *   </ion-nav-bar>
+ * In your layout, see {@link meteoric.directive:ionNavView} for more info:
  *
- *   <!-- where the initial view template will be rendered -->
- *   <ion-nav-view>
- *     <ion-view>
- *       <ion-content>Hello!</ion-content>
- *     </ion-view>
- *   </ion-nav-view>
- * </body>
+ * ```handlebars
+ {{#ionNavBar class="bar-assertive"}}
+     {{#ionNavBackButton}}{{/ionNavBackButton}}
+ {{/ionNavBar}}
+ {{#ionNavView}}
+     {{> yield}}
+ {{/ionNavView}}
  * ```
  *
- * @param {string=} delegate-handle The handle used to identify this navBar
- * with {@link meteoric.service:$ionicNavBarDelegate}.
  * @param align-title {string=} Where to align the title of the navbar.
  * Available: 'left', 'right', 'center'. Defaults to 'center'.
  * @param {boolean=} no-tap-scroll By default, the navbar will scroll the content
