@@ -209,13 +209,6 @@ Package.onUse(function(api) {
 
   api.export("Platform");
 
-  api.export("IonHeaderBar");
-  api.export("IonKeyboard");
-  api.export("IonModal");
-  api.export("IonPopover");
-  api.export("IonPopup");
-  api.export("IonSideMenu");
-
   api.export([
     // Services.
     '$ionicGesture',
@@ -228,9 +221,10 @@ Package.onUse(function(api) {
     // ionic Delegates.
     '$ionicScrollDelegate',
     '$ionicSideMenuDelegate',
-    '$ionicTabsDelegate'
+    '$ionicTabsDelegate',
 
     // Misc.
     // todo: export $ionicGoBack
-  ]);
+    'meteoric'
+  ], 'client');
 });

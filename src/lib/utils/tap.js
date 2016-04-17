@@ -1,8 +1,8 @@
 
 /**
- * @ngdoc page
+ * @ngdoc object
  * @name tap
- * @module ionic
+ * @module meteoric
  * @description
  * On touch devices such as a phone or tablet, some browsers implement a 300ms delay between
  * the time the user stops touching the display and the moment the browser executes the
