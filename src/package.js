@@ -26,7 +26,7 @@ Package.onUse(function(api) {
     "iron:router@1.0.0",
     "tracker",
     "session",
-    "fourseven:scss@3.3.3",
+    "fourseven:scss@3.4.3",
     'jquery',
 
     "jandres:meteoric-sass@1.2.5"
