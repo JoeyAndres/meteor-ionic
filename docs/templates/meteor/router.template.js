@@ -1,5 +1,6 @@
 Router.configure({
-    layoutTemplate: 'layout'
+    layoutTemplate: 'layout',
+    notFoundTemplate: 'wip'
 });
 
 Router.map(function() {
