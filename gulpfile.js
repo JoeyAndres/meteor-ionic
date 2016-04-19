@@ -15,12 +15,11 @@ var paths = {
         './src/components/**/*.js',
         './src/lib/controller/*.js',
         './src/lib/service/*.js',
-        './src/lib/utils/platform.js',
-        './src/lib/utils/tap.js'
+        './src/lib/utils/*.js'
     ],
     templates: [
         './src/components/**/*.html',
-        './docs/**/*'
+        './docs/**/*.html'
     ],
     docStyles: ['./docs/styles/**/*.scss']
 };

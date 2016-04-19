@@ -8,11 +8,11 @@
 (function(ionic) {
 
   /**
-   * ionic.Gestures
+   * meteoric.Gestures
    * use this to create instances
    * @param   {HTMLElement}   element
    * @param   {Object}        options
-   * @returns {ionic.Gestures.Instance}
+   * @returns {meteoric.Gestures.Instance}
    * @constructor
    */
   ionic.Gesture = function(element, options) {
@@ -98,7 +98,7 @@
    * all methods should return the instance itself, so it is chainable.
    * @param   {HTMLElement}       element
    * @param   {Object}            [options={}]
-   * @returns {ionic.Gestures.Instance}
+   * @returns {meteoric.Gestures.Instance}
    * @name Gesture.Instance
    * @constructor
    */
@@ -149,7 +149,7 @@
      * bind events to the instance
      * @param   {String}      gesture
      * @param   {Function}    handler
-     * @returns {ionic.Gestures.Instance}
+     * @returns {meteoric.Gestures.Instance}
      */
     on: function onEvent(gesture, handler){
       var gestures = gesture.split(' ');
@@ -164,7 +164,7 @@
      * unbind events to the instance
      * @param   {String}      gesture
      * @param   {Function}    handler
-     * @returns {ionic.Gestures.Instance}
+     * @returns {meteoric.Gestures.Instance}
      */
     off: function offEvent(gesture, handler){
       var gestures = gesture.split(' ');
@@ -179,7 +179,7 @@
      * trigger gesture event
      * @param   {String}      gesture
      * @param   {Object}      eventData
-     * @returns {ionic.Gestures.Instance}
+     * @returns {meteoric.Gestures.Instance}
      */
     trigger: function triggerEvent(gesture, eventData){
       // create DOM event
@@ -202,7 +202,7 @@
     /**
      * enable of disable hammer.js detection
      * @param   {Boolean}   state
-     * @returns {ionic.Gestures.Instance}
+     * @returns {meteoric.Gestures.Instance}
      */
     enable: function enable(state) {
       this.enabled = state;
@@ -728,7 +728,7 @@
 
     /**
      * start ionic.Gestures.gesture detection
-     * @param   {ionic.Gestures.Instance}   inst
+     * @param   {meteoric.Gestures.Instance}   inst
      * @param   {Object}            eventData
      */
     startDetect: function startDetect(inst, eventData) {
@@ -957,7 +957,7 @@
    *                                      but from the first touch. this is used to calculate
    *                                      distances, deltaTime, scaling etc
    *
-   *      @param  {ionic.Gestures.Instance}    inst
+   *      @param  {meteoric.Gestures.Instance}    inst
    *      the instance we are doing the detection for. you can get the options from
    *      the inst.options object and trigger the gesture event by calling inst.trigger
    *
@@ -973,7 +973,7 @@
    *      check if the current gesture is 'drag' by accessing ionic.Gestures.detectionic.current.name
    *
    *      readonly
-   *      @param  {ionic.Gestures.Instance}    inst
+   *      @param  {meteoric.Gestures.Instance}    inst
    *      the instance we do the detection for
    *
    *      readonly

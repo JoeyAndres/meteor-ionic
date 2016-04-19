@@ -35,9 +35,9 @@
     window.webkitCancelRequestAnimationFrame;
 
   /**
-  * @ngdoc utility
-  * @name ionic.DomUtil
-  * @module ionic
+  * @ngdoc object
+  * @name meteoric.DomUtil
+  * @module meteoric
   */
   ionic.DomUtil = {
     //Call with proper context

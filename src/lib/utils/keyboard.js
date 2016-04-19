@@ -1,7 +1,7 @@
 /**
- * @ngdoc page
+ * @ngdoc object
  * @name keyboard
- * @module ionic
+ * @module meteoric
  * @description
  * On both Android and iOS, Ionic will attempt to prevent the keyboard from
  * obscuring inputs and focusable elements when it appears by scrolling them

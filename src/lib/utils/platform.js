@@ -15,7 +15,7 @@
   var requestAnimationFrame = ionic.requestAnimationFrame;
 
   /**
-   * @ngdoc service
+   * @ngdoc object
    * @name meteoric.Platform
    * @module meteoric
    * @description

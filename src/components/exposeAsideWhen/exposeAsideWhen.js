@@ -41,7 +41,7 @@
 
 import { TemplateAttributeDirectiveType } from 'meteor/jandres:template-attribute-directive';
 
-let ionExposeAsideWhen = new TemplateAttributeDirectiveType('exposeAsideWhen', {
+let exposeAsideWhen = new TemplateAttributeDirectiveType('exposeAsideWhen', {
     $postLink($scope, $element, $attr) {
         let sideMenuCtrl = $scope.$sideMenuCtrl;
 
@@ -72,4 +72,4 @@ let ionExposeAsideWhen = new TemplateAttributeDirectiveType('exposeAsideWhen', {
     }
 });
 
-export { ionExposeAsideWhen };
+export { exposeAsideWhen };

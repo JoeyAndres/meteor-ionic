@@ -42,17 +42,17 @@
 
 
   /**
-   * @ngdoc utility
-   * @name ionic.EventController
-   * @module ionic
+   * @ngdoc object
+   * @name meteoric.EventController
+   * @module meteoric
    */
   ionic.EventController = {
     VIRTUALIZED_EVENTS: ['tap', 'swipe', 'swiperight', 'swipeleft', 'drag', 'hold', 'release'],
 
     /**
      * @ngdoc method
-     * @name ionic.EventController#trigger
-     * @alias ionic.trigger
+     * @name meteoric.EventController#trigger
+     * @alias meteoric.trigger
      * @param {string} eventType The event to trigger.
      * @param {object} data The data for the event. Hint: pass in
      * `{target: targetElement}`
@@ -74,8 +74,8 @@
 
     /**
      * @ngdoc method
-     * @name ionic.EventController#on
-     * @alias ionic.on
+     * @name meteoric.EventController#on
+     * @alias meteoric.on
      * @description Listen to an event on an element.
      * @param {string} type The event to listen for.
      * @param {function} callback The listener to be called.
@@ -99,8 +99,8 @@
 
     /**
      * @ngdoc method
-     * @name ionic.EventController#off
-     * @alias ionic.off
+     * @name meteoric.EventController#off
+     * @alias meteoric.off
      * @description Remove an event listener.
      * @param {string} type
      * @param {function} callback
@@ -112,15 +112,15 @@
 
     /**
      * @ngdoc method
-     * @name ionic.EventController#onGesture
-     * @alias ionic.onGesture
+     * @name meteoric.EventController#onGesture
+     * @alias meteoric.onGesture
      * @description Add an event listener for a gesture on an element.
      *
      * Available eventTypes (from [hammer.js](http://eightmedia.github.io/hammer.js/)):
      *
-     * `hold`, `tap`, `doubletap`, `drag`, `dragstart`, `dragend`, `dragup`, `dragdown`, <br/>
-     * `dragleft`, `dragright`, `swipe`, `swipeup`, `swipedown`, `swipeleft`, `swiperight`, <br/>
-     * `transform`, `transformstart`, `transformend`, `rotate`, `pinch`, `pinchin`, `pinchout`, </br>
+     * `hold`, `tap`, `doubletap`, `drag`, `dragstart`, `dragend`, `dragup`, `dragdown`, <br>
+     * `dragleft`, `dragright`, `swipe`, `swipeup`, `swipedown`, `swipeleft`, `swiperight`, <br>
+     * `transform`, `transformstart`, `transformend`, `rotate`, `pinch`, `pinchin`, `pinchout`, <br>
      * `touch`, `release`
      *
      * @param {string} eventType The gesture event to listen for.
@@ -128,7 +128,7 @@
      * happens.
      * @param {DOMElement} element The angular element to listen for the event on.
      * @param {object} options object.
-     * @returns {ionic.Gesture} The gesture object (use this to remove the gesture later on).
+     * @returns {meteoric.Gesture} The gesture object (use this to remove the gesture later on).
      */
     onGesture: function(type, callback, element, options) {
       var gesture = new ionic.Gesture(element, options);
@@ -138,10 +138,10 @@
 
     /**
      * @ngdoc method
-     * @name ionic.EventController#offGesture
-     * @alias ionic.offGesture
+     * @name meteoric.EventController#offGesture
+     * @alias meteoric.offGesture
      * @description Remove an event listener for a gesture created on an element.
-     * @param {ionic.Gesture} gesture The gesture that should be removed.
+     * @param {meteoric.Gesture} gesture The gesture that should be removed.
      * @param {string} eventType The gesture event to remove the listener for.
      * @param {function(e)} callback The listener to remove.
 

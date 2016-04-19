@@ -137,3 +137,7 @@ function reactiveGetOrSetDefaultScope($scope, $reactiveProp, defaultVal) {
     }
 }
 meteoric.lib.reactiveGetOrSetDefaultScope = reactiveGetOrSetDefaultScope;
+
+if (Meteor.isCordova) {
+    cordova.plugins.Keyboard.show();
+}
