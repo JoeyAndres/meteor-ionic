@@ -23,7 +23,6 @@ Package.onUse(function(api) {
     "templating",
     "underscore",
     "reactive-var",
-    //"fastclick",  // todo: make a separate commit for this.
     "iron:router@1.0.0",
     "tracker",
     "session",
