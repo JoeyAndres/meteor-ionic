@@ -54,10 +54,10 @@ POPOVER_BODY_PADDING = 6;
  * ```
  */
 
-IonPopover = {
+$ionicPopover = {
   show: function (templateName, data, button) {
     this.template = Template[templateName];
-    this.view = Blaze.renderWithData(this.template, data, $('.ionic-body').get(0));
+    this.view = Blaze.renderWithData(this.template, data, $('body').get(0));
 
     var $backdrop = $(this.view.firstNode());
     var $popover = $backdrop.find('.popover');
@@ -115,7 +115,7 @@ IonPopover = {
 Template.ionPopover.rendered = function () {
   $(window).on('keyup.ionPopover', function(event) {
     if (event.which == 27) {
-      IonPopover.hide();
+      $ionicPopover.hide();
     }
   });
 };
@@ -128,7 +128,13 @@ Template.ionPopover.events({
   // Handle clicking the backdrop
   'click': function (event, template) {
     if ($(event.target).hasClass('popover-backdrop')) {
-      IonPopover.hide();
+      $ionicPopover.hide();
     }
   }
+});
+
+// todo: Try to use the popover.
+$('body').on('click', '[data-ion-popover]', function(e) {
+  let popover_template = $(e.target).data('ion-popover');
+  $ionicPopover.show(popover_template, $(e.target).data(), e.target);
 });

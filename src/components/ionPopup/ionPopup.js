@@ -24,21 +24,21 @@
  * ```js
  Template.ExampleTemplate.events({
   'click [data-action="showPopup"]': function(event, template) {
-    IonPopup.show({
+    $ionicPopup.show({
       title: 'A Popup',
       template: 'Here\'s a quick popup.',
       buttons: [{
         text: 'Close me',
         type: 'button-assertive',
         onTap: function() {
-          IonPopup.close();
+          $ionicPopup.close();
         }
       }]
     });
   },
 
   'click [data-action="showAlert"]': function(event, template) {
-    IonPopup.alert({
+    $ionicPopup.alert({
       title: 'An Alert',
       template: 'This is an alert!',
       okText: 'Got It.'
@@ -46,7 +46,7 @@
   },
 
   'click [data-action="showConfirm"]': function(event, template) {
-    IonPopup.confirm({
+    $ionicPopup.confirm({
       title: 'Are you sure?',
       template: 'Are you <strong>really</strong> sure?',
       onOk: function() {
@@ -59,7 +59,7 @@
   },
 
   'click [data-action="showPrompt"]': function(event, template) {
-    IonPopup.prompt({
+    $ionicPopup.prompt({
       title: 'Security Check',
       template: 'Please enter your password',
       okText: 'Submit',
@@ -71,7 +71,7 @@
  *```
  */
 
-IonPopup = {
+$ionicPopup = {
   show: function (options) {
     this.template = Template.ionPopup;
     this.buttons = [];
@@ -101,7 +101,7 @@ IonPopup = {
       template: innerTemplate
     };
 
-    this.view = Blaze.renderWithData(this.template, data, $('.ionic-body').get(0));
+    this.view = Blaze.renderWithData(this.template, data, $('body').get(0));
     $('body').addClass('popup-open');
 
     var $backdrop = $(this.view.firstNode());
@@ -111,7 +111,7 @@ IonPopup = {
   },
 
   alert: function (options) {
-    IonPopup.show({
+    $ionicPopup.show({
       title: options.title,
       subTitle: options.subTitle,
       template: options.template,
@@ -130,7 +130,7 @@ IonPopup = {
   },
 
   confirm: function (options) {
-    IonPopup.show({
+    $ionicPopup.show({
       title: options.title,
       subTitle: options.subTitle,
       template: options.template,
@@ -170,7 +170,7 @@ IonPopup = {
     template += '<input type="' + options.inputType + '" placeholder="' +
       options.inputPlaceholder + '" name="prompt" >';
 
-    IonPopup.show({
+    $ionicPopup.show({
       title: options.title,
       subTitle: options.subTitle,
       template: template,
@@ -211,7 +211,7 @@ IonPopup = {
     var callback = this.buttons[index].onTap;
     if(callback){
       if (callback(event, template) === true) {
-        IonPopup.close();
+        $ionicPopup.close();
       }
     }
   }
@@ -220,7 +220,7 @@ IonPopup = {
 Template.ionPopup.onRendered(function() {
   $(window).on('keyup.ionPopup', function(event) {
     if (event.which == KeyboardEvent.code["Escape"]) {
-      IonPopup.close();
+      $ionicPopup.close();
     }
   });
 });
@@ -233,13 +233,13 @@ Template.ionPopup.events({
   // Handle clicking the backdrop
   'click': function (event, template) {
     if ($(event.target).hasClass('popup-container')) {
-      IonPopup.close();
+      $ionicPopup.close();
     }
   },
 
   'click [data-index]': function (event, template) {
     var index = $(event.target).data('index');
-    IonPopup.buttonClicked(index, event, template);
+    $ionicPopup.buttonClicked(index, event, template);
   }
 
 });
