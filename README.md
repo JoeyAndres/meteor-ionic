@@ -1,4 +1,4 @@
-<img src="docs/templates/meteor/public/meteoric-logo.png" alt="Meteoric Logo" style="width: 250px;"/>
+<img src="docs/templates/meteor/public/meteoric-logo.png" alt="Meteoric Logo" width="200"/>
 
 [![Gitter](https://badges.gitter.im/JoeyAndres/meteor-ionic.svg)](https://gitter.im/JoeyAndres/meteor-ionic?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
