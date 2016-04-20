@@ -37,7 +37,7 @@
 
 import { TemplateAttributeDirectiveType } from 'meteor/jandres:template-attribute-directive';
 
-let ionMenuClose = new TemplateAttributeDirectiveType('ionMenuClose', {
+let menuClose = new TemplateAttributeDirectiveType('menuClose', {
     $postLink($scope, $element, $attr) {
         let self = this;
 
@@ -68,4 +68,4 @@ let ionMenuClose = new TemplateAttributeDirectiveType('ionMenuClose', {
     }
 });
 
-export { ionMenuClose };
+export { menuClose };

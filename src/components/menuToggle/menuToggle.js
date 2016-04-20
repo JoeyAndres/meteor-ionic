@@ -40,7 +40,7 @@
 
 import { TemplateAttributeDirectiveType } from 'meteor/jandres:template-attribute-directive';
 
-let ionMenuToggle = new TemplateAttributeDirectiveType('ionMenuToggle', {
+let menuToggle = new TemplateAttributeDirectiveType('menuToggle', {
     $postLink($scope, $element, $attr) {
         let self = this;
 
@@ -58,7 +58,7 @@ let ionMenuToggle = new TemplateAttributeDirectiveType('ionMenuToggle', {
 
         let clickHandler = function() {
             var sideMenuCtrl = jqLite(this).inheritedData('$ionSideMenusController');
-            sideMenuCtrl && sideMenuCtrl.toggle(self.$attrs().ionMenuToggle);
+            sideMenuCtrl && sideMenuCtrl.toggle(self.$attrs().menuToggle);
         };
 
         $('body').on('click', this.$elementSelector(), clickHandler);
@@ -66,4 +66,4 @@ let ionMenuToggle = new TemplateAttributeDirectiveType('ionMenuToggle', {
     }
 });
 
-export { ionMenuToggle };
+export { menuToggle };

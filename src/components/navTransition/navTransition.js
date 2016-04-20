@@ -17,12 +17,12 @@
 
 import { TemplateAttributeDirectiveType } from 'meteor/jandres:template-attribute-directive';
 
-let ionNavTransition = new TemplateAttributeDirectiveType('ionNavTransition', {
+let navTransition = new TemplateAttributeDirectiveType('navTransition', {
     $postLink($scope, $element, $attr) {
         $element.bind('click', function() {
-            $ionicViewSwitcher.nextTransition($attr.ionNavTransition);
+            $ionicViewSwitcher.nextTransition($attr.navTransition);
         });
     }
 });
 
-export { ionNavTransition };
+export { navTransition };
