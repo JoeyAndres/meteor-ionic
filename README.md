@@ -1,4 +1,4 @@
-![Meteoric Logo](meteoric-logo.png)
+![Meteoric Logo](doc-build/public/meteoric-logo.png)
 
 [![Gitter](https://badges.gitter.im/JoeyAndres/meteor-ionic.svg)](https://gitter.im/JoeyAndres/meteor-ionic?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
@@ -104,13 +104,13 @@ A [Product Hunt](http://producthunt.com) clone built in Meteor Ionic. (In Progre
   * [x] menu-toggle
   * [x] menu-close
 * [x] Slides
-* [ ] Tabs (requires [iron:router](https://github.com/EventedMind/iron-router) integration)
-  * [ ] ion-tabs
-  * [ ] ion-tab
+* [x] Tabs (requires [iron:router](https://github.com/EventedMind/iron-router) integration)
+  * [x] ion-tabs
+  * [x] ion-tab
   
 ### Code Style Change: 
 These are code styles that I want to impose on this forked repo.
-* [ ] Get rid of all session variables.
+* [x] Get rid of all session variables.
 
 ## License
 [MIT License](https://github.com/meteoric/meteor-ionic/blob/master/LICENSE)
