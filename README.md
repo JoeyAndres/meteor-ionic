@@ -67,7 +67,7 @@ A [Product Hunt](http://producthunt.com) clone built in Meteor Ionic. (In Progre
   * [x] ion-checkbox
   * [x] ion-radio
   * [x] ion-toggle
-* [ ] Gesture (use a 3rd party library?)
+* [x] Gesture (use a 3rd party library?)
 * [x] Headers/Footers
   * [x] ion-header-bar
   * [x] ion-footer-bar
