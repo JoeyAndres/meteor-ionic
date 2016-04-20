@@ -36,7 +36,7 @@
  * ```
  */
 
-IonModal = {
+$ionModal = {
   transitionEndEvent: 'transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd',
   animationEndEvent: 'animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd',
   enterClasses: ['ng-enter', 'slide-in-up'],
@@ -99,19 +99,19 @@ IonModal = {
   }
 };
 
-$(document).delegate('.modal', IonModal.transitionEndEvent, function(e) {
+$(document).delegate('.modal', $ionModal.transitionEndEvent, function(e) {
   var $modal = $(e.currentTarget);
-  if ($modal.hasClass(IonModal.enterClasses.join(' ')) || $modal.hasClass(IonModal.enterActiveClasse)) {
-    $modal.removeClass(IonModal.enterClasses.join(' ')).removeClass(IonModal.enterActiveClass);
+  if ($modal.hasClass($ionModal.enterClasses.join(' ')) || $modal.hasClass($ionModal.enterActiveClasse)) {
+    $modal.removeClass($ionModal.enterClasses.join(' ')).removeClass($ionModal.enterActiveClass);
     $('body').addClass('modal-open');
-  } else if ($modal.hasClass(IonModal.leaveClasses.join(' ')) || $modal.hasClass(IonModal.leaveActiveClasse)) {
+  } else if ($modal.hasClass($ionModal.leaveClasses.join(' ')) || $modal.hasClass($ionModal.leaveActiveClasse)) {
     var firstChild = $modal.children().first();
     var templateName = getElementModalTemplateName(firstChild);
-    IonModal.views = _.without(IonModal.views, templateName);
-    var view = IonModal.view[templateName].pop();
+    $ionModal.views = _.without($ionModal.views, templateName);
+    var view = $ionModal.view[templateName].pop();
     var $modalBackdrop = $(view.firstNode());
     $modalBackdrop.removeClass('active');
-    $modal.removeClass(IonModal.leaveClasses.join(' ')).removeClass(IonModal.leaveActiveClass).off(IonModal.transitionEndEvent);
+    $modal.removeClass($ionModal.leaveClasses.join(' ')).removeClass($ionModal.leaveActiveClass).off($ionModal.transitionEndEvent);
     $('body').removeClass('modal-open');
     $(e.target).parents('.modal-backdrop').remove();
     Blaze.remove(view);
@@ -137,13 +137,13 @@ Template.ionModal.rendered = function () {
   $(window).on('keyup.ionModal', function(event) {
     event.stopImmediatePropagation();
     if (event.which == 27) {
-      IonModal.close();
+      $ionModal.close();
     }
   });
 };
 
 Template.ionModal.destroyed = function () {
-  if (!IonModal.views.length) {
+  if (!$ionModal.views.length) {
     $(window).off('keyup.ionModal');
   }
 };
@@ -197,12 +197,12 @@ Template.ionModal.events({
   // Handle clicking the backdrop
   'click': function (event, template) {
     if ($(event.target).hasClass('modal-backdrop')) {
-      IonModal.close();
+      $ionModal.close();
     }
   },
   'click [data-dismiss=modal]': function (event, template) {
     var tplName = getElementModalTemplateName(event.currentTarget);
-    IonModal.close(tplName);
+    $ionModal.close(tplName);
   }
 });
 
@@ -213,3 +213,9 @@ var getElementModalTemplateName = function(element) {
   var tplName = tplView.name.slice('Template.'.length, tplView.name.length);
   return tplName;
 };
+
+// todo: Try to use the attribute-directive library.
+$('body').on('click', '[data-ion-modal]', function(e) {
+  let modal_template = $(e.target).data('ion-modal');
+  $ionModal.open(modal_template, $(e.target).data());
+});

@@ -133,7 +133,7 @@ Template.ionPopover.events({
   }
 });
 
-// todo: Try to use the popover.
+// todo: Try to use the attribute-directive library.
 $('body').on('click', '[data-ion-popover]', function(e) {
   let popover_template = $(e.target).data('ion-popover');
   $ionicPopover.show(popover_template, $(e.target).data(), e.target);
