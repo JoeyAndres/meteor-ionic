@@ -15,13 +15,6 @@ Note: This is a forked of meteoric:ionic, which is now not maintained. In respon
 ## Why?
 [Ionic](http://ionicframework.com/) is arguably the most comprehensive, polished, cross-platform mobile framework available. But unfortunately a large portion of its functionality comes from Angular directives. [I'm not a fan of trying to force-fit Angular into Meteor](https://medium.com/space-camp/your-meteor-app-probably-doesnt-need-angular-13986a0323f6), so I wanted to see if I could rewrite Ionic specifically for Meteor.
 
-## Getting started Guide
-Check out the [GUIDE.md](GUIDE.md) for a guide on how to get started.
-
-## Status
-
-**Beta** See the TODO section below to see which Angular Directives have been ported to Blaze.
-
 ## Install
 
 ```bash
@@ -37,21 +30,7 @@ meteor add jandres:ionic
 ### Demo of all components
 The demo app of various ionic components
 
-[Demo](http://jandres-ionic.meteor.com/) |  [Code](https://github.com/JoeyAndres/ionic-demo)
-
-## Pre-fork Examples
-
-The following are examples prior to this fork.
-
-### Contacts App
-A simple CRUD app to manage contacts.
-
-[Demo](http://meteoric-contacts.meteor.com) |  [Code](https://github.com/meteoric/contacts)
-
-### Meteor Hunt
-A [Product Hunt](http://producthunt.com) clone built in Meteor Ionic. (In Progress)
-
-[Demo](http://meteorhunt.meteor.com/) |  [Code](https://github.com/meteoric/meteorhunt)
+[Demo](http://meteoric-demo.com/) |  [Code](https://github.com/JoeyAndres/ionic-demo) branch 1.2.4-dev
 
 ## TODO
 
