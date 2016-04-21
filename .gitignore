@@ -1,6 +1,6 @@
 /.deploy
-/doc-build
 /.idea
+/doc
 .versions
 .build*
 .DS_Store

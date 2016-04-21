@@ -19,13 +19,13 @@ var paths = {
     ],
     templates: [
         './src/components/**/*.html',
-        './docs/**/*.html'
+        './config/**/*.html'
     ],
-    docStyles: ['./docs/styles/**/*.scss']
+    docStyles: ['./config/styles/**/*.scss']
 };
 
 gulp.task('dgeni-clean', function(cb) {
-    exec('rm -rf doc-build/client/partials', function(err, stdout, stderr) {
+    exec('rm -rf doc/client/partials', function(err, stdout, stderr) {
         console.log(stdout);
         console.log(stderr);
         cb(err);
@@ -33,7 +33,7 @@ gulp.task('dgeni-clean', function(cb) {
 });
 
 gulp.task('dgeni', ['dgeni-clean'], function(done) {
-    var dgeni = new Dgeni([require('./docs/dgeni-meteoric')({
+    var dgeni = new Dgeni([require('./config/dgeni-meteoric')({
         include: paths.js,
         exclude: [
             './src/lib/service/modal.js',
@@ -43,15 +43,15 @@ gulp.task('dgeni', ['dgeni-clean'], function(done) {
             './src/lib/service/backdrop.js',
             './src/lib/service/loading.js'
         ],
-        dest: './doc-build/client'
+        dest: './doc/client'
     })]);
 
     dgeni.generate().then(function() { done(); });
 });
 
 gulp.task('doc-styles', function() {
-    return gulp.src('docs/templates/meteor/styles/main.scss')
-        .pipe(gulp.dest('doc-build/client/styles'));
+    return gulp.src('config/templates/meteor/styles/main.scss')
+        .pipe(gulp.dest('doc/client/styles'));
 });
 
 gulp.task('create-meteor-doc-project', function(cb) {
@@ -59,12 +59,12 @@ gulp.task('create-meteor-doc-project', function(cb) {
         console.log(stdout);
         console.log(stderr);
 
-        console.log('Renaming meteoric-doc to doc-build ...');
-        exec('rm -rf doc-build', function(err, stdout, stderr) {
+        console.log('Renaming meteoric-doc to doc ...');
+        exec('rm -rf doc', function(err, stdout, stderr) {
             console.log(stdout);
             console.log(stderr);
 
-            exec('mv meteoric-doc doc-build', function (err, stdout, stderr) {
+            exec('mv meteoric-doc doc', function (err, stdout, stderr) {
                 console.log(stdout);
                 console.log(stderr);
                 console.log('done.');
@@ -75,16 +75,16 @@ gulp.task('create-meteor-doc-project', function(cb) {
 });
 
 gulp.task('setup-meteor-doc-project-packages', function() {
-    gulp.src('docs/templates/meteor/packages.template')
+    gulp.src('config/templates/meteor/packages.template')
         .pipe(rename('packages'))
-        .pipe(gulp.dest('doc-build/.meteor'));
+        .pipe(gulp.dest('doc/.meteor'));
 });
 
 gulp.task('_setup-meteor-doc-project-templates', function() {
     return gulp.src([
-        'docs/templates/meteor/client/**/*',
-        '!./docs/templates/meteor/client/**/*.template.*'
-    ]).pipe(gulp.dest('doc-build/client'));
+        'config/templates/meteor/client/**/*',
+        '!./config/templates/meteor/client/**/*.template.*'
+    ]).pipe(gulp.dest('doc/client'));
 });
 
 gulp.task('setup-meteor-doc-project-templates', function(cb) {
@@ -94,11 +94,11 @@ gulp.task('setup-meteor-doc-project-templates', function(cb) {
 gulp.task('clean-up-meteor-doc-project', function(cb) {
     exec([  'rm',
             '-rf',
-            'doc-build/server',
-            'doc-build/client',
-            'doc-build/lib' +
-            'doc-build/.meteor/packages' +
-            'doc-build/public' ].join(' '),
+            'doc/server',
+            'doc/client',
+            'doc/lib' +
+            'doc/.meteor/packages' +
+            'doc/public' ].join(' '),
         function(err, stdout, stderr) {
             console.log(stdout);
             console.log(stderr);
@@ -108,7 +108,7 @@ gulp.task('clean-up-meteor-doc-project', function(cb) {
 
 
 gulp.task('create-router-meteor-doc-project', function() {
-    var docPath = 'doc-build/client/partials/api/meteoric';
+    var docPath = 'doc/client/partials/api/meteoric';
     var modules = [];
 
     return new Promise(function(resolve) {
@@ -136,18 +136,18 @@ gulp.task('create-router-meteor-doc-project', function() {
                 return new_m;
             });
 
-            gulp.src('docs/templates/meteor/router.template.js')
+            gulp.src('config/templates/meteor/router.template.js')
                 .pipe(template({modules: modules}))
                 .pipe(rename('router.js'))
-                .pipe(gulp.dest('doc-build/lib'))
+                .pipe(gulp.dest('doc/lib'))
                 .on('end', function() { resolve(); });
         });
     });
 });
 
 gulp.task('copy-meteor-doc-public-files', function() {
-    return gulp.src('docs/templates/meteor/public/**/*')
-        .pipe(gulp.dest('doc-build/public'));
+    return gulp.src('config/templates/meteor/public/**/*')
+        .pipe(gulp.dest('doc/public'));
 });
 
 gulp.task('setup-meteor-doc-project', function(cb) {
