@@ -2,6 +2,7 @@
  * @ngdoc service
  * @name $ionicLoading
  * @module meteoric
+ * @demo /loading
  * @description
  * An overlay that can be used to indicate activity while blocking user
  * interaction.

@@ -3,7 +3,7 @@
  * @name $ionicPopup
  * @module meteoric
  * @restrict E
- * @codepen zkmhJ
+ * @demo /popup
  * @description
  *
  * The Ionic Popup service allows programmatically creating and showing popup

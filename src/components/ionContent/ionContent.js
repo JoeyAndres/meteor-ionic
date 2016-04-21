@@ -4,6 +4,7 @@
  * @module meteoric
  * @delegate ionic.service:$ionicScrollDelegate
  * @restrict E
+ * @demo /content
  * @description
  * The ionContent directive provides an easy to use content area that can be configured
  * to use Ionic's custom Scroll View, or the built in overflow scrolling of the browser.

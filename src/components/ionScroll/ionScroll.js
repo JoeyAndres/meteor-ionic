@@ -3,7 +3,7 @@
  * @name ionScroll
  * @module meteoric
  * @delegate meteoric.service:$ionicScrollDelegate
- * @codepen mwFuh
+ * @demo /scroll
  * @restrict E
  *
  * @description

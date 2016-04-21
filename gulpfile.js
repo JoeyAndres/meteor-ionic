@@ -146,10 +146,7 @@ gulp.task('create-router-meteor-doc-project', function() {
 });
 
 gulp.task('copy-meteor-doc-public-files', function() {
-    return gulp.src('docs/templates/meteor/public/**/*.*', { base: './' })
-        .pipe(rename({
-            dirname: ""
-        }))
+    return gulp.src('docs/templates/meteor/public/**/*')
         .pipe(gulp.dest('doc-build/public'));
 });
 

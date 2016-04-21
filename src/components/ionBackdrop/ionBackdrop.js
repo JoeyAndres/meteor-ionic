@@ -2,6 +2,7 @@
  * @ngdoc service
  * @name $ionicBackdrop
  * @module meteoric
+ * @demo /backdrop
  * @description
  * Shows and hides a backdrop over the UI.  Appears behind popups, loading,
  * and other overlays.

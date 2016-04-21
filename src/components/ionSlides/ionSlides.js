@@ -5,6 +5,7 @@
  * @module meteoric
  * @delegate meteoric.service:$ionicSlideBoxDelegate
  * @restrict E
+ * @demo /slides
  * @description
  * The Slides component is a powerful multi-page container where each page can be swiped or dragged between.
  *

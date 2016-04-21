@@ -26,11 +26,34 @@
 <@ if doc.codepen @>
 {% include codepen.html id="<$ doc.codepen $>" %}
 <@ endif @>
+
 <@ endblock @>
 
-<@ block description @>
-<$ doc.description | marked $>
-<@ endblock @>
+<div class="col s12">
+    <@ if doc.demo @>
+    <div class="col l6 m4">
+    <@ else @>
+    <div class="col s12">
+    <@ endif @>
+        <@ block description @>
+        <$ doc.description | marked $>
+        <@ endblock @>
+    </div>
+
+    <@ if doc.demo @>
+        <div class="col l6 m8 hide-on-small-only">
+            <!-- Needs to be wrapped since bioMp sets the width of #device-demo. -->
+            <div id="device-demo"></div>
+        </div>
+        <script>
+            bioMp(document.getElementById('device-demo'), {
+                    url: "http://meteoric-demo.com<$ doc.demo $>",
+                view: 'front',
+                image: '/website-mobile-preview/iphone6_front_white.png'
+            });
+        </script>
+    <@ endif @>
+</div>
 
 <@ if doc.deprecated @>
 <fieldset class="deprecated">

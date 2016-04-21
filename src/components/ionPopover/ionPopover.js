@@ -4,6 +4,7 @@ POPOVER_BODY_PADDING = 6;
  * @ngdoc service
  * @name $ionicPopover
  * @module meteoric
+ * @demo /popover
  * @description
  *
  * Related: {@link meteoric.controller:ionicPopover ionicPopover controller}.

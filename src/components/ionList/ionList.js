@@ -3,6 +3,7 @@
  * @name ionList
  * @module meteoric
  * @delegate meteoric.service:$ionicListDelegate
+ * @demo /lists/complex
  * @restrict E
  * @description
  * The List is a widely used interface element in almost any mobile app, and can include

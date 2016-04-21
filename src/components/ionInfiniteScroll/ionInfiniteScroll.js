@@ -3,6 +3,7 @@
  * @name ionInfiniteScroll
  * @module meteoric
  * @parent meteoric.directive:ionContent, meteoric.directive:ionScroll
+ * @demo /lists/ionInfiniteScroll
  * @restrict E
  *
  * @description

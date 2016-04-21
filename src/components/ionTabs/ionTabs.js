@@ -4,6 +4,7 @@
  * @module meteoric
  * @delegate meteoric.service:$ionicTabsDelegate
  * @restrict E
+ * @demo /tabs
  * @codepen odqCz
  *
  * @description

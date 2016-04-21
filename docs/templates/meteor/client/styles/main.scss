@@ -30,3 +30,7 @@ header, main, footer {
     @extend .truncate;
   }
 }
+
+#main-inner-wrapper {
+  padding-left: 10px;
+}

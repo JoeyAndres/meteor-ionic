@@ -2,6 +2,7 @@
  * @ngdoc service
  * @name $ionicModal
  * @module meteoric
+ * @demo /modal
  * @description
  *
  * Related: {@link meteoric.controller:ionicModal ionicModal controller}.

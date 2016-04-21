@@ -2,6 +2,7 @@
  * @ngdoc directive
  * @name ionSpinner
  * @module meteoric
+ * @demo /spinner
  * @restrict E
  *
  * @description
@@ -17,124 +18,6 @@
  * for the platform on which it's running. Under the hood, the `ionSpinner` directive dynamically
  * builds the required SVG element, which allows Ionic to provide all ten of the animated SVGs
  * within 3KB.
- *
- * <style>
- * .spinner-table {
- *   max-width: 280px;
- * }
- * .spinner-table tbody > tr > th, .spinner-table tbody > tr > td {
- *   vertical-align: middle;
- *   width: 42px;
- *   height: 42px;
- * }
- * .spinner {
- *   stroke: #444;
- *   fill: #444; }
- *   .spinner svg {
- *     width: 28px;
- *     height: 28px; }
- *   .spinner.spinner-inverse {
- *     stroke: #fff;
- *     fill: #fff; }
- *
- * .spinner-android {
- *   stroke: #4b8bf4; }
- *
- * .spinner-ios, .spinner-ios-small {
- *   stroke: #69717d; }
- *
- * .spinner-spiral .stop1 {
- *   stop-color: #fff;
- *   stop-opacity: 0; }
- * .spinner-spiral.spinner-inverse .stop1 {
- *   stop-color: #000; }
- * .spinner-spiral.spinner-inverse .stop2 {
- *   stop-color: #fff; }
- * </style>
- *
- * <script src="http://code.ionicframework.com/nightly/js/ionic.bundle.min.js"></script>
- * <table class="table spinner-table" ng-app="ionic">
- *  <tr>
- *    <th>
- *      <code>android</code>
- *    </th>
- *    <td>
- *      <ion-spinner icon="android"></ion-spinner>
- *    </td>
- *  </tr>
- *  <tr>
- *    <th>
- *      <code>ios</code>
- *    </th>
- *    <td>
- *      <ion-spinner icon="ios"></ion-spinner>
- *    </td>
- *  </tr>
- *  <tr>
- *    <th>
- *      <code>ios-small</code>
- *    </th>
- *    <td>
- *      <ion-spinner icon="ios-small"></ion-spinner>
- *    </td>
- *  </tr>
- *  <tr>
- *    <th>
- *      <code>bubbles</code>
- *    </th>
- *    <td>
- *      <ion-spinner icon="bubbles"></ion-spinner>
- *    </td>
- *  </tr>
- *  <tr>
- *    <th>
- *      <code>circles</code>
- *    </th>
- *    <td>
- *      <ion-spinner icon="circles"></ion-spinner>
- *    </td>
- *  </tr>
- *  <tr>
- *    <th>
- *      <code>crescent</code>
- *    </th>
- *    <td>
- *      <ion-spinner icon="crescent"></ion-spinner>
- *    </td>
- *  </tr>
- *  <tr>
- *    <th>
- *      <code>dots</code>
- *    </th>
- *    <td>
- *      <ion-spinner icon="dots"></ion-spinner>
- *    </td>
- *  </tr>
- *  <tr>
- *    <th>
- *      <code>lines</code>
- *    </th>
- *    <td>
- *      <ion-spinner icon="lines"></ion-spinner>
- *    </td>
- *  </tr>
- *  <tr>
- *    <th>
- *      <code>ripple</code>
- *    </th>
- *    <td>
- *      <ion-spinner icon="ripple"></ion-spinner>
- *    </td>
- *  </tr>
- *  <tr>
- *    <th>
- *      <code>spiral</code>
- *    </th>
- *    <td>
- *      <ion-spinner icon="spiral"></ion-spinner>
- *    </td>
- *  </tr>
- * </table>
  *
  * Each spinner uses SVG with SMIL animations, however, the Android spinner also uses JavaScript
  * so it also works on Android 4.0-4.3. Additionally, each spinner can be styled with CSS,
