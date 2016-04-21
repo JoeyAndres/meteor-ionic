@@ -4,6 +4,16 @@ Router.configure({
 });
 
 Router.map(function() {
+    this.route('Install', {
+        path: '/install/',
+        template: 'Install'
+    });
+
+    this.route('StarterProject', {
+        path: '/starter-project/',
+        template: 'StarterProject'
+    });
+
     <% _.forEach(modules, function(module) {
         %>
         this.route("<%= module.routeName %>", {
