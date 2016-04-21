@@ -1,7 +1,7 @@
 Package.describe({
   name: "jandres:ionic",
   summary: "Ionic components for Meteor. No Angular!",
-  version: "1.24.0-alpha.18",
+  version: "1.24.0-alpha.19",
   git: "https://github.com/JoeyAndres/meteor-ionic.git",
   documentation: "../README.md"
 });
@@ -211,6 +211,7 @@ Package.onUse(function(api) {
     '$ionicActionSheet',
     '$ionicBackdrop',
     '$ionicLoading',
+    '$ionModal',
     '$ionicPlatform',
     '$ionicHistory',
     '$ionicPopup',

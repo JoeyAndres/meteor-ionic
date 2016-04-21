@@ -158,7 +158,7 @@ Template.ionModal.helpers({
   titleClass: function () {
     var classes = ['title'];
 
-    if (Platform.isAndroid()) {
+    if (ionic.Platform.isAndroid()) {
       classes.push('title-left');
     }
 
