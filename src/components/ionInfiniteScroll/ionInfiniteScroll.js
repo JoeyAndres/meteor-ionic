@@ -10,20 +10,20 @@
  * The ionInfiniteScroll directive allows you to call a function whenever
  * the user gets to the bottom of the page or near the bottom of the page.
  *
- * The expression you pass in for `on-infinite` is called when the user scrolls
- * greater than `distance` away from the bottom of the content.  Once `on-infinite`
+ * The expression you pass in for `onInfinite` is called when the user scrolls
+ * greater than `distance` away from the bottom of the content.  Once `onInfinite`
  * is done loading new data, it should broadcast the `scroll.infiniteScrollComplete`
  * event from your controller (see below example).
  *
- * @param {function} on-infinite What to call when the scroller reaches the
+ * @param {function} onInfinite What to call when the scroller reaches the
  * bottom.
  * @param {string=} distance The distance from the bottom that the scroll must
- * reach to trigger the on-infinite expression. Default: 1%.
+ * reach to trigger the onInfinite expression. Default: 1%.
  * @param {string=} spinner The {@link meteoric.directive:ionSpinner} to show while loading. The SVG
  * {@link meteoric.directive:ionSpinner} is now the default, replacing rotating font icons.
  * @param {string=} icon The icon to show while loading. Default: 'ion-load-d'.  This is depreicated
  * in favor of the SVG {@link meteoric.directive:ionSpinner}.
- * @param {boolean=} immediate-check Whether to check the infinite scroll bounds immediately on load.
+ * @param {boolean=} immediateCheck Whether to check the infinite scroll bounds immediately on load.
  *
  * @usage
  *

@@ -5,13 +5,13 @@
  * @restrict AC
  *
  * @description
- * `menu-close` is an attribute directive that closes a currently opened side menu.
+ * `menuClose` is an attribute directive that closes a currently opened side menu.
  * Note that by default, navigation transitions will not animate between views when
  * the menu is open. Additionally, this directive will reset the entering view's
  * history stack, making the new page the root of the history stack. This is done
  * to replicate the user experience seen in most side menu implementations, which is
  * to not show the back button at the root of the stack and show only the
- * menu button. We recommend that you also use the `enable-menu-with-back-views="false"`
+ * menu button. We recommend that you also use the `enableMenuWithBackViews="false"`
  * {@link meteoric.directive:ionSideMenus} attribute when using the menuClose directive.
  *
  * @usage

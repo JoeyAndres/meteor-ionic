@@ -28,23 +28,26 @@
  * The following code would use the default spinner for the platform it's running from. If it's neither
  * iOS or Android, it'll default to use `ios`.
  *
- * ```html
- * <ion-spinner></ion-spinner>
- * ```
- *
- * By setting the `icon` attribute, you can specify which spinner to use, no matter what
- * the platform is.
- *
- * ```html
- * <ion-spinner icon="spiral"></ion-spinner>
- * ```
- *
- * ## Spinner Colors
- * Like with most of Ionic's other components, spinners can also be styled using
- * Ionic's standard color naming convention. For example:
- *
- * ```html
- * <ion-spinner class="spinner-energized"></ion-spinner>
+ * ```handlebars
+ {{> ionSpinner icon="ios"}}
+
+ {{> ionSpinner icon="ios-small"}}
+
+ {{> ionSpinner icon="android"}}
+
+ {{> ionSpinner icon="bubbles"}}
+
+ {{> ionSpinner icon="circles"}}
+
+ {{> ionSpinner icon="crescent"}}
+
+ {{> ionSpinner icon="dots"}}
+
+ {{> ionSpinner icon="lines"}}
+
+ {{> ionSpinner icon="ripple"}}
+ 
+ {{> ionSpinner icon="spiral"}}
  * ```
  *
  *

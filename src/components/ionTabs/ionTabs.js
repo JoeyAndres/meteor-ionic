@@ -5,7 +5,6 @@
  * @delegate meteoric.service:$ionicTabsDelegate
  * @restrict E
  * @demo /tabs
- * @codepen odqCz
  *
  * @description
  * Powers a multi-tabbed interface with a Tab Bar and a set of "pages" that can be tabbed
@@ -15,7 +14,7 @@
  * its look and feel.
  *
  * For iOS, tabs will appear at the bottom of the screen. For Android, tabs will be at the top
- * of the screen, below the nav-bar. This follows each OS's design specification, but can be
+ * of the screen, below the navBarar. This follows each OS's design specification, but can be
  * configured with the {@link meteoric.provider:$ionicConfigProvider}.
  *
  * See the {@link meteoric.directive:ionTab} directive's documentation for more details on

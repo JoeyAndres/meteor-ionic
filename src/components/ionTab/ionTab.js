@@ -26,12 +26,12 @@
  * @param {string} title The title of the tab.
  * @param {string=} href The link that this tab will navigate to when tapped.
  * @param {string=} icon The icon of the tab. If given, this will become the default for icon-on and icon-off.
- * @param {string=} icon-on The icon of the tab while it is selected.
- * @param {string=} icon-off The icon of the tab while it is not selected.
+ * @param {string=} iconOn The icon of the tab while it is selected.
+ * @param {string=} iconOff The icon of the tab while it is not selected.
  * @param {expression=} badge The badge to put on this tab (usually a number).
- * @param {expression=} badge-style The style of badge to put on this tab (eg: badge-positive).
- * @param {expression=} on-select Called when this tab is selected.
- * @param {expression=} on-deselect Called when this tab is deselected.
+ * @param {expression=} badgeStyle The style of badge to put on this tab (eg: badge-positive).
+ * @param {expression=} onSelect Called when this tab is selected.
+ * @param {expression=} onDeselect Called when this tab is deselected.
  * @param {expression=} hidden Whether the tab is to be hidden or not.
  * @param {expression=} disabled Whether the tab is to be disabled or not.
  */

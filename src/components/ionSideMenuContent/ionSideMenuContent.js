@@ -16,8 +16,8 @@
  * For a complete side menu example, see the
  * {@link meteoric.directive:ionSideMenus} documentation.
  *
- * @param {boolean=} drag-content Whether the content can be dragged. Default true.
- * @param {boolean|number=} edge-drag-threshold Whether the content drag can only start if it is below a certain threshold distance from the edge of the screen.  Default false. Accepts three types of values:
+ * @param {boolean=} dragContent Whether the content can be dragged. Default true.
+ * @param {boolean|number=} edgeDragThreshold Whether the content drag can only start if it is below a certain threshold distance from the edge of the screen.  Default false. Accepts three types of values:
  *  - If a non-zero number is given, that many pixels is used as the maximum allowed distance from the edge that starts dragging the side menu.
  *  - If true is given, the default number of pixels (25) is used as the maximum allowed distance.
  *  - If false or 0 is given, the edge drag threshold is disabled, and dragging from anywhere on the content is allowed.

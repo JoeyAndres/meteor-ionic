@@ -10,11 +10,11 @@
  * Can also be a subheader (lower down) if the 'bar-subheader' class is applied.
  * See [the header CSS docs](/docs/components/#subheader).
  *
- * @param {string=} align-title How to align the title. By default the title
+ * @param {string=} alignTitle How to align the title. By default the title
  * will be aligned the same as how the platform aligns its titles (iOS centers
  * titles, Android aligns them left).
  * Available: 'left', 'right', or 'center'.  Defaults to the same as the platform.
- * @param {boolean=} no-tap-scroll By default, the header bar will scroll the
+ * @param {boolean=} noTapScroll By default, the header bar will scroll the
  * content to the top when tapped.  Set no-tap-scroll to true to disable this
  * behavior.
  * Available: true or false.  Defaults to false.

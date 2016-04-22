@@ -5,12 +5,12 @@
  * @module meteoric
  * @restrict E
  * Creates a reorder button inside a list item, that is visible when the
- * {@link meteoric.directive:ionList ionList parent's} `show-reorder` evaluates to true or
+ * {@link meteoric.directive:ionList ionList parent's} `showReorder` evaluates to true or
  * `$ionicListDelegate.showReorder(true)` is called.
  *
  * Can be dragged to reorder items in the list. Takes any ionicon class.
  *
- * When an item reorder is complete, the expression given in the `on-reorder` attribute is called. The `on-reorder` expression is given two locals that can be used: `$fromIndex` and `$toIndex`.  See below for an example.
+ * When an item reorder is complete, the expression given in the `onReorder` attribute is called. The `onReorder` expression is given two locals that can be used: `$fromIndex` and `$toIndex`.  See below for an example.
  *
  * Look at {@link meteoric.directive:ionList} for more examples.
  *
@@ -18,7 +18,7 @@
  *
  * See {@link meteoric.directive:ionList} for a complete example.
  *
- * @param {expression=} on-reorder Expression to call when an item is reordered.
+ * @param {expression=} onReorder Expression to call when an item is reordered.
  * Parameters given: $fromIndex, $toIndex.
  */
 

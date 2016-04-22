@@ -26,7 +26,7 @@
  * {@link meteoric.directive:ionSideMenus} documentation.
  *
  * @param {string} side Which side the side menu is currently on.  Allowed values: 'left' or 'right'.
- * @param {boolean=} is-enabled Whether this side menu is enabled.
+ * @param {boolean=} isEnabled Whether this side menu is enabled.
  * @param {number=} width How many pixels wide the side menu should be.  Defaults to 275.
  */
 Template.ionSideMenu.onCreated(function() {

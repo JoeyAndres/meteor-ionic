@@ -10,7 +10,7 @@
  * Can also be a subfooter (higher up) if the 'bar-subfooter' class is applied.
  * See [the footer CSS docs](/docs/components/#footer).
  *
- * @param {string=} align-title Where to align the title.
+ * @param {string=} alignTitle Where to align the title.
  * Available: 'left', 'right', or 'center'.  Defaults to 'center'.
  *
  * @usage

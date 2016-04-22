@@ -101,11 +101,11 @@
  *```
  *
  * @param type {string=} The type of list to use (list-inset or card)
- * @param show-delete {boolean=} Whether the delete buttons for the items in the list are
+ * @param showDelete {boolean=} Whether the delete buttons for the items in the list are
  * currently shown or hidden.
- * @param show-reorder {boolean=} Whether the reorder buttons for the items in the list are
+ * @param showReorder {boolean=} Whether the reorder buttons for the items in the list are
  * currently shown or hidden.
- * @param can-swipe {boolean=} Whether the items in the list are allowed to be swiped to reveal
+ * @param canSwipe {boolean=} Whether the items in the list are allowed to be swiped to reveal
  * option buttons. Default: true.
  */
 Template.ionList.onCreated(function() {

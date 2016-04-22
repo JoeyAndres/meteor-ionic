@@ -10,14 +10,14 @@
  * to be toggled by dragging the main content area side to side.
  *
  * To automatically close an opened menu, you can add the {@link meteoric.directive:menuClose} attribute
- * directive. The `menu-close` attribute is usually added to links and buttons within
- * `ion-side-menu-content`, so that when the element is clicked, the opened side menu will
+ * directive. The `menuClose` attribute is usually added to links and buttons within
+ * `ionSideMenuContent`, so that when the element is clicked, the opened side menu will
  * automatically close.
  *
  * "Burger Icon" toggles can be added to the header with the {@link meteoric.directive:menuToggle}
- * attribute directive. Clicking the toggle will open and close the side menu like the `menu-close`
+ * attribute directive. Clicking the toggle will open and close the side menu like the `menuClose`
  * directive. The side menu will automatically hide on child pages, but can be overridden with the
- * enable-menu-with-back-views attribute mentioned below.
+ * enableMenuWithBackViews attribute mentioned below.
  *
  * By default, side menus are hidden underneath their side menu content and can be opened by swiping
  * the content left or right or by toggling a button to show the side menu. Additionally, by adding the
@@ -81,7 +81,7 @@
  </template>
  * ```
  *
- * @param {bool=} enable-menu-with-back-views Determines whether the side menu is enabled when the
+ * @param {bool=} enableMenuWithBackViews Determines whether the side menu is enabled when the
  * back button is showing. When set to `false`, any {@link meteoric.directive:menuToggle} will be hidden,
  * and the user cannot swipe to open the menu. When going back to the root page of the side menu (the
  * page without a back button visible), then any menuToggle buttons will show again, and menus will be

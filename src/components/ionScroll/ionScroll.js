@@ -46,14 +46,14 @@
  * @param {string=} direction Which way to scroll. 'x' or 'y' or 'xy'. Default 'y'.
  * @param {boolean=} locking Whether to lock scrolling in one direction at a time. Useful to set to false when zoomed in or scrolling in two directions. Default true.
  * @param {boolean=} paging Whether to scroll with paging.
- * @param {expression=} on-refresh Called on pull-to-refresh, triggered by an {@link meteoric.directive:ionRefresher}.
- * @param {expression=} on-scroll Called whenever the user scrolls.
- * @param {boolean=} scrollbar-x Whether to show the horizontal scrollbar. Default true.
- * @param {boolean=} scrollbar-y Whether to show the vertical scrollbar. Default true.
+ * @param {expression=} onRefresh Called on pull-to-refresh, triggered by an {@link meteoric.directive:ionRefresher}.
+ * @param {expression=} onScroll Called whenever the user scrolls.
+ * @param {boolean=} scrollbarX Whether to show the horizontal scrollbar. Default true.
+ * @param {boolean=} scrollbarY Whether to show the vertical scrollbar. Default true.
  * @param {boolean=} zooming Whether to support pinch-to-zoom
- * @param {integer=} min-zoom The smallest zoom amount allowed (default is 0.5)
- * @param {integer=} max-zoom The largest zoom amount allowed (default is 3)
- * @param {boolean=} has-bouncing Whether to allow scrolling to bounce past the edges
+ * @param {integer=} minZoom The smallest zoom amount allowed (default is 0.5)
+ * @param {integer=} maxZoom The largest zoom amount allowed (default is 3)
+ * @param {boolean=} hasBouncing Whether to allow scrolling to bounce past the edges
  * of the content.  Defaults to true on iOS, false on Android.
  */
 

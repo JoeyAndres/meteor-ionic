@@ -40,14 +40,14 @@
  {{/ionNavView}}
  * ```
  *
- * @param {string=} view-title A text-only title to display on the parent {@link meteoric.directive:ionNavBar}.
+ * @param {string=} viewTitle A text-only title to display on the parent {@link meteoric.directive:ionNavBar}.
  * For an HTML title, such as an image, see {@link meteoric.directive:ionNavTitle} instead.
- * @param {boolean=} can-swipe-back If this view should be allowed to use the swipe to go back gesture or not.
+ * @param {boolean=} canSwipeBack If this view should be allowed to use the swipe to go back gesture or not.
  * This does not enable the swipe to go back feature if it is not available for the platform it's running
  * from, or there isn't a previous view. Default `true`
- * @param {boolean=} hide-back-button Whether to hide the back button on the parent
+ * @param {boolean=} hideBackButton Whether to hide the back button on the parent
  * {@link meteoric.directive:ionNavBar} by default.
- * @param {boolean=} hide-nav-bar Whether to hide the parent
+ * @param {boolean=} hideNavBar Whether to hide the parent
  * {@link meteoric.directive:ionNavBar} by default.
  */
 

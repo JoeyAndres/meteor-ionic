@@ -10,7 +10,7 @@
  * The Modal is a content pane that can go over the user's main view
  * temporarily.  Usually used for making a choice or editing an item.
  *
- * Put the content of the modal inside of an `<ion-modal-view>` element.
+ * Put the content of the modal inside of an `ionModal` template.
  *
  * @usage
  *
