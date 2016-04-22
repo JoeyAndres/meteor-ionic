@@ -10,8 +10,6 @@
  *
  * Can be dragged to reorder items in the list. Takes any ionicon class.
  *
- * Note: Reordering works best when used with `ng-repeat`.  Be sure that all `ion-item` children of an `ion-list` are part of the same `ng-repeat` expression.
- *
  * When an item reorder is complete, the expression given in the `on-reorder` attribute is called. The `on-reorder` expression is given two locals that can be used: `$fromIndex` and `$toIndex`.  See below for an example.
  *
  * Look at {@link meteoric.directive:ionList} for more examples.

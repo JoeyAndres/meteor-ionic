@@ -12,20 +12,6 @@
  * Takes any ionicon as a class.
  *
  * See {@link meteoric.directive:ionList} for a complete example & explanation.
- *
- * @usage
- *
- * ```handlebars
- * <ion-list show-delete="shouldShowDelete">
- *   <ion-item>
- *     <ion-delete-button class="ion-minus-circled"></ion-delete-button>
- *     Hello, list item!
- *   </ion-item>
- * </ion-list>
- * <ion-toggle ng-model="shouldShowDelete">
- *   Show Delete?
- * </ion-toggle>
- * ```
  */
 
 var ITEM_TPL_DELETE_BUTTON =

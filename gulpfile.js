@@ -3,7 +3,9 @@ var path = require('path'),
     del = require('del'),
     es = require('event-stream'),
     _ = require('underscore'),
-    template = require('gulp-template');
+    template = require('gulp-template'),
+    argv = require('yargs').argv,
+    semver = require('semver');
 var runSequence = require('run-sequence');
 var Dgeni = require('dgeni');
 var exec = require('child_process').exec;
@@ -24,6 +26,22 @@ var paths = {
     docStyles: ['./config/styles/**/*.scss']
 };
 
+var arg = {
+    version: function () {
+        var version = argv.version;
+        if (_.isUndefined(version)) {
+            console.error("Error: Version is not given. 'gulp setup-meteor-doc-project --version=<version>'");
+            process.exit(1);
+        } else if (!semver.valid(version)) {
+            // Check if version is valid.
+            console.error("Error: Invalid semver format for --version argument.");
+            process.exit(1);
+        }
+
+        return version;
+    }
+};
+
 gulp.task('dgeni-clean', function(cb) {
     exec('rm -rf doc/client/partials', function(err, stdout, stderr) {
         console.log(stdout);
@@ -33,7 +51,7 @@ gulp.task('dgeni-clean', function(cb) {
 });
 
 gulp.task('dgeni', ['dgeni-clean'], function(done) {
-    var dgeni = new Dgeni([require('./config/dgeni-meteoric')({
+    var dgeni = new Dgeni([ require('./config/dgeni-meteoric')({
         include: paths.js,
         exclude: [
             './src/lib/service/modal.js',
@@ -43,7 +61,8 @@ gulp.task('dgeni', ['dgeni-clean'], function(done) {
             './src/lib/service/backdrop.js',
             './src/lib/service/loading.js'
         ],
-        dest: './doc/client'
+        dest: './doc/client',
+        version: arg.version()  // todo: not used atm, but I'm sure will be used in the future.
     })]);
 
     dgeni.generate().then(function() { done(); });
@@ -140,7 +159,16 @@ gulp.task('create-router-meteor-doc-project', function() {
                 .pipe(template({modules: modules}))
                 .pipe(rename('router.js'))
                 .pipe(gulp.dest('doc/lib'))
-                .on('end', function() { resolve(); });
+                .on('end', function() {
+
+                    gulp.src('config/templates/meteor/helpers.template.js')
+                        .pipe(template({version: arg.version()}))
+                        .pipe(rename('helpers.js'))
+                        .pipe(gulp.dest('doc/client/lib'))
+                        .on('end', function() {
+                            resolve();
+                        });
+                });
         });
     });
 });

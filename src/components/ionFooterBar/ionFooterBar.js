@@ -10,9 +10,6 @@
  * Can also be a subfooter (higher up) if the 'bar-subfooter' class is applied.
  * See [the footer CSS docs](/docs/components/#footer).
  *
- * Note: If you use ionFooterBar in combination with ng-if, the surrounding content
- * will not align correctly.  This will be fixed soon.
- *
  * @param {string=} align-title Where to align the title.
  * Available: 'left', 'right', or 'center'.  Defaults to 'center'.
  *
@@ -26,7 +23,7 @@
  *     <button class="button">Left Button</button>
  *   </div>
  *   <h1 class="title">Title!</h1>
- *   <div class="buttons" ng-click="doSomething()">
+ *   <div class="buttons">
  *     <button class="button">Right Button</button>
  *   </div>
  * {{/ion-footer-bar}}

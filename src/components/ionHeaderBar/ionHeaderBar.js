@@ -23,7 +23,7 @@
  * ```handlebars
    {{#ionHeaderBar align-title="left" class="bar-positive"}}
        <div class="buttons">
-           <button class="button" ng-click="doSomething()">Left Button</button>
+           <button class="button">Left Button</button>
        </div>
        <h1 class="title">Title!</h1>
        <div class="buttons">
