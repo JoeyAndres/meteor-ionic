@@ -3,7 +3,7 @@
  * @name ionRadio
  * @module meteoric
  * @restrict E
- * @codepen saoBG
+ * @demo /radio
  * @description
  * The radio directive is no different than the HTML radio input, except it's styled differently.
  *

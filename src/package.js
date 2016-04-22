@@ -1,7 +1,7 @@
 Package.describe({
   name: "jandres:ionic",
   summary: "Ionic components for Meteor. No Angular!",
-  version: "1.24.0-alpha.20",
+  version: "1.24.0-alpha.21",
   git: "https://github.com/JoeyAndres/meteor-ionic.git",
   documentation: "../README.md"
 });
@@ -103,6 +103,9 @@ Package.onUse(function(api) {
     "components/ionBackdrop/ionBackdrop.html",
     "components/ionBackdrop/ionBackdrop.js",
 
+    "components/ionCheckbox/ionCheckbox.html",
+    "components/ionCheckbox/ionCheckbox.js",
+
     "components/ionContent/ionContent.html",
     "components/ionContent/ionContent.js",
 
@@ -199,6 +202,9 @@ Package.onUse(function(api) {
 
     "components/ionTab/ionTab.html",
     "components/ionTab/ionTab.js",
+
+    "components/ionToggle/ionToggle.html",
+    "components/ionToggle/ionToggle.js",
 
     "components/ionView/ionView.html",
     "components/ionView/ionView.js"
