@@ -9,8 +9,9 @@ class Delegate {
 
     removeInstance(aggregate) {
         let index = this._instances.indexOf(aggregate);
+        console.log(index, this._instances[0] == aggregate);
         if (index !== -1) {
-            this._instances.splice(1, index);
+            this._instances.splice(index, 1);
         }
     }
 
