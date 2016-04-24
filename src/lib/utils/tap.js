@@ -113,7 +113,7 @@ ionic.tap = {
   register: function(ele) {
     tapDoc = ele;
 
-    tapEventListener('click', true, true /* used to be true, but not working, we just need a gate keeper. */);
+    tapEventListener('click', true, true);
     tapEventListener('mouseup');
     tapEventListener('mousedown');
 
@@ -341,7 +341,6 @@ function tapClickGateKeeper(e) {
   // do not allow through any click events that were not created by ionic.tap
   if ((ionic.scroll.isScrolling && ionic.tap.containsOrIsTextInput(e.target)) ||
       (!e.isIonicTap && !ionic.tap.requiresNativeClick(e.target))) {
-    //console.log('clickPrevent', e.target.tagName);
     e.stopPropagation();
 
     if (!ionic.tap.isLabelWithTextInput(e.target)) {
