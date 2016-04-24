@@ -18,15 +18,14 @@
  * {{#ion-content}}
  *   Some content!
  * {{/ion-content}}
- * {{#ion-footer-bar align-title="left" class="bar-assertive"}}
+ * {{#ionFooter-bar align-title="left" class="bar-assertive"}}
  *   <div class="buttons">
  *     <button class="button">Left Button</button>
  *   </div>
- *   <h1 class="title">Title!</h1>
  *   <div class="buttons">
  *     <button class="button">Right Button</button>
  *   </div>
- * {{/ion-footer-bar}}
+ * {{/ionFooterBar}}
  * ```
  */
 
