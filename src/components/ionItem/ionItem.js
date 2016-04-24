@@ -35,13 +35,13 @@ function url() {
 
         var path = _.find([this.data.path,this.data.url,this.data.route],function(path){return path !=undefined});
 
-        if ( this.data.query || this.data.hash || this.data ){
+        if ( this.data.query || this.data.hash || this.data.data ){
 
             var hash = {};
             hash.route = path;
             hash.query = this.data.query;
             hash.hash = this.data.hash;
-            hash.data = this.data;
+            hash.data = this.data.data;
             var options = new Spacebars.kw(hash);
 
             // Devs may pass 'route=x' instead of 'path=' or 'url='
