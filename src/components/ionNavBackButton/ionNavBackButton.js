@@ -1,6 +1,6 @@
 /**
  * @ngdoc directive
- * @name ionNavBackButton
+ * @name  
  * @module meteoric
  * @restrict E
  * @parent ionNavBar

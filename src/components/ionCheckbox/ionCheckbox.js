@@ -32,7 +32,7 @@ Template.ionCheckbox.onRendered(function() {
     };
 
     if (model) {
-        let initialValue = !!data && !!data.value;
+        let initialValue = !!data && !!data.checked;
         model.set(modelValue(initialValue));
         $checkbox.prop('checked', initialValue);
 
