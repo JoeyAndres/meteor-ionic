@@ -9,6 +9,12 @@
  *
  * The checkbox behaves like any [AngularJS checkbox](http://docs.angularjs.org/api/ng/input/input[checkbox]).
  *
+ * @param {ReactiveVar=} model Data to bind value to.
+ * @param {string=} name Property name of the form under which the control is published.
+ * @param {expression=} trueValue The value to which the model should be set when selected.
+ * @param {expression=} falseValue The value to which the model should be set when not selected.
+ * @param {boolean=} disabled The state of the radio input.
+ *
  * @usage
  * ```handlebars
  {{#ionCheckbox}}Checkbox Example{{/ionCheckbox}}

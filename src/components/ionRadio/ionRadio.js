@@ -7,14 +7,13 @@
  * @description
  * The radio directive is no different than the HTML radio input, except it's styled differently.
  *
- * Radio behaves like [AngularJS radio](http://docs.angularjs.org/api/ng/input/input[radio]).
- *
  * @usage
  * ```handlebars
  {{#ionRadio name="test_radio" checked}}Test Content 1{{/ionRadio}}
  {{#ionRadio name="test_radio"}}Test Content 2{{/ionRadio}}
  * ```
  *
+ * @param {ReactiveVar=} model Data to bind value to.
  * @param {string=} name The name of the radio input.
  * @param {expression=} value The value of the radio input.
  * @param {boolean=} disabled The state of the radio input.
