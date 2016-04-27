@@ -1,7 +1,7 @@
 Package.describe({
   name: "jandres:ionic",
   summary: "Ionic components for Meteor. No Angular!",
-  version: "1.2.4-alpha.24",
+  version: "1.2.4-beta.1",
   git: "https://github.com/JoeyAndres/meteor-ionic.git",
   documentation: "../README.md"
 });
@@ -19,8 +19,8 @@ Package.onUse(function(api) {
 
   api.use([
     "jandres:template-extension@4.0.7-alpha3",
-    "jandres:template-scope@0.1.0-alpha15",
-    "jandres:template-attribute-directive@0.1.0-alpha4",
+    "jandres:template-scope@0.1.0-beta.1",
+    "jandres:template-attribute-directive@0.1.0-beta.1",
     "templating",
     "underscore",
     "reactive-var",
