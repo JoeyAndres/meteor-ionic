@@ -1,5 +1,5 @@
 Package.describe({
-  name: "jandres:ionic",
+  name: "meteoric124:meteoric",
   summary: "Ionic components for Meteor. No Angular!",
   version: "1.2.4-beta.3",
   git: "https://github.com/JoeyAndres/meteor-ionic.git",
