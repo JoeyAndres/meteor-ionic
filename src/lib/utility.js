@@ -50,3 +50,5 @@ _.extend(METEORIC.UTILITY, {
         };
     }
 });
+
+export const afterFlushPromise = Promise.denodeify(Tracker.afterFlush);

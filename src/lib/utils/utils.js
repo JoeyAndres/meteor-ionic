@@ -154,6 +154,10 @@
         return; // we can't disconnect the root node;
       }
       var parent = scope.$parent;
+
+      // meteoric: Some scope don't have parent.
+      if (!parent) return;
+
       scope.$$disconnected = true;
       scope.$broadcast('$ionic.disconnectScope', scope);
 

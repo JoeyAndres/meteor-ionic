@@ -110,7 +110,7 @@ function jqLiteInheritedData(element, name, value) {
 
     while (element) {
         for (var i = 0, ii = names.length; i < ii; i++) {
-            if (isDefined(value = jqLite(element).$data(names[i]))) return value;
+            if (isDefined(value = jqLite(element).data(names[i]))) return value;
         }
 
         // If dealing with a document fragment node with a host element, and no parent, use the host

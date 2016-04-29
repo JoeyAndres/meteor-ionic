@@ -1,7 +1,7 @@
 Package.describe({
   name: "jandres:ionic",
   summary: "Ionic components for Meteor. No Angular!",
-  version: "1.2.4-beta.2",
+  version: "1.2.4-beta.3",
   git: "https://github.com/JoeyAndres/meteor-ionic.git",
   documentation: "../README.md"
 });
@@ -11,7 +11,7 @@ Cordova.depends({
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom("1.3");
+  api.versionsFrom("1.3.2.4");
 
   api.use([
     'ecmascript'
@@ -27,6 +27,7 @@ Package.onUse(function(api) {
     "iron:router@1.0.0",
     "tracker",
     "session",
+    "promise",
     "fourseven:scss@3.4.3",
     'jquery',
 

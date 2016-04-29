@@ -51,6 +51,8 @@
  * {@link meteoric.directive:ionNavBar} by default.
  */
 
+import { afterFlushPromise } from './../../lib/utility';
+
 ionViewDefault = {
     viewTitle: undefined,
     canSwipeBack: true,
@@ -95,10 +97,12 @@ Template.ionView.onRendered(function () {
         viewCtrl = new $ionicView($scope, $element, $attrs);
         $element.data('$ionViewController', viewCtrl);
     });
+
     $(this).on('$postLink', () => {
         viewCtrl.init();
+    });
 
-        // todo: Find a way for iron:router to generate this.
-        $scope.$emit('$stateChangeSuccess');
+    afterFlushPromise(() => {
+        this.$scope.$emit('$stateChangeSuccess');
     });
 });
