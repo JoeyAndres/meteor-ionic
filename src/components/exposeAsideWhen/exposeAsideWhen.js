@@ -23,17 +23,17 @@
  * as the value, such as `(min-width:600px)` or even multiple queries such as
  * `(min-width:750px) and (max-width:1200px)`.
  *
+ * Note:
+ * - There is a [bug](https://github.com/driftyco/ionic/issues/2328) when side-menu is shown, in that
+ *   it will partially hide the ionSideMenuContent, which is unacceptable. The link given is the bug
+ *   report for this in the original ionic.
+ *
  * @usage
  *
  * ```handlebars
- {{#ionNavButtons side="left"}}
-     <button class="button button-clear pull-left" menu-toggle="left">
-         <i class="icon ion-navicon"></i>
-     </button>
- {{/ionNavButtons}}
- {{#ionContent}}
-   <!-- content go here -->
- {{/ionContent}}
+ <div class="bar bar-header bar-dark" expose-aside-when="large">
+   <h1 class="title">Right Menu</h1>
+ </div>
  * ```
  * For a complete side menu example, see the
  * {@link meteoric.directive:ionSideMenus} documentation.
@@ -47,14 +47,14 @@ let exposeAsideWhen = new TemplateAttributeDirectiveType('exposeAsideWhen', {
 
         // Setup a match media query listener that triggers a ui change only when a change
         // in media matching status occurs
-        var mq = $attr.ionExposeAsideWhen == 'large' ? '(min-width:768px)' : $attr.ionExposeAsideWhen;
+        var mq = $attr.exposeAsideWhen == 'large' ? '(min-width:768px)' : $attr.exposeAsideWhen;
         var mql = $window[0].matchMedia(mq);
         mql.addListener(function() {
             onResize();
         });
 
         function checkAsideExpose() {
-            var mq = $attr.ionExposeAsideWhen == 'large' ? '(min-width:768px)' : $attr.ionExposeAsideWhen;
+            var mq = $attr.exposeAsideWhen == 'large' ? '(min-width:768px)' : $attr.exposeAsideWhen;
             sideMenuCtrl.exposeAside($window[0].matchMedia(mq).matches);
             sideMenuCtrl.activeAsideResizing(false);
         }
