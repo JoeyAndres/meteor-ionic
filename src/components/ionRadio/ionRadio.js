@@ -8,9 +8,48 @@
  * The radio directive is no different than the HTML radio input, except it's styled differently.
  *
  * @usage
+ *
+ * Suppose you have a template with an multiple `ionRadio` in it:
+ *
  * ```handlebars
- {{#ionRadio name="test_radio" checked}}Test Content 1{{/ionRadio}}
- {{#ionRadio name="test_radio"}}Test Content 2{{/ionRadio}}
+ <template name="radio">
+     {{#ionView title="Radio"}}
+         {{#ionContent}}
+             <form name="radio_button_form" id="radio-button-form">
+                 {{#ionRadio name="test_radio" checked=true value="test value 1" model=radioModel }}
+                     Test Content 1
+                 {{/ionRadio}}
+                 {{#ionRadio name="test_radio" value="test value 2" model=radioModel }}
+                     Test Content 2
+                 {{/ionRadio}}
+                 {{#ionRadio name="test_radio" value="test value 3" model=radioModel }}
+                     Test Content 3
+                 {{/ionRadio}}
+
+                 <div class="item item-icon-left">
+                     <i class="ion-android-alert icon"></i> Model Value: <b id="model-value">{{radioModel_value}}</b>
+                 </div>
+             </form>
+         {{/ionContent}}
+     {{/ionView}}
+ </template>
+ * ```
+ *
+ * To provide the model and other data, in your javascript:
+ * ```javascript
+ Template.radio.onCreated(function() {
+    this.radioModel = new ReactiveVar(null);
+ });
+
+ Template.radio.helpers({
+    radioModel() {
+        return Template.instance().radioModel;
+    },
+
+    radioModel_value() {
+        return Template.instance().radioModel.get();
+    }
+ });
  * ```
  *
  * @param {ReactiveVar=} model Data to bind value to.
