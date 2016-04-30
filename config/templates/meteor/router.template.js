@@ -30,7 +30,7 @@ Router.map(function() {
     this.route('Home', {
         path: '/',
         action() {
-            this.redirect('<%= modules[0].routeName %>');
+            this.redirect('/install');
         }
     });
 
