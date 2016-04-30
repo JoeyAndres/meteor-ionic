@@ -2,7 +2,7 @@
  * @module meteoric
  */
 
-import { TemplateAttributeDirectiveType } from 'meteor/jandres:template-attribute-directive';
+import { TemplateAttributeDirectiveType } from 'meteor/meteoric124:template-attribute-directive';
 
 var GESTURE_DIRECTIVES = 'onHold onTap onDoubleTap onTouch onRelease onDragStart onDrag onDragEnd onDragUp onDragRight onDragDown onDragLeft onSwipe onSwipeUp onSwipeRight onSwipeDown onSwipeLeft'.split(' ');
 

@@ -15,7 +15,7 @@
  * ```
  */
 
-import { TemplateAttributeDirectiveType } from 'meteor/jandres:template-attribute-directive';
+import { TemplateAttributeDirectiveType } from 'meteor/meteoric124:template-attribute-directive';
 
 let navDirection = new TemplateAttributeDirectiveType('navDirection', {
     $postLink($scope, $element, $attr) {

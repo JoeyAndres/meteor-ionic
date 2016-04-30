@@ -28,7 +28,7 @@
  * ```
  */
 
-import { TemplateAttributeDirectiveType } from 'meteor/jandres:template-attribute-directive';
+import { TemplateAttributeDirectiveType } from 'meteor/meteoric124:template-attribute-directive';
 
 let keyboardAttach = new TemplateAttributeDirectiveType('keyboardAttach', {
     $postLink($scope, $element, $attr) {
