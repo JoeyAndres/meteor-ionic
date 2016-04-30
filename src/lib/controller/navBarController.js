@@ -103,7 +103,7 @@ function($scope, $element, $attrs) {
                   //           it is impossible to attach scope or Blaze.render
                   //           (calls onCreated which creates scope), some items don't
                   //           have a scope.
-                  lastViewItemEle[itemType].scope &&
+                  lastViewItemEle[itemType].scope() &&
                   lastViewItemEle[itemType].scope().$destroy();
 
                   lastViewItemEle[itemType].remove();
