@@ -6,7 +6,7 @@
  * @restrict E
  * @description
  * Creates a delete button inside a list item, that is visible when the
- * {@link meteoric.directive:ionList ionList parent's} `show-delete` evaluates to true or
+ * {@link meteoric.directive:ionList ionList parent's} `showDelete` evaluates to true or
  * `$ionicListDelegate.showDelete(true)` is called.
  *
  * Takes any ionicon as a class.

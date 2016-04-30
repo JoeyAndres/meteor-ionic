@@ -102,15 +102,5 @@ IonicModule
   'slidesCount',
   'count',
   'loop'
-  /**
-   * @ngdoc method
-   * @name $ionicSlideBoxDelegate#$getByHandle
-   * @param {string} handle
-   * @returns `delegateInstance` A delegate instance that controls only the
-   * {@link meteoric.directive:ionSlideBox} directives with `delegate-handle` matching
-   * the given handle.
-   *
-   * Example: `$ionicSlideBoxDelegate.$getByHandle('my-handle').stop();`
-   */
 ]));
 

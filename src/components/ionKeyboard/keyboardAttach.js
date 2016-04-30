@@ -22,7 +22,7 @@
  * @usage
  *
  * ```html
- *  <ion-footer-bar align-title="left" keyboard-attach class="bar-assertive">
+ *  <ion-footer-bar alignTitle="left" keyboard-attach class="bar-assertive">
  *    <h1 class="title">Title!</h1>
  *  </ion-footer-bar>
  * ```

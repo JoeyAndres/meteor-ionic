@@ -18,7 +18,7 @@
  * directive, and infinite scrolling with the {@link meteoric.directive:ionInfiniteScroll}
  * directive.
  *
- * If there is any dynamic content inside the ion-content, be sure to call `.resize()` with {@link meteoric.service:$ionicScrollDelegate}
+ * If there is any dynamic content inside the ionContent, be sure to call `.resize()` with {@link meteoric.service:$ionicScrollDelegate}
  * after the content has been added.
  *
  * Be aware that this directive gets its own child scope. If you do not understand why this
@@ -29,17 +29,17 @@
  * @param {boolean=} padding Whether to add padding to the content.
  * Defaults to true on iOS, false on Android.
  * @param {boolean=} scroll Whether to allow scrolling of content.  Defaults to true.
- * @param {boolean=} overflowScroll Whether to use overflow-scrolling instead of
+ * @param {boolean=} overflowScroll Whether to use overflowScrolling instead of
  * Ionic scroll. See {@link meteoric.provider:$ionicConfigProvider} to set this as the global default.
  * @param {boolean=} scrollbarX Whether to show the horizontal scrollbar. Default true.
  * @param {boolean=} scrollbarY Whether to show the vertical scrollbar. Default true.
  * @param {string=} startX Initial horizontal scroll position. Default 0.
  * @param {string=} startY Initial vertical scroll position. Default 0.
  * @param {expression=} onScroll Expression to evaluate when the content is scrolled.
- * @param {expression=} onScroll-complete Expression to evaluate when a scroll action completes. Has access to 'scrollLeft' and 'scrollTop' locals.
+ * @param {expression=} onScrollComplete Expression to evaluate when a scroll action completes. Has access to 'scrollLeft' and 'scrollTop' locals.
  * @param {boolean=} hasBouncing Whether to allow scrolling to bounce past the edges
  * of the content.  Defaults to true on iOS, false on Android.
- * @param {number=} scrollEventInterval Number of milliseconds between each firing of the 'on-scroll' expression. Default 10.
+ * @param {number=} scrollEventInterval Number of milliseconds between each firing of the 'onScroll' expression. Default 10.
  *
  * @usage
  *

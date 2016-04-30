@@ -10,7 +10,7 @@
  *
  * TODO: Allows dragging of the switch's nub.
  *
- * @param toggle-class {string=} Sets the CSS class on the inner `label.toggle` element created by the directive.
+ * @param toggleClass {string=} Sets the CSS class on the inner `label.toggle` element created by the directive.
  * @param {ReactiveVar=} model Data to bind value to.
  * @param {string=} name The name of the radio input.
  * @param {expression=} value The value of the radio input.

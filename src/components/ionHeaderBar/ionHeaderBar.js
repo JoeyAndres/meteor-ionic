@@ -15,13 +15,13 @@
  * titles, Android aligns them left).
  * Available: 'left', 'right', or 'center'.  Defaults to the same as the platform.
  * @param {boolean=} noTapScroll By default, the header bar will scroll the
- * content to the top when tapped.  Set no-tap-scroll to true to disable this
+ * content to the top when tapped.  Set noTap-scroll to true to disable this
  * behavior.
  * Available: true or false.  Defaults to false.
  *
  * @usage
  * ```handlebars
-   {{#ionHeaderBar align-title="left" class="bar-positive"}}
+   {{#ionHeaderBar alignTitle="left" class="bar-positive"}}
        <div class="buttons">
            <button class="button">Left Button</button>
        </div>

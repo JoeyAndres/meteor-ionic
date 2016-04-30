@@ -20,7 +20,7 @@
  * See the {@link meteoric.directive:ionTab} directive's documentation for more details on
  * individual tabs.
  *
- * Note: do not place ion-tabs inside of an ion-content element; it has been known to cause a
+ * Note: do not place ionTabs inside of an ionContent element; it has been known to cause a
  * certain CSS bug.
  *
  * @usage

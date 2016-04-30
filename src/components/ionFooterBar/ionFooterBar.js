@@ -18,7 +18,7 @@
  * {{#ion-content}}
  *   Some content!
  * {{/ion-content}}
- * {{#ionFooter-bar align-title="left" class="bar-assertive"}}
+ * {{#ionFooter-bar alignTitle="left" class="bar-assertive"}}
  *   <div class="buttons">
  *     <button class="button">Left Button</button>
  *   </div>

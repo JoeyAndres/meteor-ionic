@@ -92,7 +92,7 @@
  * @ngdoc method
  * @name $ionicConfigProvider#scrolling.jsScrolling
  * @description  Whether to use JS or Native scrolling. Defaults to native scrolling. Setting this to
- * `true` has the same effect as setting each `ion-content` to have `overflow-scroll='false'`.
+ * `true` has the same effect as setting each `ionContent` to have `overflowScroll='false'`.
  * @param {boolean} value Defaults to `false` as of Ionic 1.2
  * @returns {boolean}
  */

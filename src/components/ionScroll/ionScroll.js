@@ -24,25 +24,6 @@
  *
  * If you'd just like to have a center content scrolling area, use {@link meteoric.directive:ionContent} instead.
  *
- * @usage
- *
- * ```handlebars
- {{#ionScroll
-     [direction=""]
-     [locking=""]
-     [paging=""]
-     [on-refresh=""]
-     [on-scroll=""]
-     [scrollbar-x=""]
-     [scrollbar-y=""]
-     [zooming=""]
-     [min-zoom=""]
-     [max-zoom=""]
-     [has-bouncing=""]}}
-     ...
- {{/ionScroll}}
- * ```
- *
  * @param {string=} direction Which way to scroll. 'x' or 'y' or 'xy'. Default 'y'.
  * @param {boolean=} locking Whether to lock scrolling in one direction at a time. Useful to set to false when zoomed in or scrolling in two directions. Default true.
  * @param {boolean=} paging Whether to scroll with paging.

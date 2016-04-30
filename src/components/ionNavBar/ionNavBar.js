@@ -34,7 +34,7 @@
  * @param alignTitle {string=} Where to align the title of the navbar.
  * Available: 'left', 'right', 'center'. Defaults to 'center'.
  * @param {boolean=} noTapScroll By default, the navbar will scroll the content
- * to the top when tapped.  Set no-tap-scroll to true to disable this behavior.
+ * to the top when tapped.  Set noTapScroll to true to disable this behavior.
  */
 
 Template.ionNavBar.onCreated(function() {
