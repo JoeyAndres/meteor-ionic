@@ -14,6 +14,11 @@ Router.map(function() {
         template: 'StarterProject'
     });
 
+    this.route('meteor-ionic to meteoric', {
+        path: '/meteor-ionic-to-meteoric/',
+        template: 'MeteorIonicToMeteoric'
+    });
+
     <% _.forEach(modules, function(module) {
         %>
         this.route("<%= module.routeName %>", {

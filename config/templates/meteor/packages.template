@@ -24,3 +24,5 @@ insecure                # Allow all DB writes from clients (for prototyping)
 iron:router
 poetic:materialize-scss # CSS Framework.
 fourseven:scss
+markdown
+chuangbo:marked
