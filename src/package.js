@@ -1,7 +1,7 @@
 Package.describe({
   name: "meteoric124:meteoric",
   summary: "Ionic components for Meteor. No Angular!",
-  version: "1.2.4-beta.6",
+  version: "1.2.4-beta.7",
   git: "https://github.com/JoeyAndres/meteor-ionic.git",
   documentation: "../README.md"
 });
@@ -19,7 +19,7 @@ Package.onUse(function(api) {
 
   api.use([
     "jandres:template-extension@4.0.7-alpha3",
-    "meteoric124:template-scope@0.1.0-beta.4",
+    "meteoric124:template-scope@0.1.0-beta.7",
     "meteoric124:template-attribute-directive@0.1.0-beta.5",
     "templating",
     "underscore",
