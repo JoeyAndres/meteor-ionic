@@ -1,7 +1,7 @@
 Package.describe({
   name: "meteoric124:meteoric",
   summary: "Ionic components for Meteor. No Angular!",
-  version: "1.2.4-beta.14",
+  version: "1.2.4-beta.15",
   git: "https://github.com/JoeyAndres/meteor-ionic.git",
   documentation: "../README.md"
 });
@@ -16,6 +16,9 @@ Package.onUse(function(api) {
   api.use([
     'ecmascript'
   ]);
+
+  api.use('seba:minifiers-autoprefixer');
+  api.imply('seba:minifiers-autoprefixer');
 
   api.use([
     "jandres:template-extension@4.0.7-alpha3",
