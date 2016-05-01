@@ -11,12 +11,14 @@
 <@ if doc.restrict.element @>
 
 <@ code @>
-<<$ doc.name $>
-<@- for param in doc.params @>
-<$ directiveParam(param.alias or param.name, param.type, '="', '"') $>
-<@- endfor @>>
+```handlebars
+{{#<$ doc.name $>
+   <@- for param in doc.params @>
+   <$ directiveParam(param.alias or param.name, param.type, '="', '"') $>
+   <@- endfor @>}}
 ...
-</<$ doc.name $>>
+{{/<$ doc.name $>}}
+```
 <@ endcode @>
 
 <@ endif -@>

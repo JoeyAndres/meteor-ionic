@@ -36,7 +36,7 @@
 
 <@- macro directiveParam(name, type, join, sep) @>
   <@- if type.optional @>[<@ endif -@>
-  <$ name | dashCase $><$ join $><$ type.description $><$ sep $>
+  <$ name $><$ join $><$ type.description $><$ sep $>
   <@- if type.optional @>]<@ endif -@>
 <@ endmacro -@>
 

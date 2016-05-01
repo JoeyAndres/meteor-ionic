@@ -132,7 +132,7 @@ gulp.task('create-router-meteor-doc-project', function() {
 
     return new Promise(function(resolve) {
         gulp.src([
-            docPath + '/{directive,object,service,utility,page}/**/*.{md,html,markdown}'
+            docPath + '/{directive,object,service,utility,page,provider}/**/*.{md,html,markdown}'
         ]).pipe(es.map(function(file, callback) {
             // Grab relative path from ionic-site root
             var relpath = file.path.replace(RegExp('^.*?' + docPath + '/'), '');

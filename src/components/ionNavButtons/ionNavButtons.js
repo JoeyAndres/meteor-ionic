@@ -97,11 +97,11 @@ Template.ionNavButtons.onRendered(function() {
 
         var parentViewCtrl = $element.parent().data('$ionViewController');
         if (parentViewCtrl) {
-            // if the parent is an ion-view, then these are ion-nav-buttons for JUST this ion-view
+            // if the parent is an ionView, then these are ionNavButtons for JUST this ionView
             parentViewCtrl.navElement(navElementType, spanEle.outerHTML);
 
         } else {
-            // these are buttons for all views that do not have their own ion-nav-buttons
+            // these are buttons for all views that do not have their own ionNavButtons
             navBarCtrl.navElement(navElementType, spanEle.outerHTML);
         }
 

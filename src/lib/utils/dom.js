@@ -43,8 +43,8 @@
     //Call with proper context
     /**
      * @ngdoc method
-     * @name ionic.DomUtil#requestAnimationFrame
-     * @alias ionic.requestAnimationFrame
+     * @name meteoric.DomUtil#requestAnimationFrame
+     * @alias meteoric.requestAnimationFrame
      * @description Calls [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window.requestAnimationFrame), or a polyfill if not available.
      * @param {function} callback The function to call when the next frame
      * happens.
@@ -59,8 +59,8 @@
 
     /**
      * @ngdoc method
-     * @name ionic.DomUtil#animationFrameThrottle
-     * @alias ionic.animationFrameThrottle
+     * @name meteoric.DomUtil#animationFrameThrottle
+     * @alias meteoric.animationFrameThrottle
      * @description
      * When given a callback, if that callback is called 100 times between
      * animation frames, adding Throttle will make it only run the last of
@@ -97,7 +97,7 @@
 
     /**
      * @ngdoc method
-     * @name ionic.DomUtil#getPositionInParent
+     * @name meteoric.DomUtil#getPositionInParent
      * @description
      * Find an element's scroll offset within its container.
      * @param {DOMElement} element The element to find the offset of.
@@ -125,7 +125,7 @@
 
     /**
      * @ngdoc method
-     * @name ionic.DomUtil#ready
+     * @name meteoric.DomUtil#ready
      * @description
      * Call a function when the DOM is ready, or if it is already ready
      * call the function immediately.
@@ -141,7 +141,7 @@
 
     /**
      * @ngdoc method
-     * @name ionic.DomUtil#getTextBounds
+     * @name meteoric.DomUtil#getTextBounds
      * @description
      * Get a rect representing the bounds of the given textNode.
      * @param {DOMElement} textNode The textNode to find the bounds of.
@@ -179,7 +179,7 @@
 
     /**
      * @ngdoc method
-     * @name ionic.DomUtil#getChildIndex
+     * @name meteoric.DomUtil#getChildIndex
      * @description
      * Get the first index of a child node within the given element of the
      * specified type.
@@ -222,7 +222,7 @@
 
     /**
      * @ngdoc method
-     * @name ionic.DomUtil#getParentWithClass
+     * @name meteoric.DomUtil#getParentWithClass
      * @param {DOMElement} element
      * @param {string} className
      * @returns {DOMElement} The closest parent of element matching the
@@ -240,7 +240,7 @@
     },
     /**
      * @ngdoc method
-     * @name ionic.DomUtil#getParentOrSelfWithClass
+     * @name meteoric.DomUtil#getParentOrSelfWithClass
      * @param {DOMElement} element
      * @param {string} className
      * @returns {DOMElement} The closest parent or self matching the
@@ -259,7 +259,7 @@
 
     /**
      * @ngdoc method
-     * @name ionic.DomUtil#rectContains
+     * @name meteoric.DomUtil#rectContains
      * @param {number} x
      * @param {number} y
      * @param {number} x1
@@ -277,7 +277,7 @@
 
     /**
      * @ngdoc method
-     * @name ionic.DomUtil#blurAll
+     * @name meteoric.DomUtil#blurAll
      * @description
      * Blurs any currently focused input element
      * @returns {DOMElement} The element blurred or null

@@ -1,5 +1,5 @@
 /**
- * @ngdoc service
+ * @ngdoc provider
  * @name $ionicConfigProvider
  * @module meteoric
  * @description

@@ -72,7 +72,7 @@ Template.ionNavView.onRendered(function () {
       updateView(false);
     });
 
-    // Since ionNavView assumes there is an ion-view below, might aswell use this one.
+    // Since ionNavView assumes there is an ionView below, might aswell use this one.
 
     // initial load, ready go
     updateView(true);
@@ -81,7 +81,7 @@ Template.ionNavView.onRendered(function () {
       // get the current local according to the $state
       //var viewLocals = $state.$current && $state.$current.locals[viewData.name];
 
-      // do not update THIS nav-view if its is not the container for the given state
+      // do not update THIS navView if its is not the container for the given state
       // if the viewLocals are the same as THIS latestLocals, then nothing to do
       // NOTE: FUCK IT, TRANSITION ALL. I'm not rewriting angular-ui-router and jump off some bridge half way.
       //if (!viewLocals || (!firstTime && viewLocals === latestLocals)) return;
