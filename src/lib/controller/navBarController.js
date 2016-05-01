@@ -129,7 +129,7 @@ function($scope, $element, $attrs) {
               forEach(ITEM_TYPES, function (itemType) {
                   headerBarInstance.removeItem(itemType);
               });
-              containerEle.scope().$destroy();
+              containerEle.scope() && containerEle.scope().$destroy();
               for (var n in navEle) {
                   if (navEle[n]) {
                       navEle[n].removeData();

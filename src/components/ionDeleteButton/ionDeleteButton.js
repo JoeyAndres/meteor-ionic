@@ -13,6 +13,7 @@
  *
  * See {@link meteoric.directive:ionList} for a complete example & explanation.
  */
+import { _ } from 'meteor/underscore';
 
 var ITEM_TPL_DELETE_BUTTON =
     '<div class="item-left-edit item-delete enable-pointer-events">' +
@@ -63,4 +64,9 @@ Template.ionDeleteButton.onCreated(function() {
             }
         }
     });
+});
+
+Template.ionDeleteButton.onRendered(function() {
+    // Due to require: ['^^ionItem, ...], throw an error, if parent is not ionItem.
+    this.assertParent(Template.ionItem);
 });

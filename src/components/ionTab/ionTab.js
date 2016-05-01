@@ -89,6 +89,8 @@ Template.ionTab.onCreated(function() {
 });
 
 Template.ionTab.onRendered(function() {
+    this.assertParent(Template.ionTabs);
+
     let $scope = this.$scope,
         $element = jqLite(this.firstNode),
         $attrs = this.$attrs;

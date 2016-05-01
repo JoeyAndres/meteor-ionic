@@ -33,6 +33,8 @@ Template.ionNavTitle.onCreated(function() {
 });
 
 Template.ionNavTitle.onRendered(function() {
+    this.assertParent(Template.ionView);
+
     let tElement = jqLite(this.firstNode),
         tAttrs = {};
     var navElementType = 'title';

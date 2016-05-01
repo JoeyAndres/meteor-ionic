@@ -38,6 +38,8 @@ Template.ionSideMenuContent.onCreated(function() {
 });
 
 Template.ionSideMenuContent.onRendered(function() {
+    this.assertParent(Template.ionSideMenus);
+    
     let $element = jqLite(this.firstNode),
         element = $element,
         $scope = this.$scope,

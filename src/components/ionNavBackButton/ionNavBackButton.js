@@ -28,6 +28,8 @@ Template.ionNavBackButton.onCreated(function () {
 });
 
 Template.ionNavBackButton.onRendered(function () {
+  this.assertParent(Template.ionNavBar);
+  
   let tElement = jqLite(this.firstNode);
   let $attr = {
   };

@@ -33,6 +33,8 @@ Template.ionTabNav.onCreated(function() {
 });
 
 Template.ionTabNav.onRendered(function() {
+    this.assertParent(Template.ionTabs);
+    
     this.$preLink = () => {
         let $scope = this.$scope,
             $element = $(this.$('.tab-item').get(0)),

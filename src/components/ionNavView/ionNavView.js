@@ -73,7 +73,6 @@ Template.ionNavView.onRendered(function () {
     });
 
     // Since ionNavView assumes there is an ion-view below, might aswell use this one.
-    // todo: try to utilize the iron router.
 
     // initial load, ready go
     updateView(true);

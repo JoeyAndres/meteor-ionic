@@ -71,6 +71,8 @@ Template.ionOptionButton.onCreated(function() {
 });
 
 Template.ionOptionButton.onRendered(function () {
+    this.assertParent(Template.ionItem);
+
     let self = this,
         $element = jqLite(this.firstNode),
         $attr = {

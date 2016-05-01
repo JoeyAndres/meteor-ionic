@@ -80,6 +80,9 @@ Template.ionReorderButton.onCreated(function() {
 });
 
 Template.ionReorderButton.onRendered(function() {
+    // Due to require: ['^^ionItem, ...], throw an error, if parent is not ionItem.
+    this.assertParent(Template.ionItem);
+
     let self = this,
         $element = jqLite(this.firstNode),
         $scope = this.$scope,
