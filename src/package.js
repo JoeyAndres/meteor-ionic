@@ -1,7 +1,7 @@
 Package.describe({
   name: "meteoric124:meteoric",
   summary: "Ionic components for Meteor. No Angular!",
-  version: "1.2.4-beta.15",
+  version: "1.2.4-beta.16",
   git: "https://github.com/JoeyAndres/meteor-ionic.git",
   documentation: "../README.md"
 });
@@ -17,8 +17,16 @@ Package.onUse(function(api) {
     'ecmascript'
   ]);
 
-  api.use('seba:minifiers-autoprefixer@1.0.1');
-  api.imply('seba:minifiers-autoprefixer@1.0.1');
+  api.use([
+    'seba:minifiers-autoprefixer@1.0.1',
+    "fourseven:scss@3.4.3",
+    "meteoric124:meteoric-sass@1.2.8"
+  ]);
+  api.imply([
+    'seba:minifiers-autoprefixer@1.0.1',
+    "fourseven:scss@3.4.3",
+    "meteoric124:meteoric-sass@1.2.8"
+  ]);
 
   api.use([
     "jandres:template-extension@4.0.7-alpha3",
@@ -34,10 +42,7 @@ Package.onUse(function(api) {
     "tracker",
     "session",
     "promise",
-    'jquery',
-
-    "fourseven:scss@3.3.3_2",
-    "meteoric124:meteoric-sass@1.2.7"
+    'jquery'
   ], "client");
 
   api.addFiles([
