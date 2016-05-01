@@ -17,8 +17,8 @@ Package.onUse(function(api) {
     'ecmascript'
   ]);
 
-  api.use('seba:minifiers-autoprefixer');
-  api.imply('seba:minifiers-autoprefixer');
+  api.use('seba:minifiers-autoprefixer@1.0.1');
+  api.imply('seba:minifiers-autoprefixer@1.0.1');
 
   api.use([
     "jandres:template-extension@4.0.7-alpha3",
