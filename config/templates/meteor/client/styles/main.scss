@@ -15,14 +15,6 @@ header, main, footer {
   }
 }
 
-#meteoric-sidebar-logo {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-
-  padding: 20px;
-}
-
 .side-nav .collapsible-body li.active,
 .side-nav.fixed .collapsible-body li.active {
   a {
@@ -37,4 +29,17 @@ header, main, footer {
 
 #main-inner-wrapper {
   padding-left: 10px;
+}
+
+.side-nav li.logo a {
+  height: 300px;
+  padding: 0px;
+
+  #meteoric-sidebar-logo {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    padding: 20px;
+  }
 }
