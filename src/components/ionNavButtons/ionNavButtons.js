@@ -60,7 +60,7 @@ Template.ionNavButtons.onCreated(function() {
 });
 
 Template.ionNavButtons.onRendered(function() {
-    this.assertParent(Template.ionView);
+    this.assertParent([Template.ionView, Template.ionNavBar]);
 
     let tElement = jqLite(this.firstNode),
         tAttrs = {
