@@ -1,7 +1,7 @@
 Package.describe({
   name: "meteoric124:meteoric",
   summary: "Ionic components for Meteor. No Angular!",
-  version: "1.2.4-beta.13",
+  version: "1.2.4-beta.14",
   git: "https://github.com/JoeyAndres/meteor-ionic.git",
   documentation: "../README.md"
 });
@@ -40,6 +40,10 @@ Package.onUse(function(api) {
   api.addFiles([
     "styles/main.scss"
   ], "client");
+
+  api.addFiles([
+      "sanity-check.js"
+  ]);
 
   api.addFiles([
     "lib/meteoric.js",
