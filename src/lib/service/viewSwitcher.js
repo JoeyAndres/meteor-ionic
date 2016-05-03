@@ -327,7 +327,40 @@ $ionicViewSwitcher =
         },
 
         cleanup: function(transData) {
-          return;  // Note: This deals with caching and what not. We don't deal with this.
+          // TODO: REMOVES ion-tab stuff. Not meant to be.
+          // caching wont hurt.
+          // check if any views should be removed
+          if (leavingEle && transData.direction == 'back' && !$ionicConfig.views.forwardCache()) {
+            // if they just navigated back we can destroy the forward view
+            // do not remove forward views if cacheForwardViews config is true
+            destroyViewEle(leavingEle);
+          }
+
+          var viewElements = navViewCtrl.getViewElements();
+          var viewElementsLength = viewElements.length;
+          var x, viewElement;
+          var removeOldestAccess = (viewElementsLength - 1) > $ionicConfig.views.maxCache();
+          var removableEle;
+          var oldestAccess = Date.now();
+
+          for (x = 0; x < viewElementsLength; x++) {
+            viewElement = viewElements.eq(x);
+
+            if (removeOldestAccess && viewElement.data(DATA_VIEW_ACCESSED) < oldestAccess) {
+              // remember what was the oldest element to be accessed so it can be destroyed
+              oldestAccess = viewElement.data(DATA_VIEW_ACCESSED);
+              removableEle = viewElements.eq(x);
+
+            } else if (viewElement.data(DATA_DESTROY_ELE) && navViewAttr(viewElement) != VIEW_STATUS_ACTIVE) {
+              destroyViewEle(viewElement);
+            }
+          }
+
+          destroyViewEle(removableEle);
+
+          if (enteringEle.data(DATA_NO_CACHE)) {
+            enteringEle.data(DATA_DESTROY_ELE, true);
+          }
         },
 
         enteringEle: function() { return enteringEle; },

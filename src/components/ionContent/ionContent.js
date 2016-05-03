@@ -192,6 +192,11 @@ Template.ionContent.onRendered(function() {
                 });
             }
 
+            $scope.$on('$destroy', () => {
+                $ionicHistory.currentView().startX = this.scrollCtrl.scrollView.__scrollLeft;
+                $ionicHistory.currentView().startY = this.scrollCtrl.scrollView.__scrollTop;
+            });
+
             this.scrollCtrl = new meteoric.controller.ionicScroll($scope, scrollViewOptions);
             this.$scope.scrollCtrl = this.scrollCtrl;
 
@@ -199,7 +204,20 @@ Template.ionContent.onRendered(function() {
                 meteoric.Utils.throttle(this.onScroll, this.scrollEventInterval.get()) : noop;
 
             this.autorun(() => {
-                this.scrollCtrl.scrollTo(parseInt(this.startX.get(), 10), parseInt(this.startY.get(), 10), true);
+                let startX = isNumber(this.startX.get()) ? this.startX.get() : 0;
+                let startY = isNumber(this.startY.get()) ? this.startY.get() : 0;
+                this.scrollCtrl.scrollTo(startX, startY, true);
+            });
+
+            // Only after $stateChangeSuccess in which $ionicHistory.currentView() is created (as long as we are under
+            // ionNavView).
+            $scope.$on('$stateChangeSuccess', () => {
+                let currentView = $ionicHistory.currentView();
+                if (!currentView) return;  // Worse case, don't do a thing.
+
+                let startX = isNumber(currentView.startX) ? currentView.startX : 0;
+                let startY = isNumber(currentView.startY) ? currentView.startY : 0;
+                this.scrollCtrl.scrollTo(startX, startY, true);
             });
         }
 

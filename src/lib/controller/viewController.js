@@ -62,18 +62,17 @@ function($scope, $element, $attrs) {
     var viewTitleAttr = isDefined($attrs.viewTitle.get()) && 'viewTitle' || isDefined($attrs.title.get()) && 'title';
     if (viewTitleAttr) {
       titleUpdate($attrs[viewTitleAttr].get());
-      deregisters.push(
-          Tracker.autorun(() => titleUpdate($attrs.viewTitle.get())));
+      deregisters.push(Tracker.autorun(() => titleUpdate($attrs.viewTitle.get())).stop);
     }
 
     if (isDefined($attrs.hideBackButton.get())) {
       deregisters.push(
-          Tracker.autorun(() => navViewCtrl.showBackButton(!$attrs.hideBackButton.get()).stop));
+          Tracker.autorun(() => navViewCtrl.showBackButton(!$attrs.hideBackButton.get())).stop);
     }
 
     if (isDefined($attrs.hideNavBar.get())) {
       deregisters.push(
-          Tracker.autorun(() => navViewCtrl.showBar(!$attrs.hideNavBar.get()).stop));
+          Tracker.autorun(() => navViewCtrl.showBar(!$attrs.hideNavBar.get())).stop);
     }
   }
 
@@ -89,7 +88,8 @@ function($scope, $element, $attrs) {
   function deregisterFns() {
     // remove all existing $attrs.$observe's
     for (var x = 0; x < deregisters.length; x++) {
-      deregisters[x]();
+      // Sometimes x.invalidate is not a function, I think a bug.
+      _.isFunction(x.invalidate) && deregisters[x]();
     }
     deregisters = [];
   }

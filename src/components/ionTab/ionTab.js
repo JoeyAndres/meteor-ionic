@@ -93,6 +93,7 @@ Template.ionTab.onRendered(function() {
 
     let $scope = this.$scope,
         $element = jqLite(this.firstNode),
+        tabContentEle = $element,
         $attrs = this.$attrs;
 
     _.extend($scope, {
@@ -130,14 +131,9 @@ Template.ionTab.onRendered(function() {
             tabCtrl.navViewName = $scope.navViewName = navViewName;
         }
 
-        $scope.$on('$stateChangeSuccess', $stateChangeSuccess);
-        function $stateChangeSuccess(e) {
-            e.stopPropagation();
-            selectIfMatchesState();
-        }
-
+        $scope.$on('$stateChangeSuccess', selectIfMatchesState);
         selectIfMatchesState();
-        function selectIfMatchesState(e) {
+        function selectIfMatchesState() {
             if (tabCtrl.tabMatchesState()) {
                 tabsCtrl.select($scope, false);
             }
@@ -156,6 +152,11 @@ Template.ionTab.onRendered(function() {
             }
         };
 
+        function destroyTab() {
+            isTabContentAttached && childElement && childElement.remove();
+            tabContentEle.innerHTML = '';
+        }
+
         this.autorun(() => {
             let isSelected = $scope.tabsCtrl.selectedTab() === $scope;
             tabSelected(isSelected);
@@ -164,6 +165,12 @@ Template.ionTab.onRendered(function() {
 
         $scope.$on('$ionicView.afterEnter', function() {
             $ionicViewSwitcher.viewEleIsActive(childElement, $scope.$tabSelected);
+        });
+
+        $scope.$on('$ionicView.clearCache', function() {
+            if (!$scope.$tabSelected) {
+                destroyTab();
+            }
         });
     });
 });
