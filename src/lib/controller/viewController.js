@@ -62,19 +62,18 @@ function($scope, $element, $attrs) {
     var viewTitleAttr = isDefined($attrs.viewTitle.get()) && 'viewTitle' || isDefined($attrs.title.get()) && 'title';
     if (viewTitleAttr) {
       titleUpdate($attrs[viewTitleAttr].get());
-      //deregisters.push($attrs.$observe(viewTitleAttr, titleUpdate));
+      deregisters.push(
+          Tracker.autorun(() => titleUpdate($attrs.viewTitle.get())));
     }
 
     if (isDefined($attrs.hideBackButton.get())) {
-      /*deregisters.push($scope.$watch($attrs.hideBackButton, function(val) {
-        navViewCtrl.showBackButton(!val);
-      }));*/
+      deregisters.push(
+          Tracker.autorun(() => navViewCtrl.showBackButton(!$attrs.hideBackButton.get()).stop));
     }
 
     if (isDefined($attrs.hideNavBar.get())) {
-      /*deregisters.push($scope.$watch($attrs.hideNavBar, function(val) {
-        navViewCtrl.showBar(!val);
-      }));*/
+      deregisters.push(
+          Tracker.autorun(() => navViewCtrl.showBar(!$attrs.hideNavBar.get()).stop));
     }
   }
 

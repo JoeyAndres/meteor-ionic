@@ -111,7 +111,11 @@ Package.onUse(function(api) {
     'lib/service/sideMenuDelegate.js',
     'lib/service/tabsDelegate.js',
 
+    'lib/service/decorators/location.js',
+
     'lib/meteoric-config.js',
+
+    "components/ionApp/ionApp.html",
 
     "components/ionActionSheet/ionActionSheet.html",
     "components/ionActionSheet/ionActionSheet.js",

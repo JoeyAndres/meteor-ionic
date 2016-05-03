@@ -103,6 +103,6 @@ Template.ionView.onRendered(function () {
     });
 
     afterFlushPromise(() => {
-        this.$scope.$emit('$stateChangeSuccess');
+        $rootScope.$broadcast('$stateChangeSuccess');
     });
 });
