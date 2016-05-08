@@ -122,7 +122,7 @@ Template.ionContent.onRendered(function() {
     let innerElement = jqLite(this.$('div.scroll')[0]);
     let $scope = this.$scope;
     let parentScope = $scope.$parent;
-
+    
     $(this).on("$preLink", () => {
         this.autorun(() => {
             let $hasHeader = meteoric.lib.reactiveGetOrSetDefaultScope(parentScope, '$hasHeader', false),
@@ -193,6 +193,9 @@ Template.ionContent.onRendered(function() {
             }
 
             $scope.$on('$destroy', () => {
+                let currentView = $ionicHistory.currentView();
+                if (!currentView) return;  // Worse case, don't do a thing.
+
                 $ionicHistory.currentView().startX = this.scrollCtrl.scrollView.__scrollLeft;
                 $ionicHistory.currentView().startY = this.scrollCtrl.scrollView.__scrollTop;
             });

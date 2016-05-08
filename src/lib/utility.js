@@ -52,3 +52,12 @@ _.extend(METEORIC.UTILITY, {
 });
 
 export const afterFlushPromise = Promise.denodeify(Tracker.afterFlush);
+
+export const updatePrototypeProperty = function(obj, property, newValue) {
+    do {
+        if (obj.hasOwnProperty(property)) {
+            obj[property] = newValue;
+            break;
+        }
+    } while (obj = Object.getPrototypeOf(obj));
+};

@@ -1,4 +1,4 @@
-headerFooterBarDirective = function(isHeader) {
+export let headerFooterBarDirective = function(isHeader) {
     let $scope = this.$scope;
     let $element, tElement;
     $element = tElement = jqLite(this.firstNode);
@@ -23,13 +23,14 @@ headerFooterBarDirective = function(isHeader) {
                 var isSubheader = value.indexOf('bar-subheader') !== -1;
                 let $hasHeader = isShown && !isSubheader;
                 let $hasSubheader = isShown && isSubheader;
-                meteoric.lib.reactiveSetScope($scope.$parent, '$hasHeader', $hasHeader);
-                meteoric.lib.reactiveSetScope($scope.$parent, '$hasSubheader', $hasSubheader);
+
+                meteoric.lib.reactiveSetScope($scope, '$hasHeader', $hasHeader);
+                meteoric.lib.reactiveSetScope($scope, '$hasSubheader', $hasSubheader);
                 $scope.$emit('$ionicSubheader', $hasSubheader);
             });
             $scope.$on('$destroy', function () {
-                $scope.$parent.$hasHeader.set(false);
-                $scope.$parent.$hasSubheader.set(false);
+                $scope.$hasHeader.set(false);
+                $scope.$hasSubheader.set(false);
             });
             ctrl.align();
             $scope.$on('$ionicHeader.align', function () {
@@ -45,12 +46,12 @@ headerFooterBarDirective = function(isHeader) {
                 var isSubfooter = value.indexOf('bar-subfooter') !== -1;
                 let $hasFooter = isShown && !isSubfooter;
                 let $hasSubfooter = isShown && isSubfooter;
-                meteoric.lib.reactiveSetScope($scope.$parent, '$hasFooter', $hasFooter);
-                meteoric.lib.reactiveSetScope($scope.$parent, '$hasSubfooter', $hasSubfooter);
+                meteoric.lib.reactiveSetScope($scope, '$hasFooter', $hasFooter);
+                meteoric.lib.reactiveSetScope($scope, '$hasSubfooter', $hasSubfooter);
             });
             $scope.$on('$destroy', function () {
-                $scope.$parent.$hasFooter.set(false);
-                $scope.$parent.$hasSubfooter.set(false);
+                $scope.$hasFooter.set(false);
+                $scope.$hasSubfooter.set(false);
             });
             this.autorun(() => {
                 let val = $scope.$hasTabs && $scope.$hasTabs.get();
@@ -64,4 +65,4 @@ headerFooterBarDirective = function(isHeader) {
             });
         }
     });
-}
+};

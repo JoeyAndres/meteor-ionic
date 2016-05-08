@@ -35,6 +35,9 @@
    {{/ionContent}}
  * ```
  */
+
+import { headerFooterBarDirective } from '../ionHeaderFooterBar/ionHeaderFooterBar';
+
 Template.ionHeaderBar.onCreated(function() {
     this.alignTitle = this.data? this.data.alignTitle : null;
     this.class = new ReactiveVar('');

@@ -19,86 +19,96 @@
  * In your layout template:
  *
  * ```handlebars
-   <template name="layout">
-     <body>
-       {{#ionNavView}}
-         {{> yield}}
-       {{/ionNavView}}
-     </body>
-   </template>
+ <template name="layout">
+ <body>
+ {{#ionNavView}}
+ {{> yield}}
+ {{/ionNavView}}
+ </body>
+ </template>
  * ```
  *
  * In your router:
  *
  * ```javascript
-  Router.configure({
+ Router.configure({
     layoutTemplate: 'layout'
   });
  * ```
+ *
+ * @param {string=} name A view name. The name should be unique amongst the other views in the
+ * same state. You can have views of the same name that live in different states.
  */
 
-Template.ionNavView.onCreated(function () {
-  this.data = this.data || {};
+import { updatePrototypeProperty } from '../../lib/utility';
 
-  // Allow overriding the transition
-  if (this.data && this.data.transition) {
-    this.transition = this.data.transition;
-  }
+Template.ionNavView.onCreated(function () {
+    this.data = this.data || {};
+
+    // Allow overriding the transition
+    if (this.data && this.data.transition) {
+        this.transition = this.data.transition;
+    }
+
+    $(this).on('$scopeCreated', () => {
+        this.$scope.childRerendered = false;
+    });
 });
 
 Template.ionNavView.onRendered(function () {
-  let $element = jqLite(this.firstNode),
-      tElement = $element,
-      $scope = this.$scope,
-      $attrs = {};
+    var latestLocals;
+    let $element = jqLite(this.firstNode),
+        tElement = $element,
+        $scope = this.$scope,
+        $attrs = {
 
-  // a nav view element is a container for numerous views
-  tElement.addClass('view-container');
-  ionic.DomUtil.cachedAttr(tElement, 'nav-view-transition', $ionicConfig.views.transition());
+        };
 
-  let navViewCtrl = new $ionicNavView($scope, $element, $attrs);
-  $(this).on('$preLink', () => {
-    $element.$data('$ionNavViewController', navViewCtrl);
-  });
+    updatePrototypeProperty($scope, 'childRerendered', true);
 
-  $(this).on('$postLink', () => {
-    var viewData = navViewCtrl.init();
+    // a nav view element is a container for numerous views
+    tElement.addClass('view-container');
+    ionic.DomUtil.cachedAttr(tElement, 'nav-view-transition', $ionicConfig.views.transition());
 
-    // listen for $stateChangeSuccess
-    $scope.$on('$stateChangeSuccess', function() {
-      updateView(false);
-    });
-    $scope.$on('$viewContentLoading', function() {
-      updateView(false);
+    let navViewCtrl = new $ionicNavView($scope, $element, $attrs);
+    $(this).on('$preLink', () => {
+        $element.$data('$ionNavViewController', navViewCtrl);
     });
 
-    // Since ionNavView assumes there is an ionView below, might aswell use this one.
+    $(this).on('$postLink', () => {
+        var viewData = navViewCtrl.init();
 
-    // initial load, ready go
-    updateView(true);
+        // listen for $stateChangeSuccess
+        $scope.$on('$stateChangeSuccess', function() {
+            updateView(false);
+        });
+        $scope.$on('$viewContentLoading', function() {
+            updateView(false);
+        });
 
-    function updateView(firstTime) {
-      // get the current local according to the $state
-      //var viewLocals = $state.$current && $state.$current.locals[viewData.name];
+        // initial load, ready go
+        updateView(true);
 
-      // do not update THIS navView if its is not the container for the given state
-      // if the viewLocals are the same as THIS latestLocals, then nothing to do
-      // NOTE: FUCK IT, TRANSITION ALL. I'm not rewriting angular-ui-router and jump off some bridge half way.
-      //if (!viewLocals || (!firstTime && viewLocals === latestLocals)) return;
+        function updateView(firstTime) {
+            // Meteoric note: Suppose we have a url /l1/l2/l3, and suppose we have view1 { view2 { view3 } }.
+            // view1 { view2 } means view2 is nested inside view1. If only l2 in /l1/l2/l3,
+            // updateView should only be called for view2 { view 3 }.
+            //
+            // Since we can't really do a {{#ionNavView route='/l1/l2'}} like in ionic, the following mechanism is devised:
+            // * If nested ionTab calls $stateChangeSuccess, don't call navViewCtrl.register so we don't remove the
+            //   nested ionTab.
 
-      // update the latestLocals
-      //latestLocals = viewLocals;
-      //viewData.state = viewLocals.$$state;
+            // register, update and transition to the new view
+            if (!$scope.childRerendered) {
+                navViewCtrl.register(undefined);
+            }
+            $scope.childRerendered = false;
+        }
+    });
 
-      // register, update and transition to the new view
-      //navViewCtrl.register(viewLocals);
-      navViewCtrl.register(undefined);
-    }
-  });
-
-  var container = this.firstNode;
-  container._uihooks = {
-    // Override onDestroyed so that's children won't remove themselves immediately.
-    removeElement: function(node) { }  // viewSwitcher will remove it hopefully.
-  };
+    var container = this.firstNode;
+    container._uihooks = {
+        // Override onDestroyed so that's children won't remove themselves immediately.
+        removeElement: function(node) { }  // viewSwitcher will remove it hopefully.
+    };
 });

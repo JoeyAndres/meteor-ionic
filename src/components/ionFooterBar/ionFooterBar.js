@@ -15,9 +15,9 @@
  *
  * @usage
  * ```html
- * {{#ion-content}}
+ * {{#ionContent}}
  *   Some content!
- * {{/ion-content}}
+ * {{/ionContent}}
  * {{#ionFooter-bar alignTitle="left" class="bar-assertive"}}
  *   <div class="buttons">
  *     <button class="button">Left Button</button>
@@ -28,6 +28,8 @@
  * {{/ionFooterBar}}
  * ```
  */
+
+import { headerFooterBarDirective } from '../ionHeaderFooterBar/ionHeaderFooterBar';
 
 Template.ionFooterBar.onCreated(function() {
   this.alignTitle = this.data? this.data.alignTitle : null;

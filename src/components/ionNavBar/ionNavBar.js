@@ -38,8 +38,6 @@
  */
 
 Template.ionNavBar.onCreated(function() {
-    this.new_scope = true;
-
     // todo: See the point of delegate-handle
     this.alignTitle = this.data ? this.data.alignTitle : null;
     this.noTapScroll = this.data ?  this.data.noTapScroll : false;

@@ -327,7 +327,6 @@ $ionicViewSwitcher =
         },
 
         cleanup: function(transData) {
-          // TODO: REMOVES ion-tab stuff. Not meant to be.
           // caching wont hurt.
           // check if any views should be removed
           if (leavingEle && transData.direction == 'back' && !$ionicConfig.views.forwardCache()) {
@@ -342,10 +341,8 @@ $ionicViewSwitcher =
           var removeOldestAccess = (viewElementsLength - 1) > $ionicConfig.views.maxCache();
           var removableEle;
           var oldestAccess = Date.now();
-
           for (x = 0; x < viewElementsLength; x++) {
             viewElement = viewElements.eq(x);
-
             if (removeOldestAccess && viewElement.data(DATA_VIEW_ACCESSED) < oldestAccess) {
               // remember what was the oldest element to be accessed so it can be destroyed
               oldestAccess = viewElement.data(DATA_VIEW_ACCESSED);

@@ -36,6 +36,10 @@
  * @param {expression=} disabled Whether the tab is to be disabled or not.
  */
 
+import { Blaze } from 'meteor/blaze';
+import { updatePrototypeProperty } from '../../lib/utility';
+import { scope_polyfill } from 'meteor/meteoric124:template-scope';
+
 ionTabDefaults = {
     title: '',
     href: null,
@@ -86,6 +90,12 @@ Template.ionTab.onCreated(function() {
     });
 
     this.tabCtrl = null;
+
+    // Detach contentBlock at start.
+    this.templateContentBlock = this.view.templateContentBlock;
+    this.view.templateContentBlock = null;
+
+    this.templateContentBlockRendered = null;
 });
 
 Template.ionTab.onRendered(function() {
@@ -93,9 +103,9 @@ Template.ionTab.onRendered(function() {
 
     let $scope = this.$scope,
         $element = jqLite(this.firstNode),
-        tabContentEle = $element,
+        tabContentEle = $element[0],
         $attrs = this.$attrs;
-
+    
     _.extend($scope, {
         title: this.$attrs.title.get(),
         href: this.$attrs.href.get()
@@ -110,6 +120,7 @@ Template.ionTab.onRendered(function() {
     var navViewName, isNavView;
 
     $(this).on('$postLink', function() {
+        let self = this;
 
         var childElement;
         var tabsCtrl = $scope.tabsCtrl;
@@ -139,22 +150,54 @@ Template.ionTab.onRendered(function() {
             }
         }
 
-        let tabSelected = isSelected => {
-            this._isTabActive.set(isSelected);
-
+        function tabSelected(isSelected) {
             if (isSelected) {
-                $scope.$tabSelected = true;
-                isTabContentAttached = true;
-                $element.toggleClass('hide', false);
-            } else {
-                $scope.$tabSelected = false;
-                $element.toggleClass('hide', true);
+                // this tab is being selected
+
+                // check if the tab is already in the DOM
+                // only do this if the tab has child elements
+                if (!isTabContentAttached) {
+                    // tab should be selected and is NOT in the DOM
+                    // create a new scope and append it
+                    childElement = jqLite(tabContentEle);
+
+                    // meteoric:
+                    // Problem: Below, we are rendering the contentBlock of this view (detached on onCreated).
+                    //          For some reason, the ionView inside the contentBlock can't see the ionTab as
+                    //          parent. My temporary solution is to set the currentTemplateWithScope global.
+                    scope_polyfill.currentTemplateWithScope = self;
+                    self.templateContentBlockRendered = Blaze.render(self.templateContentBlock, tabContentEle);
+                    scope_polyfill.currentTemplateWithScope = null;
+
+                    isTabContentAttached = true;
+
+                    // meteoric:
+                    updatePrototypeProperty($scope, 'childRerendered', true);
+                }
+
+                // remove the hide class so the tabs content shows up
+                $ionicViewSwitcher.viewEleIsActive(childElement, true);
+
+            } else if (isTabContentAttached && childElement) {
+                // this tab should NOT be selected, and it is already in the DOM
+
+                if ($ionicConfig.views.maxCache() > 0) {
+                    // keep the tabs in the DOM, only css hide it
+                    $ionicViewSwitcher.viewEleIsActive(childElement, false);
+
+                } else {
+                    // do not keep tabs in the DOM
+                    // destroyTab();
+                    $ionicViewSwitcher.viewEleIsActive(childElement, false);
+                }
             }
-        };
+        }
 
         function destroyTab() {
             isTabContentAttached && childElement && childElement.remove();
+            isTabContentAttached && self.templateContentBlockRendered && Blaze.remove(self.templateContentBlockRendered);
             tabContentEle.innerHTML = '';
+            isTabContentAttached = null;
         }
 
         this.autorun(() => {
