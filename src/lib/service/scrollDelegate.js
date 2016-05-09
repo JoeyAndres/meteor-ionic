@@ -15,46 +15,7 @@
  * @usage
  *
  * ```html
- * <body ng-controller="MainCtrl">
- *   <ion-content>
- *     <button ng-click="scrollTop()">Scroll to Top!</button>
- *   </ion-content>
- * </body>
- * ```
- * ```js
- * function MainCtrl($scope, $ionicScrollDelegate) {
- *   $scope.scrollTop = function() {
- *     $ionicScrollDelegate.scrollTop();
- *   };
- * }
- * ```
- *
- * Example of advanced usage, with two scroll areas using `delegate-handle`
- * for fine control.
- *
- * ```html
- * <body ng-controller="MainCtrl">
- *   <ion-content delegate-handle="mainScroll">
- *     <button ng-click="scrollMainToTop()">
- *       Scroll content to top!
- *     </button>
- *     <ion-scroll delegate-handle="small" style="height: 100px;">
- *       <button ng-click="scrollSmallToTop()">
- *         Scroll small area to top!
- *       </button>
- *     </ion-scroll>
- *   </ion-content>
- * </body>
- * ```
- * ```js
- * function MainCtrl($scope, $ionicScrollDelegate) {
- *   $scope.scrollMainToTop = function() {
- *     $ionicScrollDelegate.$getByHandle('mainScroll').scrollTop();
- *   };
- *   $scope.scrollSmallToTop = function() {
- *     $ionicScrollDelegate.$getByHandle('small').scrollTop();
- *   };
- * }
+ * <
  * ```
  */
 class ionicScrollDelegate extends meteoric.lib.Delegate {

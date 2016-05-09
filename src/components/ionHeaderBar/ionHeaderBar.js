@@ -43,6 +43,9 @@ Template.ionHeaderBar.onCreated(function() {
     this.class = new ReactiveVar('');
     this.hide = new ReactiveVar(false);
 
+    this.data = this.data || {};
+    this.noTapScroll = isDefined(this.data.noTapScroll) ? this.data.noTapScroll : true;
+
     this.autorun(() => {
         let td = Template.currentData();
         if (!td) return;

@@ -36,6 +36,9 @@ Template.ionFooterBar.onCreated(function() {
   this.class = new ReactiveVar('');
   this.hide = new ReactiveVar(false);
 
+  this.data = this.data || {};
+  this.noTapScroll = isDefined(this.data.noTapScroll) ? this.data.noTapScroll : false;
+
   this.autorun(() => {
     let td = Template.currentData();
     if (!td) return;

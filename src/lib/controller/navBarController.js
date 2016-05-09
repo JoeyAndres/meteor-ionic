@@ -341,9 +341,9 @@ function($scope, $element, $attrs) {
   self.showBar = function(shouldShow) {
     if (arguments.length) {
         self.visibleBar(shouldShow);
-        meteoric.lib.reactiveSetScope($scope.$parent, '$hasHeader', !!shouldShow);
+        meteoric.lib.reactiveSetScope($scope, '$hasHeader', !!shouldShow);
     }
-    return meteoric.lib.reactiveGetOrSetDefaultScope($scope.$parent, '$hasHeader', !!shouldShow);
+    return meteoric.lib.reactiveGetOrSetDefaultScope($scope, '$hasHeader', !!shouldShow);
   };
 
 
@@ -488,7 +488,7 @@ function($scope, $element, $attrs) {
   }
 
   $scope.$on('$destroy', function() {
-    $scope.$parent.$hasHeader.set(false);
+    $scope.$hasHeader.set(false);
     $element.parent().removeData(DATA_NAV_BAR_CTRL);
     for (var x = 0; x < headerBars.length; x++) {
       headerBars[x].destroy();
