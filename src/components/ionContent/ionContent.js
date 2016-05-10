@@ -220,7 +220,7 @@ Template.ionContent.onRendered(function() {
 
                 let startX = isNumber(currentView.startX) ? currentView.startX : 0;
                 let startY = isNumber(currentView.startY) ? currentView.startY : 0;
-                this.scrollCtrl.scrollTo(startX, startY, true);
+                this.scrollCtrl.scrollTo(startX, startY, false);
             });
         }
 
