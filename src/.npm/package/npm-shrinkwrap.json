@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "keycode": {
+      "version": "2.1.1",
+      "resolved": "https://registry.npmjs.org/keycode/-/keycode-2.1.1.tgz",
+      "from": "keycode@2.1.1"
+    }
+  }
+}

@@ -1,7 +1,7 @@
 Package.describe({
   name: "meteoric124:meteoric",
   summary: "Ionic components for Meteor. No Angular!",
-  version: "1.2.4-beta.20",
+  version: "1.2.4-beta.21",
   git: "https://github.com/JoeyAndres/meteor-ionic.git",
   documentation: "../README.md"
 });
@@ -38,7 +38,6 @@ Package.onUse(function(api) {
     "templating",
     "underscore",
     "reactive-var",
-    "iron:router@1.0.0",
     "tracker",
     "session",
     "promise",
@@ -250,4 +249,8 @@ Package.onUse(function(api) {
     // todo: export $ionicGoBack
     // todo: make 'meteoric' namespace not implicitly global. (i.e. window.meteoric).
   ], 'client');
+});
+
+Npm.depends({
+  keycode: "2.1.1"
 });

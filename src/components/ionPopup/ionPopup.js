@@ -71,6 +71,9 @@
  *```
  */
 
+
+import keycode from 'keycode';
+
 $ionicPopup = {
   show: function (options) {
     this.template = Template.ionPopup;
@@ -219,7 +222,7 @@ $ionicPopup = {
 
 Template.ionPopup.onRendered(function() {
   $(window).on('keyup.ionPopup', function(event) {
-    if (event.which == KeyboardEvent.code["Escape"]) {
+    if (event.which == keycode("Escape")) {
       $ionicPopup.close();
     }
   });
